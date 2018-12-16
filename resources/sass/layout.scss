@@ -1,0 +1,19 @@
+
+@import 'color.scss';
+
+.layout {
+    height:100vh ;
+    border: 1px solid $border-default ;
+
+    .main-content {
+        background-color: white ;
+
+        .page-content {
+            background-color: white ;
+        }
+    }
+}
+
+.color-disabled {
+    color: $color-disabled ;
+}

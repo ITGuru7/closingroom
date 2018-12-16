@@ -1,0 +1,49 @@
+
+@import 'color.scss';
+
+button {
+    &.button-sm {
+        height: 20px ;
+    }
+    &.button-md {
+        height: 30px ;
+    }
+    &.button-lg {
+        height: 40px ;
+    }
+    border: 1px solid $black ;
+
+    &.button-grey {
+        color: white ;
+        background-color: $darker-grey ;
+    }
+    &.button-blue {
+        color: white ;
+        background-color: $dark-blue ;
+    }
+    &.button-red {
+        color: white ;
+        background-color: $red ;
+    }
+    &.button-green {
+        color: white ;
+        background-color: $green ;
+    }
+    &.button-orange {
+        color: white ;
+        background-color: $orange ;
+    }
+    &.button-transparent {
+        border: none ;
+        background-color: transparent ;
+    }
+
+    &:hover {
+        cursor: pointer ;
+        opacity: 0.5;
+    }
+}
+
+input {
+    width: 100% ;
+}

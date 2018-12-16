@@ -1,0 +1,53 @@
+
+@import 'color.scss';
+
+.sign-header {
+    margin-top: 100px ;
+
+    .logo-image {
+        img {
+            width: 80px ;
+        }
+    }
+    .logo-text {
+        color: $dark-blue ;
+        .title {
+            font-weight: bold ;
+            color: inherit ;
+            font-size: 3rem ;
+            line-height: 2rem ;
+        }
+        .subtitle {
+            color: inherit ;
+            font-size: 1rem ;
+        }
+    }
+}
+
+.sign-page {
+    margin: 0 auto ;
+    max-width: 509px ;
+
+    .sign-block {
+        background-color: $grey ;
+        border: 1px solid $border-default ;
+
+        .title {
+            font-size: 1.5rem ;
+        }
+
+        .sign-form {
+            font-size: 1.2rem ;
+
+            input {
+                border: none ;
+                width: 100% ;
+                padding-left: 5px ;
+            }
+        }
+
+        .pw-forgot {
+            font-size: .6rem ;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+
+@import 'color.scss';
+
+$header-height: 100px ;
+
+.header-default {
+    flex: 0 0 $header-height ;
+    border-bottom: 1px solid $border-default ;
+
+    .title {
+        font-size: 1rem ;
+    }
+}
+
+.header-blue {
+    color: $dark-blue ;
+
+    .title {
+        color: $dark-blue ;
+    }
+}

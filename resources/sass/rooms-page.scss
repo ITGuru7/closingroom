@@ -1,0 +1,46 @@
+
+@import 'color.scss';
+
+.rooms-page {
+    .page-content {
+        .header {
+            height: 40px ;
+            font-size: 1.2rem ;
+            color: white ;
+            background-color: $dark-blue ;
+        }
+
+        .rooms {
+            table {
+                th {
+                    background-color: $grey ;
+                    border-right: 1px solid $border-dark ;
+                    border-bottom: none ;
+                }
+                td {
+                    border: none ;
+                }
+                tr:nth-child(odd) {
+                    background-color: $lighter-grey ;
+                }
+                input {
+                    border: none ;
+                    background-color: transparent ;
+                }
+                td.nickname {
+                    position: relative ;
+                    input {
+                        position: absolute ;
+                        left: 0 ;
+                    }
+                }
+                td.action {
+                    img {
+                        width: 20px ;
+                    }
+                }
+            }
+        }
+
+    }
+}

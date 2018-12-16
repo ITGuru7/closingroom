@@ -1,0 +1,26 @@
+
+@import 'color.scss';
+
+.createroom-page {
+    .page-content {
+        .header {
+            .title {
+                font-size: 1.2rem ;
+            }
+            a {
+                font-size: .8rem ;
+            }
+        }
+
+        .form-body {
+            label {
+                color: $black ;
+            }
+            span {
+                font-size: .8rem ;
+                color: $darker-grey ;
+            }
+        }
+
+    }
+}

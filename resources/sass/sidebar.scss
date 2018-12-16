@@ -1,0 +1,50 @@
+
+@import 'color.scss';
+
+$sidebar-width: 300px ;
+
+.sidebar {
+    flex: 0 0 $sidebar-width ;
+    border: 1px solid $border-default ;
+    background-color: $lighter-grey ;
+
+    .header {
+        .logo-image {
+            width: 80px ;
+        }
+
+        .logo-text {
+            color: $dark-blue ;
+            .title {
+                color: inherit ;
+                font-size: 2rem ;
+                font-weight: bold ;
+                line-height: 2rem ;
+            }
+            .subtitle {
+                color: inherit ;
+                font-size: 2rem ;
+                line-height: 2rem ;
+            }
+            .version {
+                color: inherit ;
+                font-size: 1rem ;
+            }
+        }
+    }
+
+    .link-block {
+        img {
+            width: 20px ;
+        }
+    }
+
+    .about-block {
+    }
+
+    .signout-block {
+        img {
+            width: 30px ;
+        }
+    }
+}

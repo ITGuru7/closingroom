@@ -1,0 +1,33 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+body, div, a, span, p, h1, h2, h3, h4, h5, h6, table, thead, tbody, th, td {
+  color: $black ;
+}
+
+@import 'color.scss';
+@import 'components.scss';
+@import 'layout.scss';
+@import 'header.scss';
+@import 'sidebar.scss';
+
+@import 'home-page.scss';
+@import 'sign-page.scss';
+@import 'account-page.scss';
+@import 'kyc-page.scss';
+@import 'rooms-page.scss';
+@import 'createroom-page.scss';
+@import 'room-page.scss';
+@import 'modal.scss';

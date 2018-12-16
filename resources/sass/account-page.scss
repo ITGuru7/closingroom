@@ -1,0 +1,43 @@
+
+@import 'color.scss';
+
+.account-page {
+    .page-content {
+        background-color: $lighter-grey !important ;
+        border: 1px solid $border-default ;
+
+        .title {
+            color: $dark-blue ;
+            font-size: 2rem ;
+            border-bottom: 2px solid $darker-grey ;
+
+            span {
+                color: inherit ;
+                font-size: 1.2rem ;
+            }
+        }
+
+        .subtitle {
+            color: $dark-blue ;
+            font-size: 1.5rem ;
+        }
+
+        .profile-block {
+            .account-level {
+                .circle {
+                    width: 12px;
+                    height: 12px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+
+                    &.circle-red {
+                        background: red;
+                    }
+                }
+            }
+        }
+        .password-block {
+        }
+    }
+}

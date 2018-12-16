@@ -1,0 +1,10 @@
+export const HOME = '/';
+export const SIGN_IN = '/signin';
+export const SIGN_UP = '/signup';
+export const PASSWORD_FORGET = '/pw-forget';
+export const ACCOUNT = '/account';
+export const ROOMS = '/rooms';
+export const ROOM = '/rooms/:room_id';
+export const CREATE_ROOM = '/room/create';
+export const LOGIN_ROOM = '/rooms/:room_id/login';
+export const KYC = '/account/KYC';
