@@ -91040,7 +91040,7 @@ var RoomHeader = function RoomHeader(props) {
   var renderInformation = function renderInformation() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       colSpan: "2"
-    }, "DataRoom Information"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Room ID:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, room.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Room Level:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, room.level)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Participants:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object.keys(room.users).length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Creation Date:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object(_functions__WEBPACK_IMPORTED_MODULE_1__["getFormattedDate"])(new Date(room.create_date)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Expires:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object(_functions__WEBPACK_IMPORTED_MODULE_1__["getFormattedDate"])(new Date(room.expire_date))))));
+    }, "ClosingRoom Information"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Room ID:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, room.id)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Room Level:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, room.level)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Participants:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object.keys(room.users).length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Creation Date:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object(_functions__WEBPACK_IMPORTED_MODULE_1__["getFormattedDate"])(new Date(room.create_date)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Expires:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, Object(_functions__WEBPACK_IMPORTED_MODULE_1__["getFormattedDate"])(new Date(room.expire_date))))));
   };
 
   var renderTitle = function renderTitle() {
@@ -91048,7 +91048,7 @@ var RoomHeader = function RoomHeader(props) {
       className: "text-center"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "title"
-    }, "MNM DataRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "MNM ClosingRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "room-id"
     }, room.id));
   };
@@ -91131,7 +91131,7 @@ var HomePage = function HomePage() {
     className: "page-content flex-grow-1 m-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "title mb-4 text-center"
-  }, "Welcome to MNM DataRoom BETA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Welcome to MNM ClosingRoom BETA"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "about"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "subtitle"
@@ -91323,7 +91323,7 @@ function (_Component) {
         className: "content flex-grow-1 p-4 d-flex flex-column"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "description mb-5"
-      }, "The upload document function is intended for forms/documents NOT included in the automated DataRoom series, eg. Bank statements, LOA\u2019s, LOI\u2019s."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "The upload document function is intended for forms/documents NOT included in the automated ClosingRoom series, eg. Bank statements, LOA\u2019s, LOI\u2019s."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "document-form-body flex-grow-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "roomKey",
@@ -91664,7 +91664,7 @@ var CreateRoomPage = function CreateRoomPage(props) {
       className: "header mb-4"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "title mr-4"
-    }, "New DataRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, "New ClosingRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: ""
     }, "Advanced Settings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "form-body"
@@ -92270,7 +92270,7 @@ function (_Component) {
         className: "content p-4 w-100 text-white"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title text-center mb-1"
-      }, "Add users to the dataroom."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Add users to the ClosingRoom."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "description mb-1"
       }, "If the email is not registered, an invitation email will be issued."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row mb-1"
@@ -92625,7 +92625,7 @@ function (_Component) {
           className: "page-content flex-grow-1"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "header d-flex justify-content-center align-items-center"
-        }, "DataRooms"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "ClosingRooms"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "rooms"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
           className: "table text-center"
@@ -92638,7 +92638,7 @@ function (_Component) {
           to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["CREATE_ROOM"]
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "button button-md button-red"
-        }, "Create a DataRoom")))));
+        }, "Create a ClosingRoom")))));
       });
     }
   }]);
@@ -93005,7 +93005,7 @@ var Sidebar = function Sidebar() {
     className: "title"
   }, "MNM"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "subtitle"
-  }, "DataRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "ClosingRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "version"
   }, "Beta")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "link-block align-self-start"
@@ -93025,7 +93025,7 @@ var Sidebar = function Sidebar() {
     className: "about-block"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
     to: "",
-    text: "What is a DataRoom?"
+    text: "What is a ClosingRoom?"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "signout-block mt-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignOut__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
@@ -93102,7 +93102,7 @@ var SignInPage = function SignInPage(_ref) {
     className: "sign-block py-3"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "title d-flex justify-content-center p-4"
-  }, "DataRoom User Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SignInForm, {
+  }, "ClosingRoom User Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SignInForm, {
     history: history
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PasswordForget__WEBPACK_IMPORTED_MODULE_3__["PasswordForgetLink"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUp__WEBPACK_IMPORTED_MODULE_2__["SignUpLink"], null));
 };
@@ -93297,7 +93297,7 @@ var SignUpPage = function SignUpPage(_ref) {
     className: "sign-block py-3"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "title d-flex justify-content-center p-4"
-  }, "DataRoom User Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SignUpForm, {
+  }, "ClosingRoom User Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SignUpForm, {
     history: history
   })));
 };
