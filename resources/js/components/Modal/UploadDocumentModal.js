@@ -115,7 +115,7 @@ class UploadDocumentModal extends Component {
             <div className="content flex-grow-1 p-4 d-flex flex-column">
               <div className="description mb-5">
                 The upload document function is intended for forms/documents NOT included in the automated
-                DataRoom series, eg. Bank statements, LOA’s, LOI’s.
+                ClosingRoom series, eg. Bank statements, LOA’s, LOI’s.
               </div>
               <div className="document-form-body flex-grow-1">
                 <input name="roomKey" id="roomKey" type="hidden"/>

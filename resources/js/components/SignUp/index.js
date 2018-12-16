@@ -8,7 +8,7 @@ const SignUpPage = ({ history }) => (
   <div className="sign-page mt-5 text-center">
     <div className="sign-block py-3">
       <div className="title d-flex justify-content-center p-4">
-        DataRoom User Register
+        ClosingRoom User Register
       </div>
       <SignUpForm history={history} />
     </div>

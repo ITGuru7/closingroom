@@ -8,7 +8,7 @@ const RoomHeader = (props) => {
     <table>
       <thead>
         <tr>
-          <th colSpan="2">DataRoom Information</th>
+          <th colSpan="2">ClosingRoom Information</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +38,7 @@ const RoomHeader = (props) => {
 
   const renderTitle = () => (
     <div className="text-center">
-      <div className="title">MNM DataRoom</div>
+      <div className="title">MNM ClosingRoom</div>
       <div className="room-id">{room.id}</div>
     </div>
   );

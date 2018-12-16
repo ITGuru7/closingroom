@@ -18,7 +18,7 @@ const Sidebar = () => (
               MNM
           </div>
           <div className="subtitle">
-              DataRoom
+              ClosingRoom
           </div>
           <div className="version">
             Beta
@@ -32,7 +32,7 @@ const Sidebar = () => (
       <SidebarNavItem to={routes.ROOMS} asset={assets.find} text="My Rooms"/>
     </div>
     <div className="about-block">
-      <SidebarNavItem to="" text="What is a DataRoom?"/>
+      <SidebarNavItem to="" text="What is a ClosingRoom?"/>
     </div>
     <div className="signout-block mt-auto">
       <SignOutButton />

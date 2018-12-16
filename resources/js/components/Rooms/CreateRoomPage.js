@@ -16,7 +16,7 @@ const CreateRoomPage = (props) => (
       <DefaultHeader title="Create New Room" />
       <div className="page-content flex-grow-1 m-4">
         <div className="header mb-4">
-          <span className="title mr-4">New DataRoom</span>
+          <span className="title mr-4">New ClosingRoom</span>
           <Link to="">Advanced Settings</Link>
         </div>
         <div className="form-body">

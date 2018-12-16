@@ -168,7 +168,7 @@ class UserList extends Component {
       <div className="add-user-dialog d-none">
         <div className="content p-4 w-100 text-white">
           <div className="title text-center mb-1">
-            Add users to the dataroom.
+            Add users to the ClosingRoom.
           </div>
           <div className="description mb-1">
             If the email is not registered, an invitation email will be issued.

@@ -8,7 +8,7 @@ const HomePage = () => (
     <DefaultHeader title="Home" />
     <div className="page-content flex-grow-1 m-4">
       <div className="title mb-4 text-center">
-        Welcome to MNM DataRoom BETA
+        Welcome to MNM ClosingRoom BETA
       </div>
       <div className="about">
         <div className="subtitle">

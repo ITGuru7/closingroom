@@ -10,7 +10,7 @@ const SignInPage = ({ history }) => (
   <div className="sign-page mt-5 text-center">
     <div className="sign-block py-3">
       <div className="title d-flex justify-content-center p-4">
-        DataRoom User Login
+        ClosingRoom User Login
       </div>
       <SignInForm history={history} />
       <PasswordForgetLink />

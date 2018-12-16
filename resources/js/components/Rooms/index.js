@@ -43,7 +43,7 @@ class RoomsPage extends Component {
           <DefaultHeader title="MyRooms" />
           <div className="page-content flex-grow-1">
             <div className="header d-flex justify-content-center align-items-center">
-              DataRooms
+              ClosingRooms
             </div>
             <div className="rooms">
               <table className="table text-center">
@@ -63,7 +63,7 @@ class RoomsPage extends Component {
             </div>
             <div className="footer d-flex justify-content-center">
               <Link to={routes.CREATE_ROOM}>
-                <button className="button button-md button-red">Create a DataRoom</button>
+                <button className="button button-md button-red">Create a ClosingRoom</button>
               </Link>
             </div>
           </div>
