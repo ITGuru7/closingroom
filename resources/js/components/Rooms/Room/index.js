@@ -13,11 +13,14 @@ import RoomHeader from '../../Header/RoomHeader';
 import UserList from './UserList';
 import Messages from './Messages';
 import Tasks from './Tasks';
+import ViewFiles from './ViewFiles';
 
 const INITIAL_STATE = {
   room: null,
   users: null,
+  documents: null,
   receiver_id: null,
+  viewFiles: true,
 }
 
 class RoomPage extends Component {
@@ -39,18 +42,21 @@ class RoomPage extends Component {
         users[key].uid = key
         users[key].registered = false
       })
-      firebaseDB.ref(`rooms/${room_id}`).on('value', (snapshot) => {
-        var room = snapshot.val()
-        room.room_id = room_id
 
-        Object.keys(room.users).map(key => {
-          users[key].registered = true
-          users[key].level = room.users[key].level
-        })
+      db.onceGetDocuments()
+      .then(snapshot => {
+        var documents = snapshot.val();
 
-        this.setState({
-          room: room,
-          users: users,
+        firebaseDB.ref(`rooms/${room_id}`).on('value', (snapshot) => {
+          var room = snapshot.val()
+          room.room_id = room_id
+
+          Object.keys(room.users).map(key => {
+            users[key].registered = true
+            users[key].level = room.users[key].level
+          })
+
+          this.setState({room, users, documents})
         })
       })
     })
@@ -71,9 +77,12 @@ class RoomPage extends Component {
     db.doInviteUserToRoom(room_id, user_id)
   }
 
+  handleViewFiles = (viewFiles) => {
+    this.setState({viewFiles})
+  }
+
   render() {
-    const { room, users, receiver_id } = this.state
-    const { room_id } = this.props.match.params
+    const { room, users, documents, receiver_id, viewFiles } = this.state
 
     if (room == null) {
       return <div></div>
@@ -86,10 +95,14 @@ class RoomPage extends Component {
           <RoomHeader room={room}/>
           <div className="page-content flex-grow-1 d-flex flex-row">
             <UserList users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
-            <div className="flex-grow-1 d-flex flex-row">
-              <Messages users={users} room={room} receiver_id={receiver_id}/>
-              <Tasks user_id={users[authUser.uid].id} room={room}/>
-            </div>
+            { !viewFiles ?
+              <div className="flex-grow-1 d-flex flex-row">
+                <Messages users={users} room={room} receiver_id={receiver_id}/>
+                <Tasks user_id={users[authUser.uid].id} room={room} documents={documents} handleViewFiles={this.handleViewFiles}/>
+              </div>
+            :
+              <ViewFiles user_id={users[authUser.uid].id} room={room} documents={documents} handleViewFiles={this.handleViewFiles}/>
+            }
           </div>
         </div>
       }

@@ -1,0 +1,54 @@
+.tasks-panel {
+    flex: 0 0 $right-panel-width ;
+    border-left: 1px solid $black ;
+
+    .tasks-block {
+        .room-block {
+            background-color: $dark-yellow ;
+        }
+        .document-block {
+            height: 30px ;
+            .actions {
+                .download {
+                    img {
+                        width: 20px ;
+                    }
+                }
+                .status {
+                    img {
+                        width: 20px ;
+                    }
+                }
+            }
+            &:nth-child(odd) {
+                background-color: $grey;
+            }
+            &:nth-child(even) {
+                background-color: $lighter-grey;
+            }
+        }
+    }
+
+    .view-files {
+        button {
+            span {
+                margin-right: 5px ;
+                color: white ;
+                font-size: 1rem ;
+            }
+            .arrow-right {
+                height: 28px ;
+                background-color: $darkest-grey ;
+                img {
+                    width: 20px ;
+                }
+            }
+        }
+    }
+
+    .upload-file-block {
+        img {
+            width: 20px ;
+        }
+    }
+}

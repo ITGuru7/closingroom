@@ -12,6 +12,15 @@ var config = {
   messagingSenderId: "500643723201"
 };
 
+// var config = {
+//   apiKey: "AIzaSyBWDQHJ-oy7HlV4HuJHZPVBuhaLBuumTHM",
+//   authDomain: "closingroom-f0b36.firebaseapp.com",
+//   databaseURL: "https://closingroom-f0b36.firebaseio.com",
+//   projectId: "closingroom-f0b36",
+//   storageBucket: "closingroom-f0b36.appspot.com",
+//   messagingSenderId: "441765868051"
+// };
+
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }

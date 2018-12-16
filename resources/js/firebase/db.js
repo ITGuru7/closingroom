@@ -134,3 +134,7 @@ export const doDownloadDocument = (room_id, user_id, doc_key, url) => (
     url,
   })
 );
+
+export const onceGetDocuments = () => (
+  db.ref('documents').once('value')
+);

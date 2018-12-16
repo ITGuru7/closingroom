@@ -5,6 +5,9 @@ import { auth as firebaseAuth } from '../../../firebase/firebase';
 
 import assets from '../../../assets';
 
+import axios from 'axios';
+import {SERVER_URL} from '../../../constants/urls';
+
 const INITIAL_STATE = {
   email: '',
   role: 0,
@@ -154,8 +157,17 @@ class UserList extends Component {
 
   onSendInvite = () => {
     const {email, role} = this.state
-    console.log(email)
-    console.log(ROLE[role].role_label)
+
+    const sender_email = firebaseAuth.currentUser.email
+    const receiver_email = email
+    // const role = role
+    axios.post(`${SERVER_URL}/api/send_email?sender_email=${sender_email}&receiver_email=${receiver_email}&role=${role}`)
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(error => {
+      console.log(error.response.data.error)
+    });
   }
 
   renderAddUserDialog = () => {

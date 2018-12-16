@@ -1,0 +1,51 @@
+.messages-panel {
+    .messages-block {
+        overflow-y: scroll ;
+        .message-block {
+            $user-width: 100px ;
+            .user-block {
+                flex: 0 0 $user-width ;
+                .user {
+                    width: 50px ;
+                    height: 50px ;
+                    border-radius: 50% ;
+
+                    background-color: $light-blue ;
+                    &.user-self {
+                        background-color: $red;
+                    }
+                    span {
+                        font-size: 1.5rem ;
+                        text-transform: uppercase ;
+                    }
+                }
+            }
+            .content-block {
+                .content {
+                    color: white ;
+                    background-color: $dark-blue ;
+                    border-radius: 5px ;
+                    // max-width: 50% ;
+                }
+                .timestamp {
+                    .time {
+                        font-size: .8rem ;
+                    }
+                    .date {
+                        font-size: .5rem ;
+                    }
+                }
+            }
+        }
+    }
+
+    .send-message-block {
+        flex: 0 0 $send-message-height ;
+        border-top: 1px solid $black ;
+        background-color: $lighter-grey ;
+
+        img {
+            width: 20px ;
+        }
+    }
+}

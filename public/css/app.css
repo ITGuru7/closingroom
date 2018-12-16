@@ -10034,7 +10034,115 @@ input {
   border-left: 1px solid #231f20;
 }
 
+.room-page .page-content .tasks-panel .tasks-block .room-block {
+  background-color: #c2b59b;
+}
+
+.room-page .page-content .tasks-panel .tasks-block .document-block {
+  height: 30px;
+}
+
+.room-page .page-content .tasks-panel .tasks-block .document-block .actions .download img {
+  width: 20px;
+}
+
+.room-page .page-content .tasks-panel .tasks-block .document-block .actions .status img {
+  width: 20px;
+}
+
+.room-page .page-content .tasks-panel .tasks-block .document-block:nth-child(odd) {
+  background-color: #d1d3d4;
+}
+
+.room-page .page-content .tasks-panel .tasks-block .document-block:nth-child(even) {
+  background-color: #f1f2f2;
+}
+
+.room-page .page-content .tasks-panel .view-files button span {
+  margin-right: 5px;
+  color: white;
+  font-size: 1rem;
+}
+
+.room-page .page-content .tasks-panel .view-files button .arrow-right {
+  height: 28px;
+  background-color: #414042;
+}
+
+.room-page .page-content .tasks-panel .view-files button .arrow-right img {
+  width: 20px;
+}
+
 .room-page .page-content .tasks-panel .upload-file-block img {
+  width: 20px;
+}
+
+.room-page .page-content .viewfiles-panel .header {
+  position: relative;
+  background-color: #183863;
+}
+
+.room-page .page-content .viewfiles-panel .header:hover {
+  cursor: pointer;
+}
+
+.room-page .page-content .viewfiles-panel .header .back {
+  position: absolute;
+  left: 10px;
+}
+
+.room-page .page-content .viewfiles-panel .header .back img {
+  width: 30px;
+}
+
+.room-page .page-content .viewfiles-panel .header .back span {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.room-page .page-content .viewfiles-panel .header .title {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .head {
+  height: 30px;
+  background-color: #817a68;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .head div {
+  font-size: 1rem;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .body .room-block {
+  height: 30px;
+  background-color: #c2b59b;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .body .document-block {
+  height: 30px;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .body .document-block .actions img {
+  width: 20px;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .body .document-block .actions .open {
+  width: 80px;
+  height: 30px;
+  background-color: #808285;
+  border: none;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .body .document-block:nth-child(odd) {
+  background-color: #d1d3d4;
+}
+
+.room-page .page-content .viewfiles-panel .documents-table .body .document-block:nth-child(even) {
+  background-color: #f1f2f2;
+}
+
+.room-page .page-content .viewfiles-panel .footer img {
   width: 20px;
 }
 

@@ -1,0 +1,99 @@
+.userlist-panel {
+    flex: 0 0 $left-panel-width ;
+    border-right: 1px solid $black ;
+
+    .participants {
+        .heading {
+            height: 50px ;
+            font-size: 1.2rem ;
+        }
+    }
+    .intermediaries {
+        .heading {
+            height: 40px ;
+            font-size: 1.2rem ;
+        }
+    }
+    .heading {
+        background-color: $dark-grey ;
+    }
+    .user-block {
+        img {
+            width: 15px ;
+        }
+        .profile {
+            border-bottom: 1px solid $black ;
+            .name {
+                span {
+                    font-size: 1.2rem ;
+                }
+            }
+            .localtime {
+                span {
+                    font-size: .8rem ;
+                }
+            }
+        }
+        .role {
+            .KYC {
+                span {
+                    font-size: .8rem ;
+                }
+            }
+            .attendance {
+                width: 20px ;
+            }
+        }
+        &:nth-child(odd) {
+            background-color: $lighter-grey;
+        }
+        &:nth-child(even) {
+            background-color: $grey;
+        }
+    }
+    .add-user-block {
+        position: relative ;
+
+        img {
+            width: 30px ;
+        }
+
+        .add-user-dialog {
+            position: absolute ;
+            z-index: 2 ;
+            top: 0 ;
+            right: 0;
+            transform: translateY(-100%);
+            width: 340px ;
+            .content {
+                background-color: $dark-blue ;
+                div, label {
+                    color: white ;
+                }
+                .title {
+                    font-size: 1.2rem ;
+                    line-height: 1.5rem ;
+                }
+                .description {
+                    font-size: .8rem ;
+                    line-height: 1rem ;
+                }
+                input {
+                    border: none ;
+                    border-radius: 9999px ;
+                    padding: 2px 10px ;
+                }
+            }
+            .arrow-down {
+                width: 0px ;
+                height: 0px ;
+                border-left: 11px solid transparent ;
+                border-right: 11px solid transparent ;
+                border-top: 20px solid $dark-blue ;
+            }
+            .pointer {
+                margin-right: 30px ;
+            }
+        }
+    }
+}

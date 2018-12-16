@@ -16,6 +16,14 @@ import upload_blue        from '../assets/images/svg/upload-blue.svg';
 import upload_white       from '../assets/images/svg/upload-white.svg';
 import logo_transparent   from '../assets/images/svg/logo-transparent.svg';
 import close              from '../assets/images/svg/close.svg';
+import arrow_right        from '../assets/images/svg/arrow-right.svg';
+import agree              from '../assets/images/svg/agree.svg';
+import disagree           from '../assets/images/svg/disagree.svg';
+import arrow_left_circle  from '../assets/images/svg/arrow-left-circle.svg';
+import radio_on           from '../assets/images/svg/radio-on.svg';
+import radio_off          from '../assets/images/svg/radio-off.svg';
+import download_black     from '../assets/images/svg/download-black.svg';
+import download_white     from '../assets/images/svg/download-white.svg';
 
 export default {
     logo,
@@ -36,4 +44,12 @@ export default {
     upload_white,
     logo_transparent,
     close,
+    arrow_right,
+    agree,
+    disagree,
+    arrow_left_circle,
+    radio_on,
+    radio_off,
+    download_black,
+    download_white,
 }
