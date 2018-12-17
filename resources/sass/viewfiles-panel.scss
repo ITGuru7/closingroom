@@ -30,7 +30,7 @@
     }
     .documents-table {
         .head {
-            height: 30px ;
+            height: 50px ;
             background-color: $darker-yellow ;
             div {
                 font-size: 1rem ;
@@ -38,18 +38,18 @@
         }
         .body {
             .room-block {
-                height: 30px ;
+                height: 40px ;
                 background-color: $dark-yellow ;
             }
             .document-block {
-                height: 30px ;
+                height: 40px ;
                 .actions {
                     img {
                         width: 20px ;
                     }
                     .open {
                         width: 80px ;
-                        height: 30px ;
+                        height: 40px ;
                         background-color: $dark-grey-open ;
                         border: none ;
                     }

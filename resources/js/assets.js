@@ -25,6 +25,10 @@ import radio_off          from '../assets/images/svg/radio-off.svg';
 import download_black     from '../assets/images/svg/download-black.svg';
 import download_white     from '../assets/images/svg/download-white.svg';
 
+import manage_rooms       from '../assets/images/svg/manage-rooms.svg';
+import manage_accounts    from '../assets/images/svg/manage-accounts.svg';
+import kyc_approvals      from '../assets/images/svg/kyc-approvals.svg';
+
 export default {
     logo,
     logout,
@@ -52,4 +56,8 @@ export default {
     radio_off,
     download_black,
     download_white,
+
+    manage_rooms,
+    manage_accounts,
+    kyc_approvals,
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import AuthUserContext from '../Session/AuthUserContext';
+import withAuthorization from '../Session/withAuthorization';
+
 import SignOutButton from '../SignOut';
 import * as routes from '../../constants/routes';
 import assets from '../../assets';
@@ -31,6 +33,17 @@ const Sidebar = () => (
       <SidebarNavItem to={routes.ACCOUNT} asset={assets.setting_blue} text="Account"/>
       <SidebarNavItem to={routes.ROOMS} asset={assets.find} text="My Rooms"/>
     </div>
+
+    <AuthUserContext.Consumer>
+    {authUser =>
+      <div className="link-block align-self-start">
+        <SidebarNavItem to={routes.HOME} asset={assets.manage_rooms} text="ManageRooms"/>
+        <SidebarNavItem to={routes.ACCOUNT} asset={assets.manage_accounts} text="Manage Accounts"/>
+        <SidebarNavItem to={routes.ROOMS} asset={assets.kyc_approvals} text="KYC Approvals"/>
+      </div>
+    }
+    </AuthUserContext.Consumer>
+
     <div className="about-block">
       <SidebarNavItem to="" text="What is a ClosingRoom?"/>
     </div>
@@ -41,7 +54,7 @@ const Sidebar = () => (
 );
 
 const SidebarNavItem = (props) => (
-  <Link to={props.to} className="my-3 d-flex">
+  <Link to={props.to} className="py-2 d-flex">
     { props.asset &&
       <div className="mr-3">
         <img src={props.asset}/>

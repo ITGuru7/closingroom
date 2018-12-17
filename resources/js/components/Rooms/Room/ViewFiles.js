@@ -32,7 +32,7 @@ class ViewFiles extends Component {
           <img src={assets.radio_on}/>
         </div>
         <div className="agree mr-3">
-          <img src={assets.agree}/>
+          <img src={assets.disagree}/>
         </div>
         <div className="download mr-3">
           <img src={assets.download_black}/>

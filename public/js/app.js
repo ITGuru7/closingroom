@@ -90296,6 +90296,17 @@ module.exports = "/images/home.svg?d22e9e5302310fa60980dbccdc1e5b87";
 
 /***/ }),
 
+/***/ "./resources/assets/images/svg/kyc-approvals.svg":
+/*!*******************************************************!*\
+  !*** ./resources/assets/images/svg/kyc-approvals.svg ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/kyc-approvals.svg?190e5ae28e44b0041633df15b049c456";
+
+/***/ }),
+
 /***/ "./resources/assets/images/svg/logo-transparent.svg":
 /*!**********************************************************!*\
   !*** ./resources/assets/images/svg/logo-transparent.svg ***!
@@ -90326,6 +90337,28 @@ module.exports = "/images/logo.svg?cb0fdb17d9e44b104df0f8f8ca291adf";
 /***/ (function(module, exports) {
 
 module.exports = "/images/logout.svg?079e9a2f165ca5b63a49d67da8051c00";
+
+/***/ }),
+
+/***/ "./resources/assets/images/svg/manage-accounts.svg":
+/*!*********************************************************!*\
+  !*** ./resources/assets/images/svg/manage-accounts.svg ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/manage-accounts.svg?4a85e6f256191584542fab38777cef1d";
+
+/***/ }),
+
+/***/ "./resources/assets/images/svg/manage-rooms.svg":
+/*!******************************************************!*\
+  !*** ./resources/assets/images/svg/manage-rooms.svg ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/manage-rooms.svg?844b1826f0807b1eece413cd0756aa4f";
 
 /***/ }),
 
@@ -90515,6 +90548,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_images_svg_download_black_svg__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_assets_images_svg_download_black_svg__WEBPACK_IMPORTED_MODULE_24__);
 /* harmony import */ var _assets_images_svg_download_white_svg__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../assets/images/svg/download-white.svg */ "./resources/assets/images/svg/download-white.svg");
 /* harmony import */ var _assets_images_svg_download_white_svg__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_assets_images_svg_download_white_svg__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _assets_images_svg_manage_rooms_svg__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../assets/images/svg/manage-rooms.svg */ "./resources/assets/images/svg/manage-rooms.svg");
+/* harmony import */ var _assets_images_svg_manage_rooms_svg__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_assets_images_svg_manage_rooms_svg__WEBPACK_IMPORTED_MODULE_26__);
+/* harmony import */ var _assets_images_svg_manage_accounts_svg__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../assets/images/svg/manage-accounts.svg */ "./resources/assets/images/svg/manage-accounts.svg");
+/* harmony import */ var _assets_images_svg_manage_accounts_svg__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_assets_images_svg_manage_accounts_svg__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var _assets_images_svg_kyc_approvals_svg__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../assets/images/svg/kyc-approvals.svg */ "./resources/assets/images/svg/kyc-approvals.svg");
+/* harmony import */ var _assets_images_svg_kyc_approvals_svg__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_assets_images_svg_kyc_approvals_svg__WEBPACK_IMPORTED_MODULE_28__);
+
+
+
 
 
 
@@ -90567,7 +90609,10 @@ __webpack_require__.r(__webpack_exports__);
   radio_on: _assets_images_svg_radio_on_svg__WEBPACK_IMPORTED_MODULE_22___default.a,
   radio_off: _assets_images_svg_radio_off_svg__WEBPACK_IMPORTED_MODULE_23___default.a,
   download_black: _assets_images_svg_download_black_svg__WEBPACK_IMPORTED_MODULE_24___default.a,
-  download_white: _assets_images_svg_download_white_svg__WEBPACK_IMPORTED_MODULE_25___default.a
+  download_white: _assets_images_svg_download_white_svg__WEBPACK_IMPORTED_MODULE_25___default.a,
+  manage_rooms: _assets_images_svg_manage_rooms_svg__WEBPACK_IMPORTED_MODULE_26___default.a,
+  manage_accounts: _assets_images_svg_manage_accounts_svg__WEBPACK_IMPORTED_MODULE_27___default.a,
+  kyc_approvals: _assets_images_svg_kyc_approvals_svg__WEBPACK_IMPORTED_MODULE_28___default.a
 });
 
 /***/ }),
@@ -92804,7 +92849,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "agree mr-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: _assets__WEBPACK_IMPORTED_MODULE_5__["default"].agree
+        src: _assets__WEBPACK_IMPORTED_MODULE_5__["default"].disagree
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "download mr-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -93547,9 +93592,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _Session_AuthUserContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Session/AuthUserContext */ "./resources/js/components/Session/AuthUserContext.js");
-/* harmony import */ var _SignOut__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SignOut */ "./resources/js/components/SignOut/index.js");
-/* harmony import */ var _constants_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../constants/routes */ "./resources/js/constants/routes.js");
-/* harmony import */ var _assets__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets */ "./resources/js/assets.js");
+/* harmony import */ var _Session_withAuthorization__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Session/withAuthorization */ "./resources/js/components/Session/withAuthorization.js");
+/* harmony import */ var _SignOut__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SignOut */ "./resources/js/components/SignOut/index.js");
+/* harmony import */ var _constants_routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../constants/routes */ "./resources/js/constants/routes.js");
+/* harmony import */ var _assets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../assets */ "./resources/js/assets.js");
+
 
 
 
@@ -93567,7 +93614,7 @@ var Sidebar = function Sidebar() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo-image mr-2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _assets__WEBPACK_IMPORTED_MODULE_5__["default"].logo
+    src: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].logo
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo-text align-self-end"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -93579,31 +93626,47 @@ var Sidebar = function Sidebar() {
   }, "Beta")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "link-block align-self-start"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
-    to: _constants_routes__WEBPACK_IMPORTED_MODULE_4__["HOME"],
-    asset: _assets__WEBPACK_IMPORTED_MODULE_5__["default"].home,
+    to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["HOME"],
+    asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].home,
     text: "Home"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
-    to: _constants_routes__WEBPACK_IMPORTED_MODULE_4__["ACCOUNT"],
-    asset: _assets__WEBPACK_IMPORTED_MODULE_5__["default"].setting_blue,
+    to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["ACCOUNT"],
+    asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].setting_blue,
     text: "Account"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
-    to: _constants_routes__WEBPACK_IMPORTED_MODULE_4__["ROOMS"],
-    asset: _assets__WEBPACK_IMPORTED_MODULE_5__["default"].find,
+    to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["ROOMS"],
+    asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].find,
     text: "My Rooms"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Session_AuthUserContext__WEBPACK_IMPORTED_MODULE_2__["default"].Consumer, null, function (authUser) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "link-block align-self-start"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
+      to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["HOME"],
+      asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].manage_rooms,
+      text: "ManageRooms"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
+      to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["ACCOUNT"],
+      asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].manage_accounts,
+      text: "Manage Accounts"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
+      to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["ROOMS"],
+      asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].kyc_approvals,
+      text: "KYC Approvals"
+    }));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "about-block"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
     to: "",
     text: "What is a ClosingRoom?"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "signout-block mt-auto"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignOut__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignOut__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
 };
 
 var SidebarNavItem = function SidebarNavItem(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: props.to,
-    className: "my-3 d-flex"
+    className: "py-2 d-flex"
   }, props.asset && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-3"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

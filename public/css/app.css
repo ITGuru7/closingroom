@@ -10106,7 +10106,7 @@ input {
 }
 
 .room-page .page-content .viewfiles-panel .documents-table .head {
-  height: 30px;
+  height: 50px;
   background-color: #817a68;
 }
 
@@ -10115,12 +10115,12 @@ input {
 }
 
 .room-page .page-content .viewfiles-panel .documents-table .body .room-block {
-  height: 30px;
+  height: 40px;
   background-color: #c2b59b;
 }
 
 .room-page .page-content .viewfiles-panel .documents-table .body .document-block {
-  height: 30px;
+  height: 40px;
 }
 
 .room-page .page-content .viewfiles-panel .documents-table .body .document-block .actions img {
@@ -10129,7 +10129,7 @@ input {
 
 .room-page .page-content .viewfiles-panel .documents-table .body .document-block .actions .open {
   width: 80px;
-  height: 30px;
+  height: 40px;
   background-color: #808285;
   border: none;
 }
