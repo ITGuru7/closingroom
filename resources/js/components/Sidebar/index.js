@@ -34,7 +34,7 @@ const Sidebar = () => (
       <SidebarNavItem to={routes.ROOMS} asset={assets.find} text="My Rooms"/>
     </div>
 
-    <AuthUserContext.Consumer>
+    {/* <AuthUserContext.Consumer>
     {authUser =>
       <div className="link-block align-self-start">
         <SidebarNavItem to={routes.HOME} asset={assets.manage_rooms} text="ManageRooms"/>
@@ -42,7 +42,7 @@ const Sidebar = () => (
         <SidebarNavItem to={routes.ROOMS} asset={assets.kyc_approvals} text="KYC Approvals"/>
       </div>
     }
-    </AuthUserContext.Consumer>
+    </AuthUserContext.Consumer> */}
 
     <div className="about-block">
       <SidebarNavItem to="" text="What is a ClosingRoom?"/>

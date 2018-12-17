@@ -20,7 +20,7 @@ const INITIAL_STATE = {
   users: null,
   documents: null,
   receiver_id: null,
-  viewFiles: true,
+  viewFiles: false,
 }
 
 class RoomPage extends Component {

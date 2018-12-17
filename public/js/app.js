@@ -93013,7 +93013,7 @@ var INITIAL_STATE = {
   users: null,
   documents: null,
   receiver_id: null,
-  viewFiles: true
+  viewFiles: false
 };
 
 var RoomPage =
@@ -93637,23 +93637,7 @@ var Sidebar = function Sidebar() {
     to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["ROOMS"],
     asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].find,
     text: "My Rooms"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Session_AuthUserContext__WEBPACK_IMPORTED_MODULE_2__["default"].Consumer, null, function (authUser) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "link-block align-self-start"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
-      to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["HOME"],
-      asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].manage_rooms,
-      text: "ManageRooms"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
-      to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["ACCOUNT"],
-      asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].manage_accounts,
-      text: "Manage Accounts"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
-      to: _constants_routes__WEBPACK_IMPORTED_MODULE_5__["ROOMS"],
-      asset: _assets__WEBPACK_IMPORTED_MODULE_6__["default"].kyc_approvals,
-      text: "KYC Approvals"
-    }));
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "about-block"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SidebarNavItem, {
     to: "",
