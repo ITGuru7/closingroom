@@ -92390,7 +92390,7 @@ var Tasks = function Tasks(props) {
   var renderDocument = function renderDocument(key, document) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: key,
-      className: "document-block d-flex justify-content-between align-items-center pl-2"
+      className: "document-block d-flex justify-content-between align-items-center"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "title"
     }, document.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

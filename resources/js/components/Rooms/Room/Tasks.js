@@ -22,7 +22,7 @@ const Tasks = (props) => {
 
   const renderDocument = (key, document) => {
     return (
-    <div key={key} className="document-block d-flex justify-content-between align-items-center pl-2">
+    <div key={key} className="document-block d-flex justify-content-between align-items-center">
       <div className="title">{document.title}</div>
       <div className="detail">5/5 Signatures</div>
       <div className="actions d-flex justify-content-between">
