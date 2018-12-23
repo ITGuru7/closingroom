@@ -29,6 +29,8 @@ import manage_rooms       from '../assets/images/svg/manage-rooms.svg';
 import manage_accounts    from '../assets/images/svg/manage-accounts.svg';
 import kyc_approvals      from '../assets/images/svg/kyc-approvals.svg';
 
+import plus      from '../assets/images/svg/plus.svg';
+
 export default {
     logo,
     logout,
@@ -60,4 +62,6 @@ export default {
     manage_rooms,
     manage_accounts,
     kyc_approvals,
+
+    plus,
 }

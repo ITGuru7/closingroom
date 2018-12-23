@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
+
 import { auth as firebaseAuth } from '../../../firebase/firebase';
 
 import assets from '../../../assets';
 
-import axios from 'axios';
+
 import {SERVER_URL} from '../../../constants/urls';
+import { getFormattedID } from '../../../functions';
 
 const INITIAL_STATE = {
   email: '',
@@ -62,7 +65,7 @@ class UserList extends Component {
       >
         <div className="profile d-flex justify-content-between">
           <div className="name d-flex align-items-center">
-            <span className="mr-1">{user.username}</span>
+            <span className="mr-1">{user.firstname}</span>
             {owner === 'owner' &&
               <img src={assets.star}/>
             }
@@ -156,12 +159,33 @@ class UserList extends Component {
   }
 
   onSendInvite = () => {
+    const {users, room} = this.props
     const {email, role} = this.state
 
     const sender_email = firebaseAuth.currentUser.email
     const receiver_email = email
-    // const role = role
-    axios.post(`${SERVER_URL}/api/send_email?sender_email=${sender_email}&receiver_email=${receiver_email}&role=${role}`)
+
+    const user = users[firebaseAuth.currentUser.uid]
+    const displayname = user.displayname
+
+    const room_id = getFormattedID(room.id, 6)
+
+    const participants = Object.keys(room.users).length
+    const link = `${SERVER_URL}/rooms/${room.room_id}`;
+
+    const url = `${SERVER_URL}/api/send_email?
+      sender_email=${sender_email}&
+      receiver_email=${receiver_email}&
+      displayname=${displayname}&
+      role=${ROLE[role].role_label}&
+      room_id=${room_id}&
+      participants=${participants}&
+      link=${link}
+    `;
+    console.log(url)
+    // return
+
+    axios.post(url)
     .then(response => {
       console.log(response.data)
     })

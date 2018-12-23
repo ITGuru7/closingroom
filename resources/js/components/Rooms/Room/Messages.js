@@ -62,7 +62,7 @@ class Messages extends Component {
         <div className="user-block d-flex justify-content-center">
           {displayUser &&
             <div className={`user ${isAuthUser?"user-self":""} d-flex justify-content-center align-items-center`}>
-              <span>{sender.username.charAt(0)}</span>
+              <span>{sender.displayname.charAt(0)}</span>
             </div>
           }
         </div>

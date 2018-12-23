@@ -1,5 +1,9 @@
 
-@import 'color.scss';
+@import 'color';
+
+body, div, a, span, p, h1, h2, h3, h4, h5, h6, table, thead, tbody, th, td {
+    color: $black ;
+}
 
 button {
     &.button-sm {
@@ -11,7 +15,7 @@ button {
     &.button-lg {
         height: 40px ;
     }
-    border: 1px solid $black ;
+    border: none ;
 
     &.button-grey {
         color: white ;
@@ -46,4 +50,8 @@ button {
 
 input {
     width: 100% ;
+}
+
+.color-disabled {
+    color: $color-disabled ;
 }

@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+import SignupHeader from '../Header/SignupHeader';
+
 import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 const SignUpPage = ({ history }) => (
-  <div className="sign-page mt-5 text-center">
-    <div className="sign-block py-3">
-      <div className="title d-flex justify-content-center p-4">
-        ClosingRoom User Register
+  <div className="signup-page">
+    <div className="signup-container text-center">
+      <SignupHeader/>
+      <div className="signup-block py-3">
+        <SignUpForm history={history} />
       </div>
-      <SignUpForm history={history} />
     </div>
   </div>
 );
 
 const INITIAL_STATE = {
-  username: '',
+  type: 0,
+  firstname: '',
+  lastname: '',
   displayname: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  timezone: '',
   error: null,
 };
 
@@ -32,7 +37,7 @@ class SignUpForm extends Component {
   }
 
   onSubmit = event => {
-    const { username, displayname, email, passwordOne } = this.state;
+    const { type, firstname, lastname, displayname, email, passwordOne, timezone } = this.state;
 
     const { history } = this.props;
 
@@ -40,7 +45,7 @@ class SignUpForm extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.user.uid, username, displayname, email)
+        db.doCreateUser(authUser.user.uid, type, firstname, lastname, displayname, email, timezone)
           .then(() => {
             // this.setState({ ...INITIAL_STATE });
 
@@ -61,102 +66,145 @@ class SignUpForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  onClickType = (event, type) => {
+    if (type == 1) {
+      event.preventDefault()
+      alert('Corporate/Institutional users coming soon')
+    }
+  }
+
   render() {
     const {
-      username,
+      type,
+      firstname,
+      lastname,
       displayname,
       email,
       passwordOne,
       passwordTwo,
+      timezone,
       error,
     } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
-      username === '' ||
+      firstname === '' ||
+      lastname === '' ||
       displayname === '' ||
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit} className="sign-form">
-        <div className="row">
-          <div className="col-3 text-right">
-            <label htmlFor="username">Username:</label>
-          </div>
-          <div className="col-6">
+      <form onSubmit={this.onSubmit} className="signup-form">
+        <div className="row mb-4 d-flex justify-content-between">
+          <label className="radio-group text-left text-white">
+            Individual
             <input
-              name="username"
-              id="username"
-              value={username}
+              name="type"
+              value='0'
+              type="radio"
+              onClick={(event) => this.onClickType(event, 0)}
+            />
+          </label>
+          <label className="radio-group text-left text-white">
+            Corporate/Institution
+            <span className="text-white font-italic">(Comming soon)</span>
+            <input
+              name="type"
+              value='1'
+              onClick={(event) => this.onClickType(event, 1)}
+              type="radio"
+            />
+          </label>
+        </div>
+        <div className="row">
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="firstname">First Name</label>
+            <input
+              name="firstname"
+              id="firstname"
+              value={firstname}
               onChange={this.onChange}
               type="text"
-              placeholder="Username"
+              placeholder=""
+              className="form-control"
             />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-3 text-right">
-            <label htmlFor="displayname">Displayname:</label>
-          </div>
-          <div className="col-6">
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="lastname">Last Name</label>
             <input
-              name="displayname"
-              id="displayname"
-              value={displayname}
+              name="lastname"
+              id="lastname"
+              value={lastname}
               onChange={this.onChange}
               type="text"
-              placeholder="Display name"
+              placeholder=""
+              className="form-control"
             />
           </div>
         </div>
-        <div className="row">
-          <div className="col-3 text-right">
-            <label htmlFor="email">Email:</label>
-          </div>
-          <div className="col-6">
-            <input
-              name="email"
-              id="email"
-              value={email}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Email Address"
-            />
-          </div>
+        <div className="form-group text-left text-white">
+          <label htmlFor="displayname">Display Name</label>
+          <input
+            name="displayname"
+            id="displayname"
+            value={displayname}
+            onChange={this.onChange}
+            type="text"
+            placeholder=""
+            className="form-control"
+          />
         </div>
-        <div className="row">
-          <div className="col-3 text-right">
-            <label htmlFor="passwordOne">Password:</label>
-          </div>
-          <div className="col-6">
-            <input
-              name="passwordOne"
-              id="passwordOne"
-              value={passwordOne}
-              onChange={this.onChange}
-              type="password"
-              placeholder="Password"
-            />
-          </div>
+        <div className="form-group text-left text-white">
+          <label htmlFor="">Email</label>
+          <input
+            name="email"
+            id="email"
+            value={email}
+            onChange={this.onChange}
+            type="email"
+            placeholder=""
+            className="form-control"
+          />
         </div>
-        <div className="row">
-          <div className="col-3 text-right">
-            <label htmlFor="passwordTwo">Confirm:</label>
-          </div>
-          <div className="col-6">
-            <input
-              name="passwordTwo"
-              id="passwordTwo"
-              value={passwordTwo}
-              onChange={this.onChange}
-              type="password"
-              placeholder="Confirm Password"
-            />
-          </div>
+        <div className="form-group text-left text-white">
+          <label htmlFor="passwordOne">Password</label>
+          <input
+            name="passwordOne"
+            id="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder=""
+            className="form-control"
+          />
+        </div>
+        <div className="form-group text-left text-white">
+          <label htmlFor="passwordTwo">Confirm</label>
+          <input
+            name="passwordTwo"
+            id="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder=""
+            className="form-control"
+          />
+        </div>
+        <div className="form-group text-left text-white">
+          <label htmlFor="timezone">Country/TimeZone</label>
+          <input
+            name="timezone"
+            id="timezone"
+            value={timezone}
+            onChange={this.onChange}
+            type="text"
+            placeholder=""
+            className="form-control"
+          />
         </div>
         <div className="mt-3">
-          <button disabled={isInvalid} type="submit" className="button-md button-grey">
+          <button disabled={isInvalid} type="submit" className="button-md button-red">
             Register
           </button>
         </div>

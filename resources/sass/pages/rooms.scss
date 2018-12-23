@@ -1,0 +1,49 @@
+
+.rooms-page {
+    .page-content {
+        .header {
+            height: 40px ;
+            background-color: $dark-blue ;
+            .search-area {
+                input {
+                    border-radius: 20px ;
+                    outline: none;
+                }
+            }
+            .title {
+                font-size: 1.2rem ;
+            }
+        }
+
+        table.rooms {
+            th {
+                background-color: $grey ;
+                border-right: 1px solid $border-dark ;
+                border-bottom: none ;
+            }
+            td {
+                border: none ;
+                vertical-align: middle ;
+            }
+            tr:nth-child(odd) {
+                background-color: $lighter-grey ;
+            }
+            input {
+                border: none ;
+                background-color: transparent ;
+            }
+            td.nickname {
+            }
+            td.action {
+                img {
+                    width: 20px ;
+                }
+            }
+        }
+        .footer {
+            img {
+                width: 15px ;
+            }
+        }
+    }
+}

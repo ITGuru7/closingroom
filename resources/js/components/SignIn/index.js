@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import SigninHeader from '../Header/SigninHeader';
 import { SignUpLink } from '../SignUp';
 import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 const SignInPage = ({ history }) => (
-  <div className="sign-page mt-5 text-center">
-    <div className="sign-block py-3">
+  <div className="signin-page text-center">
+    <SigninHeader/>
+    <div className="signin-block pb-3">
       <div className="title d-flex justify-content-center p-4">
         ClosingRoom User Login
       </div>
@@ -61,7 +63,7 @@ class SignInForm extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit} className="sign-form">
+      <form onSubmit={this.onSubmit} className="signin-form">
         <div className="row">
           <div className="col-3 text-right">
             <label htmlFor="email">Email:</label>

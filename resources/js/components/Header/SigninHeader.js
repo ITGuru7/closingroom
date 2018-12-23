@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import assets from '../../assets';
 
-const SignHeader = () => (
-    <div className="sign-header">
+const SigninHeader = () => (
+    <div className="signin-header">
         <div className="d-flex justify-content-center">
             <div className="logo-image mr-2">
                 <img src={assets.logo}/>
@@ -21,4 +21,4 @@ const SignHeader = () => (
     </div>
 );
 
-export default SignHeader;
+export default SigninHeader;

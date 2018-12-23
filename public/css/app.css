@@ -9523,11 +9523,6 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
 body,
 div,
 a,
@@ -9544,11 +9539,11 @@ thead,
 tbody,
 th,
 td {
-  color: #000;
+  color: #231f20;
 }
 
 button {
-  border: 1px solid #231f20;
+  border: none;
 }
 
 button.button-sm {
@@ -9600,19 +9595,6 @@ button:hover {
 
 input {
   width: 100%;
-}
-
-.layout {
-  height: 100vh;
-  border: 1px solid #231f20;
-}
-
-.layout .main-content {
-  background-color: white;
-}
-
-.layout .main-content .page-content {
-  background-color: white;
 }
 
 .color-disabled {
@@ -9676,6 +9658,79 @@ input {
   width: 30px;
 }
 
+.modal-background {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: white;
+  /* Fallback color */
+  background-color: rgba(255, 255, 255, 0.7);
+  /* Black w/ opacity */
+}
+
+.upload-modal {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin: 100px auto;
+  width: 50%;
+  border: 2px solid #231f20;
+}
+
+.upload-modal .modal-container {
+  height: 500px;
+}
+
+.upload-modal .modal-container .header {
+  padding-top: 5px;
+  height: 50px;
+  background-color: #183863;
+}
+
+.upload-modal .modal-container .header .title span {
+  color: white;
+  font-size: 2rem;
+}
+
+.upload-modal .modal-container .header .close {
+  opacity: 1;
+}
+
+.upload-modal .modal-container .header img {
+  width: 30px;
+}
+
+.upload-modal .modal-container .content {
+  background-color: #f1f2f2;
+}
+
+.upload-modal .modal-container .content .other input {
+  width: auto;
+}
+
+.layout {
+  height: 100vh;
+  border: 1px solid #231f20;
+}
+
+.layout .main-content {
+  background-color: white;
+}
+
+.layout .main-content .page-content {
+  background-color: white;
+}
+
 .home-page .page-content .title,
 .home-page .page-content .subtitle {
   font-weight: bold;
@@ -9691,55 +9746,119 @@ input {
   width: 100%;
 }
 
-.sign-header {
-  margin-top: 100px;
+.signin-page {
+  margin: 0 auto;
+  max-width: 509px;
 }
 
-.sign-header .logo-image img {
+.signin-page .signin-header {
+  padding: 100px 0;
+}
+
+.signin-page .signin-header .logo-image img {
   width: 80px;
 }
 
-.sign-header .logo-text {
+.signin-page .signin-header .logo-text {
   color: #183863;
 }
 
-.sign-header .logo-text .title {
+.signin-page .signin-header .logo-text .title {
   font-weight: bold;
   color: inherit;
   font-size: 3rem;
   line-height: 2rem;
 }
 
-.sign-header .logo-text .subtitle {
+.signin-page .signin-header .logo-text .subtitle {
   color: inherit;
   font-size: 1rem;
 }
 
-.sign-page {
-  margin: 0 auto;
-  max-width: 509px;
-}
-
-.sign-page .sign-block {
+.signin-page .signin-block {
   background-color: #d1d3d4;
   border: 1px solid #231f20;
 }
 
-.sign-page .sign-block .title {
+.signin-page .signin-block .title {
   font-size: 1.5rem;
 }
 
-.sign-page .sign-block .sign-form {
+.signin-page .signin-block .signin-form {
   font-size: 1.2rem;
 }
 
-.sign-page .sign-block .sign-form input {
+.signin-page .signin-block .signin-form input {
   border: none;
   width: 100%;
   padding-left: 5px;
 }
 
-.sign-page .sign-block .pw-forgot {
+.signin-page .signin-block .pw-forgot {
+  font-size: 0.6rem;
+}
+
+.signup-page {
+  background-color: #183863;
+}
+
+.signup-page .signup-container {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.signup-page .signup-container .signup-header {
+  padding: 80px 0 40px;
+}
+
+.signup-page .signup-container .signup-header .logo-image img {
+  width: 60px;
+}
+
+.signup-page .signup-container .signup-header .logo-text .title {
+  font-weight: bold;
+  color: inherit;
+  font-size: 3rem;
+  line-height: 2rem;
+}
+
+.signup-page .signup-container .signup-header .logo-text .subtitle {
+  color: inherit;
+  font-size: 1rem;
+}
+
+.signup-page .signup-container .signup-block .signup-form .radio-group {
+  position: relative;
+  font-size: 1.5rem;
+}
+
+.signup-page .signup-container .signup-block .signup-form .radio-group input[type=radio] {
+  position: absolute;
+  top: 0.8rem;
+  margin-left: 0.5rem;
+  width: auto;
+}
+
+.signup-page .signup-container .signup-block .signup-form .radio-group span {
+  position: absolute;
+  top: 2rem;
+  left: 5rem;
+  font-size: 0.8rem;
+}
+
+.signup-page .signup-container .signup-block .signup-form label {
+  margin-bottom: 0;
+}
+
+.signup-page .signup-container .signup-block .signup-form .form-group {
+  margin-bottom: 0.5rem;
+}
+
+.signup-page .signup-container .signup-block .signup-form .form-group input {
+  border-radius: 0;
+}
+
+.signup-page .signup-container .signup-block .pw-forgot {
   font-size: 0.6rem;
 }
 
@@ -9787,41 +9906,44 @@ input {
 
 .rooms-page .page-content .header {
   height: 40px;
-  font-size: 1.2rem;
-  color: white;
   background-color: #183863;
 }
 
-.rooms-page .page-content .rooms table th {
+.rooms-page .page-content .header .search-area input {
+  border-radius: 20px;
+  outline: none;
+}
+
+.rooms-page .page-content .header .title {
+  font-size: 1.2rem;
+}
+
+.rooms-page .page-content table.rooms th {
   background-color: #d1d3d4;
   border-right: 1px solid #414042;
   border-bottom: none;
 }
 
-.rooms-page .page-content .rooms table td {
+.rooms-page .page-content table.rooms td {
   border: none;
+  vertical-align: middle;
 }
 
-.rooms-page .page-content .rooms table tr:nth-child(odd) {
+.rooms-page .page-content table.rooms tr:nth-child(odd) {
   background-color: #f1f2f2;
 }
 
-.rooms-page .page-content .rooms table input {
+.rooms-page .page-content table.rooms input {
   border: none;
   background-color: transparent;
 }
 
-.rooms-page .page-content .rooms table td.nickname {
-  position: relative;
-}
-
-.rooms-page .page-content .rooms table td.nickname input {
-  position: absolute;
-  left: 0;
-}
-
-.rooms-page .page-content .rooms table td.action img {
+.rooms-page .page-content table.rooms td.action img {
   width: 20px;
+}
+
+.rooms-page .page-content .footer img {
+  width: 15px;
 }
 
 .createroom-page .page-content .header .title {
@@ -10144,65 +10266,5 @@ input {
 
 .room-page .page-content .viewfiles-panel .footer img {
   width: 20px;
-}
-
-.modal-background {
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: white;
-  /* Fallback color */
-  background-color: rgba(255, 255, 255, 0.7);
-  /* Black w/ opacity */
-}
-
-.upload-modal {
-  position: fixed;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  margin: 100px auto;
-  width: 50%;
-  border: 2px solid #231f20;
-}
-
-.upload-modal .modal-container {
-  height: 500px;
-}
-
-.upload-modal .modal-container .header {
-  padding-top: 5px;
-  height: 50px;
-  background-color: #183863;
-}
-
-.upload-modal .modal-container .header .title span {
-  color: white;
-  font-size: 2rem;
-}
-
-.upload-modal .modal-container .header .close {
-  opacity: 1;
-}
-
-.upload-modal .modal-container .header img {
-  width: 30px;
-}
-
-.upload-modal .modal-container .content {
-  background-color: #f1f2f2;
-}
-
-.upload-modal .modal-container .content .other input {
-  width: auto;
 }
 

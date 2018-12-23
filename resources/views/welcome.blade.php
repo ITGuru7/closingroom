@@ -11,6 +11,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- https://laracasts.com/discuss/channels/servers/fixing-http-error-500-nginx-for-every-laravel-route -->
 </head>
+
 <body>
     <div id="app"></div>
 

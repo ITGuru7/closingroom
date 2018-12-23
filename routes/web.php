@@ -11,6 +11,19 @@
 |
 */
 
+Route::get('invite', function () {
+	$data = [
+		'displayname' => 'Bob',
+		'role' => 'BUYER MANDATE',
+		'room_id' => '065331',
+		'participants' => '5',
+		'link' => 'http://www.closingroom.com/nf89423mm#23'
+	];
+	return view('emails.invite', $data);
+});
+
+
+
 Route::any('{all}', function () {
 	return view('welcome');
 })->where('all', '.*');

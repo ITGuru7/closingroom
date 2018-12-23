@@ -3,14 +3,18 @@ import { auth } from './firebase';
 
 // User API
 
-export const doCreateUser = (id, username, displayname, email) => {
+export const doCreateUser = (id, type, firstname, lastname, displayname, email, timezone) => {
   return db.ref('users').once('value')
   .then(function(snapshot) {
     db.ref(`users/${id}`).set({
       id: snapshot.numChildren()+1,
-      username,
+      type,
+      firstname,
+      lastname,
       displayname,
       email,
+      passwordOne,
+      timezone,
       level: 0,
     });
   })

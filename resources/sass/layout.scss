@@ -1,5 +1,7 @@
 
-@import 'color.scss';
+@import 'layout/header.scss';
+@import 'layout/sidebar.scss';
+@import 'layout/modal.scss';
 
 .layout {
     height:100vh ;
@@ -12,8 +14,4 @@
             background-color: white ;
         }
     }
-}
-
-.color-disabled {
-    color: $color-disabled ;
 }

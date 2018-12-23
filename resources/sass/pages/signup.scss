@@ -1,0 +1,66 @@
+
+.signup-page {
+    background-color: $dark-blue ;
+    .signup-container {
+        margin: 0 auto ;
+        max-width: 400px ;
+
+        .signup-header {
+            padding: 80px 0 40px;
+            .logo-image {
+                img {
+                    width: 60px ;
+                }
+            }
+            .logo-text {
+                .title {
+                    font-weight: bold ;
+                    color: inherit ;
+                    font-size: 3rem ;
+                    line-height: 2rem ;
+                }
+                .subtitle {
+                    color: inherit ;
+                    font-size: 1rem ;
+                }
+            }
+        }
+
+
+        .signup-block {
+
+            .signup-form {
+                .radio-group {
+                    position: relative ;
+                    font-size: 1.5rem ;
+
+                    input[type=radio] {
+                        position: absolute ;
+                        top: .8rem ;
+                        margin-left: .5rem ;
+                        width: auto ;
+                    }
+                    span {
+                        position: absolute ;
+                        top: 2rem ;
+                        left: 5rem ;
+                        font-size: .8rem ;
+                    }
+                }
+                label {
+                    margin-bottom: 0 ;
+                }
+                .form-group {
+                    margin-bottom: .5rem ;
+                    input {
+                        border-radius: 0 ;
+                    }
+                }
+            }
+
+            .pw-forgot {
+                font-size: .6rem ;
+            }
+        }
+    }
+}

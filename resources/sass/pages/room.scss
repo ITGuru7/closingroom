@@ -1,6 +1,4 @@
 
-@import 'color.scss';
-
 .room-page {
     $left-panel-width: 300px ;
     $right-panel-width: 400px ;
@@ -41,9 +39,9 @@
         }
     }
     .page-content {
-        @import 'userlist-panel.scss';
-        @import 'messages-panel.scss';
-        @import 'tasks-panel.scss';
-        @import 'viewfiles-panel.scss';
+        @import 'room-panels/userlist.scss';
+        @import 'room-panels/messages.scss';
+        @import 'room-panels/tasks.scss';
+        @import 'room-panels/viewfiles.scss';
     }
 }

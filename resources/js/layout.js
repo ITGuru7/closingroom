@@ -8,7 +8,6 @@ import Sidebar from './components/Sidebar';
 import HomePage from './components/Home';
 import SignInPage from './components/SignIn';
 import SignUpPage from './components/SignUp';
-import SignHeader from './components/Header/SignHeader';
 import AccountPage from './components/Account';
 import KYCPage from './components/Account/KYC';
 import RoomsPage from './components/Rooms';
@@ -38,10 +37,7 @@ const SignLayout = ({component: Component, ...rest}) => {
   window.scrollTo(0,0);
   return (
     <Route {...rest} render={matchProps => (
-      <div className="">
-        <SignHeader/>
-        <Component {...matchProps} />
-      </div>
+      <Component {...matchProps} />
     )} />
   )
 };

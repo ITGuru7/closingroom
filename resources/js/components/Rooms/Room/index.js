@@ -94,7 +94,7 @@ class RoomPage extends Component {
         <div className="room-page d-flex flex-column h-100">
           <RoomHeader room={room}/>
           <div className="page-content flex-grow-1 d-flex flex-row">
-            <UserList users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
+            <UserList users={users} room={room} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
             { !viewFiles ?
               <div className="flex-grow-1 d-flex flex-row">
                 <Messages users={users} room={room} receiver_id={receiver_id}/>
