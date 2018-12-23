@@ -228,26 +228,23 @@ class UserList extends Component {
             <div className="col-2 text-right">
               <label htmlFor="role">Role:</label>
             </div>
-            <div className="col-10">
+            <div className="col-10 d-flex justify-content-between">
               <select
                 name="role"
                 id="role"
                 value={role}
                 onChange={this.onChange}
+                className="mr-2 w-75"
               >
                 { ROLE.map((role, index) => (
                   <option key={index} value={index}>{role.role_label}</option>
                 ))}
               </select>
-            </div>
-          </div>
-          <div className="row">
-            <div className="offset-2 col">
               <button type="button"
                 onClick={(event) => {this.onSendInvite()}}
                 disabled={isInvalid}
               >
-                Send Invite
+                Invite
               </button>
             </div>
           </div>

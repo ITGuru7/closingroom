@@ -92768,28 +92768,25 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "role"
       }, "Role:")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-10"
+        className: "col-10 d-flex justify-content-between"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         name: "role",
         id: "role",
         value: role,
-        onChange: _this.onChange
+        onChange: _this.onChange,
+        className: "mr-2 w-75"
       }, ROLE.map(function (role, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: index,
           value: index
         }, role.role_label);
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "offset-2 col"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         onClick: function onClick(event) {
           _this.onSendInvite();
         },
         disabled: isInvalid
-      }, "Send Invite")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Invite")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pointer arrow-down float-right"
       }));
     });
