@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { auth } from '../../firebase';
-import assets from '../../assets';
-import * as routes from '../../constants/routes';
+import { auth } from '../../../firebase';
+import assets from '../../../assets';
+import * as routes from '../../../constants/routes';
 
 const SignOutButton = () => {
   const doLogout = () => {

@@ -6,8 +6,8 @@ import {
 
 import Sidebar from './components/Sidebar';
 import HomePage from './components/Home';
-import SignInPage from './components/SignIn';
-import SignUpPage from './components/SignUp';
+import SignInPage from './components/Sign/SignIn';
+import SignUpPage from './components/Sign/SignUp';
 import AccountPage from './components/Account';
 import KYCPage from './components/Account/KYC';
 import RoomsPage from './components/Rooms';

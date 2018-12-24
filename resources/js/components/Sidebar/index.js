@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthUserContext from '../Session/AuthUserContext';
 import withAuthorization from '../Session/withAuthorization';
 
-import SignOutButton from '../SignOut';
+import SignOutButton from '../Sign/SignOut';
 import * as routes from '../../constants/routes';
 import assets from '../../assets';
 

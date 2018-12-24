@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import SignupHeader from '../Header/SignupHeader';
+import SignupHeader from '../../Header/SignupHeader';
 
-import { auth, db } from '../../firebase';
-import * as routes from '../../constants/routes';
+import { auth, db } from '../../../firebase';
+import * as routes from '../../../constants/routes';
 
 const SignUpPage = ({ history }) => (
   <div className="signup-page">
