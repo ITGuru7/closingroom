@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
 import axios from 'axios';
-
-import { auth as firebaseAuth } from '../../../firebase/firebase';
 
 import assets from '../../../assets';
 
@@ -102,20 +100,20 @@ class UserList extends Component {
   }
 
   renderOwner = () => {
-    const {users} = this.props
+    const { authUser, users } = this.props
     return Object.keys(users).map(key => {
       let user = users[key]
-      if (user.registered === true && key === firebaseAuth.currentUser.uid) {
+      if (user.registered === true && key === authUser.uid) {
         return this.renderUser(key, user, "owner")
       }
     });
   }
 
   renderParticipants = () => {
-    const {users} = this.props
+    const { authUser, users } = this.props
     return Object.keys(users).map(key => {
       let user = users[key]
-      if (user.registered === true && key !== firebaseAuth.currentUser.uid) {
+      if (user.registered === true && key !== authUser.uid) {
         if (!(user.role && user.role.includes('Intermediary'))) {
           return this.renderUser(key, user, "")
         }
@@ -124,10 +122,10 @@ class UserList extends Component {
   }
 
   renderIntermediaries = () => {
-    const {users} = this.props
+    const { authUser, users } = this.props
     return Object.keys(users).map(key => {
       let user = users[key]
-      if (user.registered === true && key !== firebaseAuth.currentUser.uid) {
+      if (user.registered === true && key !== authUser.uid) {
         if (user.role && user.role.includes('Intermediary')) {
           return this.renderUser(key, user, "")
         }
@@ -159,13 +157,13 @@ class UserList extends Component {
   }
 
   onSendInvite = () => {
-    const {users, room} = this.props
+    const { authUser, users, room } = this.props
     const {email, role} = this.state
 
     const sender_email = firebaseAuth.currentUser.email
     const receiver_email = email
 
-    const user = users[firebaseAuth.currentUser.uid]
+    const user = users[authUser.uid]
     const displayname = user.displayname
 
     const room_id = getFormattedID(room.id, 6)
@@ -285,4 +283,11 @@ class UserList extends Component {
   }
 }
 
-export default UserList;
+const mapStateToProps = ({ authUser, room }) => {
+  return {
+    authUser,
+    room,
+  };
+};
+
+export default connect(mapStateToProps)(UserList);

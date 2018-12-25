@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
 
-import AuthUserContext from '../Session/AuthUserContext';
-import withAuthorization from '../Session/withAuthorization';
 import { db } from '../../firebase';
-import { auth as firebaseAuth } from '../../firebase/firebase';
 
 import * as routes from '../../constants/routes';
 import assets from '../../assets';
@@ -13,97 +12,105 @@ import * as functions from '../../functions';
 
 import DefaultHeader from '../Header/DefaultHeader';
 
-import { getFormattedID } from '../../functions';
+import * as actions from "../../actions";
+
+import _ from 'lodash';
 
 const INITIAL_STATE = {
-  rooms: {},
+  rooms: null,
 };
 
 class RoomsPage extends Component {
-  constructor(props) {
-    super(props);
+  state = { ...INITIAL_STATE };
 
-    this.state = { ...INITIAL_STATE };
-
-    this.init()
+  componentWillMount() {
+    const { fetchRooms } = this.props
+    fetchRooms();
   }
 
-  init = () => {
-    db.onceGetRooms()
-    .then(snapshot => {
-      let rooms = snapshot.val()
-      var user_rooms = {}
+  componentWillReceiveProps(nextProps) {
+    if (nextProps != this.props) {
+      this.init(nextProps)
+    }
+  }
 
-      Object.keys(rooms).map(key => {
-        const room = rooms[key]
-        room.room_id = key
-        let user = null
-        Object.keys(room.users).map(key => {
-          if (key === firebaseAuth.currentUser.uid) {
-            user = room.users[key]
-            user.uid = key
-          }
-        })
-        if (user != null) {
-          room.user = user
-          user_rooms[key] = room
+  init = (props) => {
+    const { authUser, rooms } = props
+    if (!rooms) {
+      return
+    }
+
+    var user_rooms = {}
+
+    Object.keys(rooms).map(key => {
+      const room = rooms[key]
+      room.room_id = key
+      let user = null
+      Object.keys(room.users).map(key => {
+        if (key === authUser.uid) {
+          user = room.users[key]
+          user.uid = key
         }
       })
+      if (user != null) {
+        room.user = user
+        user_rooms[key] = room
+      }
+    })
 
-      this.setState({rooms: user_rooms})
-    });
+    this.setState({rooms: user_rooms})
   }
 
   render() {
     const { rooms } = this.state;
 
+    if (!rooms) {
+      return <div></div>
+    }
+
     return (
-      <AuthUserContext.Consumer>
-      {authUser =>
-        <div className="rooms-page d-flex flex-column">
-          <DefaultHeader title="MyRooms" />
-          <div className="page-content flex-grow-1">
-            <div className="header row mx-0 align-items-center">
-              <div className="search-area col-4 d-flex align-items-center">
-                <div className="col-2 text-white">Search</div>
-                <div className="col-10"><input type="text" className="px-3"/></div>
-              </div>
-              <div className="title col-4 text-white text-center">
-                ClosingRooms
-              </div>
+      <div className="rooms-page d-flex flex-column">
+        <DefaultHeader title="MyRooms" />
+        <div className="page-content flex-grow-1">
+          <div className="header row mx-0 align-items-center">
+            <div className="search-area col-4 d-flex align-items-center">
+              <div className="col-2 text-white">Search</div>
+              <div className="col-10"><input type="text" className="px-3"/></div>
             </div>
-            <table className="rooms table text-center">
-              <thead>
-                <tr>
-                  <th>Room ID</th>
-                  <th>Nickname</th>
-                  <th>Room Level</th>
-                  <th>Participants</th>
-                  <th>Creation Date</th>
-                  <th>Expiration Date</th>
-                  <th></th>
-                </tr>
-              </thead>
-              { !!rooms &&
-                <tbody>
-                  {Object.keys(rooms).map(key =>
-                    <Room key={key} room={rooms[key]}/>
-                  )}
-                </tbody>
-              }
-            </table>
-            <div className="footer d-flex justify-content-center">
-              <Link to={routes.CREATE_ROOM}>
-                <button className="button button-md button-red">
-                  Create a ClosingRoom
-                  <img src={assets.plus} className="ml-2"/>
-                </button>
-              </Link>
+            <div className="title col-4 text-white text-center">
+              ClosingRooms
             </div>
           </div>
+          <table className="rooms table text-center">
+            <thead>
+              <tr>
+                <th>Room ID</th>
+                <th>Nickname</th>
+                <th>Room Level</th>
+                <th>Participants</th>
+                <th>Creation Date</th>
+                <th>Expiration Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            { !!rooms &&
+              <tbody>
+                {Object.keys(rooms).map(key =>
+                  <Room key={key} room={rooms[key]}/>
+                )}
+              </tbody>
+            }
+          </table>
+          <div className="footer d-flex justify-content-center">
+            <Link to={routes.CREATE_ROOM}>
+              <button className="button button-md button-red">
+                Create a ClosingRoom
+                <img src={assets.plus} className="ml-2"/>
+              </button>
+            </Link>
+          </div>
         </div>
-      }
-      </AuthUserContext.Consumer>
+      </div>
     );
   }
 }
@@ -155,7 +162,7 @@ class Room extends Component {
 
     return (
       <tr>
-        <td>{getFormattedID(room.id, 7)}</td>
+        <td>{functions.getFormattedID(room.id, 7)}</td>
         <td className="nickname">
           { isEditingNickname ?
             <input
@@ -183,7 +190,7 @@ class Room extends Component {
           }
         </td>
         <td>{room.level}</td>
-        <td>{Object.keys(room.users).length}</td>
+        <td>{_.size(room.users)}</td>
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td>{functions.getFormattedDate(new Date(room.expire_date))}</td>
         <td className="action">
@@ -199,6 +206,11 @@ class Room extends Component {
   }
 }
 
-const authCondition = (authUser) => !!authUser;
+const mapStateToProps = ({ authUser, rooms }) => {
+  return {
+    authUser,
+    rooms,
+  };
+};
 
-export default withAuthorization(authCondition)(RoomsPage);
+export default withRouter(connect(mapStateToProps, actions)(RoomsPage));

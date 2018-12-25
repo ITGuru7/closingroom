@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
 import PasswordChangeForm from './PasswordChange';
 import DefaultHeader from '../Header/DefaultHeader';
 
-import AuthUserContext from '../Session/AuthUserContext';
-import withAuthorization from '../Session/withAuthorization';
-
-import * as routes from '../../constants/routes';
+import * as actions from "../../actions";
 
 import { auth, db } from '../../firebase';
+
+import * as routes from '../../constants/routes';
 
 import { getFormattedID } from '../../functions';
 
 const AccountPage = () => (
-  <AuthUserContext.Consumer>
-  {authUser =>
-    <div className="account-page d-flex flex-column">
-      <DefaultHeader title="Account Settings" className="header-blue" />
-      <div className="page-content flex-grow-1 m-3 p-3">
-        <ProfileChangeForm authUser={authUser}/>
-      </div>
+  <div className="account-page d-flex flex-column">
+    <DefaultHeader title="Account Settings" className="header-blue" />
+    <div className="page-content flex-grow-1 m-3 p-3">
+      <Connected_ProfileChangeForm/>
     </div>
-  }
-  </AuthUserContext.Consumer>
+  </div>
 );
 
 
@@ -36,18 +32,28 @@ const INITIAL_STATE = {
 };
 
 class ProfileChangeForm extends Component {
-  constructor(props) {
-    super(props);
+  state = { ...INITIAL_STATE };
 
-    const { authUser } = this.props;
+  componentWillMount() {
+    this.init(this.props)
+  }
 
-    db.onceGetUser(authUser.uid)
-    .then(snapshot => {
-      var user = snapshot.val()
-      this.setState(user)
-    })
-    this.state = { ...INITIAL_STATE };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps != this.props) {
+      this.init(nextProps)
+    }
+  }
 
+  init = (props) => {
+    const { authUser, user, fetchUser } = props
+    if (!authUser.uid) {
+      return
+    }
+    if (!user) {
+      fetchUser(authUser.uid);
+      return
+    }
+    this.setState(user)
   }
 
   onSubmit = event => {
@@ -180,6 +186,13 @@ class ProfileChangeForm extends Component {
   }
 }
 
-const authCondition = (authUser) => !!authUser;
+const mapStateToProps = ({ authUser, user }) => {
+  return {
+    authUser,
+    user,
+  };
+};
 
-export default withAuthorization(authCondition)(AccountPage);
+const Connected_ProfileChangeForm = connect(mapStateToProps, actions)(ProfileChangeForm)
+
+export default AccountPage;

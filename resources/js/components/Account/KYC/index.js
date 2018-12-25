@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-import AuthUserContext from '../../Session/AuthUserContext';
-import withAuthorization from '../../Session/withAuthorization';
+import { connect } from "react-redux";
 
 import * as routes from '../../../constants/routes';
 import { auth, db, storage } from '../../../firebase';
 
 import DefaultHeader from '../../Header/DefaultHeader';
 
-const KYCPage = ({ history }) => (
-  <AuthUserContext.Consumer>
-  {authUser =>
-    <div className="kyc-page">
-      <DefaultHeader className="header-blue" title="Basic KYC Process (Individual)" />
-      <div className="page-content m-4">
-        <KYCForm authUser={authUser} history={history}/>
-      </div>
+const KYCPage = () => (
+  <div className="kyc-page d-flex flex-column">
+    <DefaultHeader className="header-blue" title="Basic KYC Process (Individual)" />
+    <div className="page-content m-4">
+      <Connected_KYCForm/>
     </div>
-  }
-  </AuthUserContext.Consumer>
+  </div>
 );
 
 const INITIAL_STATE = {
@@ -34,11 +28,7 @@ const INITIAL_STATE = {
 };
 
 class KYCForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { ...INITIAL_STATE };
-  }
+  state = { ...INITIAL_STATE };
 
   onSubmit = event => {
     event.preventDefault();
@@ -222,6 +212,12 @@ class KYCForm extends Component {
   }
 }
 
-const authCondition = (authUser) => !!authUser;
+const mapStateToProps = ({ authUser }) => {
+  return {
+    authUser,
+  };
+};
 
-export default withAuthorization(authCondition)(KYCPage);
+const Connected_KYCForm = connect(mapStateToProps)(KYCForm)
+
+export default KYCPage;

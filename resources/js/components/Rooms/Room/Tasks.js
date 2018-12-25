@@ -1,11 +1,10 @@
 
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
-import { auth as firebaseAuth } from '../../../firebase/firebase';
+import React from 'react';
+import { connect } from "react-redux";
 
 import assets from '../../../assets';
 import _ from 'lodash';
+
 
 const Tasks = (props) => {
 
@@ -22,7 +21,7 @@ const Tasks = (props) => {
 
   const renderDocument = (key, document) => {
     return (
-    <div key={key} className="document-block d-flex justify-content-between align-items-center">
+    <div key={key} className="document-block d-flex justify-content-between align-items-center pl-2">
       <div className="title">{document.title}</div>
       <div className="detail">5/5 Signatures</div>
       <div className="actions d-flex justify-content-between">
@@ -94,4 +93,11 @@ const Tasks = (props) => {
   )
 }
 
-export default Tasks;
+const mapStateToProps = ({ room, documents }) => {
+  return {
+    room,
+    documents,
+  };
+};
+
+export default connect(mapStateToProps)(Tasks);

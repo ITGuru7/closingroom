@@ -8,3 +8,5 @@ export const ROOM = '/rooms/:room_id';
 export const CREATE_ROOM = '/room/create';
 export const LOGIN_ROOM = '/rooms/:room_id/login';
 export const KYC = '/account/KYC';
+export const MANAGE_ACCOUNTS = '/accounts';
+export const KYC_APPROVALS = '/accounts/KYCs';

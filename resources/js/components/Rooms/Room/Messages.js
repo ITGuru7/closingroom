@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
 import { db } from '../../../firebase';
-import { auth as firebaseAuth } from '../../../firebase/firebase';
 
-import * as routes from '../../../constants/routes';
 import { getFormattedDate, getFormattedTime } from '../../../functions';
 import assets from '../../../assets';
 
@@ -13,17 +11,13 @@ const INITIAL_STATE = {
 }
 
 class Messages extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { ...INITIAL_STATE };
-  }
+  state = { ...INITIAL_STATE };
 
   handleSendMessage = () => {
-    const {room, receiver_id} = this.props;
+    const { authUser, room, receiver_id } = this.props;
     const {message} = this.state;
     if (message) {
-      db.doCreateMessage(room.room_id, firebaseAuth.currentUser.uid, receiver_id, message)
+      db.doCreateMessage(room.room_id, authUser.uid, receiver_id, message)
       this.setState({
         message: '',
       });
@@ -74,20 +68,20 @@ class Messages extends Component {
   }
 
   renderMessages = () => {
-    const { room, receiver_id } = this.props;
+    const { authUser, room, receiver_id } = this.props;
     const { messages } = room;
 
     var sender_id = null
     return Object.keys(messages).map(key => {
       let message = messages[key]
       if (message.receiver_id == receiver_id) {
-        let isFirst = (sender_id == null)
+        const isFirst = (sender_id == null)
         let displayUser = false
         if (message.sender_id != sender_id) {
           sender_id = message.sender_id
           displayUser = true
         }
-        let isAuthUser = (message.sender_id===firebaseAuth.currentUser.uid)
+        const isAuthUser = (message.sender_id === authUser.uid)
         return this.renderMessage(key, message, isFirst, displayUser, isAuthUser)
       }
     })
@@ -131,4 +125,11 @@ class Messages extends Component {
   }
 }
 
-export default Messages;
+const mapStateToProps = ({ authUser, room }) => {
+  return {
+    authUser,
+    room,
+  };
+};
+
+export default connect(mapStateToProps)(Messages);

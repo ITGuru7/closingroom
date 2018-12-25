@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+
 import { getFormattedDate } from '../../functions';
 
 const RoomHeader = (props) => {
@@ -55,4 +57,10 @@ const RoomHeader = (props) => {
   )
 };
 
-export default RoomHeader;
+const mapStateToProps = ({ room }) => {
+  return {
+    room,
+  };
+};
+
+export default connect(mapStateToProps)(RoomHeader);

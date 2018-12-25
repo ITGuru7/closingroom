@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
 
-import AuthUserContext from '../../Session/AuthUserContext';
-import withAuthorization from '../../Session/withAuthorization'
 import { db } from '../../../firebase'
-import { db as firebaseDB } from '../../../firebase/firebase'
 
-import * as routes from '../../../constants/routes'
+import * as actions from "../../../actions";
 
 import RoomHeader from '../../Header/RoomHeader';
 
@@ -16,50 +14,41 @@ import Tasks from './Tasks';
 import ViewFiles from './ViewFiles';
 
 const INITIAL_STATE = {
-  room: null,
   users: null,
-  documents: null,
   receiver_id: null,
   viewFiles: false,
 }
 
 class RoomPage extends Component {
-  constructor(props) {
-    super(props)
+  state = { ...INITIAL_STATE };
 
-    this.state = { ...INITIAL_STATE };
-
-    this.init()
+  componentWillMount() {
+    const { room_id } = this.props.match.params
+    const { fetchRoom } = this.props
+    fetchRoom(room_id);
   }
 
-  init = () => {
-    const { room_id } = this.props.match.params
+  componentWillReceiveProps(nextProps) {
+    if (nextProps != this.props) {
+      this.init(nextProps)
+    }
+  }
 
-    db.onceGetUsers()
-    .then(snapshot => {
-      var users = snapshot.val();
-      Object.keys(users).map(key => {
-        users[key].uid = key
-        users[key].registered = false
-      })
+  init = (props) => {
+    const {room} = props
+    let users = props.users;
+    if (!room || !users) {
+      return
+    }
 
-      db.onceGetDocuments()
-      .then(snapshot => {
-        var documents = snapshot.val();
-
-        firebaseDB.ref(`rooms/${room_id}`).on('value', (snapshot) => {
-          var room = snapshot.val()
-          room.room_id = room_id
-
-          Object.keys(room.users).map(key => {
-            users[key].registered = true
-            users[key].level = room.users[key].level
-          })
-
-          this.setState({room, users, documents})
-        })
-      })
+    Object.keys(users).map(key => {
+      users[key].registered = false
     })
+    Object.keys(room.users).map(key => {
+      users[key].registered = true
+    })
+
+    this.setState({users})
   }
 
   handleSelectReceiver = (receiver_id) => {
@@ -82,35 +71,38 @@ class RoomPage extends Component {
   }
 
   render() {
-    const { room, users, documents, receiver_id, viewFiles } = this.state
+    const { authUser, room } = this.props
+    const { users, receiver_id, viewFiles } = this.state
 
-    if (room == null) {
+    if (!room || !users) {
       return <div></div>
     }
 
     return (
-      <AuthUserContext.Consumer>
-      {authUser =>
-        <div className="room-page d-flex flex-column h-100">
-          <RoomHeader room={room}/>
-          <div className="page-content flex-grow-1 d-flex flex-row">
-            <UserList users={users} room={room} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
-            { !viewFiles ?
-              <div className="flex-grow-1 d-flex flex-row">
-                <Messages users={users} room={room} receiver_id={receiver_id}/>
-                <Tasks user_id={users[authUser.uid].id} room={room} documents={documents} handleViewFiles={this.handleViewFiles}/>
-              </div>
-            :
-              <ViewFiles user_id={users[authUser.uid].id} room={room} documents={documents} handleViewFiles={this.handleViewFiles}/>
-            }
-          </div>
+      <div className="room-page d-flex flex-column h-100">
+        <RoomHeader/>
+        <div className="page-content flex-grow-1 d-flex flex-row">
+          <UserList users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
+          { !viewFiles ?
+            <div className="flex-grow-1 d-flex flex-row">
+              <Messages users={users} receiver_id={receiver_id}/>
+              <Tasks user_id={users[authUser.uid].id} handleViewFiles={this.handleViewFiles}/>
+            </div>
+          :
+            <ViewFiles user_id={users[authUser.uid].id} handleViewFiles={this.handleViewFiles}/>
+          }
         </div>
-      }
-      </AuthUserContext.Consumer>
+      </div>
     )
   }
 }
 
-const authCondition = (authUser) => !!authUser
+const mapStateToProps = ({ authUser, users, room }) => {
+  return {
+    authUser,
+    users,
+    room,
+  };
+};
 
-export default withAuthorization(authCondition)(RoomPage)
+export default withRouter(connect(mapStateToProps, actions)(RoomPage));
