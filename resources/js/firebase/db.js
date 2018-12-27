@@ -4,6 +4,7 @@ import { auth } from './firebase';
 // User API
 
 export const doCreateUser = (id, type, firstname, lastname, displayname, email, timezone) => {
+  let join_date = Date.now()
   return db.ref('users').once('value')
   .then(function(snapshot) {
     db.ref(`users/${id}`).set({
@@ -16,6 +17,7 @@ export const doCreateUser = (id, type, firstname, lastname, displayname, email, 
       passwordOne,
       timezone,
       level: 0,
+      join_date,
     });
   })
 }
@@ -113,13 +115,13 @@ export const doUserKYC = (user_id, firstname, lastname, occupation, passport, ad
 
 export const doDownloadPassport = (user_id, url) => (
   db.ref(`users/${user_id}`).update({
-    passport: url,
+    passport_url: url,
   })
 );
 
 export const doDownloadAddress = (user_id, url) => (
   db.ref(`users/${user_id}`).update({
-    address: url,
+    address_url: url,
   })
 );
 

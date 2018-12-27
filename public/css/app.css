@@ -9601,6 +9601,22 @@ input {
   color: #939598;
 }
 
+table.mytable th {
+  background-color: #d1d3d4;
+  border-right: 1px solid #414042;
+  border-bottom: none;
+}
+
+table.mytable tr:nth-child(odd) {
+  background-color: #f1f2f2;
+}
+
+table.mytable td {
+  padding: 0.3rem 2rem;
+  border: none;
+  vertical-align: middle;
+}
+
 .header-default {
   flex: 0 0 100px;
   border-bottom: 1px solid #231f20;
@@ -9656,6 +9672,19 @@ input {
 
 .sidebar .signout-block img {
   width: 30px;
+}
+
+.kyc-approval-link-block img {
+  width: 20px;
+}
+
+.kyc-approval-link-block .new-kycs {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  color: white;
+  font-size: 0.7rem;
+  background-color: #be1e2d;
 }
 
 .modal-background {
@@ -9916,21 +9945,6 @@ input {
 
 .rooms-page .page-content .header .title {
   font-size: 1.2rem;
-}
-
-.rooms-page .page-content table.rooms th {
-  background-color: #d1d3d4;
-  border-right: 1px solid #414042;
-  border-bottom: none;
-}
-
-.rooms-page .page-content table.rooms td {
-  border: none;
-  vertical-align: middle;
-}
-
-.rooms-page .page-content table.rooms tr:nth-child(odd) {
-  background-color: #f1f2f2;
 }
 
 .rooms-page .page-content table.rooms input {
@@ -10200,17 +10214,11 @@ input {
 }
 
 .room-page .page-content .viewfiles-panel .header {
-  position: relative;
   background-color: #183863;
 }
 
 .room-page .page-content .viewfiles-panel .header:hover {
   cursor: pointer;
-}
-
-.room-page .page-content .viewfiles-panel .header .back {
-  position: absolute;
-  left: 10px;
 }
 
 .room-page .page-content .viewfiles-panel .header .back img {
@@ -10266,5 +10274,76 @@ input {
 
 .room-page .page-content .viewfiles-panel .footer img {
   width: 20px;
+}
+
+.accounts-page .page-content .header {
+  height: 40px;
+  background-color: #183863;
+}
+
+.accounts-page .page-content .header .search-area input {
+  border-radius: 20px;
+  outline: none;
+}
+
+.accounts-page .page-content .header .kyc-area .kyc-approval-link-block img {
+  width: 15px;
+}
+
+.accounts-page .page-content .header .kyc-area .kyc-approval-link-block span {
+  color: white;
+}
+
+.accounts-page .page-content table.accounts td.action img {
+  width: 20px;
+}
+
+.accounts-page .page-content table.accounts input {
+  border: none;
+  background-color: transparent;
+}
+
+.kyc-approval-view-page .page-content .header {
+  background-color: #183863;
+}
+
+.kyc-approval-view-page .page-content .header:hover {
+  cursor: pointer;
+}
+
+.kyc-approval-view-page .page-content .header .back img {
+  width: 30px;
+}
+
+.kyc-approval-view-page .page-content .header .back span {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.kyc-approval-view-page .page-content .userinfo-block .label {
+  font-weight: bold;
+}
+
+.kyc-approval-view-page .page-content .userinfo-block a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.kyc-approval-view-page .page-content .action-block img {
+  width: 20px;
+}
+
+.kyc-approval-view-page .page-content .action-block .deny-block {
+  width: 30%;
+  border: 2px solid #be1e2d;
+}
+
+.kyc-approval-view-page .page-content .action-block .deny-block .header {
+  color: white;
+  background: #be1e2d;
+}
+
+.kyc-approval-view-page .page-content .action-block .deny-block .body .label {
+  font-weight: bold;
 }
 

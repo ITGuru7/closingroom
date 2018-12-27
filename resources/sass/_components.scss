@@ -55,3 +55,20 @@ input {
 .color-disabled {
     color: $color-disabled ;
 }
+
+
+table.mytable {
+    th {
+        background-color: $grey ;
+        border-right: 1px solid $border-dark ;
+        border-bottom: none ;
+    }
+    tr:nth-child(odd) {
+        background-color: $lighter-grey ;
+    }
+    td {
+        padding: .3rem 2rem ;
+        border: none ;
+        vertical-align: middle ;
+    }
+}

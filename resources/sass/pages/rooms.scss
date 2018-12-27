@@ -16,23 +16,9 @@
         }
 
         table.rooms {
-            th {
-                background-color: $grey ;
-                border-right: 1px solid $border-dark ;
-                border-bottom: none ;
-            }
-            td {
-                border: none ;
-                vertical-align: middle ;
-            }
-            tr:nth-child(odd) {
-                background-color: $lighter-grey ;
-            }
             input {
                 border: none ;
                 background-color: transparent ;
-            }
-            td.nickname {
             }
             td.action {
                 img {

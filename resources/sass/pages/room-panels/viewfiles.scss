@@ -1,7 +1,6 @@
 
 .viewfiles-panel {
     .header {
-        position: relative ;
         background-color: $dark-blue ;
 
         &:hover {
@@ -9,9 +8,6 @@
         }
 
         .back {
-            position: absolute ;
-            left: 10px ;
-
             img {
                 width: 30px ;
             }

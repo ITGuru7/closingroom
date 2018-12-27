@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
-import AuthUserContext from '../Session/AuthUserContext';
-import withAuthorization from '../Session/withAuthorization';
+import { connect } from "react-redux";
 
 import SignOutButton from '../Sign/SignOut';
 import * as routes from '../../constants/routes';
 import assets from '../../assets';
 
-import { db } from '../../firebase';
-import { auth as firebaseAuth } from '../../firebase/firebase';
+import * as actions from "../../actions";
+import * as functions from '../../functions';
 
-const Sidebar = () => {
+import SidebarNavItem from './SidebarNavItem';
+import KYCApprovalsItem from './KYCApprovalsItem';
+
+const Sidebar = (props) => {
   const renderHeader = () => (
     <div className="header mb-5">
       <div className="d-flex justify-content-center">
@@ -36,7 +38,7 @@ const Sidebar = () => {
     <div className="sidebar d-flex flex-column align-items-center p-4">
       {renderHeader()}
       <UserSidebar/>
-      {/* <AdminSidebar/> */}
+      <AdminSidebar {...props}/>
       <div className="about-block">
         <SidebarNavItem to="" text="What is a ClosingRoom?"/>
       </div>
@@ -49,73 +51,55 @@ const Sidebar = () => {
 
 
 const UserSidebar = () => (
-  <div className="link-block align-self-start">
+  <div className="align-self-start">
     <SidebarNavItem to={routes.HOME} asset={assets.home} text="Home"/>
-    <SidebarNavItem to={routes.ACCOUNT} asset={assets.setting_blue} text="Account"/>
-    <SidebarNavItem to={routes.ROOMS} asset={assets.find} text="My Rooms"/>
+    <SidebarNavItem to={routes.ACCOUNT_SETTINGS} asset={assets.setting_blue} text="Account Settings"/>
+    <SidebarNavItem to={routes.MY_ROOMS} asset={assets.find} text="My Rooms"/>
   </div>
 );
 
 
 class AdminSidebar extends Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      isAdmin: false,
+  componentWillMount() {
+    this.init(this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps != this.props) {
+      this.init(nextProps)
     }
   }
 
-  componentDidMount() {
-    this.init()
-  }
-
-  componentWillUpdate() {
-    // this.init()
-  }
-
-  init = () => {
-    if (firebaseAuth.currentUser) {
-      db.onceGetUsers()
-      .then(snapshot => {
-        let users = snapshot.val()
-        const authUser = users[firebaseAuth.currentUser.uid]
-        const authUserLevel = authUser.level
-
-        this.setState({
-          isAdmin: authUserLevel >= 3
-        })
-      });
+  init = (props) => {
+    const { authUser, user, fetchUser } = props
+    if (!authUser || !authUser.uid) {
+      return
+    }
+    if (!user) {
+      fetchUser(authUser.uid);
+      return
     }
   }
 
   render() {
-    const { isAdmin } = this.state
-    if (!isAdmin) {
-      return <div></div>
-    }
-    return (
-      <div className="link-block align-self-start">
+    const { user } = this.props
+
+    return (user && functions.isAdmin(user.level) &&
+      <div className="align-self-start">
         <SidebarNavItem to={routes.HOME} asset={assets.manage_rooms} text="ManageRooms"/>
-        <SidebarNavItem to={routes.ACCOUNT} asset={assets.manage_accounts} text="Manage Accounts"/>
-        <SidebarNavItem to={routes.ROOMS} asset={assets.kyc_approvals} text="KYC Approvals"/>
+        <SidebarNavItem to={routes.MANAGE_ACCOUNTS} asset={assets.manage_accounts} text="Manage Accounts"/>
+        <KYCApprovalsItem color="black"/>
       </div>
     )
   }
 }
 
+const mapStateToProps = ({ authUser, user }) => {
+  return {
+    authUser,
+    user,
+  };
+};
 
-const SidebarNavItem = (props) => (
-  <Link to={props.to} className="py-2 d-flex">
-    { props.asset &&
-      <div className="mr-3">
-        <img src={props.asset}/>
-      </div>
-    }
-    <span className="align-self-center">
-      {props.text}
-    </span>
-  </Link>
-);
-
-export default Sidebar;
+export default connect(mapStateToProps, actions)(Sidebar);

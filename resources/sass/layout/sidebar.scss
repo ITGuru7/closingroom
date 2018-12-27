@@ -46,3 +46,17 @@ $sidebar-width: 300px ;
         }
     }
 }
+
+.kyc-approval-link-block {
+    img {
+        width: 20px ;
+    }
+    .new-kycs {
+        width: 15px ;
+        height: 15px ;
+        border-radius: 50% ;
+        color: white ;
+        font-size: .7rem ;
+        background-color: $red ;
+    }
+}

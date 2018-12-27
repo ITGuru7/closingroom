@@ -1,5 +1,5 @@
 
-export function getFormattedDate(date, separator='/') {
+export const getFormattedDate = (date, separator='/') => {
     var year = date.getFullYear();
 
     var month = (1 + date.getMonth()).toString();
@@ -11,7 +11,7 @@ export function getFormattedDate(date, separator='/') {
     return day + separator + month + separator + year;
 }
 
-export function getFormattedTime(date, ampm = false) {
+export const getFormattedTime = (date, ampm = false) => {
     var hours = date.getHours();
     var minutes = date.getMinutes();
     minutes = minutes < 10 ? '0'+minutes : minutes;
@@ -25,6 +25,10 @@ export function getFormattedTime(date, ampm = false) {
     return strTime;
 }
 
-export function getFormattedID(id, length) {
+export const getFormattedID = (id, length) => {
     return (id?String(id).padStart(length, '0'):'')
+}
+
+export const isAdmin = (level) => {
+    return parseInt(level) >= 3
 }

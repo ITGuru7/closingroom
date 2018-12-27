@@ -6,6 +6,9 @@ import SignupHeader from '../../Header/SignupHeader';
 import { auth, db } from '../../../firebase';
 import * as routes from '../../../constants/routes';
 
+import moment from 'moment-timezone';
+
+
 const SignUpPage = ({ history }) => (
   <div className="signup-page">
     <div className="signup-container text-center">
@@ -25,6 +28,7 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  timezones: null,
   timezone: '',
   error: null,
 };
@@ -64,6 +68,7 @@ class SignUpForm extends Component {
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    console.log(event.target.value)
   };
 
   onClickType = (event, type) => {
@@ -71,6 +76,20 @@ class SignUpForm extends Component {
       event.preventDefault()
       alert('Corporate/Institutional users coming soon')
     }
+  }
+
+  componentWillMount() {
+    const defaultTimeZone = moment.tz.guess();
+    this.setState({timezone: defaultTimeZone})
+
+    let timezones = []
+    moment.tz.names().map(function(name, index){
+      let timezone = {}
+      timezone.location = name
+      timezone.offset = moment(Date.now()).tz(name).format('Z')
+      timezones.push(timezone)
+    })
+    this.setState({timezones})
   }
 
   render() {
@@ -82,6 +101,7 @@ class SignUpForm extends Component {
       email,
       passwordOne,
       passwordTwo,
+      timezones,
       timezone,
       error,
     } = this.state;
@@ -193,15 +213,19 @@ class SignUpForm extends Component {
         </div>
         <div className="form-group text-left text-white">
           <label htmlFor="timezone">Country/TimeZone</label>
-          <input
-            name="timezone"
-            id="timezone"
-            value={timezone}
-            onChange={this.onChange}
-            type="text"
-            placeholder=""
-            className="form-control"
-          />
+          { timezones &&
+            <select
+              name="timezone"
+              id="timezone"
+              value={timezone}
+              onChange={this.onChange}
+              className="form-control"
+            >
+              {timezones.map(function(tz, index){
+                return <option key={ index } value={tz.location}>{tz.location} {tz.offset}</option>
+              })}
+            </select>
+          }
         </div>
         <div className="mt-3">
           <button disabled={isInvalid} type="submit" className="button-md button-red">

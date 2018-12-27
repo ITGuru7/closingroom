@@ -27,9 +27,13 @@ import download_white     from '../assets/images/svg/download-white.svg';
 
 import manage_rooms       from '../assets/images/svg/manage-rooms.svg';
 import manage_accounts    from '../assets/images/svg/manage-accounts.svg';
-import kyc_approvals      from '../assets/images/svg/kyc-approvals.svg';
+import search_black       from '../assets/images/svg/search-black.svg';
+import search_white       from '../assets/images/svg/search-white.svg';
 
 import plus      from '../assets/images/svg/plus.svg';
+
+import agree_white        from '../assets/images/svg/agree-white.svg';
+import disagree_white     from '../assets/images/svg/disagree-white.svg';
 
 export default {
     logo,
@@ -61,7 +65,11 @@ export default {
 
     manage_rooms,
     manage_accounts,
-    kyc_approvals,
+    search_black,
+    search_white,
 
     plus,
+
+    agree_white,
+    disagree_white
 }

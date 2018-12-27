@@ -11,10 +11,15 @@ import HomePage from './components/Home';
 import SignInPage from './components/Sign/SignIn';
 import SignUpPage from './components/Sign/SignUp';
 import AccountPage from './components/Account';
-import KYCPage from './components/Account/KYC';
-import RoomsPage from './components/Rooms';
-import CreateRoomPage from './components/Rooms/CreateRoomPage';
-import RoomPage from './components/Rooms/Room';
+import KYCPage from './components/Account/KYCPage';
+import MyRoomsPage from './components/MyRooms';
+import CreateRoomPage from './components/MyRooms/CreateRoomPage';
+import RoomPage from './components/Room';
+
+import AccountsPage from './components/Accounts';
+import KYC_ApprovalsPage from './components/Accounts/KYC_Approvals';
+import KYC_ApprovalViewPage from './components/Accounts/KYC_Approvals/KYC_ApprovalViewPage';
+
 import UploadDocumentModal from './components/Modal/UploadDocumentModal';
 import withAuthentication from './components/Session/withAuthentication';
 import * as routes from './constants/routes';
@@ -51,10 +56,10 @@ const SignLayout = ({component: Component, ...rest}) => {
 
 class Layout extends Component {
   componentWillMount() {
-    console.log('layout')
     this.props.fetchUsers();
     this.props.fetchAuthUser();
     this.props.fetchDocuments();
+    this.props.fetchRooms();
   }
 
   render() {
@@ -66,11 +71,15 @@ class Layout extends Component {
           <SignLayout exact path={routes.SIGN_UP} component={SignUpPage} />
 
           <DefaultLayout exact path={routes.HOME} component={HomePage} />
-          <DefaultLayout exact path={routes.ACCOUNT} component={UserAuth(AccountPage)} />
+          <DefaultLayout exact path={routes.ACCOUNT_SETTINGS} component={UserAuth(AccountPage)} />
           <DefaultLayout exact path={routes.KYC} component={UserAuth(KYCPage)} />
-          <DefaultLayout exact path={routes.ROOMS} component={UserAuth(RoomsPage)} />
+          <DefaultLayout exact path={routes.MY_ROOMS} component={UserAuth(MyRoomsPage)} />
           <DefaultLayout exact path={routes.ROOM} component={UserAuth(RoomPage)} />
           <DefaultLayout exact path={routes.CREATE_ROOM} component={UserAuth(CreateRoomPage)} />
+
+          <DefaultLayout exact path={routes.MANAGE_ACCOUNTS} component={AdminAuth(AccountsPage)} />
+          <DefaultLayout exact path={routes.KYC_APPROVALS} component={AdminAuth(KYC_ApprovalsPage)} />
+          <DefaultLayout exact path={routes.KYC_APPROVAL} component={AdminAuth(KYC_ApprovalViewPage)} />
 
         </div>
       </Router>

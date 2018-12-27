@@ -1,0 +1,37 @@
+
+.accounts-page {
+    .page-content {
+        .header {
+            height: 40px ;
+            background-color: $dark-blue ;
+            .search-area {
+                input {
+                    border-radius: 20px ;
+                    outline: none;
+                }
+            }
+            .kyc-area {
+                .kyc-approval-link-block {
+                    img {
+                        width: 15px ;
+                    }
+                    span {
+                        color: white ;
+                    }
+                }
+            }
+        }
+
+        table.accounts {
+            td.action {
+                img {
+                    width: 20px ;
+                }
+            }
+            input {
+                border: none ;
+                background-color: transparent ;
+            }
+        }
+    }
+}

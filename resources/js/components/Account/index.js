@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
-import PasswordChangeForm from './PasswordChange';
+import PasswordChangeForm from './PasswordChangeForm';
 import DefaultHeader from '../Header/DefaultHeader';
 
 import * as actions from "../../actions";
@@ -46,7 +46,7 @@ class ProfileChangeForm extends Component {
 
   init = (props) => {
     const { authUser, user, fetchUser } = props
-    if (!authUser.uid) {
+    if (!authUser || !authUser.uid) {
       return
     }
     if (!user) {

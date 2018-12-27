@@ -5,7 +5,6 @@ import { auth as firebaseAuth } from '../firebase/firebase';
 
 export const fetchAuthUser = () => dispatch => {
   firebaseAuth.onAuthStateChanged(authUser => {
-    console.log(authUser)
     if (authUser) {
       dispatch({
         type: "FETCH_AUTHUSER",
@@ -34,7 +33,6 @@ export const fetchUsers = () => async dispatch => {
 };
 
 export const fetchUser = (user_id) => async dispatch => {
-  console.log(user_id)
   firebaseDB.ref(`users/${user_id}`).on("value", snapshot => {
     let user = snapshot.val()
     user.uid = user_id

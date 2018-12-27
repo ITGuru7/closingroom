@@ -39,9 +39,9 @@
         }
     }
     .page-content {
-        @import 'room-panels/userlist.scss';
-        @import 'room-panels/messages.scss';
-        @import 'room-panels/tasks.scss';
-        @import 'room-panels/viewfiles.scss';
+        @import 'room-panels/userlist';
+        @import 'room-panels/messages';
+        @import 'room-panels/tasks';
+        @import 'room-panels/viewfiles';
     }
 }
