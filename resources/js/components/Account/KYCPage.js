@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 
 import * as routes from '../../constants/routes';
@@ -218,6 +219,6 @@ const mapStateToProps = ({ authUser }) => {
   };
 };
 
-const Connected_KYCForm = connect(mapStateToProps)(KYCForm)
+const Connected_KYCForm = withRouter(connect(mapStateToProps)(KYCForm))
 
 export default KYCPage;

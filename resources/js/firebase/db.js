@@ -1,5 +1,4 @@
 import { db } from './firebase';
-import { auth } from './firebase';
 
 // User API
 
@@ -14,7 +13,6 @@ export const doCreateUser = (id, type, firstname, lastname, displayname, email, 
       lastname,
       displayname,
       email,
-      passwordOne,
       timezone,
       level: 0,
       join_date,
@@ -110,6 +108,7 @@ export const doUserKYC = (user_id, firstname, lastname, occupation, passport, ad
     occupation,
     passport,
     address,
+    kyc_status: 'pending',
   })
 );
 
@@ -144,3 +143,26 @@ export const doDownloadDocument = (room_id, user_id, doc_key, url) => (
 export const onceGetDocuments = () => (
   db.ref('documents').once('value')
 );
+
+export const doApproveKYC = (user_id) => {
+  db.ref(`users/${user_id}`).update({
+    kyc_status: 'verified',
+    level: 1,
+  })
+}
+
+export const doDenyKYC = (user_id, reason) => {
+  db.ref(`users/${user_id}`).update({
+    kyc_status: 'failed',
+    kyc_deny_reason: reason,
+    level: 0,
+  })
+}
+
+export const doTryAgainKYC = (user_id) => {
+  db.ref(`users/${user_id}`).update({
+    kyc_status: 'unverified',
+    kyc_deny_reason: '',
+    level: 0,
+  })
+}

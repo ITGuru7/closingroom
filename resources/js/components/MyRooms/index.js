@@ -44,16 +44,18 @@ class MyRoomsPage extends Component {
     Object.keys(rooms).map(key => {
       const room = rooms[key]
       room.room_id = key
-      let user = null
-      Object.keys(room.users).map(key => {
-        if (key === authUser.uid) {
-          user = room.users[key]
-          user.uid = key
+      if (room.users) {
+        let user = null
+        Object.keys(room.users).map(key => {
+          if (key === authUser.uid) {
+            user = room.users[key]
+            user.uid = key
+          }
+        })
+        if (user != null) {
+          room.user = user
+          user_rooms[key] = room
         }
-      })
-      if (user != null) {
-        room.user = user
-        user_rooms[key] = room
       }
     })
 

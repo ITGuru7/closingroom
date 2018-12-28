@@ -21,16 +21,67 @@
         }
 
         .profile-block {
-            .account-level {
-                .circle {
-                    width: 12px;
-                    height: 12px;
-                    -moz-border-radius: 50%;
-                    -webkit-border-radius: 50%;
-                    border-radius: 50%;
+            .account-block {
+                .level-block {
+                    position: relative ;
 
-                    &.circle-red {
-                        background: red;
+                    .circle {
+                        float: left ;
+                        margin-top: 5px ;
+                        margin-left: -20px ;
+                        width: 12px ;
+                        height: 12px ;
+                        border-radius: 50% ;
+                    }
+                    .unverified {
+                        .circle {
+                            background: $red ;
+                        }
+                        span {
+                            color: $dark-red ;
+                        }
+                    }
+                    .pending {
+                        .circle {
+                            background: $light-orange ;
+                        }
+                        span {
+                            color: $light-orange ;
+                        }
+                    }
+                    .verified {
+                        .circle {
+                            background: $light-green ;
+                        }
+                        span {
+                            color: $light-green ;
+                        }
+                    }
+                    .failed-reason {
+                        position: absolute ;
+
+                        width: 400px ;
+                        left: 30% ;
+                        top: -100px ;
+                        background: white ;
+                        border: 1px solid $black ;
+                        .header {
+                            color: white ;
+                            font-weight: bold ;
+                            font-size: 1.2rem ;
+                            background: $dark-red ;
+                            img {
+                                width: 30px ;
+                            }
+                        }
+                        .body {
+                            .label {
+                                font-weight: bold ;
+                            }
+                            textarea {
+                                font-size: .7rem ;
+                            }
+                        }
                     }
                 }
             }

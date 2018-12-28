@@ -35,6 +35,8 @@ import plus      from '../assets/images/svg/plus.svg';
 import agree_white        from '../assets/images/svg/agree-white.svg';
 import disagree_white     from '../assets/images/svg/disagree-white.svg';
 
+import warning            from '../assets/images/svg/warning.svg';
+
 export default {
     logo,
     logout,
@@ -71,5 +73,7 @@ export default {
     plus,
 
     agree_white,
-    disagree_white
+    disagree_white,
+
+    warning,
 }

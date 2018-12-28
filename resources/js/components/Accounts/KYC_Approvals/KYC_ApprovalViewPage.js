@@ -95,15 +95,18 @@ class KYC_ApprovalViewPage extends Component {
     )
   }
 
-  onKYC_Agree = () => {
+  onApproveKYC = () => {
     const { history } = this.props
-    console.log('agree')
+    const { user_id } = this.props.match.params
+    db.doApproveKYC(user_id)
     history.push(routes.KYC_APPROVALS)
   }
 
-  onKYC_Disagree = () => {
+  onDenyKYC = () => {
     const { history } = this.props
-    console.log('disagree')
+    const { user_id } = this.props.match.params
+    const { reason } = this.state
+    db.doDenyKYC(user_id, reason)
     history.push(routes.KYC_APPROVALS)
   }
 
@@ -113,7 +116,7 @@ class KYC_ApprovalViewPage extends Component {
       <div className="action-block mt-auto d-flex justify-content-center align-items-center">
         <div className="approve-block mr-5">
           <button className="button button-md button-green"
-            onClick={(event) => this.onKYC_Agree()}
+            onClick={(event) => this.onApproveKYC()}
           >
             Approve
             <img src={assets.agree_white} className="ml-2"/>
@@ -137,7 +140,7 @@ class KYC_ApprovalViewPage extends Component {
             />
             <div className="w-100 text-center">
               <button className="button button-md button-red mr-2"
-                onClick={(event) => this.onKYC_Disagree()}
+                onClick={(event) => this.onDenyKYC()}
               >
                 Deny
                 <img src={assets.disagree_white} className="ml-2"/>
