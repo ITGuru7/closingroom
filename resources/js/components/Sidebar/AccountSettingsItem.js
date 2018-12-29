@@ -9,7 +9,7 @@ import * as actions from "../../actions";
 
 import _ from 'lodash';
 
-class KYCApprovalsItem extends Component {
+class AccountSettingsItem extends Component {
   renderNewKYCs = () => {
     const { users } = this.props
     let newKYCcount = 0
@@ -56,4 +56,4 @@ const mapStateToProps = ({ users }) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(KYCApprovalsItem);
+export default connect(mapStateToProps, actions)(AccountSettingsItem);

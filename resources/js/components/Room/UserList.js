@@ -160,7 +160,7 @@ class UserList extends Component {
     const { authUser, users, room } = this.props
     const {email, role} = this.state
 
-    const sender_email = firebaseAuth.currentUser.email
+    const sender_email = authUser.email
     const receiver_email = email
 
     const user = users[authUser.uid]
