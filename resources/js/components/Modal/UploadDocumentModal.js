@@ -1,8 +1,7 @@
 
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
-import { auth as firebaseAuth } from '../../firebase/firebase';
 import { db, storage } from '../../firebase';
 
 import assets from '../../assets';
@@ -46,12 +45,13 @@ class UploadDocumentModal extends Component {
 
 
   onUpload = () => {
+    const { authUser } = this.props
     const {document, document_file, type, other, issued, certified, comment} = this.state ;
     const room_key = $('.upload-modal').find('#roomKey').val()
     const room_id = $('.upload-modal').find('#roomID').val()
     const user_id = $('.upload-modal').find('#userID').val()
 
-    db.doUploadDocument(room_key, firebaseAuth.currentUser.uid, DOCUMENT_TYPE[type], other, issued, certified, comment)
+    db.doUploadDocument(room_key, authUser.uid, DOCUMENT_TYPE[type], other, issued, certified, comment)
     .then((snapshot) => {
       const doc_key = snapshot.key
 
@@ -60,7 +60,7 @@ class UploadDocumentModal extends Component {
       storage.doUploadDocument(document_name, document_file)
       .then(snapshot => snapshot.ref.getDownloadURL())
       .then((url) => {
-        db.doDownloadDocument(room_key, firebaseAuth.currentUser.uid, doc_key, url)
+        db.doDownloadDocument(room_key, authUser.uid, doc_key, url)
         this.onReset()
         alert('Document has been uploaded successfully')
       })
@@ -256,4 +256,10 @@ class UploadDocumentModal extends Component {
   }
 }
 
-export default UploadDocumentModal;
+const mapStateToProps = ({ authUser }) => {
+  return {
+    authUser,
+  };
+};
+
+export default connect(mapStateToProps)(UploadDocumentModal);
