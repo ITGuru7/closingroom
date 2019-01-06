@@ -10,10 +10,6 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <style>
-        body {
-            background-color: #E6E7E8 ;
-            font-family: "Nunito", sans-serif ;
-        }
         .email-wrapper {
             margin: auto ;
             max-width: 800px ;
@@ -87,39 +83,41 @@
 </head>
 
 <body>
-    <div class="email-wrapper">
-        <header>
-            <div class="logo-image">
-                <img src="{{ $message->embed('images/logo.svg') }}">
-            </div>
-            <div class="logo-text">
-                <div class="title">
-                    MNM
+    <div style="background-color: #E6E7E8 ;">
+        <div class="email-wrapper">
+            <header>
+                <div class="logo-image">
+                    <img src="{{ asset('images/logo.svg') }}">
                 </div>
-                <div class="subtitle">
-                    Crypto Specialists
+                <div class="logo-text">
+                    <div class="title">
+                        MNM
+                    </div>
+                    <div class="subtitle">
+                        Crypto Specialists
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <div class="content-wrapper">
-            <div class="content-header">
-                @yield('header')
+            <div class="content-wrapper">
+                <div class="content-header">
+                    @yield('header')
+                </div>
+                <div class="content-body">
+                    @yield('content')
+                </div>
+                <div class="content-footer">
+                    @yield('footer')
+                </div>
+                <div class="content-footline">
+                </div>
             </div>
-            <div class="content-body">
-                @yield('content')
-            </div>
-            <div class="content-footer">
-                @yield('footer')
-            </div>
-            <div class="content-footline">
-            </div>
+
+            <footer>
+                © 2018 mnmcs.com All Rights Reserved<br/>
+                URL：<a href="www.mnmcs.com">www.mnmcs.com</a>  E-mail：<a href="mailto:support@mnmcs.com.com">support@mnmcs.com.com</a>
+            </footer>
         </div>
-
-        <footer>
-            © 2018 mnmcs.com All Rights Reserved<br/>
-            URL：<a href="www.mnmcs.com">www.mnmcs.com</a>  E-mail：<a href="mailto:support@mnmcs.com.com">support@mnmcs.com.com</a>
-        </footer>
     </div>
 </body>
 </html>

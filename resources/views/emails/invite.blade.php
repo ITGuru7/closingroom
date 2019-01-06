@@ -30,6 +30,4 @@
         Please click the link below<br/><br/>
         <a href="{{$link}}">{{$link}}</a>
     </div>
-    <div>
-    </div>
 @endsection
