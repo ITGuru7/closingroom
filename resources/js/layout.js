@@ -13,9 +13,10 @@ import SignUpPage from './components/Sign/SignUp';
 import AccountPage from './components/Account';
 import KYCPage from './components/Account/KYCPage';
 import MyRoomsPage from './components/MyRooms';
-import CreateRoomPage from './components/MyRooms/CreateRoomPage';
+import CreateRoomPage from './components/CreateRoom';
 import RoomPage from './components/Room';
 
+import RoomsPage from './components/Rooms';
 import AccountsPage from './components/Accounts';
 import KYC_ApprovalsPage from './components/Accounts/KYC_Approvals';
 import KYC_ApprovalViewPage from './components/Accounts/KYC_Approvals/KYC_ApprovalViewPage';
@@ -77,6 +78,7 @@ class Layout extends Component {
           <DefaultLayout exact path={routes.ROOM} component={UserAuth(RoomPage)} />
           <DefaultLayout exact path={routes.CREATE_ROOM} component={UserAuth(CreateRoomPage)} />
 
+          <DefaultLayout exact path={routes.ROOMS} component={AdminAuth(RoomsPage)} />
           <DefaultLayout exact path={routes.MANAGE_ACCOUNTS} component={AdminAuth(AccountsPage)} />
           <DefaultLayout exact path={routes.KYC_APPROVALS} component={AdminAuth(KYC_ApprovalsPage)} />
           <DefaultLayout exact path={routes.KYC_APPROVAL} component={AdminAuth(KYC_ApprovalViewPage)} />

@@ -87,7 +87,7 @@ class AdminSidebar extends Component {
 
     return (user && functions.isAdmin(user.level) &&
       <div className="align-self-start">
-        <SidebarNavItem to={routes.HOME} asset={assets.manage_rooms} text="ManageRooms"/>
+        <SidebarNavItem to={routes.ROOMS} asset={assets.manage_rooms} text="ManageRooms"/>
         <SidebarNavItem to={routes.MANAGE_ACCOUNTS} asset={assets.manage_accounts} text="Manage Accounts"/>
         <KYCApprovalsItem color="black"/>
       </div>

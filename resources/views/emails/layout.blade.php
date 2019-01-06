@@ -87,7 +87,7 @@
         <div class="email-wrapper">
             <header>
                 <div class="logo-image">
-                    <img src="{{ asset('images/logo.svg') }}">
+                    <img src="{{$message->embed(public_path().'/images/logo.svg')}}">
                 </div>
                 <div class="logo-text">
                     <div class="title">

@@ -48,6 +48,7 @@ export const doCreateRoom = (user_id, roomname, level, timelimit) => {
 
     const room = db.ref('rooms').push({
       id: snapshot.numChildren()+1,
+      roomname,
       level,
       timelimit,
       create_date,
@@ -61,11 +62,17 @@ export const doCreateRoom = (user_id, roomname, level, timelimit) => {
   })
 }
 
-export const doChangeRoomname = (room_id, user_id, roomname) => (
-  db.ref(`rooms/${room_id}/users/${user_id}`).set({
-    roomname: roomname,
-  })
-);
+export const doChangeRoomname = (room_id, user_id, roomname) => {
+  if (user_id != null) {
+    db.ref(`rooms/${room_id}/users/${user_id}`).update({
+      roomname: roomname,
+    })
+  } else {
+    db.ref(`rooms/${room_id}`).update({
+      roomname: roomname,
+    })
+  }
+};
 
 export const usersRef = (room_id) => (
   db.ref(`rooms/${room_id}/users`)
