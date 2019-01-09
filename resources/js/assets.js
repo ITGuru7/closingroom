@@ -37,6 +37,8 @@ import disagree_white     from '../assets/images/svg/disagree-white.svg';
 
 import warning            from '../assets/images/svg/warning.svg';
 
+import bell               from '../assets/images/svg/bell.svg';
+
 export default {
     logo,
     logout,
@@ -76,4 +78,6 @@ export default {
     disagree_white,
 
     warning,
+
+    bell,
 }
