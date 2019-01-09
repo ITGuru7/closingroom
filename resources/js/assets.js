@@ -38,6 +38,7 @@ import disagree_white     from '../assets/images/svg/disagree-white.svg';
 import warning            from '../assets/images/svg/warning.svg';
 
 import bell               from '../assets/images/svg/bell.svg';
+import close_blue         from '../assets/images/svg/close-blue.svg';
 
 export default {
     logo,
@@ -80,4 +81,5 @@ export default {
     warning,
 
     bell,
+    close_blue,
 }

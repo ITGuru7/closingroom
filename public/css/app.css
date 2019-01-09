@@ -10172,6 +10172,41 @@ table.mytable td {
   margin-right: 30px;
 }
 
+.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  width: 340px;
+  border: 2px solid #183863;
+}
+
+.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .dlg-close {
+  float: right;
+  margin: 0.5rem 0.5rem 0 0;
+  width: 20px;
+}
+
+.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .dlg-close:hover {
+  cursor: pointer;
+}
+
+.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .content {
+  background-color: white;
+}
+
+.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .content .title {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .content .description {
+  font-size: 0.8rem;
+  line-height: 1rem;
+}
+
 .room-page .page-content .messages-panel .messages-block {
   overflow-y: scroll;
 }

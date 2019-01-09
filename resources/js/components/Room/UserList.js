@@ -12,7 +12,7 @@ import { getFormattedID } from '../../functions';
 const INITIAL_STATE = {
   email: '',
   role: 0,
-  showDialog: false,
+  showInviteDialog: false,
 }
 
 const ROLE = [
@@ -137,23 +137,24 @@ class UserList extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleAddUserModal = () => {
-    let showDialog = this.state.showDialog
-    showDialog = !showDialog
-    this.setState({
-      showDialog: showDialog,
-    })
-    if (showDialog) {
-      $('.modal-background').removeClass('d-none')
-      $('.add-user-dialog').removeClass('d-none')
+  openAddUserModal = () => {
+    $('.modal-background').removeClass('d-none')
+    $('.add-user-dialog').removeClass('d-none')
 
-      $('.modal-background').on('click', this.handleAddUserModal)
-    } else {
-      $('.modal-background').addClass('d-none')
-      $('.add-user-dialog').addClass('d-none')
+    $('.modal-background').on('click', this.closeModals)
+  }
 
-      $('.modal-background').off()
-    }
+  closeModals = () => {
+    $('.modal-background').addClass('d-none')
+    $('.add-user-dialog').addClass('d-none')
+    $('.add-user-success-dialog').addClass('d-none')
+
+    $('.modal-background').off()
+  }
+
+  openAddUserSuccessModal = () => {
+    $('.add-user-dialog').addClass('d-none')
+    $('.add-user-success-dialog').removeClass('d-none')
   }
 
   onSendInvite = () => {
@@ -186,9 +187,11 @@ class UserList extends Component {
     axios.post(url)
     .then(response => {
       console.log(response.data)
+      this.openAddUserSuccessModal()
     })
     .catch(error => {
       console.log(error.response.data.error)
+      this.closeModals()
     });
   }
 
@@ -253,6 +256,27 @@ class UserList extends Component {
     )
   }
 
+  renderSuccessDialog = () => {
+    const {email, role} = this.state
+
+    return (
+      <div className="add-user-success-dialog d-none">
+        <img src={assets.close_blue} className="dlg-close"
+          onClick={(event) => {this.closeModals()}}
+        />
+        <div className="content p-4 w-100 text-white">
+          <div className="title mb-1">
+            Success!
+          </div>
+          <div className="description mb-1">
+            An invitation has been sent to ({email})<br/>
+            User Type: {ROLE[role].role_label}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="userlist-panel d-flex flex-column align-items-stretch">
@@ -272,11 +296,12 @@ class UserList extends Component {
         <div className="add-user-block align-self-center mt-auto mb-3">
           <img src={assets.add_user} className="mr-2"/>
           <button className="button button-md button-red"
-            onClick={(event) => {this.handleAddUserModal()}}
+            onClick={(event) => {this.openAddUserModal()}}
           >
             Add User
           </button>
           {this.renderAddUserDialog()}
+          {this.renderSuccessDialog()}
         </div>
       </div>
     )

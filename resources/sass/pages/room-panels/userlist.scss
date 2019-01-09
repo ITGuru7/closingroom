@@ -96,5 +96,34 @@
                 margin-right: 30px ;
             }
         }
+        .add-user-success-dialog {
+            position: absolute ;
+            z-index: 2 ;
+            top: 0 ;
+            right: 0;
+            transform: translateY(-100%);
+            width: 340px ;
+            border: 2px solid $dark-blue ;
+
+            .dlg-close {
+                float: right ;
+                margin: .5rem .5rem 0 0 ;
+                width: 20px ;
+                &:hover {
+                    cursor: pointer ;
+                }
+            }
+            .content {
+                background-color: white ;
+                .title {
+                    font-size: 1.2rem ;
+                    line-height: 1.5rem ;
+                }
+                .description {
+                    font-size: .8rem ;
+                    line-height: 1rem ;
+                }
+            }
+        }
     }
 }
