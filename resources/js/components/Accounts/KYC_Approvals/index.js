@@ -18,7 +18,7 @@ import _ from 'lodash';
 
 
 const INITIAL_STATE = {
-
+  search: '',
 }
 
 class KYC_ApprovalsPage extends Component {
@@ -43,6 +43,7 @@ class KYC_ApprovalsPage extends Component {
 
   render() {
     const { users, rooms } = this.props;
+    const { search } = this.state
 
     if (!users || !rooms) {
       return <div></div>
@@ -55,7 +56,13 @@ class KYC_ApprovalsPage extends Component {
           <div className="header row mx-0 align-items-center">
             <div className="search-area col-4 d-flex align-items-center">
               <div className="col-2 text-white">Search</div>
-              <div className="col-10"><input type="text" className="px-3"/></div>
+              <div className="col-10">
+                <input type="text" className="px-3"
+                  value={search}
+                  autoFocus
+                  onChange = { (event) => { this.setState({search: event.target.value}) }}
+                />
+              </div>
             </div>
           </div>
           <table className="table mytable accounts">
@@ -74,7 +81,7 @@ class KYC_ApprovalsPage extends Component {
               <tbody>
                 {Object.keys(users).map(key => {
                   let user = users[key]
-                  if (user.kyc_status === "pending") {
+                  if (user.kyc_status === "pending" && (user.firstname.toString().includes(search) || user.lastname.toString().includes(search))) {
                     return <UserRow key={key} user={user} rooms={rooms}/>
                   }
                 })}

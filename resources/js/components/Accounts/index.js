@@ -20,7 +20,7 @@ import KYCApprovalsItem from '../Sidebar/KYCApprovalsItem';
 
 
 const INITIAL_STATE = {
-
+  search: '',
 }
 
 class AccountsPage extends Component {
@@ -45,6 +45,7 @@ class AccountsPage extends Component {
 
   render() {
     const { users, rooms } = this.props;
+    const { search } = this.state
 
     if (!users || !rooms) {
       return <div></div>
@@ -57,7 +58,13 @@ class AccountsPage extends Component {
           <div className="header row mx-0 align-items-center">
             <div className="search-area col-4 d-flex align-items-center">
               <div className="col-2 text-white">Search</div>
-              <div className="col-10"><input type="text" className="px-3"/></div>
+              <div className="col-10">
+                <input type="text" className="px-3"
+                  value={search}
+                  autoFocus
+                  onChange = { (event) => { this.setState({search: event.target.value}) }}
+                />
+              </div>
             </div>
             <div className="kyc-area col-4">
               <KYCApprovalsItem color="white"/>
@@ -77,9 +84,12 @@ class AccountsPage extends Component {
             </thead>
             { users &&
               <tbody>
-                {Object.keys(users).map(key =>
-                  <UserRow key={key} user={users[key]} rooms={rooms}/>
-                )}
+                {Object.keys(users).map(key => {
+                  let user = users[key]
+                  if (user.firstname.toString().includes(search) || user.lastname.toString().includes(search)) {
+                    return <UserRow key={key} user={user} rooms={rooms}/>
+                  }
+                })}
               </tbody>
             }
           </table>

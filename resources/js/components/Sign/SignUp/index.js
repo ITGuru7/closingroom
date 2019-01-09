@@ -69,8 +69,8 @@ class SignUpForm extends Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
   onClickType = (event, type) => {
+
     if (type == 1) {
       event.preventDefault()
       alert('Corporate/Institutional users coming soon')
@@ -89,6 +89,7 @@ class SignUpForm extends Component {
       timezones.push(timezone)
     })
     this.setState({timezones})
+    console.log(moment.tz.zone('America/Merida'))
   }
 
   render() {

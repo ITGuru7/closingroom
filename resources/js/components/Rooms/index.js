@@ -17,6 +17,7 @@ import * as actions from "../../actions";
 import _ from 'lodash';
 
 const INITIAL_STATE = {
+  search: '',
 };
 
 class RoomsPage extends Component {
@@ -37,6 +38,7 @@ class RoomsPage extends Component {
 
   render() {
     const { rooms } = this.props;
+    const { search } = this.state
 
     if (!rooms) {
       return <div></div>
@@ -54,7 +56,13 @@ class RoomsPage extends Component {
           <div className="header row mx-0 align-items-center">
             <div className="search-area col-4 d-flex align-items-center">
               <div className="col-2 text-white">Search</div>
-              <div className="col-10"><input type="text" className="px-3"/></div>
+              <div className="col-10">
+                <input type="text" className="px-3"
+                  value={search}
+                  autoFocus
+                  onChange = { (event) => { this.setState({search: event.target.value}) }}
+                />
+              </div>
             </div>
             <div className="title col-4 text-white text-center">
               ClosingRooms
@@ -74,9 +82,12 @@ class RoomsPage extends Component {
             </thead>
             { !!rooms &&
               <tbody>
-                {Object.keys(rooms).map(key =>
-                  <RoomRow key={key} room={rooms[key]}/>
-                )}
+                {Object.keys(rooms).map(key => {
+                  let room = rooms[key]
+                  if (room.room_id.toString().includes(search) || room.roomname.toString().includes(search)) {
+                    return <RoomRow key={key} room={room}/>
+                  }
+                })}
               </tbody>
             }
           </table>
