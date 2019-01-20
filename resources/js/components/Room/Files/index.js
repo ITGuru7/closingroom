@@ -55,9 +55,15 @@ class RoomFilesPage extends Component {
       <tr key={key}>
         <td className="title">{document.title}</td>
         <td className="type">{document.type}</td>
-        <td>
-          <img src={assets.status_incomplete}/> Incomplete
-        </td>
+        { document.type === 'general' ?
+          <td>
+            <img src={assets.status_working}/> Working
+          </td>
+        :
+          <td>
+            <img src={assets.status_incomplete}/> Incomplete
+          </td>
+        }
         <td>
           <input type="checkbox" defaultChecked={true}/>
         </td>
