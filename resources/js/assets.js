@@ -17,8 +17,6 @@ import upload_white       from '../assets/images/svg/upload-white.svg';
 import logo_transparent   from '../assets/images/svg/logo-transparent.svg';
 import close              from '../assets/images/svg/close.svg';
 import arrow_right        from '../assets/images/svg/arrow-right.svg';
-import agree              from '../assets/images/svg/agree.svg';
-import disagree           from '../assets/images/svg/disagree.svg';
 import arrow_left_circle  from '../assets/images/svg/arrow-left-circle.svg';
 import radio_on           from '../assets/images/svg/radio-on.svg';
 import radio_off          from '../assets/images/svg/radio-off.svg';
@@ -30,7 +28,7 @@ import manage_accounts    from '../assets/images/svg/manage-accounts.svg';
 import search_black       from '../assets/images/svg/search-black.svg';
 import search_white       from '../assets/images/svg/search-white.svg';
 
-import plus      from '../assets/images/svg/plus.svg';
+import plus               from '../assets/images/svg/plus.svg';
 
 import agree_white        from '../assets/images/svg/agree-white.svg';
 import disagree_white     from '../assets/images/svg/disagree-white.svg';
@@ -40,7 +38,12 @@ import warning            from '../assets/images/svg/warning.svg';
 import bell               from '../assets/images/svg/bell.svg';
 import close_blue         from '../assets/images/svg/close-blue.svg';
 
-import sign         from '../assets/images/svg/sign.svg';
+import sign               from '../assets/images/svg/sign.svg';
+
+import status_complete    from '../assets/images/svg/status-complete.svg';
+import status_incomplete  from '../assets/images/svg/status-incomplete.svg';
+import status_working     from '../assets/images/svg/status-working.svg';
+import status_userupload  from '../assets/images/svg/manage-accounts.svg';
 
 export default {
     logo,
@@ -62,8 +65,6 @@ export default {
     logo_transparent,
     close,
     arrow_right,
-    agree,
-    disagree,
     arrow_left_circle,
     radio_on,
     radio_off,
@@ -86,4 +87,9 @@ export default {
     close_blue,
 
     sign,
+
+    status_complete,
+    status_incomplete,
+    status_working,
+    status_userupload,
 }

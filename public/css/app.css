@@ -10350,8 +10350,16 @@ table.mytable td {
   text-align: left;
 }
 
+.roomfiles-page table.filestable td.type {
+  text-transform: uppercase;
+}
+
 .roomfiles-page table.filestable img {
   width: 20px;
+}
+
+.roomfiles-page table.filestable input {
+  width: 20px !important;
 }
 
 .roomfiles-page .footer img {

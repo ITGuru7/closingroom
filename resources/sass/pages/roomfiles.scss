@@ -38,8 +38,14 @@
         td.title {
             text-align: left ;
         }
+        td.type {
+            text-transform: uppercase ;
+        }
         img {
             width: 20px ;
+        }
+        input {
+            width: 20px !important ;
         }
     }
 

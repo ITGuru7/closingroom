@@ -47,54 +47,103 @@ class RoomFilesPage extends Component {
     )
   }
 
-  renderDocument = (key, document) => {
+  renderLegalDocument = (key, document) => {
+    if (!document) {
+      return <tr></tr>
+    }
     return (
-      <div key={key} className="document-block d-flex justify-content-between align-items-center pl-5">
-        <div className="title">{document.title}</div>
-        <div className="actions d-flex justify-content-between align-items-center">
-          <div className="download mr-3">
-            <img src={assets.radio_on}/>
-          </div>
-          <div className="agree mr-3">
-            <img src={assets.disagree}/>
-          </div>
-          <div className="download mr-3">
-            <img src={assets.download_black}/>
-          </div>
-          <button className="open text-center text-white"
-            onClick={(event)=>{}}
-          >
-            OPEN
+      <tr key={key}>
+        <td className="title">{document.title}</td>
+        <td className="type">{document.type}</td>
+        <td>
+          <img src={assets.status_incomplete}/> Incomplete
+        </td>
+        <td>
+          <input type="checkbox" defaultChecked={true}/>
+        </td>
+        <td>{functions.getFormattedDate(new Date("02/01/2019"))}</td>
+        <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
+        <td>
+          <img src={assets.download_white}/>
+        </td>
+        <td>
+          <button className="button button-md button-lightgreen">
+            <img src={assets.sign} className="mr-3"/>
+            Fill &amp; Sign
           </button>
-        </div>
-      </div>
+        </td>
+        <td></td>
+        <td className="action">
+          <img src={assets.search_black} className="mr-3"/>
+          Preview
+        </td>
+      </tr>
     )
   }
 
-  renderLevelDocuments = (level) => {
-    const {documents} = this.props
-
-    return Object.keys(documents).map(key => {
-      const document = documents[key]
-      if (document.level == level) {
-        return this.renderDocument(key, document)
-      }
-    });
+  renderUploadedDocument = (key, document, user) => {
+    if (!document) {
+      return <tr></tr>
+    }
+    return (
+      <tr key={key}>
+        <td className="title">{document.title}</td>
+        <td className="type">{document.type}</td>
+        <td>
+          <img src={assets.status_userupload}/> User Uploaded
+        </td>
+        <td>
+          <input type="checkbox" defaultChecked={true}/>
+        </td>
+        <td>{functions.getFormattedDate(new Date("02/01/2019"))}</td>
+        <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
+        <td>
+          <img src={assets.download_white}/>
+        </td>
+        <td></td>
+        <td>{user.displayname}</td>
+        <td className="action">
+          <img src={assets.search_black} className="mr-3"/>
+          Preview
+        </td>
+      </tr>
+    )
   }
 
   renderDocuments = () => {
-    return _.times(3, level => {
-      if (level > 0) {
-        return (
-          <div key={level}>
-            <div className="room-block d-flex align-items-center px-3">
-              Room Level {level} - General
-            </div>
-            { this.renderLevelDocuments(level) }
-          </div>
-       )
-      }
-    })
+    const { room, documents, users } = this.props
+    return (
+      <table className="table filestable text-center">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Document Type</th>
+            <th>Status</th>
+            <th>Active</th>
+            <th>Created</th>
+            <th>Last Edit</th>
+            <th>Download</th>
+            <th>Fill and Sign</th>
+            <th>Uploaded by</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(documents).map(key => (
+            this.renderLegalDocument(key, documents[key])
+          ))}
+          {Object.keys(room.users).map(user_key => {
+            let user = users[user_key]
+            let user_documents = room.users[user_key].documents
+            if (user_documents) {
+              return Object.keys(user_documents).map(key => (
+                this.renderUploadedDocument(key, user_documents[key], user)
+              ))
+            }
+          })}
+        </tbody>
+      </table>
+    )
   }
 
   onOpenUploadModal = () => {
@@ -120,27 +169,7 @@ class RoomFilesPage extends Component {
         <RoomHeader room={room}/>
         {this.renderHeader()}
         <div className="page-content flex-grow-1 d-flex flex-column">
-          <table className="table filestable text-center">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Status</th>
-                <th>Active</th>
-                <th>Created</th>
-                <th>Last Edit</th>
-                <th>Download</th>
-                <th>Fill and Sign</th>
-                <th></th>
-              </tr>
-            </thead>
-            { !!documents &&
-              <tbody>
-                {Object.keys(documents).map(key => (
-                  <DocumentRow key={key} document={documents[key]}/>
-                ))}
-              </tbody>
-            }
-          </table>
+          {this.renderDocuments()}
           <div className="footer d-flex flex-column mt-auto mb-3 ml-4">
             <button className="button button-md mb-3"
               onClick={(event) => this.onOpenUploadModal()}
@@ -160,53 +189,12 @@ class RoomFilesPage extends Component {
   }
 }
 
-class DocumentRow extends Component {
-
-  state = {
-    document: null,
-  };
-
-  render() {
-    const { document } = this.props
-
-    if (!(!!document)) {
-      return <tr></tr>
-    }
-
-    return (
-      <tr>
-        <td className="title">{document.title}</td>
-        <td>
-          <img src={assets.disagree}/> Incomplete
-        </td>
-        <td>
-          <input type="checkbox" defaultChecked={true}/>
-        </td>
-        <td>{functions.getFormattedDate(new Date("02/01/2019"))}</td>
-        <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
-        <td>
-          <img src={assets.download_white}/>
-        </td>
-        <td>
-          <button className="button button-md button-lightgreen">
-            <img src={assets.sign} className="mr-3"/>
-            Fill &amp; Sign
-          </button>
-        </td>
-        <td className="action">
-          <img src={assets.search_black} className="mr-3"/>
-          Preview
-        </td>
-      </tr>
-    )
-  }
-}
-
-const mapStateToProps = ({ authUser, room, documents }) => {
+const mapStateToProps = ({ authUser, room, documents, users }) => {
   return {
     authUser,
     room,
     documents,
+    users,
   };
 };
 
