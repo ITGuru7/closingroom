@@ -9578,6 +9578,11 @@ button.button-green {
   background-color: #009444;
 }
 
+button.button-lightgreen {
+  color: white;
+  background-color: #39b54a;
+}
+
 button.button-orange {
   color: white;
   background-color: #f15a29;
@@ -9631,6 +9636,40 @@ table.mytable td {
 }
 
 .header-blue .title {
+  color: #183863;
+}
+
+.room-header {
+  flex: 0 0 200px;
+  border-bottom: 1px solid #231f20;
+}
+
+.room-header .info-block {
+  flex: 0 0 300px;
+  border-right: 1px solid #231f20;
+}
+
+.room-header .info-block table th {
+  color: #183863;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.room-header .info-block table td {
+  color: #231f20;
+}
+
+.room-header .title-block .title {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2rem;
+}
+
+.room-header .title-block .room-id {
+  font-size: 1.2rem;
+}
+
+.room-header .title-block div {
   color: #183863;
 }
 
@@ -10032,40 +10071,6 @@ table.mytable td {
   color: #58595b;
 }
 
-.room-page .room-header {
-  flex: 0 0 200px;
-  border-bottom: 1px solid #231f20;
-}
-
-.room-page .room-header .info-block {
-  flex: 0 0 300px;
-  border-right: 1px solid #231f20;
-}
-
-.room-page .room-header .info-block table th {
-  color: #183863;
-  font-size: 1.2rem;
-  text-decoration: underline;
-}
-
-.room-page .room-header .info-block table td {
-  color: #231f20;
-}
-
-.room-page .room-header .title-block .title {
-  font-size: 2rem;
-  font-weight: bold;
-  line-height: 2rem;
-}
-
-.room-page .room-header .title-block .room-id {
-  font-size: 1.2rem;
-}
-
-.room-page .room-header .title-block div {
-  color: #183863;
-}
-
 .room-page .page-content .userlist-panel {
   flex: 0 0 300px;
   border-right: 1px solid #231f20;
@@ -10303,67 +10308,61 @@ table.mytable td {
   width: 20px;
 }
 
-.room-page .page-content .viewfiles-panel .header {
+.roomfiles-page .header {
   background-color: #183863;
 }
 
-.room-page .page-content .viewfiles-panel .header:hover {
+.roomfiles-page .header:hover {
   cursor: pointer;
 }
 
-.room-page .page-content .viewfiles-panel .header .back img {
+.roomfiles-page .header .back img {
   width: 30px;
 }
 
-.room-page .page-content .viewfiles-panel .header .back span {
+.roomfiles-page .header .back span {
   color: white;
   font-size: 1.5rem;
 }
 
-.room-page .page-content .viewfiles-panel .header .title {
+.roomfiles-page .header .title {
   color: white;
   font-size: 1.5rem;
 }
 
-.room-page .page-content .viewfiles-panel .documents-table .head {
-  height: 50px;
-  background-color: #817a68;
+.roomfiles-page table.filestable th {
+  padding: 0;
+  line-height: 2rem;
+  text-transform: uppercase;
 }
 
-.room-page .page-content .viewfiles-panel .documents-table .head div {
-  font-size: 1rem;
+.roomfiles-page table.filestable th,
+.roomfiles-page table.filestable td {
+  border: 1px solid #e6e6e6;
 }
 
-.room-page .page-content .viewfiles-panel .documents-table .body .room-block {
-  height: 40px;
-  background-color: #c2b59b;
+.roomfiles-page table.filestable td {
+  padding: 0.3rem 2rem;
+  vertical-align: middle;
 }
 
-.room-page .page-content .viewfiles-panel .documents-table .body .document-block {
-  height: 40px;
+.roomfiles-page table.filestable td.title {
+  text-align: left;
 }
 
-.room-page .page-content .viewfiles-panel .documents-table .body .document-block .actions img {
+.roomfiles-page table.filestable img {
   width: 20px;
 }
 
-.room-page .page-content .viewfiles-panel .documents-table .body .document-block .actions .open {
-  width: 80px;
-  height: 40px;
-  background-color: #808285;
-  border: none;
-}
-
-.room-page .page-content .viewfiles-panel .documents-table .body .document-block:nth-child(odd) {
-  background-color: #d1d3d4;
-}
-
-.room-page .page-content .viewfiles-panel .documents-table .body .document-block:nth-child(even) {
-  background-color: #f1f2f2;
-}
-
-.room-page .page-content .viewfiles-panel .footer img {
+.roomfiles-page .footer img {
   width: 20px;
+}
+
+.roomfiles-page .footer button {
+  width: 150px;
+  color: #183863;
+  background: white;
+  border: 1px solid #183863;
 }
 
 .accounts-page .page-content .header {

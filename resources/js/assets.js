@@ -40,6 +40,8 @@ import warning            from '../assets/images/svg/warning.svg';
 import bell               from '../assets/images/svg/bell.svg';
 import close_blue         from '../assets/images/svg/close-blue.svg';
 
+import sign         from '../assets/images/svg/sign.svg';
+
 export default {
     logo,
     logout,
@@ -82,4 +84,6 @@ export default {
 
     bell,
     close_blue,
+
+    sign,
 }

@@ -89,7 +89,7 @@ class SignUpForm extends Component {
       timezones.push(timezone)
     })
     this.setState({timezones})
-    console.log(moment.tz.zone('America/Merida'))
+    console.log(moment.tz.zone('Atlantic/Jan_Mayen'))
   }
 
   render() {

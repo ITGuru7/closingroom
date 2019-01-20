@@ -11,12 +11,10 @@ import RoomHeader from '../Header/RoomHeader';
 import UserList from './UserList';
 import Messages from './Messages';
 import Tasks from './Tasks';
-import ViewFiles from './ViewFiles';
 
 const INITIAL_STATE = {
   users: null,
   receiver_id: null,
-  viewFiles: false,
 }
 
 class RoomPage extends Component {
@@ -66,13 +64,9 @@ class RoomPage extends Component {
     db.doInviteUserToRoom(room_id, user_id)
   }
 
-  handleViewFiles = (viewFiles) => {
-    this.setState({viewFiles})
-  }
-
   render() {
     const { authUser, room } = this.props
-    const { users, receiver_id, viewFiles } = this.state
+    const { users, receiver_id } = this.state
 
     if (!room || !users) {
       return <div></div>
@@ -80,17 +74,13 @@ class RoomPage extends Component {
 
     return (
       <div className="room-page d-flex flex-column h-100">
-        <RoomHeader/>
+        <RoomHeader room={room}/>
         <div className="page-content flex-grow-1 d-flex flex-row">
           <UserList users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
-          { !viewFiles ?
-            <div className="flex-grow-1 d-flex flex-row">
-              <Messages users={users} receiver_id={receiver_id}/>
-              <Tasks user_id={users[authUser.uid].id} handleViewFiles={this.handleViewFiles}/>
-            </div>
-          :
-            <ViewFiles user_id={users[authUser.uid].id} handleViewFiles={this.handleViewFiles}/>
-          }
+          <div className="flex-grow-1 d-flex flex-row">
+            <Messages users={users} receiver_id={receiver_id}/>
+            <Tasks user_id={users[authUser.uid].id}/>
+          </div>
         </div>
       </div>
     )

@@ -1,6 +1,4 @@
 
-$header-height: 100px ;
-
 .header-default {
     flex: 0 0 $header-height ;
     border-bottom: 1px solid $border-default ;
@@ -15,5 +13,39 @@ $header-height: 100px ;
 
     .title {
         color: $dark-blue ;
+    }
+}
+
+.room-header {
+    flex: 0 0 $roomheader-height ;
+    border-bottom: 1px solid $black ;
+
+    .info-block {
+        flex: 0 0 $left-panel-width ;
+        border-right: 1px solid $black ;
+
+        table {
+            th {
+                color: $dark-blue ;
+                font-size: 1.2rem ;
+                text-decoration: underline ;
+            }
+            td {
+                color: $black ;
+            }
+        }
+    }
+    .title-block {
+        .title {
+            font-size: 2rem ;
+            font-weight: bold ;
+            line-height: 2rem ;
+        }
+        .room-id {
+            font-size: 1.2rem ;
+        }
+        div {
+            color: $dark-blue ;
+        }
     }
 }

@@ -5,6 +5,7 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const ACCOUNT_SETTINGS = '/account';
 export const MY_ROOMS = '/myrooms';
 export const ROOM = '/rooms/:room_id';
+export const ROOM_FILES = '/room/:room_id/files';
 export const CREATE_ROOM = '/room/create';
 export const KYC = '/account/KYC';
 export const ROOMS = '/rooms';

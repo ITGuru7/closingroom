@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from "react-redux";
 
-import { getFormattedDate } from '../../functions';
+import * as functions from '../../functions';
 
 const RoomHeader = (props) => {
   const {room} = props;
@@ -16,7 +15,7 @@ const RoomHeader = (props) => {
       <tbody>
         <tr>
           <td>Room ID:</td>
-          <td>{room.id}</td>
+          <td>{functions.getFormattedID(room.id, 7)}</td>
         </tr>
         <tr>
           <td>Room Level:</td>
@@ -28,11 +27,11 @@ const RoomHeader = (props) => {
         </tr>
         <tr>
           <td>Creation Date:</td>
-          <td>{getFormattedDate(new Date(room.create_date))}</td>
+          <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         </tr>
         <tr>
           <td>Expires:</td>
-          <td>{getFormattedDate(new Date(room.expire_date))}</td>
+          <td>{functions.getFormattedDate(new Date(room.expire_date))}</td>
         </tr>
       </tbody>
     </table>
@@ -41,7 +40,7 @@ const RoomHeader = (props) => {
   const renderTitle = () => (
     <div className="text-center">
       <div className="title">MNM ClosingRoom</div>
-      <div className="room-id">{room.id}</div>
+      <div className="room-id">{functions.getFormattedID(room.id, 7)}</div>
     </div>
   );
 
@@ -57,10 +56,4 @@ const RoomHeader = (props) => {
   )
 };
 
-const mapStateToProps = ({ room }) => {
-  return {
-    room,
-  };
-};
-
-export default connect(mapStateToProps)(RoomHeader);
+export default RoomHeader;

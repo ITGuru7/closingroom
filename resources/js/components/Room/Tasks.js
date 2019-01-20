@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
 import assets from '../../assets';
 import _ from 'lodash';
@@ -61,25 +62,20 @@ const Tasks = (props) => {
     })
   }
 
-  const viewFiles = () => {
-    const {handleViewFiles} = props
-    handleViewFiles(true)
-  }
-
   return (
     <div className="tasks-panel d-flex flex-column align-items-stretch">
       <div className="tasks-block">
         {renderDocuments()}
       </div>
       <div className="view-files align-self-center mt-5">
-        <button className="button button-md button-grey d-flex flex-row py-0 pr-0"
-          onClick={(event) => viewFiles()}
-        >
-          <span>View Files</span>
-          <div className="arrow-right px-1 d-flex justify-content-center align-items-center">
-            <img src={assets.arrow_right}/>
-          </div>
-        </button>
+        <Link to={`/room/${props.room.room_id}/files`}>
+          <button className="button button-md button-grey d-flex flex-row py-0 pr-0">
+            <span>View Files</span>
+            <div className="arrow-right px-1 d-flex justify-content-center align-items-center">
+              <img src={assets.arrow_right}/>
+            </div>
+          </button>
+        </Link>
       </div>
       <div className="upload-file-block align-self-center mt-auto mb-3">
         <button className="button button-md button-red mr-2"

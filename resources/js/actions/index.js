@@ -19,7 +19,7 @@ export const fetchAuthUser = () => dispatch => {
   });
 };
 
-export const fetchUsers = () => async dispatch => {
+export const fetchUsers = () => dispatch => {
   firebaseDB.ref('users').on("value", snapshot => {
     let users = snapshot.val()
     Object.keys(users).map(key => {
@@ -32,7 +32,7 @@ export const fetchUsers = () => async dispatch => {
   });
 };
 
-export const fetchUser = (user_id) => async dispatch => {
+export const fetchUser = (user_id) => dispatch => {
   firebaseDB.ref(`users/${user_id}`).on("value", snapshot => {
     let user = snapshot.val()
     user.uid = user_id
@@ -43,7 +43,7 @@ export const fetchUser = (user_id) => async dispatch => {
   });
 };
 
-export const fetchRooms = () => async dispatch => {
+export const fetchRooms = () => dispatch => {
   firebaseDB.ref('rooms').on("value", snapshot => {
     let rooms = snapshot.val()
     Object.keys(rooms).map(key => {
@@ -56,7 +56,7 @@ export const fetchRooms = () => async dispatch => {
   });
 };
 
-export const fetchRoom = (room_id) => async dispatch => {
+export const fetchRoom = (room_id) => dispatch => {
   firebaseDB.ref(`rooms/${room_id}`).on("value", snapshot => {
     let room = snapshot.val()
     room.room_id = room_id
@@ -67,7 +67,7 @@ export const fetchRoom = (room_id) => async dispatch => {
   });
 };
 
-export const fetchRoomMessages = (room_id) => async dispatch => {
+export const fetchRoomMessages = (room_id) => dispatch => {
   firebaseDB.ref(`rooms/${room_id}/messages`).on("value", snapshot => {
     dispatch({
       type: "FETCH_ROOM_MESSAGES",
@@ -76,7 +76,7 @@ export const fetchRoomMessages = (room_id) => async dispatch => {
   });
 };
 
-export const fetchRoomUsers = (room_id) => async dispatch => {
+export const fetchRoomUsers = (room_id) => dispatch => {
   firebaseDB.ref(`rooms/${room_id}/users`).on("value", snapshot => {
     dispatch({
       type: "FETCH_ROOM_USERS",
@@ -85,7 +85,7 @@ export const fetchRoomUsers = (room_id) => async dispatch => {
   });
 };
 
-export const fetchDocuments = () => async dispatch => {
+export const fetchDocuments = () => dispatch => {
   firebaseDB.ref('documents').on("value", snapshot => {
     dispatch({
       type: "FETCH_DOCUMENTS",
