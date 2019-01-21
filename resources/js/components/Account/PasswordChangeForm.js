@@ -16,10 +16,21 @@ class PasswordChangeForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = event => {
+  onUpdatePassword = event => {
     event.preventDefault();
 
-    const { passwordOld, passwordOne } = this.state;
+    const { passwordOld, passwordOne, passwordTwo, error } = this.state;
+
+    if (passwordOld === '' || passwordOne === '') {
+      alert('Input password correctly')
+      $('#passwordOld').focus()
+      return
+    }
+    if (passwordOne !== passwordTwo) {
+      alert('Password not match')
+      $('#passwordOne').focus()
+      return
+    }
 
     // auth
     //   .doCheckPassword(passwordOld)
@@ -27,9 +38,11 @@ class PasswordChangeForm extends Component {
         auth
           .doPasswordUpdate(passwordOne)
           .then(() => {
+            alert('Password changed successfully')
             this.setState(INITIAL_STATE)
           })
           .catch(error => {
+            alert(error)
             this.setState({ error });
           });
       // })
@@ -45,14 +58,14 @@ class PasswordChangeForm extends Component {
   render() {
     const { passwordOld, passwordOne, passwordTwo, error } = this.state;
 
-    const isInvalid =
-      passwordOld === '' ||
-      passwordOne === '' ||
-      passwordOne !== passwordTwo;
+    // const isInvalid =
+    //   passwordOld === '' ||
+    //   passwordOne === '' ||
+    //   passwordOne !== passwordTwo;
 
     return (
-      <form onSubmit={this.onSubmit} className="form-group">
-        <div className="row">
+      <div>
+        <div className="row mb-2">
           <div className="col-3">
             <label htmlFor="passwordOld">Current Password</label>
             <input
@@ -83,14 +96,16 @@ class PasswordChangeForm extends Component {
               type="password"
             />
           </div>
-          {error && <p>{error.message}</p>}
         </div>
+        {error && <p className="alert alert-light">{error.message}</p>}
         <div className="mt-2">
-          <button disabled={isInvalid} type="submit" className="button-blue">
+          <button type="button" className="button-blue"
+            onClick={this.onUpdatePassword}
+          >
             Save
           </button>
         </div>
-      </form>
+      </div>
     );
   }
 }

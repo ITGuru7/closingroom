@@ -65,12 +65,19 @@ class ProfileChangeForm extends Component {
     const { authUser } = this.props;
     const { firstname, lastname, displayname, email } = this.state;
 
+    // if (firstname === '' || lastname === '' || displayname === '' || email === '') {
+    //   alert('Input all fields correctly')
+    //   return
+    // }
+
     auth
       .doEmailUpdate(email)
       .then(() => {
         db.doUserProfileUpdate(authUser.uid, email, firstname, lastname, displayname)
+        alert('Account updated successfully')
       })
       .catch(error => {
+        alert(error)
         this.setState({ error });
       });
 
@@ -180,14 +187,14 @@ class ProfileChangeForm extends Component {
       return <div></div>
     }
 
-    const isInvalid =
-      firstname === '' ||
-      lastname === '' ||
-      displayname === '' ||
-      email === '';
+    // const isInvalid =
+    //   firstname === '' ||
+    //   lastname === '' ||
+    //   displayname === '' ||
+    //   email === '';
 
     return (
-      <div className="">
+      <form onSubmit={this.onSubmit} className="form-group">
         <div className="title mb-4">
           Account
           <span className="ml-2">[ID:{getFormattedID(id, 5)}]</span>
@@ -209,6 +216,7 @@ class ProfileChangeForm extends Component {
                 value={firstname}
                 onChange={this.onChange}
                 type="text"
+                required
               />
             </div>
             <div className="col-3">
@@ -219,6 +227,7 @@ class ProfileChangeForm extends Component {
                 value={lastname}
                 onChange={this.onChange}
                 type="text"
+                required
               />
             </div>
             <div className="col-3">
@@ -229,6 +238,7 @@ class ProfileChangeForm extends Component {
                 value={displayname}
                 onChange={this.onChange}
                 type="text"
+                required
               />
             </div>
             <div className="col-3">
@@ -239,10 +249,11 @@ class ProfileChangeForm extends Component {
                 value={email}
                 onChange={this.onChange}
                 type="email"
+                required
               />
             </div>
           </div>
-          {error && <p>{error.message}</p>}
+          {error && <p className="alert alert-light">{error.message}</p>}
         </div>
         <div className="password-block">
           <div className="subtitle">
@@ -251,13 +262,11 @@ class ProfileChangeForm extends Component {
           <PasswordChangeForm />
         </div>
         <div className="mt-5 d-flex justify-content-center">
-          <button disabled={isInvalid} className="button-md button-red"
-            onClick={this.onSubmit}
-          >
+          <button type="submit" className="button-md button-red">
             Save Changes
           </button>
         </div>
-      </div>
+      </form>
     );
   }
 }

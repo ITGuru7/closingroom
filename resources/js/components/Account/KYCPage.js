@@ -35,7 +35,20 @@ class KYCForm extends Component {
     event.preventDefault();
 
     const { authUser, history } = this.props;
-    const { firstname, lastname, occupation, passport, address, passport_file, address_file } = this.state;
+    const { firstname, lastname, occupation, passport, address, passport_file, address_file } = this.state
+
+    // if (firstname === '' || lastname === '' || occupation === '' || passport === '' || address === '') {
+    //   alert('Input all fields correctly')
+    //   return
+    // }
+    if (passport_file === null) {
+      alert('Passport file not uploaded yet')
+      return
+    }
+    if (address_file === null) {
+      alert('Address file not uploaded yet')
+      return
+    }
 
     db.doUserKYC(authUser.uid, firstname, lastname, occupation, passport, address)
 
@@ -51,7 +64,9 @@ class KYCForm extends Component {
       })
     })
 
-    history.push(routes.HOME);
+    alert('Your documents have been submitted and will be reviewed shortly.')
+
+    history.push(routes.HOME)
   };
 
   onChange = event => {
@@ -63,25 +78,16 @@ class KYCForm extends Component {
   };
 
   render() {
-    const {
-      firstname,
-      lastname,
-      occupation,
-      passport,
-      address,
-      passport_file,
-      address_file,
-      error,
-    } = this.state;
+    const { firstname, lastname, occupation, passport, address, passport_file, address_file, error } = this.state;
 
-    const isInvalid =
-      firstname === '' ||
-      lastname === '' ||
-      occupation === '' ||
-      passport === '' ||
-      address === '' ||
-      passport_file === null ||
-      address_file === null;
+    // const isInvalid =
+    //   firstname === '' ||
+    //   lastname === '' ||
+    //   occupation === '' ||
+    //   passport === '' ||
+    //   address === '' ||
+    //   passport_file === null ||
+    //   address_file === null;
 
     return (
       <form onSubmit={this.onSubmit} className="form-group">
@@ -96,6 +102,7 @@ class KYCForm extends Component {
               value={firstname}
               onChange={this.onChange}
               type="text"
+              required
             />
           </div>
         </div>
@@ -110,6 +117,7 @@ class KYCForm extends Component {
               value={lastname}
               onChange={this.onChange}
               type="text"
+              required
             />
           </div>
         </div>
@@ -124,6 +132,7 @@ class KYCForm extends Component {
               value={occupation}
               onChange={this.onChange}
               type="text"
+              required
             />
           </div>
         </div>
@@ -138,6 +147,7 @@ class KYCForm extends Component {
               value={passport}
               onChange={this.onChange}
               type="text"
+              required
             />
           </div>
         </div>
@@ -152,6 +162,7 @@ class KYCForm extends Component {
               value={address}
               onChange={this.onChange}
               type="text"
+              required
             />
           </div>
         </div>
@@ -202,12 +213,12 @@ class KYCForm extends Component {
           className="d-none"
         />
         <div className="mt-5">
-          <button disabled={isInvalid} type="submit" className="button-lg button-red">
+          <button type="submit" className="button-lg button-red">
             Submit for Review
           </button>
         </div>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="alert alert-light">{error.message}</p>}
       </form>
     )
   }

@@ -55,6 +55,17 @@ class CreateRoomForm extends Component {
     const { authUser } = this.props;
     const { roomname, timelimit, email_1, email_2, email_3, email_4, general_details } = this.state;
 
+    if (roomname === '') {
+      alert('Input roomname')
+      $('#roomname').focus()
+      return
+    }
+    if (!(timelimit > 0)) {
+      alert('Input valid timelimit (>0)')
+      $('#timelimit').focus()
+      return
+    }
+
     const { history } = this.props;
 
     db.doCreateRoom(authUser.uid, roomname, 1, timelimit)
@@ -92,15 +103,11 @@ class CreateRoomForm extends Component {
   )
 
   render() {
-    const {
-      roomname,
-      timelimit,
-      error,
-    } = this.state;
+    const { roomname, timelimit, error } = this.state;
 
-    const isInvalid =
-      roomname === '' ||
-      !(timelimit > 0);
+    // const isInvalid =
+    //   roomname === '' ||
+    //   !(timelimit > 0);
 
     return (
       <form onSubmit={this.onSubmit} className="form-group">
@@ -113,13 +120,14 @@ class CreateRoomForm extends Component {
           <div className="col-6">
             <div className="row">
               <div className="col-6">
-                <label htmlFor="firstname" className="label">
+                <label htmlFor="roomname" className="label mandatory">
                   Room Nickname
                   <span> (only you will see this):</span>
                 </label>
               </div>
               <div className="col-6">
                 <input
+                  id="roomname"
                   name="roomname"
                   value={this.state['roomname']}
                   onChange={this.onChange}
@@ -129,7 +137,21 @@ class CreateRoomForm extends Component {
                 />
               </div>
             </div>
-            {this.renderField('Time Limit(days):', 'number', 'timelimit')}
+            <div className="row">
+              <div className="col-6">
+                <label htmlFor="timelimit" className="label mandatory">Time Limit(days):</label>
+              </div>
+              <div className="col-6">
+                <input
+                  id="timelimit"
+                  name="timelimit"
+                  value={timelimit}
+                  onChange={this.onChange}
+                  type="number"
+                  required
+                />
+              </div>
+            </div>
           </div>
           <div className="col-6">
             {this.renderField('Invite users by email:', 'email', 'email_1')}
@@ -174,12 +196,12 @@ class CreateRoomForm extends Component {
         </div>
 
         <div className="text-center">
-          <button disabled={isInvalid} type="submit" className="button button-md button-red">
+          <button type="submit" className="button button-md button-red">
             Create
           </button>
         </div>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="alert alert-light">{error.message}</p>}
       </form>
     );
   }

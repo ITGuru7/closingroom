@@ -9622,6 +9622,10 @@ table.mytable td {
   vertical-align: middle;
 }
 
+.alert.alert-light {
+  color: black;
+}
+
 .header-default {
   flex: 0 0 100px;
   border-bottom: 1px solid #231f20;
@@ -10062,13 +10066,18 @@ table.mytable td {
   font-size: 0.8rem;
 }
 
-.createroom-page .page-content .form-body label {
+.createroom-page .page-content form label {
   color: #231f20;
 }
 
-.createroom-page .page-content .form-body span {
+.createroom-page .page-content form span {
   font-size: 0.8rem;
   color: #58595b;
+}
+
+.createroom-page .page-content form .mandatory::after {
+  content: "*";
+  color: red;
 }
 
 .room-page .page-content .userlist-panel {

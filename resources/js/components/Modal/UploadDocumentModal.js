@@ -188,6 +188,7 @@ class UploadDocumentModal extends Component {
                         type="text"
                         value={issued}
                         onChange={this.onChange}
+                        required
                       />
                     </div>
                   </div>
@@ -229,23 +230,12 @@ class UploadDocumentModal extends Component {
                   disabled={isInvalid}
                   onClick={(event)=>{this.onDone()}}
                 >
-                  Done
-                </button>
-                <button type="reset" className="button button-md button-orange border-0 mx-3"
-                  onClick={(event)=>{this.onReset()}}
-                >
-                  Reset
+                  Upload
                 </button>
                 <button type="button" className="button button-md button-red border-0 mx-3"
                   onClick={(event)=>{this.closeDialog()}}
                 >
                   Cancel
-                </button>
-                <button type="button" className="button button-md button-green border-0 mx-3"
-                  onClick={(event)=>{this.onUpload()}}
-                  disabled={isInvalid}
-                >
-                  Save and Upload another
                 </button>
               </div>
             </div>

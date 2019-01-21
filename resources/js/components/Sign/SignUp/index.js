@@ -233,7 +233,7 @@ class SignUpForm extends Component {
           </button>
         </div>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="alert alert-light">{error.message}</p>}
       </form>
     );
   }

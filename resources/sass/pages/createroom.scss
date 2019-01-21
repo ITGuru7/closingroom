@@ -10,13 +10,17 @@
             }
         }
 
-        .form-body {
+        form {
             label {
                 color: $black ;
             }
             span {
                 font-size: .8rem ;
                 color: $darker-grey ;
+            }
+            .mandatory::after {
+                content: "*" ;
+                color: red ;
             }
         }
 

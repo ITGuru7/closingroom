@@ -15,7 +15,7 @@ const SignInPage = ({ history }) => (
         ClosingRoom User Login
       </div>
       <SignInForm history={history} />
-      <PasswordForgetLink />
+      {/* <PasswordForgetLink /> */}
     </div>
     <SignUpLink />
   </div>
@@ -35,6 +35,8 @@ class SignInForm extends Component {
   }
 
   onSubmit = event => {
+    event.preventDefault()
+
     const { email, password } = this.state;
 
     const { history } = this.props;
@@ -47,6 +49,7 @@ class SignInForm extends Component {
         history.push(routes.HOME);
       })
       .catch(error => {
+        alert(error)
         this.setState({ error });
       });
 
@@ -60,7 +63,7 @@ class SignInForm extends Component {
   render() {
     const { email, password, error } = this.state;
 
-    const isInvalid = password === '' || email === '';
+    // const isInvalid = password === '' || email === '';
 
     return (
       <form onSubmit={this.onSubmit} className="signin-form">
@@ -76,6 +79,7 @@ class SignInForm extends Component {
               onChange={this.onChange}
               type="text"
               placeholder="Email Address"
+              required
             />
           </div>
         </div>
@@ -91,16 +95,17 @@ class SignInForm extends Component {
               onChange={this.onChange}
               type="password"
               placeholder="Password"
+              required
             />
           </div>
         </div>
-        <div className="mt-2">
-          <button disabled={isInvalid} type="submit" className="button-md button-grey">
+        <div className="my-2">
+          <button type="submit" className="button-md button-grey">
             Login
           </button>
         </div>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="alert alert-light">{error.message}</p>}
       </form>
     );
   }
