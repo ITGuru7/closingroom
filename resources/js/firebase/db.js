@@ -1,5 +1,8 @@
 import { db } from './firebase';
 
+import * as actions from "../actions";
+import {ROLES} from '../constants/roles';
+
 // User API
 
 export const doCreateUser = (id, type, firstname, lastname, displayname, email, timezone) => {
@@ -38,7 +41,7 @@ export const onceGetRoom = (room_id) => (
   db.ref(`rooms/${room_id}`).once('value')
 )
 
-export const doCreateRoom = (user_id, roomname, level, timelimit) => {
+export const doCreateRoom = (user, roomname, level, timelimit, invites, general_details, users) => {
   db.ref('rooms').once('value')
   .then(function(snapshot) {
     let create_date = Date.now()
@@ -46,7 +49,7 @@ export const doCreateRoom = (user_id, roomname, level, timelimit) => {
     expire_date.setDate(expire_date.getDate() + parseInt(timelimit))
     expire_date = Date.parse(expire_date)
 
-    const room = db.ref('rooms').push({
+    let room = db.ref('rooms').push({
       id: snapshot.numChildren()+1,
       roomname,
       level,
@@ -54,11 +57,23 @@ export const doCreateRoom = (user_id, roomname, level, timelimit) => {
       create_date,
       expire_date,
     });
-    room.child(`users/${user_id}`).set({
+    room.child(`users/${user.uid}`).set({
       roomname,
     })
 
-    doCreateMessage(room.key, user_id, null, 'Welcome')
+    doCreateMessage(room.key, user.uid, null, 'Welcome')
+
+    let room_id = room.key
+    onceGetRoom(room_id)
+    .then(function(snapshot){
+      room = snapshot.val()
+      room.room_id = room_id
+      _.forEach(invites, function(invite, index){
+        if (invite.email) {
+          actions.doSendInviteEmail(room, user, invite.email, ROLES[invite.role].role_label, users)
+        }
+      })
+    })
   })
 }
 

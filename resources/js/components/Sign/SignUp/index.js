@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+
+import { connect } from "react-redux";
 import { Link, withRouter } from 'react-router-dom';
 
 import SignupHeader from '../../Header/SignupHeader';
 
 import { auth, db } from '../../../firebase';
 import * as routes from '../../../constants/routes';
+
+import * as actions from "../../../actions";
 
 import moment from 'moment-timezone';
 
@@ -53,6 +57,8 @@ class SignUpForm extends Component {
           .then(() => {
             // this.setState({ ...INITIAL_STATE });
 
+            actions.doEnterInvitedRooms(authUser.user.uid, email)
+
             history.push(routes.HOME);
           } )
           .catch(error => {
@@ -89,22 +95,10 @@ class SignUpForm extends Component {
       timezones.push(timezone)
     })
     this.setState({timezones})
-    console.log(moment.tz.zone('Atlantic/Jan_Mayen'))
   }
 
   render() {
-    const {
-      type,
-      firstname,
-      lastname,
-      displayname,
-      email,
-      passwordOne,
-      passwordTwo,
-      timezones,
-      timezone,
-      error,
-    } = this.state;
+    const { type, firstname, lastname, displayname, email, passwordOne, passwordTwo, timezones, timezone, error } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
@@ -148,6 +142,7 @@ class SignUpForm extends Component {
               type="text"
               placeholder=""
               className="form-control"
+              required
             />
           </div>
           <div className="col-6 form-group text-left text-white">
@@ -160,6 +155,7 @@ class SignUpForm extends Component {
               type="text"
               placeholder=""
               className="form-control"
+              required
             />
           </div>
         </div>
@@ -173,6 +169,7 @@ class SignUpForm extends Component {
             type="text"
             placeholder=""
             className="form-control"
+            required
           />
         </div>
         <div className="form-group text-left text-white">
@@ -185,6 +182,7 @@ class SignUpForm extends Component {
             type="email"
             placeholder=""
             className="form-control"
+            required
           />
         </div>
         <div className="form-group text-left text-white">
@@ -197,6 +195,7 @@ class SignUpForm extends Component {
             type="password"
             placeholder=""
             className="form-control"
+            required
           />
         </div>
         <div className="form-group text-left text-white">
@@ -209,6 +208,7 @@ class SignUpForm extends Component {
             type="password"
             placeholder=""
             className="form-control"
+            required
           />
         </div>
         <div className="form-group text-left text-white">
@@ -228,7 +228,7 @@ class SignUpForm extends Component {
           }
         </div>
         <div className="mt-3">
-          <button disabled={isInvalid} type="submit" className="button-md button-red">
+          <button type="submit" className="button-md button-red">
             Register
           </button>
         </div>
@@ -250,6 +250,6 @@ const SignUpLink = () => (
   </div>
 );
 
-export default withRouter(SignUpPage);
-
 export { SignUpForm, SignUpLink };
+
+export default withRouter(connect(null, actions)(SignUpPage));

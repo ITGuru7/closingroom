@@ -1,52 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import axios from 'axios';
-
 import assets from '../../assets';
 
+import {ROLES} from '../../constants/roles';
 
-import {SERVER_URL} from '../../constants/urls';
-import { getFormattedID } from '../../functions';
+import * as actions from "../../actions";
 
 const INITIAL_STATE = {
   email: '',
   role: 0,
   showInviteDialog: false,
 }
-
-const ROLE = [
-  {
-    role_label: "Buyer Intermediary",
-  },
-  {
-    role_label: "Seller Intermediary",
-  },
-  {
-    role_label: "Buyer",
-  },
-  {
-    role_label: "Seller",
-  },
-  {
-    role_label: "Buyer Mandate",
-  },
-  {
-    role_label: "Seller Mandate",
-  },
-  {
-    role_label: "Buyer Lawyer",
-  },
-  {
-    role_label: "Seller Lawyer",
-  },
-  {
-    role_label: "Escrow Agent",
-  },
-  {
-    role_label: "OTHER",
-  },
-]
 
 class UserList extends Component {
   constructor(props) {
@@ -160,37 +125,13 @@ class UserList extends Component {
   onSendInvite = () => {
     const { authUser, users, room } = this.props
     const {email, role} = this.state
-
-    const sender_email = authUser.email
-    const receiver_email = email
-
     const user = users[authUser.uid]
-    const displayname = user.displayname
 
-    const room_id = getFormattedID(room.id, 6)
-
-    const participants = Object.keys(room.users).length
-    const link = `${SERVER_URL}/rooms/${room.room_id}`;
-
-    const url = `${SERVER_URL}/api/send_email?
-      sender_email=${sender_email}&
-      receiver_email=${receiver_email}&
-      displayname=${displayname}&
-      role=${ROLE[role].role_label}&
-      room_id=${room_id}&
-      participants=${participants}&
-      link=${link}
-    `;
-    console.log(url)
-    // return
-
-    axios.post(url)
+    actions.doSendInviteEmail(room, user, email, ROLES[role].role_label, users)
     .then(response => {
-      console.log(response.data)
       this.openAddUserSuccessModal()
     })
     .catch(error => {
-      console.log(error.response.data.error)
       this.closeModals()
     });
   }
@@ -237,7 +178,7 @@ class UserList extends Component {
                 onChange={this.onChange}
                 className="mr-2 w-75"
               >
-                { ROLE.map((role, index) => (
+                { ROLES.map((role, index) => (
                   <option key={index} value={index}>{role.role_label}</option>
                 ))}
               </select>
@@ -270,7 +211,7 @@ class UserList extends Component {
           </div>
           <div className="description mb-1">
             An invitation has been sent to ({email})<br/>
-            User Type: {ROLE[role].role_label}
+            User Type: {ROLES[role].role_label}
           </div>
         </div>
       </div>
@@ -315,4 +256,4 @@ const mapStateToProps = ({ authUser, room }) => {
   };
 };
 
-export default connect(mapStateToProps)(UserList);
+export default connect(mapStateToProps, actions)(UserList);
