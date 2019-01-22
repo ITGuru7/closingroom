@@ -7,7 +7,7 @@ import * as routes from '../../../constants/routes';
 const SignOutButton = () => {
   const doLogout = () => {
     auth.doSignOut();
-    window.location.href = routes.SIGN_IN;
+    window.location.href = routes.HOME;
   }
   return (
     <button
