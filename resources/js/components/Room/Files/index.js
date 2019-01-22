@@ -70,7 +70,10 @@ class RoomFilesPage extends Component {
         <td>{functions.getFormattedDate(new Date("02/01/2019"))}</td>
         <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
         <td>
-          <img src={assets.download_white}/>
+          <a href={document.url} download="myimage">
+          {/* <a href={document.url} download> */}
+            <img src={assets.download_white}/>
+          </a>
         </td>
         <td>
           <button className="button button-md button-lightgreen">
@@ -80,8 +83,10 @@ class RoomFilesPage extends Component {
         </td>
         <td></td>
         <td className="action">
-          <img src={assets.search_black} className="mr-3"/>
-          Preview
+          <a href={document.url} target='_blank'>
+            <img src={assets.search_black} className="mr-3"/>
+            Preview
+          </a>
         </td>
       </tr>
     )
@@ -104,13 +109,17 @@ class RoomFilesPage extends Component {
         <td>{functions.getFormattedDate(new Date("02/01/2019"))}</td>
         <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
         <td>
-          <img src={assets.download_white}/>
+          <a href={document.url} download>
+            <img src={assets.download_white}/>
+          </a>
         </td>
         <td></td>
         <td>{user.displayname}</td>
         <td className="action">
-          <img src={assets.search_black} className="mr-3"/>
-          Preview
+          <a href={document.url} target='_blank'>
+            <img src={assets.search_black} className="mr-3"/>
+            Preview
+            </a>
         </td>
       </tr>
     )

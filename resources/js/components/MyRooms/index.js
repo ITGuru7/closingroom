@@ -103,7 +103,7 @@ class MyRoomsPage extends Component {
               <tbody>
                 {Object.keys(rooms).map(key => {
                   let room = rooms[key]
-                  if (room.room_id.toString().includes(search) || room.roomname.toString().includes(search)) {
+                  if (room.room_id.toString().toLowerCase().includes(search.toLowerCase()) || room.user.roomname.toString().toLowerCase().includes(search.toLowerCase())) {
                     return <RoomRow key={key} room={room}/>
                   }
                 })}

@@ -86,7 +86,7 @@ class AccountsPage extends Component {
               <tbody>
                 {Object.keys(users).map(key => {
                   let user = users[key]
-                  if (user.firstname.toString().includes(search) || user.lastname.toString().includes(search)) {
+                  if (user.firstname.toString().toLowerCase().includes(search.toLowerCase()) || user.lastname.toString().toLowerCase().includes(search.toLowerCase())) {
                     return <UserRow key={key} user={user} rooms={rooms}/>
                   }
                 })}

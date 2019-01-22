@@ -100,13 +100,13 @@ class SignUpForm extends Component {
   render() {
     const { type, firstname, lastname, displayname, email, passwordOne, passwordTwo, timezones, timezone, error } = this.state;
 
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      firstname === '' ||
-      lastname === '' ||
-      displayname === '' ||
-      email === '';
+    // const isInvalid =
+    //   passwordOne !== passwordTwo ||
+    //   passwordOne === '' ||
+    //   firstname === '' ||
+    //   lastname === '' ||
+    //   displayname === '' ||
+    //   email === '';
 
     return (
       <form onSubmit={this.onSubmit} className="signup-form">

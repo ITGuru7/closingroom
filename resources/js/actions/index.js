@@ -103,7 +103,7 @@ export const fetchDocuments = () => dispatch => {
 export const doSendInviteEmail = (room, authUser, email, role, users) => {
   let invitedUser = null
   _.forEach(users, function(user, index){
-    if (email === user.email) {
+    if (email.toLowerCase() === user.email.toLowerCase()) {
       invitedUser = user
     }
   })
@@ -145,7 +145,7 @@ export const doEnterInvitedRooms = (user_id, email) => {
       if (invitedUsers) {
         Object.keys(invitedUsers).map(key => {
           let invitedUser = invitedUsers[key]
-          if (email === invitedUser.email) {
+          if (email.toLowerCase() === invitedUser.email.toLowerCase()) {
             firebaseDB.ref(`rooms/${room.room_id}/invitedUsers/${key}`).remove()
             firebaseDB.ref(`rooms/${room.room_id}/users/${user_id}`).set({
               roomname: '',
