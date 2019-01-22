@@ -1,5 +1,9 @@
 import screenshot         from '../assets/images/png/screenshot@4x.png';
+
 import logo               from '../assets/images/svg/logo.svg';
+import logo_transparent   from '../assets/images/svg/logo-transparent.svg';
+import logo_header        from '../assets/images/svg/logo-header.svg';
+
 import logout             from '../assets/images/svg/logout.svg';
 import home               from '../assets/images/svg/home.svg';
 import setting_blue       from '../assets/images/svg/setting-blue.svg';
@@ -14,7 +18,6 @@ import accept             from '../assets/images/svg/accept.svg';
 import unaccept           from '../assets/images/svg/unaccept.svg';
 import upload_blue        from '../assets/images/svg/upload-blue.svg';
 import upload_white       from '../assets/images/svg/upload-white.svg';
-import logo_transparent   from '../assets/images/svg/logo-transparent.svg';
 import close              from '../assets/images/svg/close.svg';
 import arrow_right        from '../assets/images/svg/arrow-right.svg';
 import arrow_left_circle  from '../assets/images/svg/arrow-left-circle.svg';
@@ -45,8 +48,21 @@ import status_incomplete  from '../assets/images/svg/status-incomplete.svg';
 import status_working     from '../assets/images/svg/status-working.svg';
 import status_userupload  from '../assets/images/svg/manage-accounts.svg';
 
+
+import help               from '../assets/images/svg/help.svg';
+
+
+import feature_secure     from '../assets/images/svg/feature-secure.svg';
+import feature_chat       from '../assets/images/svg/feature-chat.svg';
+import feature_sign       from '../assets/images/svg/feature-sign.svg';
+import feature_fileroom   from '../assets/images/svg/feature-fileroom.svg';
+import feature_tasks      from '../assets/images/svg/feature-tasks.svg';
+import feature_verify     from '../assets/images/svg/feature-verify.svg';
+
 export default {
     logo,
+    logo_transparent,
+    logo_header,
     logout,
     home,
     setting_blue,
@@ -62,7 +78,6 @@ export default {
     clock,
     upload_blue,
     upload_white,
-    logo_transparent,
     close,
     arrow_right,
     arrow_left_circle,
@@ -92,4 +107,14 @@ export default {
     status_incomplete,
     status_working,
     status_userupload,
+
+
+    help,
+
+    feature_secure,
+    feature_chat,
+    feature_sign,
+    feature_fileroom,
+    feature_tasks,
+    feature_verify,
 }

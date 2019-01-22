@@ -56,6 +56,15 @@ const SignLayout = ({component: Component, ...rest}) => {
   )
 };
 
+const HomeLayout = ({component: Component, ...rest}) => {
+  window.scrollTo(0,0);
+  return (
+    <Route {...rest} render={matchProps => (
+      <Component {...matchProps} />
+    )} />
+  )
+};
+
 class Layout extends Component {
   componentWillMount() {
     this.props.fetchUsers();
@@ -69,10 +78,11 @@ class Layout extends Component {
       <Router>
         <div>
 
+          <HomeLayout exact path={routes.HOME} component={HomePage} />
+
           <SignLayout exact path={routes.SIGN_IN} component={SignInPage} />
           <SignLayout exact path={routes.SIGN_UP} component={SignUpPage} />
 
-          <DefaultLayout exact path={routes.HOME} component={HomePage} />
           <DefaultLayout exact path={routes.ACCOUNT_SETTINGS} component={UserAuth(AccountPage)} />
           <DefaultLayout exact path={routes.KYC} component={UserAuth(KYCPage)} />
           <DefaultLayout exact path={routes.MY_ROOMS} component={UserAuth(MyRoomsPage)} />

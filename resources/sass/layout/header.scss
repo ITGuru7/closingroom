@@ -1,6 +1,6 @@
 
 .header-default {
-    flex: 0 0 $header-height ;
+    flex: 0 0 $inner-header-height ;
     border-bottom: 1px solid $border-default ;
 
     .title {
@@ -46,6 +46,27 @@
         }
         div {
             color: $dark-blue ;
+        }
+    }
+}
+
+.header {
+    flex: 0 0 $header-height ;
+    background: $dark-blue ;
+
+    .logo {
+        img {
+            width: 30px ;
+        }
+        .logo-text {
+            div {
+                line-height: 1rem ;
+            }
+        }
+    }
+    .help {
+        img {
+            width: 20px ;
         }
     }
 }

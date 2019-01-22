@@ -15,7 +15,7 @@ import KYCApprovalsItem from './KYCApprovalsItem';
 
 const Sidebar = (props) => {
   const renderHeader = () => (
-    <div className="header mb-5">
+    <div className="sidebar-header mb-5">
       <div className="d-flex justify-content-center">
         <div className="logo-image mr-2">
           <img src={assets.logo}/>

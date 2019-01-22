@@ -45,6 +45,17 @@ button {
         border: none ;
         background-color: transparent ;
     }
+    &.button-header {
+        border: 1px solid white ;
+        border-radius: 3px ;
+        color: white ;
+        background-color: $dark-blue ;
+        &:hover {
+            color: $dark-blue ;
+            background-color: white ;
+            opacity: 1;
+        }
+    }
 
     &:hover {
         cursor: pointer ;

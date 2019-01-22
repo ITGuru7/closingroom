@@ -9593,6 +9593,19 @@ button.button-transparent {
   background-color: transparent;
 }
 
+button.button-header {
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+  background-color: #183863;
+}
+
+button.button-header:hover {
+  color: #183863;
+  background-color: white;
+  opacity: 1;
+}
+
 button:hover {
   cursor: pointer;
   opacity: 0.5;
@@ -9677,34 +9690,51 @@ table.mytable td {
   color: #183863;
 }
 
+.header {
+  flex: 0 0 50px;
+  background: #183863;
+}
+
+.header .logo img {
+  width: 30px;
+}
+
+.header .logo .logo-text div {
+  line-height: 1rem;
+}
+
+.header .help img {
+  width: 20px;
+}
+
 .sidebar {
   flex: 0 0 300px;
   border: 1px solid #231f20;
   background-color: #f1f2f2;
 }
 
-.sidebar .header .logo-image {
+.sidebar .sidebar-header .logo-image {
   width: 80px;
 }
 
-.sidebar .header .logo-text {
+.sidebar .sidebar-header .logo-text {
   color: #183863;
 }
 
-.sidebar .header .logo-text .title {
+.sidebar .sidebar-header .logo-text .title {
   color: inherit;
   font-size: 2rem;
   font-weight: bold;
   line-height: 2rem;
 }
 
-.sidebar .header .logo-text .subtitle {
+.sidebar .sidebar-header .logo-text .subtitle {
   color: inherit;
   font-size: 2rem;
   line-height: 2rem;
 }
 
-.sidebar .header .logo-text .version {
+.sidebar .sidebar-header .logo-text .version {
   color: inherit;
   font-size: 1rem;
 }
@@ -9803,19 +9833,35 @@ table.mytable td {
   background-color: white;
 }
 
-.home-page .page-content .title,
-.home-page .page-content .subtitle {
-  font-weight: bold;
-  font-size: 1.2rem;
+.home-page {
+  height: 100vh;
 }
 
-.home-page .page-content p {
-  font-size: 1rem;
-  line-height: 1.2rem;
+.home-page .page-content {
+  overflow: scroll;
 }
 
-.home-page .page-content .screenshot img {
-  width: 100%;
+.home-page .page-content .welcome-block {
+  padding: 2rem 4rem;
+}
+
+.home-page .page-content .features-block {
+  padding: 1rem 2rem;
+  background-color: #f1f2f2;
+}
+
+.home-page .page-content .features-block .feature .feature-image {
+  width: 50px;
+}
+
+.home-page .page-content .features-block .feature .content p {
+  margin: 0;
+  line-height: 1rem;
+}
+
+.home-page .home-footer {
+  height: 50px;
+  background: #183863;
 }
 
 .signin-page {
