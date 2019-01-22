@@ -45,7 +45,15 @@ class SignUpForm extends Component {
   }
 
   onSubmit = event => {
-    const { type, firstname, lastname, displayname, email, passwordOne, timezone } = this.state;
+    event.preventDefault()
+
+    const { type, firstname, lastname, displayname, email, passwordOne, passwordTwo, timezone } = this.state;
+
+    if (passwordOne !== passwordTwo) {
+      alert('Password not match')
+      $('#passwordTwo').focus()
+      return
+    }
 
     const { history } = this.props;
 

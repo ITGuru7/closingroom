@@ -28,7 +28,7 @@ class PasswordChangeForm extends Component {
     }
     if (passwordOne !== passwordTwo) {
       alert('Password not match')
-      $('#passwordOne').focus()
+      $('#passwordTwo').focus()
       return
     }
 
