@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 
 import Sidebar from './components/Sidebar';
 import HomePage from './components/Home';
+import DashboardPage from './components/Dashboard';
 import SignInPage from './components/Sign/SignIn';
 import SignUpPage from './components/Sign/SignUp';
 import AccountPage from './components/Account';
@@ -83,6 +84,7 @@ class Layout extends Component {
           <SignLayout exact path={routes.SIGN_IN} component={SignInPage} />
           <SignLayout exact path={routes.SIGN_UP} component={SignUpPage} />
 
+          <DefaultLayout exact path={routes.DASHBOARD} component={UserAuth(DashboardPage)} />
           <DefaultLayout exact path={routes.ACCOUNT_SETTINGS} component={UserAuth(AccountPage)} />
           <DefaultLayout exact path={routes.KYC} component={UserAuth(KYCPage)} />
           <DefaultLayout exact path={routes.MY_ROOMS} component={UserAuth(MyRoomsPage)} />

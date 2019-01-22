@@ -52,7 +52,7 @@ const Sidebar = (props) => {
 
 const UserSidebar = () => (
   <div className="align-self-start">
-    <SidebarNavItem to={routes.HOME} asset={assets.home} text="Home"/>
+    <SidebarNavItem to={routes.DASHBOARD} asset={assets.home} text="Home"/>
     <SidebarNavItem to={routes.ACCOUNT_SETTINGS} asset={assets.setting_blue} text="Account Settings"/>
     <SidebarNavItem to={routes.MY_ROOMS} asset={assets.find} text="My Rooms"/>
   </div>

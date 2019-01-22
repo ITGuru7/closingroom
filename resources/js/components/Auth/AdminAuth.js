@@ -13,7 +13,7 @@ export default function(ComposedComponent) {
         return
       }
       if (users && !functions.isAdmin(users[authUser.uid].level)) {
-        history.push(routes.HOME);
+        history.push(routes.DASHBOARD);
         return
       }
     }
@@ -26,7 +26,7 @@ export default function(ComposedComponent) {
         return
       }
       if (users && !functions.isAdmin(users[authUser.uid].level)) {
-        history.push(routes.HOME);
+        history.push(routes.DASHBOARD);
         return
       }
     }

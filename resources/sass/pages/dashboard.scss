@@ -1,0 +1,17 @@
+.dashboard-page {
+    .page-content {
+        .title, .subtitle {
+            font-weight: bold ;
+            font-size: 1.2rem ;
+        }
+        p {
+            font-size: 1rem ;
+            line-height: 1.2rem ;
+        }
+        .screenshot {
+            img {
+                width: 100% ;
+            }
+        }
+    }
+}

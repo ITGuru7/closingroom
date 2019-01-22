@@ -9864,6 +9864,21 @@ table.mytable td {
   background: #183863;
 }
 
+.dashboard-page .page-content .title,
+.dashboard-page .page-content .subtitle {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.dashboard-page .page-content p {
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+.dashboard-page .page-content .screenshot img {
+  width: 100%;
+}
+
 .signin-page {
   margin: 0 auto;
   max-width: 509px;

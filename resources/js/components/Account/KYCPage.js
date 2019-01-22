@@ -66,7 +66,7 @@ class KYCForm extends Component {
 
     alert('Your documents have been submitted and will be reviewed shortly.')
 
-    history.push(routes.HOME)
+    history.push(routes.DASHBOARD)
   };
 
   onChange = event => {

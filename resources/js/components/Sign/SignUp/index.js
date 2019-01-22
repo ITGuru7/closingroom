@@ -59,7 +59,7 @@ class SignUpForm extends Component {
 
             actions.doEnterInvitedRooms(authUser.user.uid, email)
 
-            history.push(routes.HOME);
+            history.push(routes.DASHBOARD);
           } )
           .catch(error => {
             this.setState({ error });
