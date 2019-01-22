@@ -9932,6 +9932,7 @@ table.mytable td {
 }
 
 .signup-page {
+  height: 100vh;
   background-color: #183863;
 }
 

@@ -67,7 +67,7 @@ class RoomFilesPage extends Component {
         <td>
           <input type="checkbox" defaultChecked={true}/>
         </td>
-        <td>{functions.getFormattedDate(new Date("02/01/2019"))}</td>
+        <td>{functions.getFormattedDate(new Date(document.create_date || "02/01/2019"))}</td>
         <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
         <td>
           <a href={document.url} download="myimage">
@@ -106,7 +106,7 @@ class RoomFilesPage extends Component {
         <td>
           <input type="checkbox" defaultChecked={true}/>
         </td>
-        <td>{functions.getFormattedDate(new Date("02/01/2019"))}</td>
+        <td>{functions.getFormattedDate(new Date(document.create_date || "02/01/2019"))}</td>
         <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
         <td>
           <a href={document.url} download>
@@ -135,7 +135,7 @@ class RoomFilesPage extends Component {
             <th>Document Type</th>
             <th>Status</th>
             <th>Active</th>
-            <th>Created</th>
+            <th>Created/Uploaded</th>
             <th>Last Edit</th>
             <th>Download</th>
             <th>Fill and Sign</th>

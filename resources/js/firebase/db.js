@@ -146,15 +146,19 @@ export const doDownloadAddress = (user_id, url) => (
   })
 );
 
-export const doUploadDocument = (room_id, user_id, type, other, issued, certified, comment) => (
-  db.ref(`rooms/${room_id}/users/${user_id}/documents`).push({
+export const doUploadDocument = (room_id, user_id, type, other, issued, certified, comment) => {
+  let date = Date.now()
+  console.log(date)
+
+  return db.ref(`rooms/${room_id}/users/${user_id}/documents`).push({
     type,
     other,
     issued,
     certified,
     comment,
+    create_date: date,
   })
-);
+};
 
 export const doDownloadDocument = (room_id, user_id, doc_key, url) => (
   db.ref(`rooms/${room_id}/users/${user_id}/documents/${doc_key}`).update({
@@ -186,5 +190,11 @@ export const doTryAgainKYC = (user_id) => {
     kyc_status: 'unverified',
     kyc_deny_reason: '',
     level: 0,
+  })
+}
+
+export const doUpgradeUser = (user_id) => {
+  db.ref(`users/${user_id}`).update({
+    level: 3,
   })
 }

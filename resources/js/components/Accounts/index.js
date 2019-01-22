@@ -80,12 +80,14 @@ class AccountsPage extends Component {
                 <th>Join Date</th>
                 <th>Active Rooms</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             { users &&
               <tbody>
                 {Object.keys(users).map(key => {
                   let user = users[key]
+                  user.uid = key
                   if (user.firstname.toString().toLowerCase().includes(search.toLowerCase()) || user.lastname.toString().toLowerCase().includes(search.toLowerCase())) {
                     return <UserRow key={key} user={user} rooms={rooms}/>
                   }
@@ -115,6 +117,10 @@ const UserRow = ({user, rooms}) => {
     return activeRooms
   }
 
+  const onUpgrade = () => {
+    db.doUpgradeUser(user.uid)
+  }
+
   return (
     <tr>
       <td>{functions.getFormattedID(user.id, 7)}</td>
@@ -129,6 +135,13 @@ const UserRow = ({user, rooms}) => {
             More
           </button>
         {/* </Link> */}
+      </td>
+      <td>
+        <button className="button button-md button-blue"
+          onClick={(event) => onUpgrade()}
+        >
+          Upgrade to Admin
+        </button>
       </td>
     </tr>
   )
