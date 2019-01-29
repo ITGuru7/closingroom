@@ -30,11 +30,11 @@ class UserList extends Component {
           <div className="name d-flex align-items-center">
             <span className="mr-1">{user.firstname}</span>
             {owner === 'owner' &&
-              <img src={assets.star}/>
+              <img src={assets.star} className="size-15"/>
             }
           </div>
           <div className="localtime">
-            <img className="mr-1" src={assets.clock}/>
+            <img src={assets.clock} className="size-15 mr-1"/>
             <span>{user.location}</span>
             <span>[{user.time}]</span>
           </div>
@@ -43,9 +43,9 @@ class UserList extends Component {
           <div className="KYC">
             <span className="mr-1">KYC</span>
             {user.kyc === 1 ?
-              <img src={assets.accept}/>
+              <img src={assets.accept} className="size-15"/>
             :
-              <img src={assets.unaccept}/>
+              <img src={assets.unaccept} className="size-15"/>
             }
           </div>
           <span className="role-name">
@@ -54,9 +54,9 @@ class UserList extends Component {
           </span>
           <div className="attendance">
             {user.attendance == 1 ?
-              <img src={assets.online}/>
+              <img src={assets.online} className="size-20"/>
             :
-              <img src={assets.offline}/>
+              <img src={assets.offline} className="size-20"/>
             }
           </div>
         </div>
@@ -202,7 +202,7 @@ class UserList extends Component {
 
     return (
       <div className="add-user-success-dialog d-none">
-        <img src={assets.close_blue} className="dlg-close"
+        <img src={assets.close_blue} className="size-20 dlg-close"
           onClick={(event) => {this.closeModals()}}
         />
         <div className="content p-4 w-100 text-white">
@@ -235,7 +235,7 @@ class UserList extends Component {
           {this.renderIntermediaries()}
         </div>
         <div className="add-user-block align-self-center mt-auto mb-3">
-          <img src={assets.add_user} className="mr-2"/>
+          <img src={assets.add_user} className="size-30 mr-2"/>
           <button className="button button-md button-red"
             onClick={(event) => {this.openAddUserModal()}}
           >

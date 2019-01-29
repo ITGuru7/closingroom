@@ -77,10 +77,8 @@ class RoomPage extends Component {
         <RoomHeader room={room}/>
         <div className="page-content flex-grow-1 d-flex flex-row">
           <UserList users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
-          <div className="flex-grow-1 d-flex flex-row">
-            <Messages users={users} receiver_id={receiver_id}/>
-            <Tasks user_id={users[authUser.uid].id}/>
-          </div>
+          <Messages users={users} receiver_id={receiver_id}/>
+          <Tasks user_id={users[authUser.uid].id}/>
         </div>
       </div>
     )

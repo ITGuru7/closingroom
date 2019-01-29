@@ -11,13 +11,18 @@ import assets from '../../../assets';
 import * as functions from '../../../functions';
 
 import RoomHeader from '../../Header/RoomHeader';
+import PanelHeader from '../../Header/PanelHeader';
 
 import * as actions from "../../../actions";
 
 import _ from 'lodash';
 
 const INITIAL_STATE = {
-};
+  expanded0: true,
+  expanded1: true,
+  expanded2: true,
+  expanded3: true,
+}
 
 class RoomFilesPage extends Component {
   state = { ...INITIAL_STATE };
@@ -28,135 +33,110 @@ class RoomFilesPage extends Component {
     fetchRoom(room_id);
   }
 
-  renderHeader = () => {
-    const { room } = this.props
-    return (
-      <div className="header px-3">
-        <div className="row">
-          <div className="back col-4 d-flex align-items-center"
-            onClick={(event) => {this.props.history.goBack()}}
+  renderLegalDocuments = () => {
+    const { room, documents, users } = this.props
+    const { expanded1 } = this.state
+
+    let group = (
+      <tr key="legal">
+        <td className="text-left pl-3" colSpan={11}>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({expanded1: !expanded1})}}
           >
-            <img src={assets.arrow_left_circle} className="mr-2"/>
-            <span>Back</span>
-          </div>
-          <div className="col-4 title text-center">
-            Room {functions.getFormattedID(room.id, 7)} - Files &amp; Tasks Room
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  renderLegalDocument = (key, document) => {
-    if (!document) {
-      return <tr></tr>
-    }
-    return (
-      <tr key={key}>
-        <td className="title">{document.title}</td>
-        <td className="type">{document.type}</td>
-        { document.type === 'general' ?
-          <td>
-            <img src={assets.status_working}/> Working
-          </td>
-        :
-          <td>
-            <img src={assets.status_incomplete}/> Incomplete
-          </td>
-        }
-        <td>
-          <input type="checkbox" defaultChecked={true}/>
-        </td>
-        <td>{functions.getFormattedDate(new Date(document.create_date || "02/01/2019"))}</td>
-        <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
-        <td>
-          <a href={document.url} download="myimage">
-          {/* <a href={document.url} download> */}
-            <img src={assets.download_white}/>
-          </a>
-        </td>
-        <td>
-          <button className="button button-md button-lightgreen">
-            <img src={assets.sign} className="mr-3"/>
-            Fill &amp; Sign
+            <img className="size-20" src={expanded1?assets.angle_down_black:assets.angle_right_black}/>
           </button>
-        </td>
-        <td></td>
-        <td className="action">
-          <a href={document.url} target='_blank'>
-            <img src={assets.search_black} className="mr-3"/>
-            Preview
-          </a>
+          Legal Documents
         </td>
       </tr>
     )
-  }
 
-  renderUploadedDocument = (key, document, user) => {
-    if (!document) {
-      return <tr></tr>
+    let legal_docs = Object.keys(documents).map(key => (
+      <DocumentRow key={key} document={documents[key]} type="legal"/>
+    ));
+
+    if (!expanded1) {
+      return group
+    } else {
+      return [
+        group,
+        legal_docs
+      ]
     }
-    return (
-      <tr key={key}>
-        <td className="title">{document.title}</td>
-        <td className="type">{document.type}</td>
-        <td>
-          <img src={assets.status_userupload}/> User Uploaded
-        </td>
-        <td>
-          <input type="checkbox" defaultChecked={true}/>
-        </td>
-        <td>{functions.getFormattedDate(new Date(document.create_date || "02/01/2019"))}</td>
-        <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
-        <td>
-          <a href={document.url} download>
-            <img src={assets.download_white}/>
-          </a>
-        </td>
-        <td></td>
-        <td>{user.displayname}</td>
-        <td className="action">
-          <a href={document.url} target='_blank'>
-            <img src={assets.search_black} className="mr-3"/>
-            Preview
-            </a>
+  }
+  renderUploadedDocuments = () => {
+    const { room, documents, users } = this.props
+    const { expanded2 } = this.state
+
+    let group = (
+      <tr key="uploaded">
+        <td className="text-left pl-3" colSpan={11}>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({expanded2: !expanded2})}}
+          >
+            <img className="size-20" src={expanded2?assets.angle_down_black:assets.angle_right_black}/>
+          </button>
+          Uploaded Documents
         </td>
       </tr>
     )
+
+    let uploaded_docs = Object.keys(room.users).map(user_key => {
+      let user = users[user_key]
+      let user_documents = room.users[user_key].documents
+      if (user_documents) {
+        return Object.keys(user_documents).map(key => {
+          let document = user_documents[key]
+          document.username = user.displayname
+          return <DocumentRow key={key} document={document} type="uploaded"/>
+        })
+      }
+    })
+
+    if (!expanded2) {
+      return group
+    } else {
+      return [
+        group,
+        uploaded_docs
+      ]
+    }
   }
 
   renderDocuments = () => {
-    const { room, documents, users } = this.props
+    const { expanded0 } = this.state
     return (
       <table className="table filestable text-center">
         <thead>
           <tr>
-            <th></th>
+            <th width="200px"></th>
             <th>Document Type</th>
             <th>Status</th>
             <th>Active</th>
             <th>Created/Uploaded</th>
             <th>Last Edit</th>
             <th>Download</th>
-            <th>Fill and Sign</th>
+            <th width="200px">Fill and Sign</th>
             <th>Uploaded by</th>
+            <th>Jurisdiction</th>
             <th></th>
           </tr>
+          <tr key="uploaded">
+            <th className="text-left" colSpan={11}>
+              <button className="button button-transparent"
+                onClick={(event)=>{this.setState({expanded0: !expanded0})}}
+              >
+                <img className="size-20" src={expanded0?assets.angle_down_black:assets.angle_right_black}/>
+              </button>
+              Files
+            </th>
+          </tr>
         </thead>
-        <tbody>
-          {Object.keys(documents).map(key => (
-            this.renderLegalDocument(key, documents[key])
-          ))}
-          {Object.keys(room.users).map(user_key => {
-            let user = users[user_key]
-            let user_documents = room.users[user_key].documents
-            if (user_documents) {
-              return Object.keys(user_documents).map(key => (
-                this.renderUploadedDocument(key, user_documents[key], user)
-              ))
-            }
-          })}
-        </tbody>
+        { expanded0 &&
+          <tbody>
+            {this.renderLegalDocuments()}
+            {this.renderUploadedDocuments()}
+          </tbody>
+        }
       </table>
     )
   }
@@ -182,17 +162,22 @@ class RoomFilesPage extends Component {
     return (
       <div className="roomfiles-page d-flex flex-column h-100">
         <RoomHeader room={room}/>
-        {this.renderHeader()}
         <div className="page-content flex-grow-1 d-flex flex-column">
-          {this.renderDocuments()}
+          <PanelHeader {...this.props}
+            title={`Room ${functions.getFormattedID(room.id, 7)} - Files & Tasks Room`}
+            back={true}
+          />
+          <div className="documents-block">
+            {this.renderDocuments()}
+          </div>
           <div className="footer d-flex flex-column mt-auto mb-3 ml-4">
-            <button className="button button-md mb-3"
+            <button className="button-white mb-3"
               onClick={(event) => this.onOpenUploadModal()}
             >
               Upload a File
-              <img src={assets.upload_blue} className="ml-2"/>
+              <img src={assets.upload_blue} className="size-20 ml-2"/>
             </button>
-            <button className="button button-md"
+            <button className="button-white"
               onClick={(event) => {}}
             >
               Download All (.zip)
@@ -202,6 +187,55 @@ class RoomFilesPage extends Component {
       </div>
     );
   }
+}
+
+const DocumentRow = (props) => {
+  const { document, type } = props
+  return (
+    <tr>
+      <td className="pl-5 title">{document.title}</td>
+      <td className="type">{document.type}</td>
+      { type === 'general' ?
+        <td><img src={assets.status_working} className="size-20"/> Working</td>
+      : ( type === 'legal' ?
+          <td><img src={assets.status_incomplete} className="size-20"/> Incomplete</td>
+        :
+          <td><img src={assets.status_userupload} className="size-20"/> User Uploaded</td>
+        )
+      }
+      <td><input type="checkbox" defaultChecked={true}/></td>
+      <td>{functions.getFormattedDate(new Date(document.create_date || "02/01/2019"))}</td>
+      <td>{functions.getFormattedDate(new Date("09/01/2019"))}</td>
+      <td>
+        <a href={document.url} download>
+          <img src={assets.download_white} className="size-20"/>
+        </a>
+      </td>
+      { (type === 'general' || type === 'legal') ?
+        [
+          <td key="sign">
+            <button className="button button-md button-lightgreen">
+              <img src={assets.sign} className="size-20 mr-3"/>
+              Fill &amp; Sign
+            </button>
+          </td>,
+          <td key="uploadedby"></td>
+        ]
+      :
+        [
+          <td key="sign"></td>,
+          <td key="uploadedby">{document.username}</td>
+        ]
+      }
+      <td></td>
+      <td className="action">
+        <a href={document.url} target='_blank'>
+          <img src={assets.search_black} className="size-20 mr-3"/>
+          Preview
+        </a>
+      </td>
+    </tr>
+  )
 }
 
 const mapStateToProps = ({ authUser, room, documents, users }) => {

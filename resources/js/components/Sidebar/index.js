@@ -22,10 +22,10 @@ const Sidebar = (props) => {
         </div>
         <div className="logo-text align-self-end">
           <div className="title">
-              MNM
+            MNM
           </div>
           <div className="subtitle">
-              ClosingRoom
+            ClosingRoom
           </div>
           <div className="version">
             Beta

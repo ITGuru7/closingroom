@@ -9593,6 +9593,12 @@ button.button-transparent {
   background-color: transparent;
 }
 
+button.button-white {
+  color: #183863;
+  background-color: white;
+  border: 1px solid #183863;
+}
+
 button.button-header {
   border: 1px solid white;
   border-radius: 3px;
@@ -9639,20 +9645,50 @@ table.mytable td {
   color: black;
 }
 
-.header-default {
+img.size-5 {
+  width: 5px;
+  height: 5px;
+}
+
+img.size-10 {
+  width: 10px;
+  height: 10px;
+}
+
+img.size-15 {
+  width: 15px;
+  height: 15px;
+}
+
+img.size-20 {
+  width: 20px;
+  height: 20px;
+}
+
+img.size-25 {
+  width: 25px;
+  height: 25px;
+}
+
+img.size-30 {
+  width: 30px;
+  height: 30px;
+}
+
+.page-header {
   flex: 0 0 100px;
   border-bottom: 1px solid #231f20;
 }
 
-.header-default .title {
+.page-header .title {
   font-size: 1rem;
 }
 
-.header-blue {
+.page-header__blue {
   color: #183863;
 }
 
-.header-blue .title {
+.page-header__blue .title {
   color: #183863;
 }
 
@@ -9669,7 +9705,6 @@ table.mytable td {
 .room-header .info-block table th {
   color: #183863;
   font-size: 1.2rem;
-  text-decoration: underline;
 }
 
 .room-header .info-block table td {
@@ -9690,21 +9725,35 @@ table.mytable td {
   color: #183863;
 }
 
-.header {
+.header-home {
   flex: 0 0 50px;
   background: #183863;
 }
 
-.header .logo img {
-  width: 30px;
-}
-
-.header .logo .logo-text div {
+.header-home .logo .logo-text div {
   line-height: 1rem;
 }
 
-.header .help img {
-  width: 20px;
+.panel-header {
+  background-color: #183863;
+}
+
+.panel-header .back:hover {
+  cursor: pointer;
+}
+
+.panel-header .back img {
+  width: 30px;
+}
+
+.panel-header .back span {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.panel-header .title {
+  color: white;
+  font-size: 1.5rem;
 }
 
 .sidebar {
@@ -9737,18 +9786,6 @@ table.mytable td {
 .sidebar .sidebar-header .logo-text .version {
   color: inherit;
   font-size: 1rem;
-}
-
-.sidebar .link-block img {
-  width: 20px;
-}
-
-.sidebar .signout-block img {
-  width: 30px;
-}
-
-.kyc-approval-link-block img {
-  width: 20px;
 }
 
 .kyc-approval-link-block .new-kycs {
@@ -10112,14 +10149,6 @@ table.mytable td {
   background-color: transparent;
 }
 
-.rooms-page .page-content table.rooms td.action img {
-  width: 20px;
-}
-
-.rooms-page .page-content .footer img {
-  width: 15px;
-}
-
 .createroom-page .page-content .header .title {
   font-size: 1.2rem;
 }
@@ -10161,10 +10190,6 @@ table.mytable td {
   background-color: #a7a9ac;
 }
 
-.room-page .page-content .userlist-panel .user-block img {
-  width: 15px;
-}
-
 .room-page .page-content .userlist-panel .user-block .profile {
   border-bottom: 1px solid #231f20;
 }
@@ -10181,10 +10206,6 @@ table.mytable td {
   font-size: 0.8rem;
 }
 
-.room-page .page-content .userlist-panel .user-block .role .attendance {
-  width: 20px;
-}
-
 .room-page .page-content .userlist-panel .user-block:nth-child(odd) {
   background-color: #f1f2f2;
 }
@@ -10195,10 +10216,6 @@ table.mytable td {
 
 .room-page .page-content .userlist-panel .add-user-block {
   position: relative;
-}
-
-.room-page .page-content .userlist-panel .add-user-block img {
-  width: 30px;
 }
 
 .room-page .page-content .userlist-panel .add-user-block .add-user-dialog {
@@ -10262,7 +10279,6 @@ table.mytable td {
 .room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .dlg-close {
   float: right;
   margin: 0.5rem 0.5rem 0 0;
-  width: 20px;
 }
 
 .room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .dlg-close:hover {
@@ -10322,7 +10338,7 @@ table.mytable td {
 }
 
 .room-page .page-content .messages-panel .send-message-block {
-  flex: 0 0 60px;
+  flex: 0 0 50px;
   border-top: 1px solid #231f20;
   background-color: #f1f2f2;
 }
@@ -10336,112 +10352,57 @@ table.mytable td {
   border-left: 1px solid #231f20;
 }
 
-.room-page .page-content .tasks-panel .tasks-block .room-block {
-  background-color: #c2b59b;
+.room-page .page-content .tasks-panel .explorer-view tr.group {
+  background-color: #e6e6e6;
 }
 
-.room-page .page-content .tasks-panel .tasks-block .document-block {
-  height: 30px;
-}
-
-.room-page .page-content .tasks-panel .tasks-block .document-block .actions .download img {
-  width: 20px;
-}
-
-.room-page .page-content .tasks-panel .tasks-block .document-block .actions .status img {
-  width: 20px;
-}
-
-.room-page .page-content .tasks-panel .tasks-block .document-block:nth-child(odd) {
-  background-color: #d1d3d4;
-}
-
-.room-page .page-content .tasks-panel .tasks-block .document-block:nth-child(even) {
+.room-page .page-content .tasks-panel .explorer-view tr.content {
   background-color: #f1f2f2;
 }
 
+.room-page .page-content .tasks-panel .view-files button {
+  color: #183863;
+  border: 1px solid #183863;
+}
+
 .room-page .page-content .tasks-panel .view-files button span {
-  margin-right: 5px;
-  color: white;
   font-size: 1rem;
 }
 
-.room-page .page-content .tasks-panel .view-files button .arrow-right {
-  height: 28px;
-  background-color: #414042;
+.roomfiles-page .documents-block {
+  overflow-y: scroll;
 }
 
-.room-page .page-content .tasks-panel .view-files button .arrow-right img {
-  width: 20px;
-}
-
-.room-page .page-content .tasks-panel .upload-file-block img {
-  width: 20px;
-}
-
-.roomfiles-page .header {
-  background-color: #183863;
-}
-
-.roomfiles-page .header:hover {
-  cursor: pointer;
-}
-
-.roomfiles-page .header .back img {
-  width: 30px;
-}
-
-.roomfiles-page .header .back span {
-  color: white;
-  font-size: 1.5rem;
-}
-
-.roomfiles-page .header .title {
-  color: white;
-  font-size: 1.5rem;
-}
-
-.roomfiles-page table.filestable th {
+.roomfiles-page .documents-block table.filestable th {
   padding: 0;
   line-height: 2rem;
   text-transform: uppercase;
 }
 
-.roomfiles-page table.filestable th,
-.roomfiles-page table.filestable td {
+.roomfiles-page .documents-block table.filestable th,
+.roomfiles-page .documents-block table.filestable td {
   border: 1px solid #e6e6e6;
 }
 
-.roomfiles-page table.filestable td {
+.roomfiles-page .documents-block table.filestable td {
   padding: 0.3rem 2rem;
   vertical-align: middle;
 }
 
-.roomfiles-page table.filestable td.title {
+.roomfiles-page .documents-block table.filestable td.title {
   text-align: left;
 }
 
-.roomfiles-page table.filestable td.type {
+.roomfiles-page .documents-block table.filestable td.type {
   text-transform: uppercase;
 }
 
-.roomfiles-page table.filestable img {
-  width: 20px;
-}
-
-.roomfiles-page table.filestable input {
+.roomfiles-page .documents-block table.filestable input {
   width: 20px !important;
-}
-
-.roomfiles-page .footer img {
-  width: 20px;
 }
 
 .roomfiles-page .footer button {
   width: 150px;
-  color: #183863;
-  background: white;
-  border: 1px solid #183863;
 }
 
 .accounts-page .page-content .header {
@@ -10454,51 +10415,9 @@ table.mytable td {
   outline: none;
 }
 
-.accounts-page .page-content .header .kyc-area .kyc-approval-link-block img {
-  width: 15px;
-}
-
-.accounts-page .page-content .header .kyc-area .kyc-approval-link-block span {
-  color: white;
-}
-
-.accounts-page .page-content table.accounts td.action img {
-  width: 20px;
-}
-
 .accounts-page .page-content table.accounts input {
   border: none;
   background-color: transparent;
-}
-
-.kyc-approval-view-page .page-content .header {
-  background-color: #183863;
-}
-
-.kyc-approval-view-page .page-content .header:hover {
-  cursor: pointer;
-}
-
-.kyc-approval-view-page .page-content .header .back img {
-  width: 30px;
-}
-
-.kyc-approval-view-page .page-content .header .back span {
-  color: white;
-  font-size: 1.5rem;
-}
-
-.kyc-approval-view-page .page-content .userinfo-block .label {
-  font-weight: bold;
-}
-
-.kyc-approval-view-page .page-content .userinfo-block a {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.kyc-approval-view-page .page-content .action-block img {
-  width: 20px;
 }
 
 .kyc-approval-view-page .page-content .action-block .deny-block {
@@ -10509,9 +10428,5 @@ table.mytable td {
 .kyc-approval-view-page .page-content .action-block .deny-block .header {
   color: white;
   background: #be1e2d;
-}
-
-.kyc-approval-view-page .page-content .action-block .deny-block .body .label {
-  font-weight: bold;
 }
 

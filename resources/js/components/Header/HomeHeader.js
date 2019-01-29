@@ -6,10 +6,10 @@ import assets from '../../assets';
 import * as routes from '../../constants/routes';
 
 const HomeHeader = (props) => (
-  <div className="header d-flex align-items-center">
+  <div className="header-home d-flex align-items-center">
     <div className="logo col-3 d-flex justify-content-start align-items-center">
       <div className="logo-image mr-2">
-        <img src={assets.logo_header}/>
+        <img src={assets.logo_header} className="size-20"/>
       </div>
       <div className="logo-text">
         <div className="title font-weight-bold text-white">MNM</div>
@@ -28,7 +28,7 @@ const HomeHeader = (props) => (
         </Link>
       </div>
       <div className="help">
-        <img src={assets.help}/>
+        <img src={assets.help} className="size-20"/>
       </div>
     </div>
   </div>

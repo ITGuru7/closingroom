@@ -15,7 +15,7 @@ const SignOutButton = () => {
       className="button-transparent"
       onClick={doLogout}
     >
-      <img src={assets.logout}/>
+      <img src={assets.logout} className="size-30"/>
       Logout
     </button>
   )

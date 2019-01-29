@@ -1,48 +1,17 @@
 .kyc-approval-view-page {
     .page-content {
-        .header {
-            background-color: $dark-blue ;
-
-            &:hover {
-                cursor: pointer ;
-            }
-
-            .back {
-                img {
-                    width: 30px ;
-                }
-                span {
-                    color: white ;
-                    font-size: 1.5rem ;
-                }
-            }
-        }
-
         .userinfo-block {
-            .label {
-                font-weight: bold ;
-            }
-            a {
-                font-weight: bold ;
-                text-decoration: underline ;
-            }
         }
 
         .action-block {
-            img {
-                width: 20px ;
-            }
             .deny-block {
                 width: 30% ;
                 border: 2px solid $dark-red ;
                 .header {
                     color: white ;
                     background: $dark-red ;
-                }
+                }Passport1View passport scan
                 .body {
-                    .label {
-                        font-weight: bold ;
-                    }
                 }
             }
         }

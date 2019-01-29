@@ -129,7 +129,7 @@ const UserRow = ({user, rooms}) => {
       <td>{user.level}</td>
       <td>{functions.getFormattedDate(new Date(user.join_date))}</td>
       <td>{renderActiveRooms()}</td>
-      <td className="action">
+      <td>
         {/* <Link to={`/rooms/${room.room_id}`}> */}
           <button className="button button-md button-blue">
             More

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
 
 import SigninHeader from '../../Header/SigninHeader';
 import { SignUpLink } from '../SignUp';
@@ -7,14 +8,16 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../../firebase';
 import * as routes from '../../../constants/routes';
 
-const SignInPage = ({ history }) => (
+import * as actions from "../../../actions";
+
+const SignInPage = (props) => (
   <div className="signin-page text-center">
     <SigninHeader/>
     <div className="signin-block pb-3">
       <div className="title d-flex justify-content-center p-4">
         ClosingRoom User Login
       </div>
-      <SignInForm history={history} />
+      <SignInForm {...props} />
       {/* <PasswordForgetLink /> */}
     </div>
     <SignUpLink />
@@ -46,6 +49,7 @@ class SignInForm extends Component {
       .then(() => {
         // this.setState({ ...INITIAL_STATE });
 
+        this.props.fetchAuthUser();
         history.push(routes.DASHBOARD);
       })
       .catch(error => {
@@ -111,6 +115,6 @@ class SignInForm extends Component {
   }
 }
 
-export default withRouter(SignInPage);
-
 export { SignInForm };
+
+export default withRouter(connect(null, actions)(SignInPage));

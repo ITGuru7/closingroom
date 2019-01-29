@@ -9,7 +9,7 @@ const RoomHeader = (props) => {
     <table>
       <thead>
         <tr>
-          <th colSpan="2">ClosingRoom Information</th>
+          <th colSpan="2"><u>ClosingRoom Information</u></th>
         </tr>
       </thead>
       <tbody>

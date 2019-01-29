@@ -3,53 +3,23 @@
     flex: 0 0 $right-panel-width ;
     border-left: 1px solid $black ;
 
-    .tasks-block {
-        .room-block {
-            background-color: $dark-yellow ;
+    .explorer-view {
+        tr.group {
+            background-color: $light-grey ;
         }
-        .document-block {
-            height: 30px ;
-            .actions {
-                .download {
-                    img {
-                        width: 20px ;
-                    }
-                }
-                .status {
-                    img {
-                        width: 20px ;
-                    }
-                }
-            }
-            &:nth-child(odd) {
-                background-color: $grey;
-            }
-            &:nth-child(even) {
-                background-color: $lighter-grey;
-            }
+        tr.content {
+            background-color: $lighter-grey ;
         }
     }
 
     .view-files {
         button {
+            color: $dark-blue ;
+            border: 1px solid $dark-blue ;
+
             span {
-                margin-right: 5px ;
-                color: white ;
                 font-size: 1rem ;
             }
-            .arrow-right {
-                height: 28px ;
-                background-color: $darkest-grey ;
-                img {
-                    width: 20px ;
-                }
-            }
-        }
-    }
-
-    .upload-file-block {
-        img {
-            width: 20px ;
         }
     }
 }

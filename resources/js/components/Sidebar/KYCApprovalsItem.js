@@ -36,11 +36,11 @@ class KYCApprovalsItem extends Component {
       <Link to={routes.KYC_APPROVALS} className="kyc-approval-link-block py-2 d-flex">
         { color === 'white' ?
           <div className="mr-3">
-            <img src={assets.search_white}/>
+            <img src={assets.search_white} className="size-20"/>
           </div>
         :
           <div className="mr-3">
-            <img src={assets.search_black}/>
+            <img src={assets.search_black} className="size-20"/>
           </div>
         }
         <span className={`align-self-center ${color==='white'?'text-white':''}`}>KYC Approvals</span>

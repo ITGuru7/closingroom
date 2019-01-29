@@ -33,14 +33,14 @@ class AccountSettingsItem extends Component {
     const {color} = this.props
 
     return (
-      <Link to={routes.KYC_APPROVALS} className="kyc-approval-link-block py-2 d-flex">
+      <Link to={routes.KYC_APPROVALS} className="py-2 d-flex">
         { color === 'white' ?
           <div className="mr-3">
-            <img src={assets.search_white}/>
+            <img src={assets.search_white} className="size-15"/>
           </div>
         :
           <div className="mr-3">
-            <img src={assets.search_black}/>
+            <img src={assets.search_black} className="size-15"/>
           </div>
         }
         <span className={`align-self-center ${color==='white'?'text-white':''}`}>KYC Approvals</span>

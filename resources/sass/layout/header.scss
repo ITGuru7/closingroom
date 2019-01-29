@@ -1,23 +1,23 @@
 
-.header-default {
-    flex: 0 0 $inner-header-height ;
+.page-header {
+    flex: 0 0 $height-100 ;
     border-bottom: 1px solid $border-default ;
 
     .title {
         font-size: 1rem ;
     }
-}
 
-.header-blue {
-    color: $dark-blue ;
-
-    .title {
+    &__blue {
         color: $dark-blue ;
+
+        .title {
+            color: $dark-blue ;
+        }
     }
 }
 
 .room-header {
-    flex: 0 0 $roomheader-height ;
+    flex: 0 0 $height-200 ;
     border-bottom: 1px solid $black ;
 
     .info-block {
@@ -28,7 +28,6 @@
             th {
                 color: $dark-blue ;
                 font-size: 1.2rem ;
-                text-decoration: underline ;
             }
             td {
                 color: $black ;
@@ -50,23 +49,37 @@
     }
 }
 
-.header {
-    flex: 0 0 $header-height ;
+.header-home {
+    flex: 0 0 $height-50 ;
     background: $dark-blue ;
 
     .logo {
-        img {
-            width: 30px ;
-        }
         .logo-text {
             div {
                 line-height: 1rem ;
             }
         }
     }
-    .help {
-        img {
-            width: 20px ;
+}
+
+.panel-header {
+    background-color: $dark-blue ;
+
+    .back {
+        &:hover {
+            cursor: pointer ;
         }
+        img {
+            width: 30px ;
+        }
+        span {
+            color: white ;
+            font-size: 1.5rem ;
+        }
+    }
+
+    .title {
+        color: white ;
+        font-size: 1.5rem ;
     }
 }

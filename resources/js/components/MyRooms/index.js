@@ -110,11 +110,11 @@ class MyRoomsPage extends Component {
               </tbody>
             }
           </table>
-          <div className="footer d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <Link to={routes.CREATE_ROOM}>
               <button className="button button-md button-red">
                 Create a ClosingRoom
-                <img src={assets.plus} className="ml-2"/>
+                <img src={assets.plus} className="size-15 ml-2"/>
               </button>
             </Link>
           </div>
@@ -202,8 +202,8 @@ class RoomRow extends Component {
         <td>{_.size(room.users)}</td>
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td>{functions.getFormattedDate(new Date(room.expire_date))}</td>
-        <td className="action">
-          <img src={assets.setting_black} className="mr-3"/>
+        <td>
+          <img src={assets.setting_black} className="size-20 mr-3"/>
           <Link to={`/rooms/${room.room_id}`}>
             <button className="button button-md button-blue">
               Enter

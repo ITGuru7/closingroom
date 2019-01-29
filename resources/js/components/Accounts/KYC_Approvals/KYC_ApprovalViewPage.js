@@ -11,6 +11,7 @@ import assets from '../../../assets';
 import * as functions from '../../../functions';
 
 import DefaultHeader from '../../Header/DefaultHeader';
+import PanelHeader from '../../Header/PanelHeader';
 
 import * as actions from '../../../actions';
 
@@ -41,15 +42,6 @@ class KYC_ApprovalViewPage extends Component {
     }
   }
 
-  renderHeader = () => (
-    <div className="header px-3">
-      <Link to={routes.KYC_APPROVALS} className="back d-flex align-items-center">
-        <img src={assets.arrow_left_circle} className="mr-2"/>
-        <span>Back</span>
-      </Link>
-    </div>
-  )
-
   renderUserInfo = () => {
     const { users } = this.props;
     const { user_id } = this.props.match.params
@@ -58,37 +50,37 @@ class KYC_ApprovalViewPage extends Component {
     return (
       <div className="userinfo-block flex-grow-1 p-3">
         <div className="d-flex flex-row my-3">
-          <div className="label w-25">User ID:</div>
+          <div className="font-weight-bold w-25">User ID:</div>
           <div>{functions.getFormattedID(user.id, 7)}</div>
         </div>
         <div className="d-flex flex-row my-3">
-          <div className="label w-25">First Name:</div>
+          <div className="font-weight-bold w-25">First Name:</div>
           <div>{user.firstname}</div>
         </div>
         <div className="d-flex flex-row my-3">
-          <div className="label w-25">Last Name:</div>
+          <div className="font-weight-bold w-25">Last Name:</div>
           <div>{user.lastname}</div>
         </div>
         <div className="d-flex flex-row my-3">
-          <div className="label w-25">Occupation:</div>
+          <div className="font-weight-bold w-25">Occupation:</div>
           <div>{user.occupation}</div>
         </div>
         <div className="d-flex flex-row my-3">
-          <div className="label w-25">Passport Number:</div>
+          <div className="font-weight-bold w-25">Passport Number:</div>
           <div>
             <span className="mr-5">{user.passport}</span>
-            <a href={user.passport_url}>View passport scan</a>
+            <a href={user.passport_url} className="font-weight-bold"><u>View passport scan</u></a>
           </div>
         </div>
         <div className="d-flex flex-row my-3">
-          <div className="label w-25">Address:</div>
+          <div className="font-weight-bold w-25">Address:</div>
           <div>
             <span className="mr-5">{user.address}</span>
-            <a href={user.address_url}>View proof of address scan</a>
+            <a href={user.address_url} className="font-weight-bold"><u>View proof of address scan</u></a>
           </div>
         </div>
         <div className="d-flex flex-row my-3">
-          <div className="label w-25">Country:</div>
+          <div className="font-weight-bold w-25">Country:</div>
           <div>{user.location}</div>
         </div>
       </div>
@@ -119,7 +111,7 @@ class KYC_ApprovalViewPage extends Component {
             onClick={(event) => this.onApproveKYC()}
           >
             Approve
-            <img src={assets.agree_white} className="ml-2"/>
+            <img src={assets.agree_white} className="size-20 ml-2"/>
           </button>
         </div>
         <div className="deny-block">
@@ -127,7 +119,7 @@ class KYC_ApprovalViewPage extends Component {
             Deny User
           </div>
           <div className="body p-2">
-            <div className="label">Reason:</div>
+            <div className="font-weight-bold">Reason:</div>
             <textarea
               name="reason"
               id="reason"
@@ -143,7 +135,7 @@ class KYC_ApprovalViewPage extends Component {
                 onClick={(event) => this.onDenyKYC()}
               >
                 Deny
-                <img src={assets.disagree_white} className="ml-2"/>
+                <img src={assets.disagree_white} className="size-20 ml-2"/>
               </button>
             </div>
           </div>
@@ -163,7 +155,9 @@ class KYC_ApprovalViewPage extends Component {
       <div className="kyc-approval-view-page d-flex flex-column h-100">
         <DefaultHeader title="KYC Approvals -> View" />
         <div className="page-content flex-grow-1 d-flex flex-column pb-4">
-          {this.renderHeader()}
+          <PanelHeader {...this.props}
+            back={true}
+          />
           {this.renderUserInfo()}
           {this.renderActions()}
         </div>

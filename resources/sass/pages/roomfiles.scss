@@ -1,63 +1,36 @@
 
 .roomfiles-page {
-    .header {
-        background-color: $dark-blue ;
+    .documents-block {
+        overflow-y: scroll ;
 
-        &:hover {
-            cursor: pointer ;
-        }
-
-        .back {
-            img {
-                width: 30px ;
+        table.filestable {
+            th {
+                padding: 0 ;
+                line-height: 2rem ;
+                text-transform: uppercase ;
             }
-            span {
-                color: white ;
-                font-size: 1.5rem ;
+            th, td {
+                border: 1px solid $light-grey ;
             }
-        }
-
-        .title {
-            color: white ;
-            font-size: 1.5rem ;
-        }
-    }
-    table.filestable {
-        th {
-            padding: 0 ;
-            line-height: 2rem ;
-            text-transform: uppercase ;
-        }
-        th, td {
-            border: 1px solid $border-lightgrey ;
-        }
-        td {
-            padding: .3rem 2rem ;
-            vertical-align: middle ;
-        }
-        td.title {
-            text-align: left ;
-        }
-        td.type {
-            text-transform: uppercase ;
-        }
-        img {
-            width: 20px ;
-        }
-        input {
-            width: 20px !important ;
+            td {
+                padding: .3rem 2rem ;
+                vertical-align: middle ;
+            }
+            td.title {
+                text-align: left ;
+            }
+            td.type {
+                text-transform: uppercase ;
+            }
+            input {
+                width: 20px !important ;
+            }
         }
     }
 
     .footer {
-        img {
-            width: 20px ;
-        }
         button {
             width: 150px ;
-            color: $dark-blue ;
-            background: white ;
-            border: 1px solid $dark-blue ;
         }
     }
 }

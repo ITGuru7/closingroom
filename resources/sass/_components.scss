@@ -6,6 +6,8 @@ body, div, a, span, p, h1, h2, h3, h4, h5, h6, table, thead, tbody, th, td {
 }
 
 button {
+    border: none ;
+
     &.button-sm {
         height: 20px ;
     }
@@ -15,7 +17,6 @@ button {
     &.button-lg {
         height: 40px ;
     }
-    border: none ;
 
     &.button-grey {
         color: white ;
@@ -44,6 +45,11 @@ button {
     &.button-transparent {
         border: none ;
         background-color: transparent ;
+    }
+    &.button-white {
+        color: $dark-blue ;
+        background-color: white ;
+        border: 1px solid $dark-blue ;
     }
     &.button-header {
         border: 1px solid white ;
@@ -90,4 +96,14 @@ table.mytable {
 
 .alert.alert-light {
     color: black ;
+}
+
+img {
+    @for $i from 1 through 6 {
+        $img_size: $i * 5;
+        &.size-#{$img_size} {
+            width: $img_size + px ;
+            height: $img_size + px ;
+        }
+    }
 }

@@ -179,8 +179,8 @@ class RoomRow extends Component {
         <td>{_.size(room.users)}</td>
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td>{functions.getFormattedDate(new Date(room.expire_date))}</td>
-        <td className="action">
-          <img src={assets.bell} className="mr-3"/>
+        <td>
+          <img src={assets.bell} className="size-20 mr-3"/>
           <Link to={`/rooms/${room.room_id}`}>
             <button className="button button-md button-blue">
               Enter

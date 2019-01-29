@@ -20,7 +20,7 @@ const HomePage = () => (
         <h2 className="text-center">Features</h2>
         <div className="row m-0">
           <div className="feature col-md-4 col-sm-6 col-xs-12 mb-5 text-center">
-            <img src={assets.feature_secure} className="feature-image mb-2"/>
+            <img src={assets.secure} className="feature-image mb-2"/>
             <h4 className="subtitle mb-4">Secure, Private Closing Rooms</h4>
             <div className="content">
               <p>MNM Closing Room’s systems and processes meets the industry’s most rigorous security certification standards.</p>
@@ -29,14 +29,14 @@ const HomePage = () => (
             </div>
           </div>
           <div className="feature col-md-4 col-sm-6 col-xs-12 mb-5 text-center">
-            <img src={assets.feature_chat} className="feature-image mb-2"/>
+            <img src={assets.chat} className="feature-image mb-2"/>
             <h4 className="subtitle mb-4">Live Communication</h4>
             <div className="content">
               <p>Chat with all parties live, negotiate terms and come to agreements in real time inside the ClosingRoom.</p>
             </div>
           </div>
           <div className="feature col-md-4 col-sm-6 col-xs-12 mb-5 text-center">
-            <img src={assets.feature_sign} className="feature-image mb-2"/>
+            <img src={assets.pencil} className="feature-image mb-2"/>
             <h4 className="subtitle mb-4">Fill and Sign</h4>
             <div className="content">
               <p>The Closing Room provides pre drafted legal documents, after negotiating terms users can fill the forms with all relevant details of the transaction and send to all users for signatures.</p>
@@ -45,7 +45,7 @@ const HomePage = () => (
             </div>
           </div>
           <div className="feature col-md-4 col-sm-6 col-xs-12 mb-5 text-center">
-            <img src={assets.feature_fileroom} className="feature-image mb-2"/>
+            <img src={assets.fileroom} className="feature-image mb-2"/>
             <h4 className="subtitle mb-4">FileRoom Utility</h4>
             <div className="content">
               <p>The FileRoom allows parties to upload, store and manage all files and documents pertinent to the deal being negotiated.</p>
@@ -53,14 +53,14 @@ const HomePage = () => (
             </div>
           </div>
           <div className="feature col-md-4 col-sm-6 col-xs-12 mb-5 text-center">
-            <img src={assets.feature_tasks} className="feature-image mb-2"/>
+            <img src={assets.tasks} className="feature-image mb-2"/>
             <h4 className="subtitle mb-4">Tasks Utility</h4>
             <div className="content">
               <p>The Tasks feature of the closing room, allows privileged users to pick and choose which documents or contracts are mandatory and in what order they must be complete. Tasks can be delegated to single users or every user in the room.</p>
             </div>
           </div>
           <div className="feature col-md-4 col-sm-6 col-xs-12 mb-5 text-center">
-            <img src={assets.feature_verify} className="feature-image mb-2"/>
+            <img src={assets.verify} className="feature-image mb-2"/>
             <h4 className="subtitle mb-4">Enhanced Verification</h4>
             <div className="content">
               <p>All users participating in the signing of any legal documents are required to pass enhanced ID verification process’s.</p>

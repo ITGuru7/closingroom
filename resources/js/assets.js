@@ -1,63 +1,66 @@
-import screenshot         from '../assets/images/png/screenshot@4x.png';
+import screenshot                   from '../assets/images/png/screenshot@4x.png';
 
-import logo               from '../assets/images/svg/logo.svg';
-import logo_transparent   from '../assets/images/svg/logo-transparent.svg';
-import logo_header        from '../assets/images/svg/logo-header.svg';
+import logo                         from '../assets/images/svg/logo.svg';
+import logo_transparent             from '../assets/images/svg/logo-transparent.svg';
+import logo_header                  from '../assets/images/svg/logo-header.svg';
 
-import logout             from '../assets/images/svg/logout.svg';
-import home               from '../assets/images/svg/home.svg';
-import setting_blue       from '../assets/images/svg/setting-blue.svg';
-import find               from '../assets/images/svg/find.svg';
-import add_user           from '../assets/images/svg/add-user.svg';
-import file               from '../assets/images/svg/file.svg';
-import download           from '../assets/images/svg/download.svg';
-import setting_black      from '../assets/images/svg/setting-black.svg';
-import star               from '../assets/images/svg/star.svg';
-import clock              from '../assets/images/svg/clock.svg';
-import accept             from '../assets/images/svg/accept.svg';
-import unaccept           from '../assets/images/svg/unaccept.svg';
-import upload_blue        from '../assets/images/svg/upload-blue.svg';
-import upload_white       from '../assets/images/svg/upload-white.svg';
-import close              from '../assets/images/svg/close.svg';
-import arrow_right        from '../assets/images/svg/arrow-right.svg';
-import arrow_left_circle  from '../assets/images/svg/arrow-left-circle.svg';
-import radio_on           from '../assets/images/svg/radio-on.svg';
-import radio_off          from '../assets/images/svg/radio-off.svg';
-import download_black     from '../assets/images/svg/download-black.svg';
-import download_white     from '../assets/images/svg/download-white.svg';
+import logout                       from '../assets/images/svg/logout.svg';
+import home                         from '../assets/images/svg/home.svg';
+import setting_blue                 from '../assets/images/svg/setting-blue.svg';
+import find                         from '../assets/images/svg/find.svg';
+import add_user                     from '../assets/images/svg/add-user.svg';
+import file                         from '../assets/images/svg/file.svg';
+import download                     from '../assets/images/svg/download.svg';
+import setting_black                from '../assets/images/svg/setting-black.svg';
+import star                         from '../assets/images/svg/star.svg';
+import clock                        from '../assets/images/svg/clock.svg';
+import accept                       from '../assets/images/svg/accept.svg';
+import unaccept                     from '../assets/images/svg/unaccept.svg';
+import upload_blue                  from '../assets/images/svg/upload-blue.svg';
+import upload_white                 from '../assets/images/svg/upload-white.svg';
+import close                        from '../assets/images/svg/close.svg';
+import radio_on                     from '../assets/images/svg/radio-on.svg';
+import radio_off                    from '../assets/images/svg/radio-off.svg';
+import download_black               from '../assets/images/svg/download-black.svg';
+import download_white               from '../assets/images/svg/download-white.svg';
 
-import manage_rooms       from '../assets/images/svg/manage-rooms.svg';
-import manage_accounts    from '../assets/images/svg/manage-accounts.svg';
-import search_black       from '../assets/images/svg/search-black.svg';
-import search_white       from '../assets/images/svg/search-white.svg';
+import manage_rooms                 from '../assets/images/svg/manage-rooms.svg';
+import manage_accounts              from '../assets/images/svg/manage-accounts.svg';
+import search_black                 from '../assets/images/svg/search-black.svg';
+import search_white                 from '../assets/images/svg/search-white.svg';
 
-import plus               from '../assets/images/svg/plus.svg';
+import plus                         from '../assets/images/svg/plus.svg';
 
-import agree_white        from '../assets/images/svg/agree-white.svg';
-import disagree_white     from '../assets/images/svg/disagree-white.svg';
+import agree_white                  from '../assets/images/svg/agree-white.svg';
+import disagree_white               from '../assets/images/svg/disagree-white.svg';
 
-import warning            from '../assets/images/svg/warning.svg';
+import warning                      from '../assets/images/svg/warning.svg';
 
-import bell               from '../assets/images/svg/bell.svg';
-import close_blue         from '../assets/images/svg/close-blue.svg';
+import bell                         from '../assets/images/svg/bell.svg';
+import close_blue                   from '../assets/images/svg/close-blue.svg';
 
-import sign               from '../assets/images/svg/sign.svg';
+import sign                         from '../assets/images/svg/sign.svg';
 
-import status_complete    from '../assets/images/svg/status-complete.svg';
-import status_incomplete  from '../assets/images/svg/status-incomplete.svg';
-import status_working     from '../assets/images/svg/status-working.svg';
-import status_userupload  from '../assets/images/svg/manage-accounts.svg';
+import status_complete              from '../assets/images/svg/status-complete.svg';
+import status_incomplete            from '../assets/images/svg/status-incomplete.svg';
+import status_working               from '../assets/images/svg/status-working.svg';
+import status_userupload            from '../assets/images/svg/manage-accounts.svg';
 
 
-import help               from '../assets/images/svg/help.svg';
+import help                         from '../assets/images/svg/help.svg';
 
 
-import feature_secure     from '../assets/images/svg/feature-secure.svg';
-import feature_chat       from '../assets/images/svg/feature-chat.svg';
-import feature_sign       from '../assets/images/svg/feature-sign.svg';
-import feature_fileroom   from '../assets/images/svg/feature-fileroom.svg';
-import feature_tasks      from '../assets/images/svg/feature-tasks.svg';
-import feature_verify     from '../assets/images/svg/feature-verify.svg';
+import secure                       from '../assets/images/svg/secure.svg';
+import chat                         from '../assets/images/svg/chat.svg';
+import pencil                       from '../assets/images/svg/pencil.svg';
+import fileroom                     from '../assets/images/svg/fileroom.svg';
+import tasks                        from '../assets/images/svg/tasks.svg';
+import verify                       from '../assets/images/svg/verify.svg';
+
+import arrow_right_white            from '../assets/images/svg/arrow-right-white.svg';
+import arrow_left_white_circle      from '../assets/images/svg/arrow-left-white-circle.svg';
+import angle_right_black            from '../assets/images/svg/angle-right-black.svg';
+import angle_down_black             from '../assets/images/svg/angle-down-black.svg';
 
 export default {
     logo,
@@ -79,8 +82,6 @@ export default {
     upload_blue,
     upload_white,
     close,
-    arrow_right,
-    arrow_left_circle,
     radio_on,
     radio_off,
     download_black,
@@ -111,10 +112,15 @@ export default {
 
     help,
 
-    feature_secure,
-    feature_chat,
-    feature_sign,
-    feature_fileroom,
-    feature_tasks,
-    feature_verify,
+    secure,
+    chat,
+    pencil,
+    fileroom,
+    tasks,
+    verify,
+
+    arrow_right_white,
+    arrow_left_white_circle,
+    angle_right_black,
+    angle_down_black,
 }
