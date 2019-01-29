@@ -8,9 +8,9 @@ import * as actions from "../../actions";
 
 import RoomHeader from '../Header/RoomHeader';
 
-import UserList from './UserList';
-import Messages from './Messages';
-import Tasks from './Tasks';
+import UserListPanel from './UserListPanel';
+import MessagesPanel from './MessagesPanel';
+import TasksPanel from './TasksPanel';
 
 const INITIAL_STATE = {
   users: null,
@@ -76,9 +76,9 @@ class RoomPage extends Component {
       <div className="room-page d-flex flex-column h-100">
         <RoomHeader room={room}/>
         <div className="page-content flex-grow-1 d-flex flex-row">
-          <UserList users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
-          <Messages users={users} receiver_id={receiver_id}/>
-          <Tasks user_id={users[authUser.uid].id}/>
+          <UserListPanel users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
+          <MessagesPanel users={users} receiver_id={receiver_id}/>
+          <TasksPanel user_id={users[authUser.uid].id}/>
         </div>
       </div>
     )

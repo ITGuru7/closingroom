@@ -10369,40 +10369,53 @@ img.size-30 {
   font-size: 1rem;
 }
 
-.roomfiles-page .documents-block {
+.roomfiles-page .room-header {
+  height: 200px;
+}
+
+.roomfiles-page .page-content {
+  height: calc(100% - 200px);
+}
+
+.roomfiles-page .page-content .filemanager-panel {
+  height: 50%;
   overflow-y: scroll;
 }
 
-.roomfiles-page .documents-block table.filestable th {
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable th {
   padding: 0;
   line-height: 2rem;
   text-transform: uppercase;
 }
 
-.roomfiles-page .documents-block table.filestable th,
-.roomfiles-page .documents-block table.filestable td {
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable th,
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td {
   border: 1px solid #e6e6e6;
 }
 
-.roomfiles-page .documents-block table.filestable td {
-  padding: 0.3rem 2rem;
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td {
+  padding: 0;
   vertical-align: middle;
 }
 
-.roomfiles-page .documents-block table.filestable td.title {
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td.title {
   text-align: left;
 }
 
-.roomfiles-page .documents-block table.filestable td.type {
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td.type {
   text-transform: uppercase;
 }
 
-.roomfiles-page .documents-block table.filestable input {
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable input {
   width: 20px !important;
 }
 
-.roomfiles-page .footer button {
+.roomfiles-page .page-content .filemanager-panel .footer button {
   width: 150px;
+}
+
+.roomfiles-page .page-content .taskmanager-panel {
+  height: 50%;
 }
 
 .accounts-page .page-content .header {

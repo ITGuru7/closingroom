@@ -1,0 +1,36 @@
+.filemanager-panel {
+    height: 50% ;
+    overflow-y: scroll ;
+
+    .documents-block {
+        table.filestable {
+            th {
+                padding: 0 ;
+                line-height: 2rem ;
+                text-transform: uppercase ;
+            }
+            th, td {
+                border: 1px solid $light-grey ;
+            }
+            td {
+                padding: 0 ;
+                vertical-align: middle ;
+            }
+            td.title {
+                text-align: left ;
+            }
+            td.type {
+                text-transform: uppercase ;
+            }
+            input {
+                width: 20px !important ;
+            }
+        }
+    }
+
+    .footer {
+        button {
+            width: 150px ;
+        }
+    }
+}
