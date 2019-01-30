@@ -50,7 +50,11 @@ class SignInForm extends Component {
         // this.setState({ ...INITIAL_STATE });
 
         this.props.fetchAuthUser();
-        history.push(routes.DASHBOARD);
+
+        setTimeout(function(){
+          history.push(routes.DASHBOARD);
+        }, 1000);
+
       })
       .catch(error => {
         alert(error)
