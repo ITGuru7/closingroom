@@ -130,7 +130,7 @@ const UserRow = ({user, rooms}) => {
       <td>{functions.getFormattedDate(new Date(user.join_date))}</td>
       <td>{renderActiveRooms()}</td>
       <td>
-        {/* <Link to={`/rooms/${room.room_id}`}> */}
+        {/* <Link to={`/rooms/${room.rid}`}> */}
           <button className="button button-md button-blue">
             More
           </button>

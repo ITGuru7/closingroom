@@ -27,8 +27,8 @@ export const onceGetUsers = () => (
   db.ref('users').once('value')
 );
 
-export const onceGetUser = (user_id) => (
-  db.ref(`users/${user_id}`).once('value')
+export const onceGetUser = (uid) => (
+  db.ref(`users/${uid}`).once('value')
 );
 
   // Other db APIs ...
@@ -37,8 +37,8 @@ export const onceGetRooms = () => (
   db.ref('rooms').once('value')
 );
 
-export const onceGetRoom = (room_id) => (
-  db.ref(`rooms/${room_id}`).once('value')
+export const onceGetRoom = (rid) => (
+  db.ref(`rooms/${rid}`).once('value')
 )
 
 export const doCreateRoom = (user, roomname, level, timelimit, invites, general_details, users) => {
@@ -63,11 +63,11 @@ export const doCreateRoom = (user, roomname, level, timelimit, invites, general_
 
     doCreateMessage(room.key, user.uid, null, 'Welcome')
 
-    let room_id = room.key
-    onceGetRoom(room_id)
+    let rid = room.key
+    onceGetRoom(rid)
     .then(function(snapshot){
       room = snapshot.val()
-      room.room_id = room_id
+      room.rid = rid
       _.forEach(invites, function(invite, index){
         if (invite.email) {
           actions.doSendInviteEmail(room, user, invite.email, ROLES[invite.role].role_label, users)
@@ -77,45 +77,45 @@ export const doCreateRoom = (user, roomname, level, timelimit, invites, general_
   })
 }
 
-export const doChangeRoomname = (room_id, user_id, roomname) => {
-  if (user_id != null) {
-    db.ref(`rooms/${room_id}/users/${user_id}`).update({
+export const doChangeRoomname = (rid, uid, roomname) => {
+  if (uid != null) {
+    db.ref(`rooms/${rid}/users/${uid}`).update({
       roomname: roomname,
     })
   } else {
-    db.ref(`rooms/${room_id}`).update({
+    db.ref(`rooms/${rid}`).update({
       roomname: roomname,
     })
   }
 };
 
-export const usersRef = (room_id) => (
-  db.ref(`rooms/${room_id}/users`)
+export const usersRef = (rid) => (
+  db.ref(`rooms/${rid}/users`)
 );
 
-export const messagesRef = (room_id) => (
-  db.ref(`rooms/${room_id}/messages`)
+export const messagesRef = (rid) => (
+  db.ref(`rooms/${rid}/messages`)
 );
 
-export const doCreateMessage = (room_id, sender_id, receiver_id, content) => {
+export const doCreateMessage = (rid, sender_uid, receiver_uid, content) => {
   let date = Date.now()
 
-  return db.ref(`rooms/${room_id}/messages`).push({
-    sender_id,
-    receiver_id,
+  return db.ref(`rooms/${rid}/messages`).push({
+    sender_uid,
+    receiver_uid,
     content,
     date,
   })
 }
 
-export const doInviteUserToRoom = (room_id, user_id) => (
-  db.ref(`rooms/${room_id}/users/${user_id}`).set({
+export const doInviteUserToRoom = (rid, uid) => (
+  db.ref(`rooms/${rid}/users/${uid}`).set({
     level: 0,
   })
 );
 
-export const doUserProfileUpdate = (user_id, email, firstname, lastname, displayname) => (
-  db.ref(`users/${user_id}`).update({
+export const doUserProfileUpdate = (uid, email, firstname, lastname, displayname) => (
+  db.ref(`users/${uid}`).update({
     email,
     firstname,
     lastname,
@@ -123,8 +123,8 @@ export const doUserProfileUpdate = (user_id, email, firstname, lastname, display
   })
 );
 
-export const doUserKYC = (user_id, firstname, lastname, occupation, passport, address) => (
-  db.ref(`users/${user_id}`).update({
+export const doUserKYC = (uid, firstname, lastname, occupation, passport, address) => (
+  db.ref(`users/${uid}`).update({
     firstname,
     lastname,
     occupation,
@@ -134,23 +134,23 @@ export const doUserKYC = (user_id, firstname, lastname, occupation, passport, ad
   })
 );
 
-export const doDownloadPassport = (user_id, url) => (
-  db.ref(`users/${user_id}`).update({
+export const doDownloadPassport = (uid, url) => (
+  db.ref(`users/${uid}`).update({
     passport_url: url,
   })
 );
 
-export const doDownloadAddress = (user_id, url) => (
-  db.ref(`users/${user_id}`).update({
+export const doDownloadAddress = (uid, url) => (
+  db.ref(`users/${uid}`).update({
     address_url: url,
   })
 );
 
-export const doUploadDocument = (room_id, user_id, type, other, issued, certified, comment) => {
+export const doUploadDocument = (rid, uid, type, other, issued, certified, comment) => {
   let date = Date.now()
   console.log(date)
 
-  return db.ref(`rooms/${room_id}/users/${user_id}/documents`).push({
+  return db.ref(`rooms/${rid}/users/${uid}/documents`).push({
     type,
     other,
     issued,
@@ -160,8 +160,8 @@ export const doUploadDocument = (room_id, user_id, type, other, issued, certifie
   })
 };
 
-export const doDownloadDocument = (room_id, user_id, doc_key, url) => (
-  db.ref(`rooms/${room_id}/users/${user_id}/documents/${doc_key}`).update({
+export const doDownloadDocument = (rid, uid, doc_key, url) => (
+  db.ref(`rooms/${rid}/users/${uid}/documents/${doc_key}`).update({
     url,
   })
 );
@@ -170,31 +170,31 @@ export const onceGetDocuments = () => (
   db.ref('documents').once('value')
 );
 
-export const doApproveKYC = (user_id) => {
-  db.ref(`users/${user_id}`).update({
+export const doApproveKYC = (uid) => {
+  db.ref(`users/${uid}`).update({
     kyc_status: 'verified',
     level: 1,
   })
 }
 
-export const doDenyKYC = (user_id, reason) => {
-  db.ref(`users/${user_id}`).update({
+export const doDenyKYC = (uid, reason) => {
+  db.ref(`users/${uid}`).update({
     kyc_status: 'failed',
     kyc_deny_reason: reason,
     level: 0,
   })
 }
 
-export const doTryAgainKYC = (user_id) => {
-  db.ref(`users/${user_id}`).update({
+export const doTryAgainKYC = (uid) => {
+  db.ref(`users/${uid}`).update({
     kyc_status: 'unverified',
     kyc_deny_reason: '',
     level: 0,
   })
 }
 
-export const doUpgradeUser = (user_id) => {
-  db.ref(`users/${user_id}`).update({
+export const doUpgradeUser = (uid) => {
+  db.ref(`users/${uid}`).update({
     level: 3,
   })
 }

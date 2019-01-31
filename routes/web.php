@@ -19,9 +19,19 @@ Route::get('invite', function () {
 		'participants' => '5',
 		'link' => 'http://www.closingroom.com/nf89423mm#23'
 	];
-	return view('emails.invite', $data);
+	return view('email.invite', $data);
 });
 
+// Route::get('pdf-dealdetails', function () {
+// 	$data = [
+// 		'roomname' => 'Room1',
+// 		'timelimit' => '2'
+// 	];
+// 	return view('pdf.dealdetails', $data);
+// });
+
+
+Route::get('pdf-dealdetails','Controller@pdf_DealDetails');
 
 
 Route::any('{all}', function () {

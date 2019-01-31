@@ -38,10 +38,10 @@ export const fetchUsers = () => dispatch => {
   });
 };
 
-export const fetchUser = (user_id) => dispatch => {
-  firebaseDB.ref(`users/${user_id}`).on("value", snapshot => {
+export const fetchUser = (uid) => dispatch => {
+  firebaseDB.ref(`users/${uid}`).on("value", snapshot => {
     let user = snapshot.val()
-    user.uid = user_id
+    user.uid = uid
     dispatch({
       type: "FETCH_USER",
       payload: user
@@ -53,7 +53,7 @@ export const fetchRooms = () => dispatch => {
   firebaseDB.ref('rooms').on("value", snapshot => {
     let rooms = snapshot.val()
     Object.keys(rooms).map(key => {
-      rooms[key].room_id = key
+      rooms[key].rid = key
     })
     dispatch({
       type: "FETCH_ROOMS",
@@ -62,10 +62,10 @@ export const fetchRooms = () => dispatch => {
   });
 };
 
-export const fetchRoom = (room_id) => dispatch => {
-  firebaseDB.ref(`rooms/${room_id}`).on("value", snapshot => {
+export const fetchRoom = (rid) => dispatch => {
+  firebaseDB.ref(`rooms/${rid}`).on("value", snapshot => {
     let room = snapshot.val()
-    room.room_id = room_id
+    room.rid = rid
     dispatch({
       type: "FETCH_ROOM",
       payload: room
@@ -73,8 +73,8 @@ export const fetchRoom = (room_id) => dispatch => {
   });
 };
 
-export const fetchRoomMessages = (room_id) => dispatch => {
-  firebaseDB.ref(`rooms/${room_id}/messages`).on("value", snapshot => {
+export const fetchRoomMessages = (rid) => dispatch => {
+  firebaseDB.ref(`rooms/${rid}/messages`).on("value", snapshot => {
     dispatch({
       type: "FETCH_ROOM_MESSAGES",
       payload: snapshot.val()
@@ -82,8 +82,8 @@ export const fetchRoomMessages = (room_id) => dispatch => {
   });
 };
 
-export const fetchRoomUsers = (room_id) => dispatch => {
-  firebaseDB.ref(`rooms/${room_id}/users`).on("value", snapshot => {
+export const fetchRoomUsers = (rid) => dispatch => {
+  firebaseDB.ref(`rooms/${rid}/users`).on("value", snapshot => {
     dispatch({
       type: "FETCH_ROOM_USERS",
       payload: snapshot.val()
@@ -110,12 +110,12 @@ export const doSendInviteEmail = (room, authUser, email, role, users) => {
 
   let link
   if (invitedUser) {
-    firebaseDB.ref(`rooms/${room.room_id}/users/${invitedUser.uid}`).set({
+    firebaseDB.ref(`rooms/${room.rid}/users/${invitedUser.uid}`).set({
       roomname: '',
     })
-    link = `${SERVER_URL}/rooms/${room.room_id}`
+    link = `${SERVER_URL}/rooms/${room.rid}`
    } else {
-    firebaseDB.ref(`rooms/${room.room_id}/invitedUsers`).push({
+    firebaseDB.ref(`rooms/${room.rid}/invitedUsers`).push({
       email,
       role,
     })
@@ -127,18 +127,18 @@ export const doSendInviteEmail = (room, authUser, email, role, users) => {
     receiver_email=${email}&
     displayname=${authUser.displayname}&
     role=${role}&
-    room_id=${getFormattedID(room.id, 6)}&
+    rid=${getFormattedID(room.id, 6)}&
     participants=${_.size(room.users)}&
     link=${link}
   `;
   return axios.post(url)
 }
 
-export const doEnterInvitedRooms = (user_id, email) => {
+export const doEnterInvitedRooms = (uid, email) => {
   firebaseDB.ref('rooms').on("value", snapshot => {
     let rooms = snapshot.val()
     Object.keys(rooms).map(key => {
-      rooms[key].room_id = key
+      rooms[key].rid = key
     })
     _.forEach(rooms, function(room, index){
       let invitedUsers = room.invitedUsers
@@ -146,8 +146,8 @@ export const doEnterInvitedRooms = (user_id, email) => {
         Object.keys(invitedUsers).map(key => {
           let invitedUser = invitedUsers[key]
           if (email.toLowerCase() === invitedUser.email.toLowerCase()) {
-            firebaseDB.ref(`rooms/${room.room_id}/invitedUsers/${key}`).remove()
-            firebaseDB.ref(`rooms/${room.room_id}/users/${user_id}`).set({
+            firebaseDB.ref(`rooms/${room.rid}/invitedUsers/${key}`).remove()
+            firebaseDB.ref(`rooms/${room.rid}/users/${uid}`).set({
               roomname: '',
               role: invitedUser.role,
             })

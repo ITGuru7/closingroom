@@ -44,8 +44,8 @@ class KYC_ApprovalViewPage extends Component {
 
   renderUserInfo = () => {
     const { users } = this.props;
-    const { user_id } = this.props.match.params
-    let user = users[user_id]
+    const { uid } = this.props.match.params
+    let user = users[uid]
 
     return (
       <div className="userinfo-block flex-grow-1 p-3">
@@ -89,16 +89,16 @@ class KYC_ApprovalViewPage extends Component {
 
   onApproveKYC = () => {
     const { history } = this.props
-    const { user_id } = this.props.match.params
-    db.doApproveKYC(user_id)
+    const { uid } = this.props.match.params
+    db.doApproveKYC(uid)
     history.push(routes.KYC_APPROVALS)
   }
 
   onDenyKYC = () => {
     const { history } = this.props
-    const { user_id } = this.props.match.params
+    const { uid } = this.props.match.params
     const { reason } = this.state
-    db.doDenyKYC(user_id, reason)
+    db.doDenyKYC(uid, reason)
     history.push(routes.KYC_APPROVALS)
   }
 

@@ -48,14 +48,14 @@ class UploadDocumentModal extends Component {
     const { authUser } = this.props
     const {document, document_file, type, other, issued, certified, comment} = this.state ;
     const room_key = $('.upload-modal').find('#roomKey').val()
-    const room_id = $('.upload-modal').find('#roomID').val()
-    const user_id = $('.upload-modal').find('#userID').val()
+    const rid = $('.upload-modal').find('#roomID').val()
+    const uid = $('.upload-modal').find('#userID').val()
 
     db.doUploadDocument(room_key, authUser.uid, DOCUMENT_TYPE[type], other, issued, certified, comment)
     .then((snapshot) => {
       const doc_key = snapshot.key
 
-      let document_name = getFormattedID(room_id, 4) + '_' + getFormattedID(user_id, 4) + '_' + String(DOCUMENT_TYPE[type]).replace(" ", "").toUpperCase() + '_' + getFormattedDate(new Date(), '.')
+      let document_name = getFormattedID(rid, 4) + '_' + getFormattedID(uid, 4) + '_' + String(DOCUMENT_TYPE[type]).replace(" ", "").toUpperCase() + '_' + getFormattedDate(new Date(), '.')
 
       storage.doUploadDocument(document_name, document_file)
       .then(snapshot => snapshot.ref.getDownloadURL())
@@ -83,7 +83,10 @@ class UploadDocumentModal extends Component {
   }
 
   render() {
+    const { authUser, room } = this.props
     const {document, document_file, type, other, issued, certified, comment} = this.state ;
+
+    console.log(room)
 
     const isInvalid =
       type === '' ||
@@ -246,9 +249,10 @@ class UploadDocumentModal extends Component {
   }
 }
 
-const mapStateToProps = ({ authUser }) => {
+const mapStateToProps = ({ authUser, room }) => {
   return {
     authUser,
+    room,
   };
 };
 

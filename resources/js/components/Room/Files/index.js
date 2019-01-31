@@ -22,9 +22,9 @@ import _ from 'lodash';
 class RoomFilesPage extends Component {
 
   componentWillMount() {
-    const { room_id } = this.props.match.params
+    const { rid } = this.props.match.params
     const { fetchRoom } = this.props
-    fetchRoom(room_id);
+    fetchRoom(rid);
   }
 
   render() {

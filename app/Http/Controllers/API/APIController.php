@@ -29,7 +29,7 @@ class APIController extends Controller
 			'link' => $link
 		];
 
-		Mail::send('emails.invite', $data, function($message) use ($sender_email, $receiver_email, $role) {
+		Mail::send('email.invite', $data, function($message) use ($sender_email, $receiver_email, $role) {
 			$message->to($receiver_email, '')->subject('Invitation to a new room');
 			$message->from($sender_email, 'ClosingRoom');
 		});

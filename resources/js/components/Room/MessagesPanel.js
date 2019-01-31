@@ -14,10 +14,10 @@ class MessagesPanel extends Component {
   state = { ...INITIAL_STATE };
 
   handleSendMessage = () => {
-    const { authUser, room, receiver_id } = this.props;
+    const { authUser, room, receiver_uid } = this.props;
     const {message} = this.state;
     if (message) {
-      db.doCreateMessage(room.room_id, authUser.uid, receiver_id, message)
+      db.doCreateMessage(room.rid, authUser.uid, receiver_uid, message)
       this.setState({
         message: '',
       });
@@ -50,7 +50,7 @@ class MessagesPanel extends Component {
 
   renderMessage = (key, message, isFirst, displayUser, isAuthUser) => {
     const { users } = this.props;
-    let sender = users[message.sender_id]
+    let sender = users[message.sender_uid]
     return (
       <div key={key} className={`message-block d-flex flex-row align-items-center my-1 ${isFirst?'mt-auto':''}`}>
         <div className="user-block d-flex justify-content-center">
@@ -68,20 +68,20 @@ class MessagesPanel extends Component {
   }
 
   renderMessages = () => {
-    const { authUser, room, receiver_id } = this.props;
+    const { authUser, room, receiver_uid } = this.props;
     const { messages } = room;
 
-    var sender_id = null
+    var sender_uid = null
     return Object.keys(messages).map(key => {
       let message = messages[key]
-      if (message.receiver_id == receiver_id) {
-        const isFirst = (sender_id == null)
+      if (message.receiver_uid == receiver_uid) {
+        const isFirst = (sender_uid == null)
         let displayUser = false
-        if (message.sender_id != sender_id) {
-          sender_id = message.sender_id
+        if (message.sender_uid != sender_uid) {
+          sender_uid = message.sender_uid
           displayUser = true
         }
-        const isAuthUser = (message.sender_id === authUser.uid)
+        const isAuthUser = (message.sender_uid === authUser.uid)
         return this.renderMessage(key, message, isFirst, displayUser, isAuthUser)
       }
     })

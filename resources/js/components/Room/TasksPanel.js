@@ -149,7 +149,7 @@ class TasksPanel extends Component {
         />
         {this.renderTasks()}
         <div className="view-files d-flex justify-content-center mt-5">
-          <Link to={`/room/${room.room_id}/files`}>
+          <Link to={`/room/${room.rid}/files`}>
             <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded">
               <span className="mr-2">Files and Task Room</span>
               <img className="size-20" src={assets.angle_right_black}/>

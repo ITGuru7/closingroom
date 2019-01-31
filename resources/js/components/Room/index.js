@@ -14,16 +14,16 @@ import TasksPanel from './TasksPanel';
 
 const INITIAL_STATE = {
   users: null,
-  receiver_id: null,
+  receiver_uid: null,
 }
 
 class RoomPage extends Component {
   state = { ...INITIAL_STATE };
 
   componentWillMount() {
-    const { room_id } = this.props.match.params
+    const { rid } = this.props.match.params
     const { fetchRoom } = this.props
-    fetchRoom(room_id);
+    fetchRoom(rid);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,24 +49,24 @@ class RoomPage extends Component {
     this.setState({users})
   }
 
-  handleSelectReceiver = (receiver_id) => {
-    if (this.state.receiver_id === receiver_id) {
-      receiver_id = null;
+  handleSelectReceiver = (receiver_uid) => {
+    if (this.state.receiver_uid === receiver_uid) {
+      receiver_uid = null;
     }
     // this.setState({
-    //   receiver_id,
+    //   receiver_uid,
     // })
-    // console.log(receiver_id)
+    // console.log(receiver_uid)
   }
 
-  handleInviteUser = (user_id) => {
-    const { room_id } = this.props.match.params
-    db.doInviteUserToRoom(room_id, user_id)
+  handleInviteUser = (uid) => {
+    const { rid } = this.props.match.params
+    db.doInviteUserToRoom(rid, uid)
   }
 
   render() {
     const { authUser, room } = this.props
-    const { users, receiver_id } = this.state
+    const { users, receiver_uid } = this.state
 
     if (!room || !users) {
       return <div></div>
@@ -76,9 +76,9 @@ class RoomPage extends Component {
       <div className="room-page d-flex flex-column h-100">
         <RoomHeader room={room}/>
         <div className="page-content flex-grow-1 d-flex flex-row">
-          <UserListPanel users={users} receiver_id={receiver_id} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
-          <MessagesPanel users={users} receiver_id={receiver_id}/>
-          <TasksPanel user_id={users[authUser.uid].id}/>
+          <UserListPanel users={users} receiver_uid={receiver_uid} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
+          <MessagesPanel users={users} receiver_uid={receiver_uid}/>
+          <TasksPanel uid={users[authUser.uid].id}/>
         </div>
       </div>
     )

@@ -44,7 +44,7 @@ class MyRoomsPage extends Component {
 
     Object.keys(rooms).map(key => {
       const room = rooms[key]
-      room.room_id = key
+      room.rid = key
       if (room.users) {
         let user = null
         Object.keys(room.users).map(key => {
@@ -103,7 +103,7 @@ class MyRoomsPage extends Component {
               <tbody>
                 {Object.keys(rooms).map(key => {
                   let room = rooms[key]
-                  if (room.room_id.toString().toLowerCase().includes(search.toLowerCase()) || room.user.roomname.toString().toLowerCase().includes(search.toLowerCase())) {
+                  if (room.rid.toString().toLowerCase().includes(search.toLowerCase()) || room.user.roomname.toString().toLowerCase().includes(search.toLowerCase())) {
                     return <RoomRow key={key} room={room}/>
                   }
                 })}
@@ -155,7 +155,7 @@ class RoomRow extends Component {
 
   onEnterNickname = () => {
     const { room } = this.state
-    db.doChangeRoomname(room.room_id, room.user.uid, room.user.roomname)
+    db.doChangeRoomname(room.rid, room.user.uid, room.user.roomname)
 
     this.setState({
       isEditingNickname: false,
@@ -204,7 +204,7 @@ class RoomRow extends Component {
         <td>{functions.getFormattedDate(new Date(room.expire_date))}</td>
         <td>
           <img src={assets.setting_black} className="size-20 mr-3"/>
-          <Link to={`/rooms/${room.room_id}`}>
+          <Link to={`/rooms/${room.rid}`}>
             <button className="button button-md button-blue">
               Enter
             </button>

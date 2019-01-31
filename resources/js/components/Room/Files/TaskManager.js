@@ -137,14 +137,14 @@ class TaskManager extends Component {
   }
 
   onOpenUploadModal = () => {
-    const {room, user_id} = this.props
+    const {room, uid} = this.props
 
     $('.modal-background').removeClass('d-none')
     $('.upload-modal').removeClass('d-none')
 
-    $('.upload-modal').find('#roomKey').val(room.room_id)
+    $('.upload-modal').find('#roomKey').val(room.rid)
     $('.upload-modal').find('#roomID').val(room.id)
-    $('.upload-modal').find('#userID').val(user_id)
+    $('.upload-modal').find('#userID').val(uid)
   }
 
   render() {
