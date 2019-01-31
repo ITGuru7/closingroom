@@ -99,7 +99,7 @@ table.mytable {
 }
 
 img {
-    @for $i from 1 through 6 {
+    @for $i from 1 through 8 {
         $img_size: $i * 5;
         &.size-#{$img_size} {
             width: $img_size + px ;

@@ -11,7 +11,7 @@
   background-color: rgba(255, 255, 255, 0.7); /* Black w/ opacity */
 }
 
-.upload-modal {
+.mymodal {
   position: fixed ;
   z-index: 2 ;
   left: 0 ;
@@ -20,35 +20,25 @@
   width: 50% ;
   border: 2px solid $border-default ;
 
-  .modal-container {
-    height: 500px ;
+  .header {
+    padding: 3px ;
+    height: 50px ;
+    background-color: $dark-blue ;
 
-    .header {
-      padding-top: 5px ;
-      height: 50px ;
-      background-color: $dark-blue ;
-
-      .title {
-        span {
-          color: white ;
-          font-size: 2rem ;
-        }
-      }
-      .close {
-        opacity: 1 ;
-      }
-      img {
-        width: 30px ;
-      }
+    .title {
+      color: white ;
+      font-size: 2rem ;
+    }
+    .close {
+      opacity: 1 ;
+    }
   }
 
-    .content {
-      background-color: $lighter-grey ;
-      .other {
-        input {
-          width: auto ;
-        }
-      }
-    }
+  .content {
+    background-color: $lighter-grey ;
+  }
+
+  form {
+    margin: 0 ;
   }
 }

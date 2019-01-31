@@ -23,7 +23,7 @@ import AccountsPage from './components/Accounts';
 import KYC_ApprovalsPage from './components/Accounts/KYC_Approvals';
 import KYC_ApprovalViewPage from './components/Accounts/KYC_Approvals/KYC_ApprovalViewPage';
 
-import UploadDocumentModal from './components/Modal/UploadDocumentModal';
+import MyModal from './components/Modal';
 import withAuthentication from './components/Session/withAuthentication';
 import * as routes from './constants/routes';
 
@@ -41,8 +41,6 @@ const DefaultLayout = ({component: Component, ...rest}) => {
         <div className="main-content flex-grow-1">
           <Component {...matchProps} />
         </div>
-        <div className="modal-background d-none"/>
-        <UploadDocumentModal/>
       </div>
     )} />
   )
@@ -96,6 +94,8 @@ class Layout extends Component {
           <DefaultLayout exact path={routes.MANAGE_ACCOUNTS} component={AdminAuth(AccountsPage)} />
           <DefaultLayout exact path={routes.KYC_APPROVALS} component={AdminAuth(KYC_ApprovalsPage)} />
           <DefaultLayout exact path={routes.KYC_APPROVAL} component={AdminAuth(KYC_ApprovalViewPage)} />
+
+          <MyModal/>
 
         </div>
       </Router>

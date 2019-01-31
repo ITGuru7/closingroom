@@ -137,14 +137,8 @@ class FileManager extends Component {
   }
 
   onOpenUploadModal = () => {
-    const {room, uid} = this.props
-
     $('.modal-background').removeClass('d-none')
     $('.upload-modal').removeClass('d-none')
-
-    $('.upload-modal').find('#roomKey').val(room.rid)
-    $('.upload-modal').find('#roomID').val(room.id)
-    $('.upload-modal').find('#userID').val(uid)
   }
 
   render() {

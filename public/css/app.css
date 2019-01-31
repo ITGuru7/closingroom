@@ -9675,6 +9675,16 @@ img.size-30 {
   height: 30px;
 }
 
+img.size-35 {
+  width: 35px;
+  height: 35px;
+}
+
+img.size-40 {
+  width: 40px;
+  height: 40px;
+}
+
 .page-header {
   flex: 0 0 100px;
   border-bottom: 1px solid #231f20;
@@ -9816,7 +9826,7 @@ img.size-30 {
   /* Black w/ opacity */
 }
 
-.upload-modal {
+.mymodal {
   position: fixed;
   z-index: 2;
   left: 0;
@@ -9826,35 +9836,27 @@ img.size-30 {
   border: 2px solid #231f20;
 }
 
-.upload-modal .modal-container {
-  height: 500px;
-}
-
-.upload-modal .modal-container .header {
-  padding-top: 5px;
+.mymodal .header {
+  padding: 3px;
   height: 50px;
   background-color: #183863;
 }
 
-.upload-modal .modal-container .header .title span {
+.mymodal .header .title {
   color: white;
   font-size: 2rem;
 }
 
-.upload-modal .modal-container .header .close {
+.mymodal .header .close {
   opacity: 1;
 }
 
-.upload-modal .modal-container .header img {
-  width: 30px;
-}
-
-.upload-modal .modal-container .content {
+.mymodal .content {
   background-color: #f1f2f2;
 }
 
-.upload-modal .modal-container .content .other input {
-  width: auto;
+.mymodal form {
+  margin: 0;
 }
 
 .layout {
