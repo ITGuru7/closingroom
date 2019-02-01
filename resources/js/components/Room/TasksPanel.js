@@ -144,9 +144,7 @@ class TasksPanel extends Component {
     const { room } = this.props
     return (
       <div className="tasks-panel">
-        <PanelHeader {...this.props}
-          title="My Tasks"
-        />
+        <PanelHeader title="My Tasks"/>
         {this.renderTasks()}
         <div className="view-files d-flex justify-content-center mt-5">
           <Link to={`/room/${room.rid}/files`}>

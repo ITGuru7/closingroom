@@ -155,9 +155,7 @@ class KYC_ApprovalViewPage extends Component {
       <div className="kyc-approval-view-page d-flex flex-column h-100">
         <DefaultHeader title="KYC Approvals -> View" />
         <div className="page-content flex-grow-1 d-flex flex-column pb-4">
-          <PanelHeader {...this.props}
-            back={true}
-          />
+          <PanelHeader back={true}/>
           {this.renderUserInfo()}
           {this.renderActions()}
         </div>

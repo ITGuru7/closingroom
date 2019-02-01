@@ -44,6 +44,7 @@ class RoomPage extends Component {
     })
     Object.keys(room.users).map(key => {
       users[key].registered = true
+      users[key] = {...users[key], ...room.users[key]}
     })
 
     this.setState({users})
@@ -74,7 +75,7 @@ class RoomPage extends Component {
 
     return (
       <div className="room-page d-flex flex-column h-100">
-        <RoomHeader room={room}/>
+        <RoomHeader/>
         <div className="page-content flex-grow-1 d-flex flex-row">
           <UserListPanel users={users} receiver_uid={receiver_uid} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>
           <MessagesPanel users={users} receiver_uid={receiver_uid}/>

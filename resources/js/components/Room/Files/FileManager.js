@@ -150,10 +150,7 @@ class FileManager extends Component {
 
     return (
       <div className="filemanager-panel">
-        <PanelHeader {...this.props}
-          title={`Room ${functions.getFormattedID(room.id, 7)} - File Manager`}
-          back={true}
-        />
+        <PanelHeader title={`Room ${functions.getFormattedID(room.id, 7)} - File Manager`} back={true}/>
         <div className="documents-block">
           {this.renderDocuments()}
         </div>

@@ -14,8 +14,8 @@ import download                     from '../assets/images/svg/download.svg';
 import setting_black                from '../assets/images/svg/setting-black.svg';
 import star                         from '../assets/images/svg/star.svg';
 import clock                        from '../assets/images/svg/clock.svg';
-import accept                       from '../assets/images/svg/accept.svg';
-import unaccept                     from '../assets/images/svg/unaccept.svg';
+import kyc_approved                 from '../assets/images/svg/kyc-approved.svg';
+import kyc_disapproved              from '../assets/images/svg/kyc-disapproved.svg';
 import upload_blue                  from '../assets/images/svg/upload-blue.svg';
 import upload_white                 from '../assets/images/svg/upload-white.svg';
 import close                        from '../assets/images/svg/close.svg';
@@ -60,7 +60,14 @@ import verify                       from '../assets/images/svg/verify.svg';
 import arrow_right_white            from '../assets/images/svg/arrow-right-white.svg';
 import arrow_left_white_circle      from '../assets/images/svg/arrow-left-white-circle.svg';
 import angle_right_black            from '../assets/images/svg/angle-right-black.svg';
+import angle_right_blue             from '../assets/images/svg/angle-right-blue.svg';
 import angle_down_black             from '../assets/images/svg/angle-down-black.svg';
+
+import moderator                    from '../assets/images/svg/moderator.svg';
+import secure_transparent           from '../assets/images/svg/secure-transparent.svg';
+
+import online                       from '../assets/images/svg/online.svg';
+import offline                      from '../assets/images/svg/offline.svg';
 
 export default {
     logo,
@@ -76,8 +83,8 @@ export default {
     screenshot,
     setting_black,
     star,
-    accept,
-    unaccept,
+    kyc_approved,
+    kyc_disapproved,
     clock,
     upload_blue,
     upload_white,
@@ -123,4 +130,11 @@ export default {
     arrow_left_white_circle,
     angle_right_black,
     angle_down_black,
+    angle_right_blue,
+
+    moderator,
+    secure_transparent,
+
+    online,
+    offline,
 }

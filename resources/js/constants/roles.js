@@ -1,11 +1,5 @@
 export const ROLES = [
   {
-    role_label: "Buyer Intermediary",
-  },
-  {
-    role_label: "Seller Intermediary",
-  },
-  {
     role_label: "Buyer",
   },
   {
@@ -18,15 +12,18 @@ export const ROLES = [
     role_label: "Seller Mandate",
   },
   {
-    role_label: "Buyer Lawyer",
+    role_label: "Buyer Intermediary",
   },
   {
-    role_label: "Seller Lawyer",
+    role_label: "Seller Intermediary",
   },
   {
     role_label: "Escrow Agent",
   },
   {
-    role_label: "OTHER",
+    role_label: "Lawyer",
   },
+  // {
+  //   role_label: "OTHER",
+  // },
 ]

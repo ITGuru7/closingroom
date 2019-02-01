@@ -26,7 +26,7 @@ export const fetchAuthUser = () => dispatch => {
 };
 
 export const fetchUsers = () => dispatch => {
-  firebaseDB.ref('users').on("value", snapshot => {
+  firebaseDB.ref('users').orderByChild('id').on("value", snapshot => {
     let users = snapshot.val()
     Object.keys(users).map(key => {
       users[key].uid = key
@@ -50,7 +50,7 @@ export const fetchUser = (uid) => dispatch => {
 };
 
 export const fetchRooms = () => dispatch => {
-  firebaseDB.ref('rooms').on("value", snapshot => {
+  firebaseDB.ref('rooms').orderByChild('id').on("value", snapshot => {
     let rooms = snapshot.val()
     Object.keys(rooms).map(key => {
       rooms[key].rid = key

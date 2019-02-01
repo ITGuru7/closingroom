@@ -7,96 +7,143 @@ import {ROLES} from '../../constants/roles';
 
 import * as actions from "../../actions";
 
+import PanelHeader from '../Header/PanelHeader';
+
 const INITIAL_STATE = {
-  email: '',
-  role: 0,
-  showInviteDialog: false,
+  expanded1: true,
+  expanded2: true,
+  expanded3: true,
+  expanded4: true,
 }
 
 class UserListPanel extends Component {
-  constructor(props) {
-    super(props)
+  state = { ...INITIAL_STATE };
 
-    this.state = { ...INITIAL_STATE };
-  }
+  renderBuyerSellTeam = () => {
+    const { users } = this.props
+    const { expanded1 } = this.state
 
-  renderUser = (key, user, owner) => {
-    const {handleSelectReceiver} = this.props
     return (
-      <div key={key} className="user-block px-2"
-        onClick={(event) => {handleSelectReceiver(key)}}
-      >
-        <div className="profile d-flex justify-content-between">
-          <div className="name d-flex align-items-center">
-            <span className="mr-1">{user.firstname}</span>
-            {owner === 'owner' &&
-              <img src={assets.star} className="size-15"/>
-            }
-          </div>
-          <div className="localtime">
-            <img src={assets.clock} className="size-15 mr-1"/>
-            <span>{user.location}</span>
-            <span>[{user.time}]</span>
-          </div>
+      <div className="group">
+        <div className="group-header d-flex justify-content-between align-items-center p-1">
+          <span className="group-title">Buy/Sell Team</span>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({expanded1: !expanded1})}}
+          >
+            <img className="size-30" src={expanded1?assets.angle_down_black:assets.angle_right_black}/>
+          </button>
         </div>
-        <div className="role d-flex justify-content-between">
-          <div className="KYC">
-            <span className="mr-1">KYC</span>
-            {user.kyc === 1 ?
-              <img src={assets.accept} className="size-15"/>
-            :
-              <img src={assets.unaccept} className="size-15"/>
+        <div className="group-content">
+        {expanded1 &&
+          Object.keys(users).map(key => {
+            let user = users[key]
+            if (user.registered === true) {
+              if (1 <= user.rank && user.role <= 4 && user.level <= 1) {
+                return <UserRow key={key} user={user}/>
+              }
             }
-          </div>
-          <span className="role-name">
-            Buyer Mandate
-            {user.role}
-          </span>
-          <div className="attendance">
-            {user.attendance == 1 ?
-              <img src={assets.online} className="size-20"/>
-            :
-              <img src={assets.offline} className="size-20"/>
+          })
+        }
+        </div>
+      </div>
+    )
+  }
+  renderIntermediaries = () => {
+    const { users } = this.props
+    const { expanded2 } = this.state
+
+    return (
+      <div className="group">
+        <div className="group-header d-flex justify-content-between align-items-center p-1">
+          <span className="group-title">Intermediaries</span>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({expanded2: !expanded2})}}
+          >
+            <img className="size-30" src={expanded2?assets.angle_down_black:assets.angle_right_black}/>
+          </button>
+        </div>
+        <div className="group-content">
+        {expanded2 &&
+          Object.keys(users).map(key => {
+            let user = users[key]
+            if (user.registered === true) {
+              if (5 <= user.role && user.role <= 6) {
+                return <UserRow key={key} user={user}/>
+              }
             }
-          </div>
+          })
+        }
+        </div>
+      </div>
+    )
+  }
+  renderProfessionals = () => {
+    const { users } = this.props
+    const { expanded3 } = this.state
+
+    return (
+      <div className="group">
+        <div className="group-header d-flex justify-content-between align-items-center p-1">
+          <span className="group-title">Professionals</span>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({expanded3: !expanded3})}}
+          >
+            <img className="size-30" src={expanded3?assets.angle_down_black:assets.angle_right_black}/>
+          </button>
+        </div>
+        <div className="group-content">
+        {expanded3 &&
+          Object.keys(users).map(key => {
+            let user = users[key]
+            if (user.registered === true) {
+              if (7 <= user.role && user.role <= 8) {
+                return <UserRow key={key} user={user}/>
+              }
+            }
+          })
+        }
+        </div>
+      </div>
+    )
+  }
+  renderModeratorsGlobalAdmins = () => {
+    const { users } = this.props
+    const { expanded4 } = this.state
+
+    return (
+      <div className="group">
+        <div className="group-header d-flex justify-content-between align-items-center p-1">
+          <span className="group-title">Moderators/Global Admins</span>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({expanded4: !expanded4})}}
+          >
+            <img className="size-30" src={expanded4?assets.angle_down_black:assets.angle_right_black}/>
+          </button>
+        </div>
+        <div className="group-content">
+        {expanded4 &&
+          Object.keys(users).map(key => {
+            let user = users[key]
+            if (user.registered === true) {
+              if (user.level >= 2) {
+                return <UserRow key={key} user={user}/>
+              }
+            }
+          })
+        }
         </div>
       </div>
     )
   }
 
-  renderOwner = () => {
-    const { authUser, users } = this.props
-    return Object.keys(users).map(key => {
-      let user = users[key]
-      if (user.registered === true && key === authUser.uid) {
-        return this.renderUser(key, user, "owner")
-      }
-    });
-  }
-
-  renderParticipants = () => {
-    const { authUser, users } = this.props
-    return Object.keys(users).map(key => {
-      let user = users[key]
-      if (user.registered === true && key !== authUser.uid) {
-        if (!(user.role && user.role.includes('Intermediary'))) {
-          return this.renderUser(key, user, "")
-        }
-      }
-    });
-  }
-
-  renderIntermediaries = () => {
-    const { authUser, users } = this.props
-    return Object.keys(users).map(key => {
-      let user = users[key]
-      if (user.registered === true && key !== authUser.uid) {
-        if (user.role && user.role.includes('Intermediary')) {
-          return this.renderUser(key, user, "")
-        }
-      }
-    });
-  }
+  renderParticipants = () => (
+    <div className="participants">
+      {this.renderBuyerSellTeam()}
+      {this.renderIntermediaries()}
+      {this.renderProfessionals()}
+      {this.renderModeratorsGlobalAdmins()}
+    </div>
+  )
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -109,31 +156,79 @@ class UserListPanel extends Component {
 
   render() {
     return (
-      <div className="userlist-panel d-flex flex-column align-items-stretch">
-        <div className="participants">
-          <div className="heading d-flex justify-content-center align-items-center">
-            Participants
-          </div>
-          {this.renderOwner()}
+      <div className="userlist-panel d-flex flex-column">
+        <PanelHeader title="Participants"/>
+        <div className="participants-block">
           {this.renderParticipants()}
         </div>
-        <div className="intermediaries">
-          <div className="heading d-flex justify-content-center align-items-center">
-            Intermediaries
-          </div>
-          {this.renderIntermediaries()}
-        </div>
-        <div className="add-user-block align-self-center mt-auto mb-3">
+        <div className="text-center mt-auto mb-3">
           <img src={assets.add_user} className="size-30 mr-2"/>
-          <button className="button button-md button-red"
+          <button className="button-white button-md shadow rounded"
             onClick={(event) => {this.openAddUserModal()}}
           >
-            Add User
+            <span>Add Users</span>
+            <img src={assets.angle_right_blue} className="size-20"/>
           </button>
         </div>
       </div>
     )
   }
+}
+
+const UserRow = ({user}) => {
+  let border = ''
+  if (user.level >= 2) {
+    border = 'user-global-admin-border'
+  } else if (user.rank === 1) {
+    border = 'user-room-admin-border'
+  }
+  return (
+    <div className={`user-block mb-2 p-1 ${border}`}>
+      <div className="profile d-flex justify-content-between">
+        <div className="">
+          <span className="mr-1">{user.displayname}</span>
+          {user.rank === 1 &&
+            <img src={assets.star} className="size-15 mr-1"/>
+          }
+          <span className="mr-1">KYC</span>
+          {user.level >= 1 ?
+            <img src={assets.kyc_approved} className="size-15"/>
+          :
+            <img src={assets.kyc_disapproved} className="size-15"/>
+          }
+        </div>
+        <div className="">
+          <span>{user.location}</span>
+          <span>[{user.time}]</span>
+        </div>
+      </div>
+      <div className="d-flex justify-content-between">
+        <div className="">
+        {user.level >= 2 ?
+          [
+            <span key="label" className="mr-1">Moderator</span>,
+            <img key="image" src={assets.moderator} className="size-15"/>
+          ]
+        :
+          [
+            <span key="label">{ROLES[user.role].role_label}</span>,
+            (user.rank === 3 &&
+              <img key="image" src={assets.secure_transparent} className="size-15"/>
+            )
+          ]
+        }
+        </div>
+        <div className="">
+          <img src={assets.setting_black} className="size-15 mr-2"/>
+          {user.attendance == 1 ?
+            <img src={assets.online} className="size-15"/>
+          :
+            <img src={assets.offline} className="size-15"/>
+          }
+        </div>
+      </div>
+    </div>
+  )
 }
 
 const mapStateToProps = ({ authUser, room }) => {

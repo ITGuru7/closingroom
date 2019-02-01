@@ -1,18 +1,18 @@
 import React from 'react';
 import assets from '../../assets';
+import { withRouter } from 'react-router-dom';
 
 const PanelHeader = (props) => (
   <div className="panel-header px-3">
+  {props.back ?
     <div className="row">
       <div className="col-4">
-        {props.back &&
-          <div className="back d-flex align-items-center"
-            onClick={(event) => {props.history.goBack()}}
-          >
-            <img src={assets.arrow_left_white_circle} className="mr-2"/>
-            <span>Back</span>
-          </div>
-        }
+        <div className="back d-flex align-items-center"
+          onClick={(event) => {props.history.goBack()}}
+        >
+          <img src={assets.arrow_left_white_circle} className="mr-2"/>
+          <span>Back</span>
+        </div>
       </div>
       <div className="col-4">
         <div className="title text-center">
@@ -20,7 +20,12 @@ const PanelHeader = (props) => (
         </div>
       </div>
     </div>
+  :
+    <div className="title text-center">
+      {props.title}
+    </div>
+  }
   </div>
 );
 
-export default PanelHeader;
+export default withRouter(PanelHeader);

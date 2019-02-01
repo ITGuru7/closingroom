@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 import * as functions from '../../functions';
 
@@ -56,4 +57,10 @@ const RoomHeader = (props) => {
   )
 };
 
-export default RoomHeader;
+const mapStateToProps = ({ room }) => {
+  return {
+    room,
+  };
+};
+
+export default connect(mapStateToProps)(RoomHeader);

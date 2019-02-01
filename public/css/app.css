@@ -9838,7 +9838,7 @@ img.size-40 {
 
 .mymodal .header {
   padding: 3px;
-  height: 50px;
+  height: 35px;
   background-color: #183863;
 }
 
@@ -10178,127 +10178,26 @@ img.size-40 {
   border-right: 1px solid #231f20;
 }
 
-.room-page .page-content .userlist-panel .participants .heading {
-  height: 50px;
-  font-size: 1.2rem;
+.room-page .page-content .userlist-panel .group .group-header {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1rem;
 }
 
-.room-page .page-content .userlist-panel .intermediaries .heading {
-  height: 40px;
-  font-size: 1.2rem;
-}
-
-.room-page .page-content .userlist-panel .heading {
-  background-color: #a7a9ac;
+.room-page .page-content .userlist-panel .user-block {
+  background: #f1f2f2;
 }
 
 .room-page .page-content .userlist-panel .user-block .profile {
   border-bottom: 1px solid #231f20;
 }
 
-.room-page .page-content .userlist-panel .user-block .profile .name span {
-  font-size: 1.2rem;
+.room-page .page-content .userlist-panel .user-block.user-global-admin-border {
+  border: 1px solid #183863;
 }
 
-.room-page .page-content .userlist-panel .user-block .profile .localtime span {
-  font-size: 0.8rem;
-}
-
-.room-page .page-content .userlist-panel .user-block .role .KYC span {
-  font-size: 0.8rem;
-}
-
-.room-page .page-content .userlist-panel .user-block:nth-child(odd) {
-  background-color: #f1f2f2;
-}
-
-.room-page .page-content .userlist-panel .user-block:nth-child(even) {
-  background-color: #d1d3d4;
-}
-
-.room-page .page-content .userlist-panel .add-user-block {
-  position: relative;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  right: 0;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  width: 340px;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .content {
-  background-color: #183863;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .content div,
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .content label {
-  color: white;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .content .title {
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .content .description {
-  font-size: 0.8rem;
-  line-height: 1rem;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .content input {
-  border: none;
-  border-radius: 9999px;
-  padding: 2px 10px;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .arrow-down {
-  width: 0px;
-  height: 0px;
-  border-left: 11px solid transparent;
-  border-right: 11px solid transparent;
-  border-top: 20px solid #183863;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-dialog .pointer {
-  margin-right: 30px;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  right: 0;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  width: 340px;
-  border: 2px solid #183863;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .dlg-close {
-  float: right;
-  margin: 0.5rem 0.5rem 0 0;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .dlg-close:hover {
-  cursor: pointer;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .content {
-  background-color: white;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .content .title {
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-}
-
-.room-page .page-content .userlist-panel .add-user-block .add-user-success-dialog .content .description {
-  font-size: 0.8rem;
-  line-height: 1rem;
+.room-page .page-content .userlist-panel .user-block.user-room-admin-border {
+  border: 1px solid #fbb03b;
 }
 
 .room-page .page-content .messages-panel .messages-block {
