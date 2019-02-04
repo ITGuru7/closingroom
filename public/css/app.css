@@ -10178,7 +10178,11 @@ img.size-40 {
   border-right: 1px solid #231f20;
 }
 
-.room-page .page-content .userlist-panel .group .group-title {
+.room-page .page-content .userlist-panel .participants-block {
+  overflow-y: scroll;
+}
+
+.room-page .page-content .userlist-panel .participants-block .group .group-title {
   font-weight: bold;
   font-style: italic;
   font-size: 1rem;

@@ -1,29 +1,49 @@
-export const ROLES = [
-  {
-    role_label: "Buyer",
+export const ROLES = {
+  BUYER: {
+    index: 1,
+    label: 'Buyer',
   },
-  {
-    role_label: "Seller",
+  SELLER: {
+    index: 2,
+    label: 'Seller',
   },
-  {
-    role_label: "Buyer Mandate",
+  BUYER_MANDATE: {
+    index: 3,
+    label: 'Buyer Mandate',
   },
-  {
-    role_label: "Seller Mandate",
+  SELLER_MANDATE: {
+    index: 4,
+    label: 'Seller Mandate',
   },
-  {
-    role_label: "Buyer Intermediary",
+  BUYER_INTERMEDIARY: {
+    index: 5,
+    label: 'Buyer Intermediary',
   },
-  {
-    role_label: "Seller Intermediary",
+  SELLER_INTERMEDIARY: {
+    index: 6,
+    label: 'Seller Intermediary',
   },
-  {
-    role_label: "Escrow Agent",
+  ESCROW_AGENT: {
+    index: 7,
+    label: 'Escrow Agent',
   },
-  {
-    role_label: "Lawyer",
+  LAWYER: {
+    index: 8,
+    label: 'Lawyer',
   },
-  // {
-  //   role_label: "OTHER",
-  // },
-]
+}
+
+export const RANKS = {
+  ADMIN: {
+    index: 1,
+    label: 'Buy/Sell Team',
+  },
+  INTERMEDIARY: {
+    index: 2,
+    label: 'Intermediaries',
+  },
+  PROFESSIONAL: {
+    index: 3,
+    label: 'Professionals',
+  },
+}

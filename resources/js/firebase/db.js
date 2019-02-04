@@ -41,7 +41,7 @@ export const onceGetRoom = (rid) => (
   db.ref(`rooms/${rid}`).once('value')
 )
 
-export const doCreateRoom = (user, roomname, level, timelimit, invites, general_details, users) => {
+export const doCreateRoom = (user, roomname, level, timelimit, general_details, users) => {
   db.ref('rooms').once('value')
   .then(function(snapshot) {
     let create_date = Date.now()
@@ -63,17 +63,17 @@ export const doCreateRoom = (user, roomname, level, timelimit, invites, general_
 
     doCreateMessage(room.key, user.uid, null, 'Welcome')
 
-    let rid = room.key
-    onceGetRoom(rid)
-    .then(function(snapshot){
-      room = snapshot.val()
-      room.rid = rid
-      _.forEach(invites, function(invite, index){
-        if (invite.email) {
-          actions.doSendInviteEmail(room, user, invite.email, ROLES[invite.role].role_label, users)
-        }
-      })
-    })
+    // let rid = room.key
+    // onceGetRoom(rid)
+    // .then(function(snapshot){
+    //   room = snapshot.val()
+    //   room.rid = rid
+    //   _.forEach(invites, function(invite, index){
+    //     if (invite.email) {
+    //       actions.doSendInviteEmail(room, user, invite.email, ROLES[invite.role].role_label, users)
+    //     }
+    //   })
+    // })
   })
 }
 

@@ -25,12 +25,6 @@ const CreateRoomPage = (props) => (
 const INITIAL_STATE = {
   roomname: '',
   timelimit: 0,
-  invites: [
-    {email: '', role: 0},
-    {email: '', role: 0},
-    {email: '', role: 0},
-    {email: '', role: 0}
-  ],
 
   general_details: {
     net_gross_discount: '',
@@ -57,7 +51,7 @@ class CreateRoomForm extends Component {
     event.preventDefault();
 
     const { authUser, users, history } = this.props;
-    const { roomname, timelimit, invites, general_details } = this.state;
+    const { roomname, timelimit, general_details } = this.state;
 
     if (roomname === '') {
       alert('Input roomname')
@@ -72,7 +66,7 @@ class CreateRoomForm extends Component {
 
     let user = users[authUser.uid]
     user.uid = authUser.uid
-    db.doCreateRoom(user, roomname, 1, timelimit, invites, general_details, users)
+    db.doCreateRoom(user, roomname, 1, timelimit, general_details, users)
 
     history.push(routes.MY_ROOMS);
   };
@@ -103,7 +97,7 @@ class CreateRoomForm extends Component {
   )
 
   render() {
-    const { roomname, timelimit, invites, error } = this.state;
+    const { roomname, timelimit, error } = this.state;
 
     // const isInvalid =
     //   roomname === '' ||
@@ -152,40 +146,6 @@ class CreateRoomForm extends Component {
                 />
               </div>
             </div>
-          </div>
-          <div className="col-6">
-            { invites.map((invite, index) => (
-                <div key={index} className="row">
-                  <div className="col-4">
-                    <label className="label">{(index===0?"Invite users by email:":"")}</label>
-                  </div>
-                  <div className="col-4">
-                    <input
-                      type="email"
-                      value={invite.email}
-                      onChange={(event) => {
-                        let invites = this.state.invites
-                        invites[index].email = event.target.value
-                        this.setState({ invites });
-                      }}
-                    />
-                  </div>
-                  <div className="col-4">
-                    <select
-                      value={invite.role}
-                      onChange={(event) => {
-                        let invites = this.state.invites
-                        invites[index].role = event.target.value
-                        this.setState({ invites });
-                      }}
-                    >
-                      { ROLES.map((role, index) => (
-                        <option key={index} value={index}>{role.role_label}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              ))}
           </div>
         </div>
 

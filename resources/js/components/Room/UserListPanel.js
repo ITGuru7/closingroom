@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
+import _ from 'lodash';
+
 import assets from '../../assets';
 
 import {ROLES} from '../../constants/roles';
@@ -137,7 +139,7 @@ class UserListPanel extends Component {
   }
 
   renderParticipants = () => (
-    <div className="participants">
+    <div className="participants-block mb-5">
       {this.renderBuyerSellTeam()}
       {this.renderIntermediaries()}
       {this.renderProfessionals()}
@@ -158,9 +160,7 @@ class UserListPanel extends Component {
     return (
       <div className="userlist-panel d-flex flex-column">
         <PanelHeader title="Participants"/>
-        <div className="participants-block">
-          {this.renderParticipants()}
-        </div>
+        {this.renderParticipants()}
         <div className="text-center mt-auto mb-3">
           <img src={assets.add_user} className="size-30 mr-2"/>
           <button className="button-white button-md shadow rounded"
@@ -211,7 +211,7 @@ const UserRow = ({user}) => {
           ]
         :
           [
-            <span key="label">{ROLES[user.role].role_label}</span>,
+            <span key="label">{_.find(ROLES, _.matchesProperty('index', user.role)).label}</span>,
             (user.rank === 3 &&
               <img key="image" src={assets.secure_transparent} className="size-15"/>
             )

@@ -22,15 +22,6 @@ Route::get('invite', function () {
 	return view('email.invite', $data);
 });
 
-// Route::get('pdf-dealdetails', function () {
-// 	$data = [
-// 		'roomname' => 'Room1',
-// 		'timelimit' => '2'
-// 	];
-// 	return view('pdf.dealdetails', $data);
-// });
-
-
 Route::get('pdf-dealdetails','Controller@pdf_DealDetails');
 
 

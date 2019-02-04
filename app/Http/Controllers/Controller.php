@@ -21,6 +21,8 @@ class Controller extends BaseController
 		];
 		$pdf = PDF::loadView('pdf.dealdetails', $data);
 
-		return $pdf->download('dealdetails.pdf');
+		return view('pdf.dealdetails', $data);
+		// return $pdf->stream('dealdetails.pdf');
+		// return $pdf->download('dealdetails.pdf');
     }
 }

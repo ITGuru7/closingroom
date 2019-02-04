@@ -5,18 +5,19 @@ import { connect } from "react-redux";
 import { db, storage } from '../../firebase';
 
 import assets from '../../assets';
+import * as actions from "../../actions";
 
 import { getFormattedDate, getFormattedID } from '../../functions';
 
 import {ROLES} from '../../constants/roles';
 
 const INITIAL_STATE = {
-  invite_users: [
-    { email: '', role: 0, admin: false, },
-    { email: '', role: 0, admin: false, },
-    { email: '', role: 0, admin: false, },
-    { email: '', role: 0, admin: false, },
-    { email: '', role: 0, admin: false, }
+  invites: [
+    { email: '', role: 1, admin: false, },
+    { email: '', role: 1, admin: false, },
+    { email: '', role: 1, admin: false, },
+    { email: '', role: 1, admin: false, },
+    { email: '', role: 1, admin: false, }
   ]
 }
 
@@ -29,29 +30,31 @@ class AddUsersModal extends Component {
   }
 
   onChange = (event, index) => {
-    let invite_users = this.state.invite_users
-    invite_users[index][event.target.name] = event.target.value
-    this.setState(invite_users);
+    let value = event.target.value
+    if (event.target.name == 'admin') {
+      value = event.target.checked
+    }
+    let invites = this.state.invites
+    invites[index][event.target.name] = value
+    this.setState(invites);
   }
 
   onInviteUsers = event => {
     event.preventDefault()
 
-    return
+    const { room, user, users } = this.props
+    const { invites } = this.state
 
-    const { authUser, users, room } = this.props
-    const {email, role} = this.state
-    const user = users[authUser.uid]
-
-    actions.doSendInviteEmail(room, user, email, ROLES[role].role_label, users)
-    .then(response => {
-      this.openAddUserSuccessModal()
+    _.forEach(invites, function(invite, index){
+      if (invite.email) {
+        actions.doSendInviteEmail(room, user, invite, users)
+      }
     })
-    .catch(error => {
-      this.closeModals()
-    });
 
-    this.closeDialog()
+    setTimeout(() => {
+      alert('Invitation emails sent successfully')
+      this.closeDialog()
+    }, 1000);
   }
 
   onReset = () => {
@@ -65,7 +68,7 @@ class AddUsersModal extends Component {
   }
 
   renderInviteUser = (index) => {
-    const { email, role, admin } = this.state.invite_users[index]
+    const { email, role, admin } = this.state.invites[index]
     const email_label = `email${index}`
     const role_label = `role${index}`
     return (
@@ -90,8 +93,8 @@ class AddUsersModal extends Component {
             onChange={(event) => {this.onChange(event, index)}}
             className="form-control"
           >
-            { ROLES.map((role, i) => (
-              <option key={i} value={i}>{role.role_label}</option>
+            {_.map(ROLES, (role, key) => (
+              <option key={key} value={role.index}>{role.label}</option>
             ))}
           </select>
         </div>
@@ -151,12 +154,12 @@ class AddUsersModal extends Component {
   }
 }
 
-const mapStateToProps = ({ authUser, room, user }) => {
+const mapStateToProps = ({ room, user, users }) => {
   return {
-    authUser,
     room,
     user,
+    users,
   };
 };
 
-export default connect(mapStateToProps)(AddUsersModal);
+export default connect(mapStateToProps, actions)(AddUsersModal);
