@@ -158,9 +158,6 @@ export const doEnterInvitedRooms = (uid, email) => {
     _.map(rooms, (room, key) => {
       room.rid = key
     })
-    // Object.keys(rooms).map(key => {
-    //   rooms[key].rid = key
-    // })
     _.forEach(rooms, function(room, index){
       let invites = room.invites
       if (invites) {
@@ -171,6 +168,7 @@ export const doEnterInvitedRooms = (uid, email) => {
             firebaseDB.ref(`rooms/${room.rid}/users/${uid}`).set({
               roomname: '',
               role: invite.role,
+              rank: invite.rank,
             })
           }
         })
