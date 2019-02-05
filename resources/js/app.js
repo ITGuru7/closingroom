@@ -9,7 +9,7 @@ import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
 import registerServiceWorker from './registerServiceWorker';
 
-import Layout from './layout';
+import Layout from './Layout';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 

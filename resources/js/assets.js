@@ -1,17 +1,18 @@
 import screenshot                   from '../assets/images/png/screenshot@4x.png';
 
-import logo                         from '../assets/images/svg/logo.svg';
+import logo_blue                    from '../assets/images/svg/logo-blue.svg';
 import logo_transparent             from '../assets/images/svg/logo-transparent.svg';
-import logo_header                  from '../assets/images/svg/logo-header.svg';
 
 import logout                       from '../assets/images/svg/logout.svg';
-import home                         from '../assets/images/svg/home.svg';
+import home_black                   from '../assets/images/svg/home-black.svg';
+import home_white                   from '../assets/images/svg/home-white.svg';
 import setting_blue                 from '../assets/images/svg/setting-blue.svg';
+import setting_black                from '../assets/images/svg/setting-black.svg';
+import setting_white                from '../assets/images/svg/setting-white.svg';
 import find                         from '../assets/images/svg/find.svg';
 import add_user                     from '../assets/images/svg/add-user.svg';
 import file                         from '../assets/images/svg/file.svg';
 import download                     from '../assets/images/svg/download.svg';
-import setting_black                from '../assets/images/svg/setting-black.svg';
 import star                         from '../assets/images/svg/star.svg';
 import clock                        from '../assets/images/svg/clock.svg';
 import kyc_approved                 from '../assets/images/svg/kyc-approved.svg';
@@ -25,9 +26,11 @@ import download_black               from '../assets/images/svg/download-black.sv
 import download_white               from '../assets/images/svg/download-white.svg';
 
 import manage_rooms                 from '../assets/images/svg/manage-rooms.svg';
-import manage_accounts              from '../assets/images/svg/manage-accounts.svg';
+import accounts_black               from '../assets/images/svg/accounts-black.svg';
+import accounts_white               from '../assets/images/svg/accounts-white.svg';
 import search_black                 from '../assets/images/svg/search-black.svg';
 import search_white                 from '../assets/images/svg/search-white.svg';
+import search_transparent           from '../assets/images/svg/search-transparent.svg';
 
 import plus                         from '../assets/images/svg/plus.svg';
 
@@ -44,10 +47,10 @@ import sign                         from '../assets/images/svg/sign.svg';
 import status_complete              from '../assets/images/svg/status-complete.svg';
 import status_incomplete            from '../assets/images/svg/status-incomplete.svg';
 import status_working               from '../assets/images/svg/status-working.svg';
-import status_userupload            from '../assets/images/svg/manage-accounts.svg';
+import status_userupload            from '../assets/images/svg/accounts-black.svg';
 
 
-import help                         from '../assets/images/svg/help.svg';
+import help_white                   from '../assets/images/svg/help-white.svg';
 
 
 import secure                       from '../assets/images/svg/secure.svg';
@@ -69,19 +72,24 @@ import secure_transparent           from '../assets/images/svg/secure-transparen
 import online                       from '../assets/images/svg/online.svg';
 import offline                      from '../assets/images/svg/offline.svg';
 
+import hands_blue                   from '../assets/images/svg/hands-blue.svg';
+import listview_white               from '../assets/images/svg/listview-white.svg';
+
+
 export default {
-    logo,
+    logo_blue,
     logo_transparent,
-    logo_header,
     logout,
-    home,
+    home_black,
+    home_white,
     setting_blue,
+    setting_black,
+    setting_white,
     find,
     add_user,
     file,
     download,
     screenshot,
-    setting_black,
     star,
     kyc_approved,
     kyc_disapproved,
@@ -95,9 +103,11 @@ export default {
     download_white,
 
     manage_rooms,
-    manage_accounts,
+    accounts_black,
+    accounts_white,
     search_black,
     search_white,
+    search_transparent,
 
     plus,
 
@@ -117,7 +127,7 @@ export default {
     status_userupload,
 
 
-    help,
+    help_white,
 
     secure,
     chat,
@@ -137,4 +147,8 @@ export default {
 
     online,
     offline,
+
+    hands_blue,
+    listview_white,
+
 }

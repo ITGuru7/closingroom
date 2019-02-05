@@ -9766,6 +9766,25 @@ img.size-40 {
   font-size: 1.5rem;
 }
 
+.footer {
+  flex: 0 0 50px;
+  background: #183863;
+}
+
+.navbar {
+  padding: 0.3rem;
+  flex: 0 0 50px;
+  background: #183863;
+}
+
+.navbar .logo-block .logo-text div {
+  line-height: 1rem;
+}
+
+.navbar .navitems-block .navitem {
+  text-decoration: none;
+}
+
 .sidebar {
   flex: 0 0 300px;
   border: 1px solid #231f20;
@@ -9896,11 +9915,6 @@ img.size-40 {
 .home-page .page-content p {
   margin: 0;
   line-height: 1rem;
-}
-
-.home-page .home-footer {
-  height: 50px;
-  background: #183863;
 }
 
 .dashboard-page .page-content .title,
@@ -10283,7 +10297,6 @@ img.size-40 {
 }
 
 .roomfiles-page .page-content .filemanager-panel {
-  height: 50%;
   overflow-y: scroll;
 }
 
@@ -10317,10 +10330,6 @@ img.size-40 {
 
 .roomfiles-page .page-content .filemanager-panel .footer button {
   width: 150px;
-}
-
-.roomfiles-page .page-content .taskmanager-panel {
-  height: 50%;
 }
 
 .accounts-page .page-content .header {

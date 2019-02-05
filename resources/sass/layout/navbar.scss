@@ -1,0 +1,19 @@
+
+.navbar {
+    padding: .3rem ;
+    flex: 0 0 $height-50 ;
+    background: $dark-blue ;
+
+    .logo-block {
+        .logo-text {
+            div {
+                line-height: 1rem ;
+            }
+        }
+    }
+    .navitems-block {
+        .navitem {
+            text-decoration: none ;
+        }
+    }
+}
