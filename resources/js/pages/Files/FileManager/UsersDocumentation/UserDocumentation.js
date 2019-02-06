@@ -55,7 +55,7 @@ class UserDocumentation extends Component {
           </a>
         </td>
         <td>N/A</td>
-        <td></td>
+        <td className="text-uppercase">System</td>
         <td>N/A</td>
         <td>
           <a href={url} target='_blank'>

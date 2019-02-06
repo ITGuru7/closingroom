@@ -42,7 +42,7 @@ class UserUploadFiles extends Component {
         </td>
         <td>N/A</td>
         <td>{document.username}</td>
-        <td></td>
+        <td>N/A</td>
         <td>
           <a href={document.url} target='_blank'>
             <img src={assets.search_black} className="size-20 mr-3"/>
