@@ -35,14 +35,14 @@ class FileManager extends Component {
       <table className="table filestable text-center">
         <thead>
           <tr>
-            <th width="300px"></th>
+            <th></th>
             <th>Status</th>
             <th>Document Type</th>
             <th>Active</th>
             <th>Created/Uploaded</th>
             <th>Last Edit</th>
             <th>Download</th>
-            <th width="200px">Fill and Sign</th>
+            <th>Fill and Sign</th>
             <th>Uploaded by</th>
             <th>Jurisdiction</th>
             <th></th>
