@@ -74,7 +74,7 @@ class UserUploadFiles extends Component {
           >
             <img className="size-20" src={expanded?assets.angle_down_black:assets.angle_right_black}/>
           </button>
-          Legal Documents
+          User Uploaded Files
         </th>
       </tr>
     ]
@@ -84,11 +84,9 @@ class UserUploadFiles extends Component {
     return rows
   }
 }
-const mapStateToProps = ({ authUser, room, documents, users }) => {
+const mapStateToProps = ({ room, users }) => {
   return {
-    authUser,
     room,
-    documents,
     users,
   };
 };
