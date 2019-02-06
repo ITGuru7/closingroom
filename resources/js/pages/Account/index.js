@@ -48,12 +48,9 @@ class ProfileChangeForm extends Component {
   }
 
   init = (props) => {
-    const { authUser, user, fetchUser } = props
-    if (!authUser || !authUser.uid) {
-      return
-    }
-    if (!user) {
-      fetchUser(authUser.uid);
+    const { authUser, user } = props
+    const { fetchUser } = props
+    if (!authUser || !authUser.uid || !user) {
       return
     }
     this.setState(user)

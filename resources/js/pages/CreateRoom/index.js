@@ -10,7 +10,7 @@ import DefaultHeader from '../../Layout/Header/DefaultHeader';
 
 import * as actions from "../../actions";
 
-import {ROLES} from '../../constants/roles';
+import ROLES from '../../constants/roles';
 
 const CreateRoomPage = (props) => (
   <div className="createroom-page d-flex flex-column">

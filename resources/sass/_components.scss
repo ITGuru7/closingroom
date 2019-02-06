@@ -81,7 +81,7 @@ input {
 table.mytable {
     th {
         background-color: $grey ;
-        border-right: 1px solid $border-dark ;
+        border-right: 1px solid $darkest-grey ;
         border-bottom: none ;
     }
     tr:nth-child(odd) {

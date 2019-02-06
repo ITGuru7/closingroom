@@ -8,10 +8,10 @@ import assets from '../../assets';
 
 import { getFormattedDate, getFormattedID } from '../../functions';
 
-import {DOCUMENT_TYPE} from '../../constants/document_types';
+import DOCUMENT_TYPES from '../../constants/document_types';
 
 const INITIAL_STATE = {
-  document: '',
+  document_title: '',
   document_file: null,
   type: 0,
   other: '',
@@ -34,13 +34,13 @@ class UploadDocumentModal extends Component {
 
   onUpload = () => {
     const { authUser, room, user } = this.props
-    const {document, document_file, type, other, issued, certified, comment} = this.state ;
+    const {document_title, document_file, type, other, issued, certified, comment} = this.state ;
 
-    db.doUploadDocument(room.rid, authUser.uid, DOCUMENT_TYPE[type], other, issued, certified, comment)
+    db.doUploadDocument(room.rid, authUser.uid, document_title, DOCUMENT_TYPES[type], other, issued, certified, comment)
     .then((snapshot) => {
       const doc_key = snapshot.key
 
-      let document_name = getFormattedID(room.id, 4) + '_' + getFormattedID(user.id, 4) + '_' + String(DOCUMENT_TYPE[type]).replace(" ", "").toUpperCase() + '_' + getFormattedDate(new Date(), '.')
+      let document_name = getFormattedID(room.id, 4) + '_' + getFormattedID(user.id, 4) + '_' + String(DOCUMENT_TYPES[type]).replace(" ", "").toUpperCase() + '_' + getFormattedDate(new Date(), '.')
 
       storage.doUploadDocument(document_name, document_file)
       .then(snapshot => snapshot.ref.getDownloadURL())
@@ -55,7 +55,7 @@ class UploadDocumentModal extends Component {
   onDone = event => {
     event.preventDefault()
 
-    const {document, document_file, type, other, issued, certified, comment} = this.state ;
+    const {document_title, document_file, type, other, issued, certified, comment} = this.state ;
     if (document_file === null) {
       alert('Choose document to upload')
       return
@@ -77,7 +77,7 @@ class UploadDocumentModal extends Component {
 
   render() {
     const { authUser, room } = this.props
-    const {document, document_file, type, other, issued, certified, comment} = this.state ;
+    const {document_title, document_file, type, other, issued, certified, comment} = this.state ;
 
     return (
       <div className="upload-modal mymodal d-none" onSubmit={this.onDone}>
@@ -111,8 +111,9 @@ class UploadDocumentModal extends Component {
                 <input
                   name="document_file"
                   onChange={(e) => {
+                    console.log(e.target.files[0])
                     this.setState({
-                      document: e.target.files[0].name,
+                      document_title: e.target.files[0].name,
                       document_file: e.target.files[0],
                     });
                   }}
@@ -126,7 +127,7 @@ class UploadDocumentModal extends Component {
                   id="document"
                   type="text"
                   readOnly
-                  value={document}
+                  value={document_title}
                   onChange={this.onChange}
                 />
               </div>
@@ -142,7 +143,7 @@ class UploadDocumentModal extends Component {
                   value={type}
                   onChange={this.onChange}
                 >
-                  { DOCUMENT_TYPE.map((type, index) => (
+                  { DOCUMENT_TYPES.map((type, index) => (
                     <option key={index} value={index}>{type}</option>
                   ))}
                 </select>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DefaultHeader = (props) => (
-  <div className={`page-header ${props.className || ''} d-flex justify-content-center align-items-center`}>
+  <div className="page-header d-flex justify-content-center align-items-center">
     <div className="title">
       {props.title}
     </div>

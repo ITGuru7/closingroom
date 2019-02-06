@@ -8,6 +8,7 @@ export const MY_ROOMS = '/myrooms';
 export const ROOM = '/rooms/:rid';
 export const ROOM_FILES = '/room/:rid/files';
 export const CREATE_ROOM = '/room/create';
+export const UPDATE_ROOM = '/room/:rid/update';
 export const KYC = '/account/KYC';
 export const ROOMS = '/rooms';
 export const MANAGE_ACCOUNTS = '/accounts';

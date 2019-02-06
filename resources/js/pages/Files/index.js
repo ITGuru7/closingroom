@@ -36,8 +36,8 @@ class RoomFilesPage extends Component {
 
     return (
       <div className="roomfiles-page h-100">
-        <RoomHeader room={room}/>
-        <div className="page-content">
+        <RoomHeader/>
+        <div className="page-content flex-grow-1">
           <FileManager {...this.props}/>
           {/* <TaskManager {...this.props}/> */}
         </div>

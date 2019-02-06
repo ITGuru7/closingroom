@@ -15,19 +15,28 @@
                 padding: 0 ;
                 vertical-align: middle ;
             }
-            td.title {
-                text-align: left ;
-            }
-            td.type {
-                text-transform: uppercase ;
-            }
             input {
                 width: 20px !important ;
+            }
+            @for $i from 0 through 4 {
+                tr.level-#{$i} {
+                    th:first-child, td:first-child {
+                        padding-left: ($i*2) + rem ;
+                    }
+                }
+            }
+            select {
+                font-size: 0.9rem;
+                color: #495057;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid $black;
+                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
             }
         }
     }
 
-    .footer {
+    .button-block {
         button {
             width: 150px ;
         }

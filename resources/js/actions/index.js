@@ -4,7 +4,8 @@ import { db as firebaseDB } from '../firebase/firebase'
 import { auth as firebaseAuth } from '../firebase/firebase';
 
 import { SERVER_URL } from '../constants/urls';
-import { ROLES, RANKS } from '../constants/roles';
+import ROLES from '../constants/roles';
+import RANKS from '../constants/ranks';
 import { getFormattedID } from '../functions';
 
 import axios from 'axios';

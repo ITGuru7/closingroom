@@ -47,6 +47,7 @@ class SignUpForm extends Component {
   onSubmit = event => {
     event.preventDefault()
 
+    const { doEnterInvitedRooms } = this.props
     const { type, firstname, lastname, displayname, email, passwordOne, passwordTwo, timezone } = this.state;
 
     if (passwordOne !== passwordTwo) {
@@ -65,7 +66,7 @@ class SignUpForm extends Component {
           .then(() => {
             // this.setState({ ...INITIAL_STATE });
 
-            actions.doEnterInvitedRooms(authUser.user.uid, email)
+            doEnterInvitedRooms(authUser.user.uid, email)
 
             history.push(routes.DASHBOARD);
           } )

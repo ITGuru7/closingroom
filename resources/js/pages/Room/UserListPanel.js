@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 import assets from '../../assets';
 
-import {ROLES} from '../../constants/roles';
+import ROLES from '../../constants/roles';
 
 import * as actions from '../../actions';
 

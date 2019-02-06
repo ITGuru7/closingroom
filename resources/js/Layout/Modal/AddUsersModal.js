@@ -9,7 +9,7 @@ import * as actions from "../../actions";
 
 import { getFormattedDate, getFormattedID } from '../../functions';
 
-import {ROLES} from '../../constants/roles';
+import ROLES from '../../constants/roles';
 
 const INITIAL_STATE = {
   invites: [
@@ -43,11 +43,12 @@ class AddUsersModal extends Component {
     event.preventDefault()
 
     const { room, user, users } = this.props
+    const { doSendInviteEmail } = this.props
     const { invites } = this.state
 
-    _.forEach(invites, function(invite, index){
+    _.forEach(invites, (invite, index) => {
       if (invite.email) {
-        actions.doSendInviteEmail(room, user, invite, users)
+        doSendInviteEmail(room, user, invite, users)
       }
     })
 

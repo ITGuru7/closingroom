@@ -22,8 +22,8 @@ Route::get('invite', function () {
 	return view('email.invite', $data);
 });
 
-Route::get('pdf-dealdetails','Controller@pdf_DealDetails');
-
+Route::get('dealdetails','PDFController@dealdetails');
+Route::post('kyc','PDFController@kyc');
 
 Route::any('{all}', function () {
 	return view('welcome');

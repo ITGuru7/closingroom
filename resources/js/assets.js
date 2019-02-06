@@ -12,7 +12,6 @@ import setting_white                from '../assets/images/svg/setting-white.svg
 import find                         from '../assets/images/svg/find.svg';
 import add_user                     from '../assets/images/svg/add-user.svg';
 import file                         from '../assets/images/svg/file.svg';
-import download                     from '../assets/images/svg/download.svg';
 import star                         from '../assets/images/svg/star.svg';
 import clock                        from '../assets/images/svg/clock.svg';
 import kyc_approved                 from '../assets/images/svg/kyc-approved.svg';
@@ -22,7 +21,8 @@ import upload_white                 from '../assets/images/svg/upload-white.svg'
 import close                        from '../assets/images/svg/close.svg';
 import radio_on                     from '../assets/images/svg/radio-on.svg';
 import radio_off                    from '../assets/images/svg/radio-off.svg';
-import download_black               from '../assets/images/svg/download-black.svg';
+
+import download_blue                from '../assets/images/svg/download-blue.svg';
 import download_white               from '../assets/images/svg/download-white.svg';
 
 import manage_rooms                 from '../assets/images/svg/manage-rooms.svg';
@@ -75,6 +75,9 @@ import offline                      from '../assets/images/svg/offline.svg';
 import hands_blue                   from '../assets/images/svg/hands-blue.svg';
 import listview_white               from '../assets/images/svg/listview-white.svg';
 
+import info_black                   from '../assets/images/svg/info-black.svg';
+
+import file_pdf                     from '../assets/images/svg/file-pdf.svg';
 
 export default {
     logo_blue,
@@ -88,7 +91,6 @@ export default {
     find,
     add_user,
     file,
-    download,
     screenshot,
     star,
     kyc_approved,
@@ -99,7 +101,8 @@ export default {
     close,
     radio_on,
     radio_off,
-    download_black,
+
+    download_blue,
     download_white,
 
     manage_rooms,
@@ -151,4 +154,7 @@ export default {
     hands_blue,
     listview_white,
 
+    info_black,
+
+    file_pdf,
 }

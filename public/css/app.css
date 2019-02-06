@@ -9686,7 +9686,7 @@ img.size-40 {
 }
 
 .page-header {
-  flex: 0 0 100px;
+  flex: 0 0 30px;
   border-bottom: 1px solid #231f20;
 }
 
@@ -9703,7 +9703,7 @@ img.size-40 {
 }
 
 .room-header {
-  flex: 0 0 200px;
+  flex: 0 0 30px;
   border-bottom: 1px solid #231f20;
 }
 
@@ -9733,15 +9733,6 @@ img.size-40 {
 
 .room-header .title-block div {
   color: #183863;
-}
-
-.header-home {
-  flex: 0 0 50px;
-  background: #183863;
-}
-
-.header-home .logo .logo-text div {
-  line-height: 1rem;
 }
 
 .panel-header {
@@ -10288,14 +10279,6 @@ img.size-40 {
   font-size: 1rem;
 }
 
-.roomfiles-page .room-header {
-  height: 200px;
-}
-
-.roomfiles-page .page-content {
-  height: calc(100% - 200px);
-}
-
 .roomfiles-page .page-content .filemanager-panel {
   overflow-y: scroll;
 }
@@ -10316,19 +10299,45 @@ img.size-40 {
   vertical-align: middle;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td.title {
-  text-align: left;
-}
-
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td.type {
-  text-transform: uppercase;
-}
-
 .roomfiles-page .page-content .filemanager-panel .documents-block table.filestable input {
   width: 20px !important;
 }
 
-.roomfiles-page .page-content .filemanager-panel .footer button {
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-0 th:first-child,
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-0 td:first-child {
+  padding-left: 0rem;
+}
+
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-1 th:first-child,
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-1 td:first-child {
+  padding-left: 2rem;
+}
+
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-2 th:first-child,
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-2 td:first-child {
+  padding-left: 4rem;
+}
+
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-3 th:first-child,
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-3 td:first-child {
+  padding-left: 6rem;
+}
+
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-4 th:first-child,
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-4 td:first-child {
+  padding-left: 8rem;
+}
+
+.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable select {
+  font-size: 0.9rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #231f20;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.roomfiles-page .page-content .filemanager-panel .button-block button {
   width: 150px;
 }
 

@@ -1,7 +1,7 @@
 import { db } from './firebase';
 
 import * as actions from "../actions";
-import {ROLES} from '../constants/roles';
+import ROLES from '../constants/roles';
 
 // User API
 
@@ -62,18 +62,6 @@ export const doCreateRoom = (user, roomname, level, timelimit, general_details, 
     })
 
     doCreateMessage(room.key, user.uid, null, 'Welcome')
-
-    // let rid = room.key
-    // onceGetRoom(rid)
-    // .then(function(snapshot){
-    //   room = snapshot.val()
-    //   room.rid = rid
-    //   _.forEach(invites, function(invite, index){
-    //     if (invite.email) {
-    //       actions.doSendInviteEmail(room, user, invite.email, ROLES[invite.role].role_label, users)
-    //     }
-    //   })
-    // })
   })
 }
 
@@ -146,11 +134,11 @@ export const doDownloadAddress = (uid, url) => (
   })
 );
 
-export const doUploadDocument = (rid, uid, type, other, issued, certified, comment) => {
+export const doUploadDocument = (rid, uid, title, type, other, issued, certified, comment) => {
   let date = Date.now()
-  console.log(date)
 
   return db.ref(`rooms/${rid}/users/${uid}/documents`).push({
+    title,
     type,
     other,
     issued,

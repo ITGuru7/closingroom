@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import * as routes from '../../constants/routes';
+import * as actions from "../../actions";
 
 export default function(ComposedComponent) {
   class UserAuth extends Component {
@@ -14,10 +15,16 @@ export default function(ComposedComponent) {
     }
 
     componentWillUpdate(nextProps) {
-      const {history} = this.props
-      const {authUser} = nextProps
-      if (!authUser) {
+      const { history } = this.props
+      const { authUser, user } = nextProps
+      const { fetchUser } = this.props
+
+      if (!authUser || !authUser.uid) {
         history.push(routes.SIGN_IN);
+        return
+      }
+      if (!user) {
+        fetchUser(authUser.uid);
         return
       }
     }
@@ -28,11 +35,12 @@ export default function(ComposedComponent) {
     }
   }
 
-  const mapStateToProps = ({ authUser }) => {
+  const mapStateToProps = ({ authUser, user }) => {
     return {
       authUser,
+      user,
     };
   }
 
-  return withRouter(connect(mapStateToProps)(UserAuth));
+  return withRouter(connect(mapStateToProps, actions)(UserAuth));
 }
