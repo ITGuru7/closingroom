@@ -107,6 +107,7 @@ const KYCPDFForm = (props) => {
       <input type="hidden" name="address" value={user.address}/>
       <input type="hidden" name="country" value={user.timezone}/>
       <input type="hidden" name="passport" value={user.passport}/>
+      <input type="hidden" name="download" value={download}/>
       { download ?
         <button type="submit" className="button-transparent">
           <img src={assets.download_blue} className="size-20"/>

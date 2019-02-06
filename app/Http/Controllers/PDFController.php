@@ -32,13 +32,16 @@ class PDFController extends Controller
 				'address' => $request->address,
 				'country' => $request->country,
 				'passport' => $request->passport,
-			]
+			],
 		];
 
 		$pdf = PDF::loadView('pdf.kyc', $data);
 
 		// return view('pdf.kyc', $data);
-		return $pdf->stream('kyc.pdf');
-		// return $pdf->download('kyc.pdf');
+		if ($request->download == 'true') {
+			return $pdf->download('kyc.pdf');
+		} else {
+			return $pdf->stream('kyc.pdf');
+		}
 	}
 }

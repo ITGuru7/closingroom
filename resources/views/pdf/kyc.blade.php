@@ -2,7 +2,6 @@
 
 @section('style')
   <style>
-
     .pdf-header .common-header {
       margin: 1rem 0 ;
       width: 100% ;
