@@ -39,7 +39,7 @@ class UserDocumentation extends Component {
     }
     return (
       <tr key={type} className="level-3">
-        <td className="text-left"><img src={assets.file_pdf} className="size-20"/> {functions.getFormattedID(user.id, 4)}.{title}.pdf</td>
+        <td className="text-left"><img src={assets.file} className="size-20"/> {functions.getFormattedID(user.id, 4)}.{title}.pdf</td>
         { user.level > 0 ?
           <td><img src={assets.secure_transparent} className="size-20"/> Verified</td>
         :

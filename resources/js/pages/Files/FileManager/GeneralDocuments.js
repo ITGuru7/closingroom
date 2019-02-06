@@ -29,7 +29,7 @@ class GeneralDocuments extends Component {
     const { room } = this.props
     return (
       <tr key="dealdetail" className="level-2">
-        <td className="text-left"><img src={assets.file_pdf} className="size-20"/> Deal Details</td>
+        <td className="text-left"><img src={assets.file} className="size-20"/> Deal Details</td>
         <td><img src={assets.status_working} className="size-20"/> Working</td>
         <td className="text-uppercase">General Terms</td>
         <td><input type="checkbox" defaultChecked={true}/></td>

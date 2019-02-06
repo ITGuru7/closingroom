@@ -28,7 +28,7 @@ class LegalDocuments extends Component {
 
   renderLegalDocument = (document) => (
     <tr key={document.title} className="level-2">
-      <td className="text-left"><img src={assets.file_pdf} className="size-20"/> {document.title}</td>
+      <td className="text-left"><img src={assets.file} className="size-20"/> {document.title}</td>
       <td><img src={assets.status_incomplete} className="size-20"/> Incomplete</td>
       <td className="text-uppercase">Legal Document</td>
       <td><input type="checkbox" defaultChecked={true}/></td>

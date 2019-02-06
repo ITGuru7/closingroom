@@ -74,7 +74,7 @@ class RoomPage extends Component {
     }
 
     return (
-      <div className="room-page d-flex flex-column h-100">
+      <div className="room-page d-flex flex-column">
         <RoomHeader/>
         <div className="page-content flex-grow-1 d-flex flex-row">
           <UserListPanel users={users} receiver_uid={receiver_uid} handleSelectReceiver={this.handleSelectReceiver} handleInviteUser={this.handleInviteUser}/>

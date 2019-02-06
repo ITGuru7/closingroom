@@ -29,7 +29,7 @@ class UserUploadFiles extends Component {
   renderUploadDocument = (document) => {
     return (
       <tr key={document.did} className="level-2">
-        <td className="text-left"><img src={assets.file_pdf} className="size-20"/> {document.title || 'Document'}</td>
+        <td className="text-left"><img src={assets.file} className="size-20"/> {document.title || 'Document'}</td>
         <td><img src={assets.upload_blue} className="size-20"/> Uploaded</td>
         <td className="text-uppercase">{document.type}</td>
         <td><input type="checkbox" defaultChecked={true}/></td>
