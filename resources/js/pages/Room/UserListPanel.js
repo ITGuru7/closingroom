@@ -198,7 +198,7 @@ const UserRow = ({user}) => {
           }
         </div>
         <div className="">
-          <span>{user.location}</span>
+          <span>{user.timezone}</span>
           <span>[{user.time}]</span>
         </div>
       </div>

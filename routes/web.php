@@ -23,7 +23,7 @@ Route::get('invite', function () {
 });
 
 Route::get('dealdetails','PDFController@dealdetails');
-Route::post('kyc','PDFController@kyc');
+Route::get('kyc','PDFController@kyc');
 
 Route::any('{all}', function () {
 	return view('welcome');

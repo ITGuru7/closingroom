@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Deal Details</title>
-</head>
-<body>
-    <h1>Room - {{ $roomname }}</h1>
-    <p>Timelimit - {{$timelimit}}</p>
-</body>
-</html>
+@extends('pdf.layout')
+
+@section('content')
+    <h1 class="dealdetails-header">Room - {{ $roomname }}</h1>
+    <p>Timelimit - {{ $timelimit }}</p>
+@endsection()

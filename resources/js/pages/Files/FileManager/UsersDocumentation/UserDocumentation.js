@@ -15,6 +15,8 @@ import PanelHeader from '../../../../Layout/Header/PanelHeader';
 
 import * as actions from '../../../../actions';
 
+import { SERVER_URL } from '../../../../constants/urls';
+
 import _ from 'lodash';
 
 const INITIAL_STATE = {
@@ -24,19 +26,8 @@ const INITIAL_STATE = {
 class UserDocumentation extends Component {
   state = { ...INITIAL_STATE };
 
-  renderUserDocument = (type) => {
+  renderUserDocument = (type, title) => {
     const { user } = this.props
-    let title, url
-    if (type === 'kyc') {
-      title = 'KYC Information'
-      url = ''
-    } else if (type === 'passport') {
-      title = 'Passport'
-      url = user.passport_url
-    } else if (type === 'address') {
-      title = 'Proof of address'
-      url = user.address_url
-    }
     return (
       <tr key={type} className="level-3">
         <td className="text-left"><img src={assets.file} className="size-20"/> {functions.getFormattedID(user.id, 4)}.{title}.pdf</td>
@@ -50,18 +41,26 @@ class UserDocumentation extends Component {
         <td>{functions.getFormattedDate(new Date(user.kyc_date || "2019/01/01"))}</td>
         <td>N/A</td>
         <td>
-          <a href={url} download>
-            <img src={assets.download_blue} className="size-20"/>
-          </a>
+          {type == 'kyc' ?
+            <KYCPDFForm {...this.props} download={true}/>
+          :
+            <a href={type === 'passport' ? user.passport_url : user.address_url} download>
+              <img src={assets.download_blue} className="size-20"/>
+            </a>
+          }
         </td>
         <td>N/A</td>
         <td className="text-uppercase">System</td>
         <td>N/A</td>
         <td>
-          <a href={url} target='_blank'>
-            <img src={assets.search_black} className="size-20 mr-3"/>
-            Preview
-          </a>
+          {type == 'kyc' ?
+            <KYCPDFForm {...this.props} download={false}/>
+          :
+            <a href={type === 'passport' ? user.passport_url : user.address_url} target='_blank'>
+              <img src={assets.search_black} className="size-20 mr-3"/>
+              Preview
+            </a>
+          }
         </td>
       </tr>
     )
@@ -69,9 +68,9 @@ class UserDocumentation extends Component {
 
   renderDocuments = () => {
     return [
-      this.renderUserDocument('kyc'),
-      this.renderUserDocument('passport'),
-      this.renderUserDocument('address'),
+      this.renderUserDocument('kyc', 'KYC Information'),
+      this.renderUserDocument('passport', 'Passport'),
+      this.renderUserDocument('address', 'Proof of address'),
     ]
   }
 
@@ -96,8 +95,35 @@ class UserDocumentation extends Component {
     return rows
   }
 }
-const mapStateToProps = ({  }) => {
+
+const KYCPDFForm = (props) => {
+  const { room, user, download } = props
+  return (
+    <form action={`${SERVER_URL}/kyc`} method="get" target={download===false?'_blank':''}>
+      <input type="hidden" name="rid" value={functions.getFormattedID(room.id, 6)}/>
+      <input type="hidden" name="create_date" value={functions.getFormattedDate(new Date(room.create_date))}/>
+      <input type="hidden" name="firstname" value={user.firstname}/>
+      <input type="hidden" name="lastname" value={user.lastname}/>
+      <input type="hidden" name="address" value={user.address}/>
+      <input type="hidden" name="country" value={user.timezone}/>
+      <input type="hidden" name="passport" value={user.passport}/>
+      { download ?
+        <button type="submit" className="button-transparent">
+          <img src={assets.download_blue} className="size-20"/>
+        </button>
+      :
+        <button type="submit" className="button-transparent">
+          <img src={assets.search_black} className="size-20 mr-3"/>
+          Preview
+        </button>
+      }
+    </form>
+  )
+}
+
+const mapStateToProps = ({ room }) => {
   return {
+    room,
   };
 };
 

@@ -1,6 +1,7 @@
 
 .room-page {
     .page-content {
+        height: 0 ;
         @import 'room-panels/userlist';
         @import 'room-panels/messages';
         @import 'room-panels/tasks';
