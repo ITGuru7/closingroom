@@ -30,8 +30,8 @@ class UserUploadFiles extends Component {
     return (
       <tr key={document.did} className="level-2">
         <td className="text-left"><img src={assets.file_pdf} className="size-20"/> {document.title || 'Document'}</td>
-        <td><img src={assets.upload_blue} className="size-20"/> Incomplete</td>
-        <td className="text-uppercase">Legal Document</td>
+        <td><img src={assets.upload_blue} className="size-20"/> Uploaded</td>
+        <td className="text-uppercase">{document.type}</td>
         <td><input type="checkbox" defaultChecked={true}/></td>
         <td>{functions.getFormattedDate(new Date(document.create_date || "01/01/2019"))}</td>
         <td>N/A</td>
