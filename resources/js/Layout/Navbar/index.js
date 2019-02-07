@@ -24,6 +24,7 @@ const Navbar = (props) => {
         <NavItem to={routes.ROOMS} asset={assets.listview_white} size={25} text="Global Room Manager"/>
         <NavItem to={routes.MANAGE_ACCOUNTS} asset={assets.accounts_white} size={25} text="Accounts Manager"/>
         <NavItem to={routes.KYC_APPROVALS} asset={assets.search_transparent} size={25} text="KYC Approvals"/>
+        <NavItem to={routes.DASHBOARD} asset={assets.search_transparent} size={25} text="FAQ’s"/>
       </div>
       <div className="help-block">
         <NavItem to="" asset={assets.help_white} text=""/>
