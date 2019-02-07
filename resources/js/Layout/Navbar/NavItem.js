@@ -6,7 +6,7 @@ const NavItem = (props) => (
   <Link to={props.to} className="navitem d-flex align-items-center mx-3">
     { props.asset &&
       <div className="">
-        <img src={props.asset} className="size-20"/>
+        <img src={props.asset} className={`size-${props.size}`}/>
       </div>
     }
     { props.text &&

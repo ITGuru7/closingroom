@@ -69,14 +69,14 @@ class KYC_ApprovalViewPage extends Component {
           <div className="font-weight-bold w-25">Passport Number:</div>
           <div>
             <span className="mr-5">{user.passport}</span>
-            <a href={user.passport_url} className="font-weight-bold"><u>View passport scan</u></a>
+            <a href={user.passport_url} target='_blank' className="font-weight-bold"><u>View passport scan</u></a>
           </div>
         </div>
         <div className="d-flex flex-row my-3">
           <div className="font-weight-bold w-25">Address:</div>
           <div>
             <span className="mr-5">{user.address}</span>
-            <a href={user.address_url} className="font-weight-bold"><u>View proof of address scan</u></a>
+            <a href={user.address_url} target='_blank' className="font-weight-bold"><u>View proof of address scan</u></a>
           </div>
         </div>
         <div className="d-flex flex-row my-3">

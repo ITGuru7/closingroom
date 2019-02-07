@@ -21,12 +21,7 @@ const INITIAL_STATE = {
 }
 
 class UploadDocumentModal extends Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = { ...INITIAL_STATE };
-  }
+  state = { ...INITIAL_STATE };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });

@@ -22,7 +22,15 @@ const INITIAL_STATE = {
 }
 
 class AddUsersModal extends Component {
-  state = { ...INITIAL_STATE };
+  state = {
+    invites: [
+      { email: '', role: 1, admin: false, },
+      { email: '', role: 1, admin: false, },
+      { email: '', role: 1, admin: false, },
+      { email: '', role: 1, admin: false, },
+      { email: '', role: 1, admin: false, }
+    ]
+  };
 
   onChange = (event, index) => {
     let value = event.target.value
@@ -53,8 +61,15 @@ class AddUsersModal extends Component {
   }
 
   onReset = () => {
-    console.log('reset')
-    this.setState({ ...INITIAL_STATE });
+    this.setState({
+      invites: [
+        { email: '', role: 1, admin: false, },
+        { email: '', role: 1, admin: false, },
+        { email: '', role: 1, admin: false, },
+        { email: '', role: 1, admin: false, },
+        { email: '', role: 1, admin: false, }
+      ]
+    });
   }
 
   closeDialog = () => {
@@ -128,7 +143,7 @@ class AddUsersModal extends Component {
             </div>
             <div
               className="close"
-              onClick={(event) => {this.closeDialog()}}
+              onClick={this.closeDialog}
             >
               <img src={assets.close} className="size-30"/>
             </div>

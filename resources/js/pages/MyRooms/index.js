@@ -125,14 +125,9 @@ class MyRoomsPage extends Component {
 }
 
 class RoomRow extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      room: null,
-      isEditingNickname: false,
-    };
+  state = {
+    room: null,
+    isEditingNickname: false,
   }
 
   componentDidMount() {
