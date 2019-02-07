@@ -9908,19 +9908,29 @@ img.size-40 {
   line-height: 1rem;
 }
 
-.dashboard-page .page-content .title,
-.dashboard-page .page-content .subtitle {
-  font-weight: bold;
+.dashboard-page .page-content {
+  margin: 3rem auto;
+}
+
+.dashboard-page .page-content .title {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #231f20;
+}
+
+.dashboard-page .page-content .description {
   font-size: 1.2rem;
 }
 
-.dashboard-page .page-content p {
-  font-size: 1rem;
-  line-height: 1.2rem;
+.dashboard-page .page-content .news-updates .subtitle {
+  font-size: 1.5rem;
 }
 
-.dashboard-page .page-content .screenshot img {
-  width: 100%;
+.dashboard-page .page-content .news-updates .date {
+  font-size: 0.7rem;
+}
+
+.dashboard-page .page-content .news-updates .paragraph .heading {
+  font-size: 1rem;
 }
 
 .signin-page {

@@ -1,16 +1,24 @@
 .dashboard-page {
     .page-content {
-        .title, .subtitle {
-            font-weight: bold ;
+        margin: 3rem auto ;
+        .title {
+            font-size: 1.5rem ;
+            border-bottom: 1px solid $black ;
+        }
+        .description {
             font-size: 1.2rem ;
         }
-        p {
-            font-size: 1rem ;
-            line-height: 1.2rem ;
-        }
-        .screenshot {
-            img {
-                width: 100% ;
+        .news-updates {
+            .subtitle {
+                font-size: 1.5rem ;
+            }
+            .date {
+                font-size: .7rem ;
+            }
+            .paragraph {
+                .heading {
+                    font-size: 1rem ;
+                }
             }
         }
     }

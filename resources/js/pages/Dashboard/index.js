@@ -2,38 +2,37 @@ import React from 'react';
 
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 import assets from '../../assets';
+import * as functions from '../../functions';
 
 const DashboardPage = () => (
   <div className="dashboard-page d-flex flex-column">
-    <DefaultHeader title="Dashboard" />
-    <div className="page-content flex-grow-1 m-4">
-      <div className="title mb-4 text-center">
-        Welcome to MNM ClosingRoom BETA
+    <div className="page-content flex-grow-1 container">
+      <div className="title px-5 py-3 text-center font-weight-bold">
+        Welcome to MNM’s ClosingRoom®
       </div>
-      <div className="about">
-        <div className="subtitle">
-          About
-        </div>
-        <p>
-          Ed que aut aut acculles quiam, tem quae sum et qui ressum quibus ab idus suntia aut omnimust, omnihil maionse aut milibus suntiore, et rernatio earcius excerecte dolorem voluptatur serum, cus cum enis aut officid isimusd aeribus andigni hiligenecus autatia ectamen ietur?
-        </p>
+      <div className="description mb-5">
+        <div className="my-3 text-center">ClosingRoom is currently in development/testing phases and may not be 100% functional at all times.</div>
+        <div className="my-3 text-center">For any help/inquiries please contact <b>Michael @ michael@mnmcs.com / +61411118126</b> (WhatsApp).</div>
       </div>
-      <div className="howitworks">
-        <div className="subtitle">
-          How It Works
+      <div className="news-updates">
+        <div className="subtitle text-center font-weight-bold">News/Updates</div>
+        <div className="date">{functions.getFormattedDate(new Date())}</div>
+        <div className="news paragraph mb-3">
+          <div className="heading font-weight-bold">Complete Features (testing):</div>
+          <div>- FileRoom</div>
+          <div>- MainRoom</div>
+          <div>- Invite users</div>
+          <div>- E-mail functionality</div>
+          <div>- Admin Panel/Functionality</div>
         </div>
-        <div className="row">
-          <div className="col-7 pr-4">
-            <p>
-              Ed que aut aut acculles quiam, tem quae sum et qui ressum quibus ab idus suntia aut omnimust, omnihil maionse aut milibus suntiore,
-            </p>
-            <p>
-              Ed que aut aut acculles quiam, tem quae sum et qui ressum quibus ab idus suntia aut omnimust, omnihil maionse aut milibus suntiore,
-            </p>
-          </div>
-          <div className="col-5 screenshot">
-            <img src={assets.screenshot}/>
-          </div>
+        <div className="updates paragraph mb-3">
+          <div className="heading font-weight-bold">Features Coming Soon:</div>
+          <div>- TaskManager</div>
+          <div>- ‘Professional’ registration</div>
+          <div>- DocuSign integration</div>
+          <div>- Enhanced FileRoom features</div>
+          <div>- Audio calling</div>
+          <div>- In-house Chain Analyses System</div>
         </div>
       </div>
     </div>
