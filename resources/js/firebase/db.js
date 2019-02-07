@@ -1,6 +1,6 @@
 import { db } from './firebase';
 
-import * as actions from "../actions";
+import * as actions from '../actions';
 import ROLES from '../constants/roles';
 
 // User API
@@ -41,7 +41,7 @@ export const onceGetRoom = (rid) => (
   db.ref(`rooms/${rid}`).once('value')
 )
 
-export const doCreateRoom = (user, roomname, level, timelimit, general_details, users) => {
+export const doCreateRoom = (history, user, roomname, level, timelimit, general_details, users) => {
   db.ref('rooms').once('value')
   .then(function(snapshot) {
     let create_date = Date.now()
@@ -62,6 +62,10 @@ export const doCreateRoom = (user, roomname, level, timelimit, general_details, 
     })
 
     doCreateMessage(room.key, user.uid, null, 'Welcome')
+
+    setTimeout(function(){
+      history.push(`/rooms/${room.key}`)
+    }, 1000);
   })
 }
 

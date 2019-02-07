@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import { db } from '../../firebase';
 
@@ -12,7 +12,7 @@ import * as functions from '../../functions';
 
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 
 import _ from 'lodash';
 

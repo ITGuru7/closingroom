@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 
 import ROLES from '../../constants/roles';
 

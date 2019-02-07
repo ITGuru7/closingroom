@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import assets from '../../assets';
 import * as routes from '../../constants/routes';
 
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 
 import _ from 'lodash';
 

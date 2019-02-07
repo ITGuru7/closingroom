@@ -1,13 +1,13 @@
 
 import React, { Component } from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import { db, storage } from '../../firebase';
 
 import assets from '../../assets';
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 
-import { getFormattedDate, getFormattedID } from '../../functions';
+import * as functions from '../../functions';
 
 import ROLES from '../../constants/roles';
 
@@ -22,12 +22,7 @@ const INITIAL_STATE = {
 }
 
 class AddUsersModal extends Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = { ...INITIAL_STATE };
-  }
+  state = { ...INITIAL_STATE };
 
   onChange = (event, index) => {
     let value = event.target.value
@@ -43,12 +38,11 @@ class AddUsersModal extends Component {
     event.preventDefault()
 
     const { room, user, users } = this.props
-    const { doSendInviteEmail } = this.props
     const { invites } = this.state
 
     _.forEach(invites, (invite, index) => {
       if (invite.email) {
-        doSendInviteEmail(room, user, invite, users)
+        functions.doSendInviteEmail(room, user, invite, users)
       }
     })
 
@@ -59,6 +53,7 @@ class AddUsersModal extends Component {
   }
 
   onReset = () => {
+    console.log('reset')
     this.setState({ ...INITIAL_STATE });
   }
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import { db } from '../../firebase'
 
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 
 import RoomHeader from '../../Layout/Header/RoomHeader';
 

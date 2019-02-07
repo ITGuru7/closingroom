@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import SigninHeader from '../../../Layout/Header/SigninHeader';
 import { SignUpLink } from '../SignUp';
@@ -8,7 +8,7 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../../firebase';
 import * as routes from '../../../constants/routes';
 
-import * as actions from "../../../actions";
+import * as actions from '../../../actions';
 
 const SignInPage = (props) => (
   <div className="signin-page text-center">

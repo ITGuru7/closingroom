@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import PasswordChangeForm from './PasswordChangeForm';
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 import assets from '../../assets';
 
 import { auth, db } from '../../firebase';

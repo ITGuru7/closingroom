@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import * as routes from '../../constants/routes';
 import { auth, db, storage } from '../../firebase';

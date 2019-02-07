@@ -11,14 +11,21 @@ class APIController extends Controller
 {
 	public function sendEmail(Request $request)
 	{
+		$sender_email = $request['sender_email'];
+		$receiver_email = $request['receiver_email'];
+		$displayname = $request['displayname'];
+		$role = $request['role'];
+		$room_id = $request['room_id'];
+		$participants = $request['participants'];
+		$link = $request['link'];
 		$data = [
-			'sender_email' => $request['sender_email'],
-			'receiver_email' => $request['receiver_email'],
-			'displayname' => $request['displayname'],
-			'role' => $request['role'],
-			'rid' => $request['rid'],
-			'participants' => $request['participants'],
-			'link' => $request['link']
+			'sender_email' => $sender_email,
+			'receiver_email' => $receiver_email,
+			'displayname' => $displayname,
+			'role' => $role,
+			'room_id' => $room_id,
+			'participants' => $participants,
+			'link' => $link
 		];
 
 		Mail::send('email.invite', $data, function($message) use ($sender_email, $receiver_email, $role) {

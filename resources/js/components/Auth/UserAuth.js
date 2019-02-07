@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import * as routes from '../../constants/routes';
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 
 export default function(ComposedComponent) {
   class UserAuth extends Component {

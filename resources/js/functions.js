@@ -1,3 +1,10 @@
+import axios from 'axios';
+
+import { db as firebaseDB } from './firebase/firebase'
+import { SERVER_URL } from './constants/urls';
+
+import ROLES from './constants/roles';
+import RANKS from './constants/ranks';
 
 export const getFormattedDate = (date, separator='/') => {
     var year = date.getFullYear();
@@ -31,4 +38,80 @@ export const getFormattedID = (id, length) => {
 
 export const isAdmin = (level) => {
     return parseInt(level) >= 3
+}
+
+export const doSendInviteEmail = (room, authUser, invite, users) => {
+    invite.role = parseInt(invite.role)
+
+    let user_invited = null
+    _.forEach(users, (user, index) => {
+        if (invite.email.toLowerCase() === user.email.toLowerCase()) {
+            user_invited = user
+        }
+    })
+
+    let rank
+    if (invite.admin) {
+        rank = 1
+    } else {
+        if (_.includes(_.map([ROLES.BUYER, ROLES.SELLER, ROLES.BUYER_MANDATE, ROLES.SELLER_MANDATE], _.property('index')), invite.role)) {
+            rank = RANKS.INTERMEDIARY.index
+        } else if (_.includes(_.map([ROLES.BUYER_INTERMEDIARY, ROLES.SELLER_INTERMEDIARY], _.property('index')), invite.role)) {
+            rank = RANKS.INTERMEDIARY.index
+        } else if (_.includes(_.map([ROLES.ESCROW_AGENT, ROLES.LAWYER], _.property('index')), invite.role)) {
+            rank = RANKS.PROFESSIONAL.index
+        }
+    }
+
+    let link
+    if (user_invited) {
+        firebaseDB.ref(`rooms/${room.rid}/users/${user_invited.uid}`).set({
+            role: invite.role,
+            rank,
+        })
+        link = `${SERVER_URL}/rooms/${room.rid}`
+     } else {
+        firebaseDB.ref(`rooms/${room.rid}/invites`).push({
+            email: invite.email,
+            role: invite.role,
+            rank,
+        })
+        link = `${SERVER_URL}/signup`
+    }
+
+    const url = `${SERVER_URL}/api/send_email?
+      sender_email=${authUser.email}&
+      receiver_email=${invite.email}&
+      displayname=${authUser.displayname}&
+      role=${_.find(ROLES, _.matchesProperty('index', invite.role)).label}&
+      room_id=${getFormattedID(room.id, 6)}&
+      participants=${_.size(room.users)}&
+      link=${link}
+    `;
+    return axios.post(url)
+}
+
+export const doEnterInvitedRooms = (uid, email) => {
+    firebaseDB.ref('rooms').on("value", snapshot => {
+        let rooms = snapshot.val()
+        _.map(rooms, (room, key) => {
+            room.rid = key
+        })
+        _.forEach(rooms, function(room, index){
+            let invites = room.invites
+            if (invites) {
+                Object.keys(invites).map(key => {
+                    let invite = invites[key]
+                    if (email.toLowerCase() === invite.email.toLowerCase()) {
+                        firebaseDB.ref(`rooms/${room.rid}/invites/${key}`).remove()
+                        firebaseDB.ref(`rooms/${room.rid}/users/${uid}`).set({
+                            roomname: '',
+                            role: invite.role,
+                            rank: invite.rank,
+                        })
+                    }
+                })
+            }
+        })
+    })
 }

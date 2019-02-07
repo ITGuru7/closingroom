@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import { auth, db } from '../../firebase';
 import * as routes from '../../constants/routes';
 
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 
 import ROLES from '../../constants/roles';
 
@@ -50,7 +50,7 @@ class CreateRoomForm extends Component {
   onSubmit = event => {
     event.preventDefault();
 
-    const { authUser, users, history } = this.props;
+    const { authUser, users, rooms, history } = this.props;
     const { roomname, timelimit, general_details } = this.state;
 
     if (roomname === '') {
@@ -66,9 +66,7 @@ class CreateRoomForm extends Component {
 
     let user = users[authUser.uid]
     user.uid = authUser.uid
-    db.doCreateRoom(user, roomname, 1, timelimit, general_details, users)
-
-    history.push(routes.MY_ROOMS);
+    db.doCreateRoom(history, user, roomname, 1, timelimit, general_details, users)
   };
 
   onChange = event => {
@@ -194,10 +192,11 @@ class CreateRoomForm extends Component {
   }
 }
 
-const mapStateToProps = ({ authUser, users }) => {
+const mapStateToProps = ({ authUser, users, rooms }) => {
   return {
     authUser,
     users,
+    rooms,
   };
 };
 

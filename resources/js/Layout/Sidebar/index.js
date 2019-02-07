@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import SignOutButton from '../Sign/SignOut';
 import * as routes from '../../constants/routes';
 import assets from '../../assets';
 
-import * as actions from "../../actions";
+import * as actions from '../../actions';
 import * as functions from '../../functions';
 
 import SidebarNavItem from './SidebarNavItem';

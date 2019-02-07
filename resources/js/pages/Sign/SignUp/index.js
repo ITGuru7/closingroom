@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import SignupHeader from '../../../Layout/Header/SignupHeader';
@@ -8,7 +8,9 @@ import SignupHeader from '../../../Layout/Header/SignupHeader';
 import { auth, db } from '../../../firebase';
 import * as routes from '../../../constants/routes';
 
-import * as actions from "../../../actions";
+import * as actions from '../../../actions';
+
+import * as functions from '../../../functions';
 
 import moment from 'moment-timezone';
 
@@ -47,7 +49,6 @@ class SignUpForm extends Component {
   onSubmit = event => {
     event.preventDefault()
 
-    const { doEnterInvitedRooms } = this.props
     const { type, firstname, lastname, displayname, email, passwordOne, passwordTwo, timezone } = this.state;
 
     if (passwordOne !== passwordTwo) {
@@ -66,7 +67,7 @@ class SignUpForm extends Component {
           .then(() => {
             // this.setState({ ...INITIAL_STATE });
 
-            doEnterInvitedRooms(authUser.user.uid, email)
+            functions.doEnterInvitedRooms(authUser.user.uid, email)
 
             history.push(routes.DASHBOARD);
           } )
@@ -126,6 +127,7 @@ class SignUpForm extends Component {
               name="type"
               value='0'
               type="radio"
+              defaultChecked
               onClick={(event) => this.onClickType(event, 0)}
             />
           </label>

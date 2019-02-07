@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import { db } from '../../../firebase';
 
@@ -13,8 +13,8 @@ import * as functions from '../../../functions';
 import RoomHeader from '../../../Layout/Header/RoomHeader';
 import PanelHeader from '../../../Layout/Header/PanelHeader';
 
-import * as actions from "../../../actions";
-import JURISDICTIONS from "../../../constants/jurisdictions";
+import * as actions from '../../../actions';
+import JURISDICTIONS from '../../../constants/jurisdictions';
 
 import _ from 'lodash';
 
