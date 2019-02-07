@@ -11,6 +11,8 @@ import * as functions from '../../functions';
 
 import ROLES from '../../constants/roles';
 
+import _ from 'lodash';
+
 const INITIAL_STATE = {
   invites: [
     { email: '', role: 1, admin: false, },
@@ -22,15 +24,7 @@ const INITIAL_STATE = {
 }
 
 class AddUsersModal extends Component {
-  state = {
-    invites: [
-      { email: '', role: 1, admin: false, },
-      { email: '', role: 1, admin: false, },
-      { email: '', role: 1, admin: false, },
-      { email: '', role: 1, admin: false, },
-      { email: '', role: 1, admin: false, }
-    ]
-  };
+  state = { invites: _.map(INITIAL_STATE.invites, (s) => {return _.clone(s)}) };
 
   onChange = (event, index) => {
     let value = event.target.value
@@ -61,15 +55,7 @@ class AddUsersModal extends Component {
   }
 
   onReset = () => {
-    this.setState({
-      invites: [
-        { email: '', role: 1, admin: false, },
-        { email: '', role: 1, admin: false, },
-        { email: '', role: 1, admin: false, },
-        { email: '', role: 1, admin: false, },
-        { email: '', role: 1, admin: false, }
-      ]
-    });
+    this.setState({invites: _.map(INITIAL_STATE.invites, (s) => {return _.clone(s)})});
   }
 
   closeDialog = () => {
