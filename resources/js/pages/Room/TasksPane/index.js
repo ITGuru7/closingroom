@@ -19,125 +19,111 @@ class TasksPane extends Component {
   renderGeneralDocuments = () => {
     const { expanded1 } = this.state
     return (
-      <table className="explorer-view w-100 mt-2" cellPadding="10">
-        <thead>
-          <tr className="group mt-1">
-            <th>General</th>
-            <th className="text-right">
-              <button className="button button-transparent"
-                onClick={(event)=>{this.setState({expanded1: !expanded1})}}
-              >
-              { expanded1 ?
-                <img className="size-20" src={assets.angle_down_black}/>
-              :
-                <img className="size-20" src={assets.angle_right_black}/>
-              }
-              </button>
-            </th>
-          </tr>
-        </thead>
+      <div key="general" className="tasks-group  mt-2">
+        <div className="group-header px-2 d-flex justify-content-between">
+          <div className="title">General</div>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({ expanded1: !expanded1 })}}
+          >
+          { expanded1 ?
+            <img className="size-15" src={assets.angle_down_black}/>
+          :
+            <img className="size-15" src={assets.angle_right_black}/>
+          }
+          </button>
+        </div>
         { expanded1 &&
-          <tbody>
-            <tr className="content">
-              <td className="pl-4">
-                <span className="mr-2">General Deal Details</span>
-                <div className="d-inline-block">
-                  <img className="size-20" src={assets.pencil}/>
-                  <u>edit</u>
-                </div>
-              </td>
-              <td className="text-right">
-                <img src={assets.status_complete} className="size-20 mr-1"/>
-                <u>View</u>
-              </td>
-            </tr>
-          </tbody>
+          <div className="group-contents px-3">
+            <div className="content d-flex justify-content-between">
+              <div className="title">General Deal Details</div>
+              <div className="link">
+                <Link to="" className="mr-2">Edit</Link>
+                <a href="" target='_blank'>
+                  View
+                </a>
+              </div>
+            </div>
+          </div>
         }
-      </table>
+      </div>
     )
   }
 
   renderLegalDocuments = () => {
     const { expanded2 } = this.state
     return (
-      <table className="explorer-view w-100 mt-2" cellPadding="10">
-        <thead>
-          <tr className="group mt-1">
-            <th>Legal Documents</th>
-            <th className="text-right">
-              <button className="button button-transparent"
-                onClick={(event)=>{this.setState({expanded2: !expanded2})}}
-              >
-              { expanded2 ?
-                <img className="size-20" src={assets.angle_down_black}/>
-              :
-                <img className="size-20" src={assets.angle_right_black}/>
-              }
-              </button>
-            </th>
-          </tr>
-        </thead>
+      <div key="legal" className="tasks-group  mt-2">
+        <div className="group-header px-2 d-flex justify-content-between">
+          <div className="title">Legal Documents</div>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({ expanded2: !expanded2 })}}
+          >
+          { expanded2 ?
+            <img className="size-15" src={assets.angle_down_black}/>
+          :
+            <img className="size-15" src={assets.angle_right_black}/>
+          }
+          </button>
+        </div>
         { expanded2 &&
-          <tbody>
-            <tr className="content">
-              <td className="pl-4">
-                <span className="mr-2">NCNDA</span>
-                <div className="d-inline-block">
-                  <img className="size-20" src={assets.pencil}/>
-                  <u>edit</u>
-                </div>
-              </td>
-              <td className="text-right">
-                <button className="button button-md button-lightgreen">
-                  <img src={assets.sign} className="size-20 mr-3"/>
-                  Fill &amp; Sign
-                </button>
-              </td>
-            </tr>
-          </tbody>
+          <div className="group-contents px-3">
+            <div className="content d-flex justify-content-between">
+              <div className="title">NCNDA</div>
+              <div className="link">
+                <a href="" target='_blank'>
+                  View
+                </a>
+              </div>
+            </div>
+          </div>
         }
-      </table>
+      </div>
     )
   }
 
-  renderUserUploadedDocuments = () => {
+  renderUploadedDocuments = () => {
+    const { room } = this.props
     const { expanded3 } = this.state
     return (
-      <table className="explorer-view w-100 mt-2" cellPadding="10">
-        <thead>
-          <tr className="group mt-1">
-            <th>User Uploaded</th>
-            <th className="text-right">
-              <button className="button button-transparent"
-                onClick={(event)=>{this.setState({expanded3: !expanded3})}}
-              >
-              { expanded3 ?
-                <img className="size-20" src={assets.angle_down_black}/>
-              :
-                <img className="size-20" src={assets.angle_right_black}/>
-              }
-              </button>
-            </th>
-          </tr>
-        </thead>
+      <div key="upload" className="tasks-group  mt-2">
+        <div className="group-header px-2 d-flex justify-content-between">
+          <div className="title">User Uploaded</div>
+          <button className="button button-transparent"
+            onClick={(event)=>{this.setState({ expanded3: !expanded3 })}}
+          >
+          { expanded3 ?
+            <img className="size-15" src={assets.angle_down_black}/>
+          :
+            <img className="size-15" src={assets.angle_right_black}/>
+          }
+          </button>
+        </div>
         { expanded3 &&
-          <tbody>
-            <tr className="content">
-            </tr>
-          </tbody>
+          <div className="group-contents px-3">
+          { _.map(room.users, (user) => {
+            return _.map(user.documents, (document, key) => (
+              <div key={key} className="content d-flex justify-content-between">
+                <div className="title">{document.title}</div>
+                <div className="link">
+                  <a href={document.url} target='_blank'>
+                    View
+                  </a>
+                </div>
+              </div>
+            ))
+          })}
+          </div>
         }
-      </table>
+      </div>
     )
   }
 
   renderTasks = () => {
-    return (
-      <div className="w-100">
-        {this.renderGeneralDocuments()}
-        {this.renderLegalDocuments()}
-        {this.renderUserUploadedDocuments()}
-      </div>
-    )
+    return [
+      this.renderGeneralDocuments(),
+      this.renderLegalDocuments(),
+      this.renderUploadedDocuments(),
+    ]
   }
 
   render() {
@@ -145,7 +131,9 @@ class TasksPane extends Component {
     return (
       <div className="tasks-pane">
         <PaneHeader title="My Tasks"/>
-        {this.renderTasks()}
+        <div className="tasks-block">
+          {this.renderTasks()}
+        </div>
         <div className="view-files d-flex justify-content-center mt-5">
           <Link to={`/room/${room.rid}/files`}>
             <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded">

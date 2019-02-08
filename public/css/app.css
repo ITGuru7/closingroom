@@ -10270,12 +10270,22 @@ img.size-40 {
   border-left: 1px solid #231f20;
 }
 
-.room-page .page-content .tasks-pane .explorer-view tr.group {
+.room-page .page-content .tasks-pane .tasks-block .tasks-group .group-header {
   background-color: #e6e6e6;
 }
 
-.room-page .page-content .tasks-pane .explorer-view tr.content {
+.room-page .page-content .tasks-pane .tasks-block .tasks-group .group-contents {
   background-color: #f1f2f2;
+}
+
+.room-page .page-content .tasks-pane .tasks-block .tasks-group .group-contents .content .title {
+  width: 70%;
+  overflow: hidden;
+}
+
+.room-page .page-content .tasks-pane .tasks-block .tasks-group .group-contents .content .link a {
+  color: #231f20;
+  text-decoration: underline;
 }
 
 .room-page .page-content .tasks-pane .view-files button {
