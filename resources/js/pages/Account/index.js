@@ -53,8 +53,6 @@ class ProfileChangeForm extends Component {
     if (!authUser || !authUser.uid || !user) {
       return
     }
-    console.log(authUser)
-    console.log(user)
     this.setState(user)
   }
 
