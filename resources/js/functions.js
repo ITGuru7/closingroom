@@ -66,6 +66,7 @@ export const doSendInviteEmail = (room, authUser, invite, users) => {
     let link
     if (user_invited) {
         firebaseDB.ref(`rooms/${room.rid}/users/${user_invited.uid}`).set({
+            roomname: '',
             role: invite.role,
             rank,
         })
