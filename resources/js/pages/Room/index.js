@@ -57,7 +57,6 @@ class RoomPage extends Component {
     // this.setState({
     //   receiver_uid,
     // })
-    // console.log(receiver_uid)
   }
 
   handleInviteUser = (uid) => {

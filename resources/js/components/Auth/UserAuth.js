@@ -7,17 +7,21 @@ import * as actions from '../../actions';
 export default function(ComposedComponent) {
   class UserAuth extends Component {
     componentWillMount() {
-      const {authUser, history} = this.props
+      const {authUser, user, history} = this.props
+      const { fetchUser } = this.props
       if (!authUser) {
         history.push(routes.SIGN_IN);
+        return
+      }
+      if (authUser.uid && !user) {
+        fetchUser(authUser.uid);
         return
       }
     }
 
     componentWillUpdate(nextProps) {
-      const { history } = this.props
+      const { history, fetchUser } = this.props
       const { authUser, user } = nextProps
-      const { fetchUser } = this.props
 
       if (!authUser || !authUser.uid) {
         history.push(routes.SIGN_IN);

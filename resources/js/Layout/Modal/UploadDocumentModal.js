@@ -106,7 +106,6 @@ class UploadDocumentModal extends Component {
                 <input
                   name="document_file"
                   onChange={(e) => {
-                    console.log(e.target.files[0])
                     this.setState({
                       document_title: e.target.files[0].name,
                       document_file: e.target.files[0],

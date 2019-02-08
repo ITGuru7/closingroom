@@ -42,7 +42,8 @@ class ProfileChangeForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps != this.props) {
+    const { id } = this.state
+    if (!id || nextProps != this.props) {
       this.init(nextProps)
     }
   }
