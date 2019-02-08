@@ -4,6 +4,7 @@ import assets from '../../assets';
 import * as routes from '../../constants/routes';
 
 import NavItem from './NavItem';
+import SignOutButton from '../../pages/Sign/SignOut';
 
 const Navbar = (props) => {
   return (
@@ -26,8 +27,9 @@ const Navbar = (props) => {
         <NavItem to={routes.KYC_APPROVALS} asset={assets.search_transparent} size={25} text="KYC Approvals"/>
         <NavItem to={routes.DASHBOARD} asset={assets.search_transparent} size={25} text="FAQ’s"/>
       </div>
-      <div className="help-block">
-        <NavItem to="" asset={assets.help_white} text=""/>
+      <div className="help-block d-flex">
+        <SignOutButton />
+        <NavItem to="" asset={assets.help_white} size={25} text=""/>
       </div>
     </div>
   )

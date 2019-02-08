@@ -16,7 +16,7 @@ const SignOutButton = () => {
       onClick={doLogout}
     >
       <img src={assets.logout} className="size-30"/>
-      Logout
+      <span className="text-white">Logout</span>
     </button>
   )
 }
