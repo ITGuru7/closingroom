@@ -155,7 +155,7 @@ class TaskManager extends Component {
     }
 
     return (
-      <div className="taskmanager-panel h-50">
+      <div className="taskmanager-pane h-50">
         <PaneHeader title={`Room ${functions.getFormattedID(room.id, 7)} - Task Manager`}/>
       </div>
     );

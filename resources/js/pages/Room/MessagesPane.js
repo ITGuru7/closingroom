@@ -84,7 +84,7 @@ class MessagesPane extends Component {
     const { message } = this.state;
 
     return (
-      <div className="messages-panel flex-grow-1 d-flex flex-column">
+      <div className="messages-pane flex-grow-1 d-flex flex-column">
         <div className="messages-block flex-grow-1 m-4" ref={`msg_block`}>
           {this.renderMessages()}
         </div>
@@ -104,7 +104,7 @@ class MessagesPane extends Component {
           </div>
           <div className="request-moderator-block col-2 h-100 d-flex align-items-center">
             <img src={assets.moderator_black} className="size-20 mr-2"/>
-            <Link to="">Request Moderator</Link>
+            <span>Request Moderator</span>
           </div>
         </div>
       </div>

@@ -9735,24 +9735,24 @@ img.size-40 {
   color: #183863;
 }
 
-.panel-header {
+.pane-header {
   background-color: #183863;
 }
 
-.panel-header .back:hover {
+.pane-header .back:hover {
   cursor: pointer;
 }
 
-.panel-header .back img {
+.pane-header .back img {
   width: 30px;
 }
 
-.panel-header .back span {
+.pane-header .back span {
   color: white;
   font-size: 1.5rem;
 }
 
-.panel-header .title {
+.pane-header .title {
   color: white;
   font-size: 1.5rem;
 }
@@ -10193,150 +10193,150 @@ img.size-40 {
   height: calc(100% - 30px);
 }
 
-.room-page .page-content .userlist-panel {
+.room-page .page-content .userlist-pane {
   flex: 0 0 300px;
   border-right: 1px solid #231f20;
 }
 
-.room-page .page-content .userlist-panel .participants-block {
+.room-page .page-content .userlist-pane .participants-block {
   overflow-y: scroll;
 }
 
-.room-page .page-content .userlist-panel .participants-block .group .group-title {
+.room-page .page-content .userlist-pane .participants-block .group .group-title {
   font-weight: bold;
   font-style: italic;
   font-size: 1rem;
 }
 
-.room-page .page-content .userlist-panel .user-block {
+.room-page .page-content .userlist-pane .user-block {
   background: #f1f2f2;
 }
 
-.room-page .page-content .userlist-panel .user-block .profile {
+.room-page .page-content .userlist-pane .user-block .profile {
   border-bottom: 1px solid #231f20;
 }
 
-.room-page .page-content .userlist-panel .user-block.user-global-admin-border {
+.room-page .page-content .userlist-pane .user-block.user-global-admin-border {
   border: 1px solid #183863;
 }
 
-.room-page .page-content .userlist-panel .user-block.user-room-admin-border {
+.room-page .page-content .userlist-pane .user-block.user-room-admin-border {
   border: 1px solid #fbb03b;
 }
 
-.room-page .page-content .messages-panel .messages-block {
+.room-page .page-content .messages-pane .messages-block {
   overflow-y: scroll;
 }
 
-.room-page .page-content .messages-panel .messages-block .message-block .content {
+.room-page .page-content .messages-pane .messages-block .message-block .content {
   display: inline-block;
   color: white;
   background-color: #58595b;
   border-radius: 5px;
 }
 
-.room-page .page-content .messages-panel .messages-block .message-block .timestamp {
+.room-page .page-content .messages-pane .messages-block .message-block .timestamp {
   display: inline-block;
 }
 
-.room-page .page-content .messages-panel .messages-block .message-block .timestamp .time {
+.room-page .page-content .messages-pane .messages-block .message-block .timestamp .time {
   font-size: 0.8rem;
 }
 
-.room-page .page-content .messages-panel .messages-block .message-block .timestamp .date {
+.room-page .page-content .messages-pane .messages-block .message-block .timestamp .date {
   font-size: 0.5rem;
 }
 
-.room-page .page-content .messages-panel .send-message-block {
+.room-page .page-content .messages-pane .send-message-block {
   flex: 0 0 40px;
   border-top: 1px solid #231f20;
   background-color: white;
 }
 
-.room-page .page-content .messages-panel .send-message-block .new-message-block {
+.room-page .page-content .messages-pane .send-message-block .new-message-block {
   border-right: 1px solid #231f20;
 }
 
-.room-page .page-content .messages-panel .send-message-block .new-message-block input.new-message-input:focus {
+.room-page .page-content .messages-pane .send-message-block .new-message-block input.new-message-input:focus {
   outline: 0;
 }
 
-.room-page .page-content .messages-panel .send-message-block .request-moderator-block {
+.room-page .page-content .messages-pane .send-message-block .request-moderator-block {
   opacity: 0.5;
 }
 
-.room-page .page-content .tasks-panel {
+.room-page .page-content .tasks-pane {
   flex: 0 0 400px;
   border-left: 1px solid #231f20;
 }
 
-.room-page .page-content .tasks-panel .explorer-view tr.group {
+.room-page .page-content .tasks-pane .explorer-view tr.group {
   background-color: #e6e6e6;
 }
 
-.room-page .page-content .tasks-panel .explorer-view tr.content {
+.room-page .page-content .tasks-pane .explorer-view tr.content {
   background-color: #f1f2f2;
 }
 
-.room-page .page-content .tasks-panel .view-files button {
+.room-page .page-content .tasks-pane .view-files button {
   color: #183863;
   border: 1px solid #183863;
 }
 
-.room-page .page-content .tasks-panel .view-files button span {
+.room-page .page-content .tasks-pane .view-files button span {
   font-size: 1rem;
 }
 
-.roomfiles-page .page-content .filemanager-panel {
+.roomfiles-page .page-content .filemanager-pane {
   overflow-y: scroll;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable th {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable th {
   padding: 0;
   line-height: 2rem;
   text-transform: uppercase;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable th,
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable th,
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable td {
   border: 1px solid #e6e6e6;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable td {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable td {
   padding: 0;
   vertical-align: middle;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable input {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable input {
   width: 20px !important;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-0 th:first-child,
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-0 td:first-child {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-0 th:first-child,
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-0 td:first-child {
   padding-left: 0rem;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-1 th:first-child,
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-1 td:first-child {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-1 th:first-child,
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-1 td:first-child {
   padding-left: 2rem;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-2 th:first-child,
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-2 td:first-child {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-2 th:first-child,
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-2 td:first-child {
   padding-left: 4rem;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-3 th:first-child,
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-3 td:first-child {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-3 th:first-child,
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-3 td:first-child {
   padding-left: 6rem;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-4 th:first-child,
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable tr.level-4 td:first-child {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-4 th:first-child,
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-4 td:first-child {
   padding-left: 8rem;
 }
 
-.roomfiles-page .page-content .filemanager-panel .documents-block table.filestable select {
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable select {
   font-size: 0.9rem;
   color: #495057;
   background-color: #fff;
@@ -10345,7 +10345,7 @@ img.size-40 {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.roomfiles-page .page-content .filemanager-panel .button-block button {
+.roomfiles-page .page-content .filemanager-pane .button-block button {
   width: 150px;
 }
 

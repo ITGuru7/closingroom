@@ -3,7 +3,7 @@ import assets from '../../assets';
 import { withRouter } from 'react-router-dom';
 
 const PaneHeader = (props) => (
-  <div className="panel-header px-3">
+  <div className="pane-header px-3">
   {props.back ?
     <div className="row">
       <div className="col-4">

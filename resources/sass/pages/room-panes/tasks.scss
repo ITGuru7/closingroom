@@ -1,0 +1,25 @@
+
+.tasks-pane {
+    flex: 0 0 $right-pane-width ;
+    border-left: 1px solid $black ;
+
+    .explorer-view {
+        tr.group {
+            background-color: $light-grey ;
+        }
+        tr.content {
+            background-color: $lighter-grey ;
+        }
+    }
+
+    .view-files {
+        button {
+            color: $dark-blue ;
+            border: 1px solid $dark-blue ;
+
+            span {
+                font-size: 1rem ;
+            }
+        }
+    }
+}

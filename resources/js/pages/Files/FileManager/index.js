@@ -76,7 +76,7 @@ class FileManager extends Component {
 
   render() {
     return (
-      <div className="filemanager-panel h-100">
+      <div className="filemanager-pane h-100">
         <div className="documents-block">
           {this.renderDocuments()}
         </div>

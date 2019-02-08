@@ -158,7 +158,7 @@ class UserListPane extends Component {
 
   render() {
     return (
-      <div className="userlist-panel d-flex flex-column">
+      <div className="userlist-pane d-flex flex-column">
         <PaneHeader title="Participants"/>
         {this.renderParticipants()}
         <div className="text-center mt-auto mb-3">
