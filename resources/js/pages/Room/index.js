@@ -39,6 +39,8 @@ class RoomPage extends Component {
       return
     }
 
+    console.log(room)
+
     Object.keys(users).map(key => {
       users[key].registered = false
     })
