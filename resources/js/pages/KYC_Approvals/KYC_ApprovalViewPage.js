@@ -11,7 +11,7 @@ import assets from '../../assets';
 import * as functions from '../../functions';
 
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
-import PanelHeader from '../../Layout/Header/PanelHeader';
+import PaneHeader from '../../Layout/Header/PaneHeader';
 
 import * as actions from '../../actions';
 
@@ -155,7 +155,7 @@ class KYC_ApprovalViewPage extends Component {
       <div className="kyc-approval-view-page d-flex flex-column h-100">
         <DefaultHeader title="KYC Approvals -> View" />
         <div className="page-content flex-grow-1 d-flex flex-column pb-4">
-          <PanelHeader back={true}/>
+          <PaneHeader back={true}/>
           {this.renderUserInfo()}
           {this.renderActions()}
         </div>

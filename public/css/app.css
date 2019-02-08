@@ -10228,48 +10228,41 @@ img.size-40 {
   overflow-y: scroll;
 }
 
-.room-page .page-content .messages-panel .messages-block .message-block .user-block {
-  flex: 0 0 100px;
-}
-
-.room-page .page-content .messages-panel .messages-block .message-block .user-block .user {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #1daae1;
-}
-
-.room-page .page-content .messages-panel .messages-block .message-block .user-block .user.user-self {
-  background-color: #be1e2d;
-}
-
-.room-page .page-content .messages-panel .messages-block .message-block .user-block .user span {
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-.room-page .page-content .messages-panel .messages-block .message-block .content-block .content {
+.room-page .page-content .messages-panel .messages-block .message-block .content {
+  display: inline-block;
   color: white;
-  background-color: #183863;
+  background-color: #58595b;
   border-radius: 5px;
 }
 
-.room-page .page-content .messages-panel .messages-block .message-block .content-block .timestamp .time {
+.room-page .page-content .messages-panel .messages-block .message-block .timestamp {
+  display: inline-block;
+}
+
+.room-page .page-content .messages-panel .messages-block .message-block .timestamp .time {
   font-size: 0.8rem;
 }
 
-.room-page .page-content .messages-panel .messages-block .message-block .content-block .timestamp .date {
+.room-page .page-content .messages-panel .messages-block .message-block .timestamp .date {
   font-size: 0.5rem;
 }
 
 .room-page .page-content .messages-panel .send-message-block {
-  flex: 0 0 50px;
+  flex: 0 0 40px;
   border-top: 1px solid #231f20;
-  background-color: #f1f2f2;
+  background-color: white;
 }
 
-.room-page .page-content .messages-panel .send-message-block img {
-  width: 20px;
+.room-page .page-content .messages-panel .send-message-block .new-message-block {
+  border-right: 1px solid #231f20;
+}
+
+.room-page .page-content .messages-panel .send-message-block .new-message-block input.new-message-input:focus {
+  outline: 0;
+}
+
+.room-page .page-content .messages-panel .send-message-block .request-moderator-block {
+  opacity: 0.5;
 }
 
 .room-page .page-content .tasks-panel {

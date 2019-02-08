@@ -11,7 +11,6 @@ import setting_black                from '../assets/images/svg/setting-black.svg
 import setting_white                from '../assets/images/svg/setting-white.svg';
 import find                         from '../assets/images/svg/find.svg';
 import add_user                     from '../assets/images/svg/add-user.svg';
-import file                         from '../assets/images/svg/file.svg';
 import star                         from '../assets/images/svg/star.svg';
 import clock                        from '../assets/images/svg/clock.svg';
 import kyc_approved                 from '../assets/images/svg/kyc-approved.svg';
@@ -66,7 +65,7 @@ import angle_right_black            from '../assets/images/svg/angle-right-black
 import angle_right_blue             from '../assets/images/svg/angle-right-blue.svg';
 import angle_down_black             from '../assets/images/svg/angle-down-black.svg';
 
-import moderator                    from '../assets/images/svg/moderator.svg';
+import moderator_black              from '../assets/images/svg/moderator-black.svg';
 import secure_transparent           from '../assets/images/svg/secure-transparent.svg';
 
 import online                       from '../assets/images/svg/online.svg';
@@ -79,6 +78,10 @@ import info_black                   from '../assets/images/svg/info-black.svg';
 
 import file_pdf                     from '../assets/images/svg/file-pdf.svg';
 
+import file_blue                    from '../assets/images/svg/file-blue.svg';
+import file_white                   from '../assets/images/svg/file-white.svg';
+import smile                     from '../assets/images/svg/smile.svg';
+
 export default {
     logo_blue,
     logo_transparent,
@@ -90,7 +93,6 @@ export default {
     setting_white,
     find,
     add_user,
-    file,
     screenshot,
     star,
     kyc_approved,
@@ -145,7 +147,7 @@ export default {
     angle_down_black,
     angle_right_blue,
 
-    moderator,
+    moderator_black,
     secure_transparent,
 
     online,
@@ -157,4 +159,7 @@ export default {
     info_black,
 
     file_pdf,
+    file_blue,
+    file_white,
+    smile,
 }

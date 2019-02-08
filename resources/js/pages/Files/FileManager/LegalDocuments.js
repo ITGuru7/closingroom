@@ -10,9 +10,6 @@ import assets from '../../../assets';
 
 import * as functions from '../../../functions';
 
-import RoomHeader from '../../../Layout/Header/RoomHeader';
-import PanelHeader from '../../../Layout/Header/PanelHeader';
-
 import * as actions from '../../../actions';
 import JURISDICTIONS from '../../../constants/jurisdictions';
 
@@ -28,7 +25,7 @@ class LegalDocuments extends Component {
 
   renderLegalDocument = (document) => (
     <tr key={document.title} className="level-2">
-      <td className="text-left"><img src={assets.file} className="size-20"/> {document.title}</td>
+      <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title}</td>
       <td><img src={assets.status_incomplete} className="size-20"/> Incomplete</td>
       <td className="text-uppercase">Legal Document</td>
       <td><input type="checkbox" defaultChecked={true}/></td>

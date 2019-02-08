@@ -11,7 +11,7 @@ import assets from '../../assets';
 import * as functions from '../../functions';
 
 import RoomHeader from '../../Layout/Header/RoomHeader';
-import PanelHeader from '../../Layout/Header/PanelHeader';
+import PaneHeader from '../../Layout/Header/PaneHeader';
 
 import * as actions from '../../actions';
 
@@ -156,7 +156,7 @@ class TaskManager extends Component {
 
     return (
       <div className="taskmanager-panel h-50">
-        <PanelHeader title={`Room ${functions.getFormattedID(room.id, 7)} - Task Manager`}/>
+        <PaneHeader title={`Room ${functions.getFormattedID(room.id, 7)} - Task Manager`}/>
       </div>
     );
   }

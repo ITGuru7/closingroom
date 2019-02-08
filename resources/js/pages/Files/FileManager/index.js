@@ -10,9 +10,6 @@ import assets from '../../../assets';
 
 import * as functions from '../../../functions';
 
-import RoomHeader from '../../../Layout/Header/RoomHeader';
-import PanelHeader from '../../../Layout/Header/PanelHeader';
-
 import * as actions from '../../../actions';
 
 import _ from 'lodash';
