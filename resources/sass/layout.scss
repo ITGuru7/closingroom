@@ -11,6 +11,8 @@
     border: 1px solid $black ;
 
     .main-content {
+        overflow-y: scroll;
+
         background-color: white ;
 
         .page-content {

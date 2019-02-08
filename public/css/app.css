@@ -9875,6 +9875,7 @@ img.size-40 {
 }
 
 .layout .main-content {
+  overflow-y: scroll;
   background-color: white;
 }
 
