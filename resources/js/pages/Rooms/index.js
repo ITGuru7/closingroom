@@ -87,7 +87,7 @@ class RoomsPage extends Component {
               <tbody>
                 {Object.keys(rooms).map(key => {
                   let room = rooms[key]
-                  if (room.rid.toString().toLowerCase().includes(search.toLowerCase()) || room.roomname.toString().toLowerCase().includes(search.toLowerCase())) {
+                  if (functions.getFormattedID(room.id, 7).toString().toLowerCase().includes(search.toLowerCase()) || String(room.roomname||'').toString().toLowerCase().includes(search.toLowerCase())) {
                     return <RoomRow key={key} room={room}/>
                   }
                 })}
