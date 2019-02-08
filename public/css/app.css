@@ -10188,10 +10188,6 @@ img.size-40 {
   color: red;
 }
 
-.room-page .page-content {
-  height: 0;
-}
-
 .room-page .page-content .userlist-panel {
   flex: 0 0 300px;
   border-right: 1px solid #231f20;
