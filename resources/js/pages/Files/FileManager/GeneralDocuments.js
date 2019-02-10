@@ -33,7 +33,7 @@ class GeneralDocuments extends Component {
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td></td>
         <td>
-          <a href="" download>
+          <a href="https://firebasestorage.googleapis.com/v0/b/dataroom-cd23c.appspot.com/o/General%20Terms.pdf?alt=media&token=5260c22d-0342-4bd0-80c7-b1172991a467" download>
             <img src={assets.download_blue} className="size-20"/>
           </a>
         </td>
@@ -46,7 +46,7 @@ class GeneralDocuments extends Component {
         <td>N/A</td>
         <td>N/A</td>
         <td>
-          <a href="" target='_blank'>
+          <a href="https://firebasestorage.googleapis.com/v0/b/dataroom-cd23c.appspot.com/o/General%20Terms.pdf?alt=media&token=5260c22d-0342-4bd0-80c7-b1172991a467" target='_blank'>
             <img src={assets.search_black} className="size-20 mr-3"/>
             Preview
           </a>
