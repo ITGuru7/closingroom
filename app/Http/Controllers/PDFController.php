@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use PDF;
+use \PDF;
 
 class PDFController extends Controller
 {
@@ -12,7 +12,7 @@ class PDFController extends Controller
 			'roomname' => 'Room1',
 			'timelimit' => '2'
 		];
-		$pdf = PDF::loadView('pdf.dealdetails', $data);
+		$pdf = \PDF::loadView('pdf.dealdetails', $data);
 
 		return view('pdf.dealdetails', $data);
 		// return $pdf->stream('dealdetails.pdf');
@@ -35,7 +35,7 @@ class PDFController extends Controller
 			],
 		];
 
-		$pdf = PDF::loadView('pdf.kyc', $data);
+		$pdf = \PDF::loadView('pdf.kyc', $data);
 
 		// return view('pdf.kyc', $data);
 		if ($request->download == 'true') {
