@@ -21,11 +21,10 @@ const Navbar = (props) => {
       <div className="navitems-block d-flex">
         <NavItem to={routes.DASHBOARD} asset={assets.home_white} size={25} text="Home"/>
         <NavItem to={routes.ACCOUNT_SETTINGS} asset={assets.setting_white} size={25} text="Account Settings"/>
-        <NavItem to={routes.MY_ROOMS} asset={assets.hands_blue} size={30} text="My ClosingRooms"/>
+        <NavItem to={routes.MY_ROOMS} asset={assets.hands_bluewhite} size={30} text="My ClosingRooms"/>
         <NavItem to={routes.ROOMS} asset={assets.listview_white} size={25} text="Global Room Manager"/>
         <NavItem to={routes.MANAGE_ACCOUNTS} asset={assets.accounts_white} size={25} text="Accounts Manager"/>
         <NavItem to={routes.KYC_APPROVALS} asset={assets.search_transparent} size={25} text="KYC Approvals"/>
-        <NavItem to={routes.DASHBOARD} asset={assets.search_transparent} size={25} text="FAQ’s"/>
       </div>
       <div className="help-block d-flex">
         <SignOutButton />

@@ -72,6 +72,8 @@ import online                       from '../assets/images/svg/online.svg';
 import offline                      from '../assets/images/svg/offline.svg';
 
 import hands_blue                   from '../assets/images/svg/hands-blue.svg';
+import hands_bluewhite              from '../assets/images/svg/hands-bluewhite.svg';
+
 import listview_white               from '../assets/images/svg/listview-white.svg';
 
 import info_black                   from '../assets/images/svg/info-black.svg';
@@ -154,6 +156,7 @@ export default {
     offline,
 
     hands_blue,
+    hands_bluewhite,
     listview_white,
 
     info_black,

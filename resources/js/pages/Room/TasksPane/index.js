@@ -131,7 +131,7 @@ class TasksPane extends Component {
     const { room } = this.props
     return (
       <div className="tasks-pane">
-        <PaneHeader title="My Tasks"/>
+        <PaneHeader title="Active Files"/>
         <div className="tasks-block">
           {this.renderTasks()}
         </div>
