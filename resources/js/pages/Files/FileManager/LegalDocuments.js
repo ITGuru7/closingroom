@@ -73,7 +73,7 @@ class LegalDocuments extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded: !expanded})}}
           >
-            <img className="size-20" src={expanded?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
           Legal Documents
         </th>

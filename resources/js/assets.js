@@ -10,7 +10,6 @@ import setting_blue                 from '../assets/images/svg/setting-blue.svg'
 import setting_black                from '../assets/images/svg/setting-black.svg';
 import setting_white                from '../assets/images/svg/setting-white.svg';
 import find                         from '../assets/images/svg/find.svg';
-import add_user                     from '../assets/images/svg/add-user.svg';
 import star                         from '../assets/images/svg/star.svg';
 import clock                        from '../assets/images/svg/clock.svg';
 import kyc_approved                 from '../assets/images/svg/kyc-approved.svg';
@@ -31,7 +30,8 @@ import search_black                 from '../assets/images/svg/search-black.svg'
 import search_white                 from '../assets/images/svg/search-white.svg';
 import search_transparent           from '../assets/images/svg/search-transparent.svg';
 
-import plus                         from '../assets/images/svg/plus.svg';
+import plus_white                   from '../assets/images/svg/plus-white.svg';
+import plus_blue                    from '../assets/images/svg/plus-blue.svg';
 
 import agree_white                  from '../assets/images/svg/agree-white.svg';
 import disagree_white               from '../assets/images/svg/disagree-white.svg';
@@ -61,9 +61,9 @@ import verify                       from '../assets/images/svg/verify.svg';
 
 import arrow_right_white            from '../assets/images/svg/arrow-right-white.svg';
 import arrow_left_white_circle      from '../assets/images/svg/arrow-left-white-circle.svg';
-import angle_right_black            from '../assets/images/svg/angle-right-black.svg';
+import angle_right_grey             from '../assets/images/svg/angle-right-grey.svg';
 import angle_right_blue             from '../assets/images/svg/angle-right-blue.svg';
-import angle_down_black             from '../assets/images/svg/angle-down-black.svg';
+import angle_down_grey              from '../assets/images/svg/angle-down-grey.svg';
 
 import moderator_black              from '../assets/images/svg/moderator-black.svg';
 import secure_transparent           from '../assets/images/svg/secure-transparent.svg';
@@ -80,7 +80,7 @@ import file_pdf                     from '../assets/images/svg/file-pdf.svg';
 
 import file_blue                    from '../assets/images/svg/file-blue.svg';
 import file_white                   from '../assets/images/svg/file-white.svg';
-import smile                     from '../assets/images/svg/smile.svg';
+import smile                        from '../assets/images/svg/smile.svg';
 
 export default {
     logo_blue,
@@ -92,7 +92,6 @@ export default {
     setting_black,
     setting_white,
     find,
-    add_user,
     screenshot,
     star,
     kyc_approved,
@@ -114,7 +113,8 @@ export default {
     search_white,
     search_transparent,
 
-    plus,
+    plus_white,
+    plus_blue,
 
     agree_white,
     disagree_white,
@@ -143,8 +143,8 @@ export default {
 
     arrow_right_white,
     arrow_left_white_circle,
-    angle_right_black,
-    angle_down_black,
+    angle_right_grey,
+    angle_down_grey,
     angle_right_blue,
 
     moderator_black,

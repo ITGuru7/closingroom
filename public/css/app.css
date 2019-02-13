@@ -9603,7 +9603,7 @@ button.button-header {
   border: 1px solid white;
   border-radius: 3px;
   color: white;
-  background-color: #183863;
+  background-color: transparent;
 }
 
 button.button-header:hover {
@@ -9615,6 +9615,10 @@ button.button-header:hover {
 button:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+
+button span {
+  color: inherit;
 }
 
 input {
@@ -10266,7 +10270,7 @@ img.size-40 {
 }
 
 .room-page .page-content .tasks-pane {
-  flex: 0 0 400px;
+  flex: 0 0 300px;
   border-left: 1px solid #231f20;
 }
 

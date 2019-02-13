@@ -32,7 +32,7 @@ class UserListPane extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded1: !expanded1})}}
           >
-            <img className="size-30" src={expanded1?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded1?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
         </div>
         <div className="group-content">
@@ -61,7 +61,7 @@ class UserListPane extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded2: !expanded2})}}
           >
-            <img className="size-30" src={expanded2?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded2?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
         </div>
         <div className="group-content">
@@ -90,7 +90,7 @@ class UserListPane extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded3: !expanded3})}}
           >
-            <img className="size-30" src={expanded3?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded3?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
         </div>
         <div className="group-content">
@@ -119,7 +119,7 @@ class UserListPane extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded4: !expanded4})}}
           >
-            <img className="size-30" src={expanded4?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded4?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
         </div>
         <div className="group-content">
@@ -162,12 +162,11 @@ class UserListPane extends Component {
         <PaneHeader title="Participants"/>
         {this.renderParticipants()}
         <div className="text-center mt-auto mb-3">
-          <img src={assets.add_user} className="size-30 mr-2"/>
           <button className="button-white button-md shadow rounded"
             onClick={(event) => {this.openAddUserModal()}}
           >
-            <span>Add Users</span>
-            <img src={assets.angle_right_blue} className="size-20"/>
+            <span className="mr-2">Add Users</span>
+            <img src={assets.plus_blue} className="size-20"/>
           </button>
         </div>
       </div>

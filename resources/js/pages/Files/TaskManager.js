@@ -37,7 +37,7 @@ class TaskManager extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded1: !expanded1})}}
           >
-            <img className="size-20" src={expanded1?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded1?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
           Legal Documents
         </td>
@@ -68,7 +68,7 @@ class TaskManager extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded2: !expanded2})}}
           >
-            <img className="size-20" src={expanded2?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded2?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
           Uploaded Documents
         </td>
@@ -120,7 +120,7 @@ class TaskManager extends Component {
               <button className="button button-transparent"
                 onClick={(event)=>{this.setState({expanded0: !expanded0})}}
               >
-                <img className="size-20" src={expanded0?assets.angle_down_black:assets.angle_right_black}/>
+                <img className="size-20" src={expanded0?assets.angle_down_grey:assets.angle_right_grey}/>
               </button>
               Files
             </th>

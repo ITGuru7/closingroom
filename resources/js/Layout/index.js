@@ -32,12 +32,11 @@ import KYC_ApprovalsPage from '../pages/KYC_Approvals';
 import KYC_ApprovalViewPage from '../pages/KYC_Approvals/KYC_ApprovalViewPage';
 
 // components
-import withAuthentication from '../components/Session/withAuthentication';
 import * as routes from '../constants/routes';
 import * as actions from '../actions';
 
-import UserAuth from '../components/Auth/UserAuth';
-import AdminAuth from '../components/Auth/AdminAuth';
+import UserAuth from '../Auth/UserAuth';
+import AdminAuth from '../Auth/AdminAuth';
 
 const DefaultLayout = ({component: Component, ...rest}) => {
   window.scrollTo(0,0);
@@ -117,4 +116,4 @@ class Layout extends Component {
   }
 }
 
-export default withAuthentication(connect(null, actions)(Layout));
+export default connect(null, actions)(Layout);

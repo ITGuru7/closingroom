@@ -112,9 +112,9 @@ class MyRoomsPage extends Component {
           </table>
           <div className="d-flex justify-content-center">
             <Link to={routes.CREATE_ROOM}>
-              <button className="button button-md button-red">
+              <button className="button button-md button-white">
                 Create a ClosingRoom
-                <img src={assets.plus} className="size-15 ml-2"/>
+                <img src={assets.plus_blue} className="size-15 ml-2"/>
               </button>
             </Link>
           </div>

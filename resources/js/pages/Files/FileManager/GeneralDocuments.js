@@ -40,7 +40,7 @@ class GeneralDocuments extends Component {
         <td>
           <button className="button button-md button-lightgreen">
             <img src={assets.sign} className="size-20 mr-3"/>
-            Fill &amp; Sign
+            <span>Fill &amp; Sign</span>
           </button>
         </td>
         <td>N/A</td>
@@ -69,7 +69,7 @@ class GeneralDocuments extends Component {
           <button className="button button-transparent"
             onClick={(event)=>{this.setState({expanded: !expanded})}}
           >
-            <img className="size-20" src={expanded?assets.angle_down_black:assets.angle_right_black}/>
+            <img className="size-20" src={expanded?assets.angle_down_grey:assets.angle_right_grey}/>
           </button>
           General
         </th>

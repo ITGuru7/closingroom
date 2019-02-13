@@ -6,6 +6,7 @@ import assets from '../../../assets';
 import _ from 'lodash';
 
 import PaneHeader from '../../../Layout/Header/PaneHeader';
+import { MyButton } from '../../../components';
 
 const INITIAL_STATE = {
   expanded1: true,
@@ -26,9 +27,9 @@ class TasksPane extends Component {
             onClick={(event)=>{this.setState({ expanded1: !expanded1 })}}
           >
           { expanded1 ?
-            <img className="size-15" src={assets.angle_down_black}/>
+            <img className="size-15" src={assets.angle_down_grey}/>
           :
-            <img className="size-15" src={assets.angle_right_black}/>
+            <img className="size-15" src={assets.angle_right_grey}/>
           }
           </button>
         </div>
@@ -59,9 +60,9 @@ class TasksPane extends Component {
             onClick={(event)=>{this.setState({ expanded2: !expanded2 })}}
           >
           { expanded2 ?
-            <img className="size-15" src={assets.angle_down_black}/>
+            <img className="size-15" src={assets.angle_down_grey}/>
           :
-            <img className="size-15" src={assets.angle_right_black}/>
+            <img className="size-15" src={assets.angle_right_grey}/>
           }
           </button>
         </div>
@@ -92,9 +93,9 @@ class TasksPane extends Component {
             onClick={(event)=>{this.setState({ expanded3: !expanded3 })}}
           >
           { expanded3 ?
-            <img className="size-15" src={assets.angle_down_black}/>
+            <img className="size-15" src={assets.angle_down_grey}/>
           :
-            <img className="size-15" src={assets.angle_right_black}/>
+            <img className="size-15" src={assets.angle_right_grey}/>
           }
           </button>
         </div>
@@ -136,10 +137,7 @@ class TasksPane extends Component {
         </div>
         <div className="view-files d-flex justify-content-center mt-5">
           <Link to={`/room/${room.rid}/files`}>
-            <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded">
-              <span className="mr-2">Files and Task Room</span>
-              <img className="size-20" src={assets.angle_right_black}/>
-            </button>
+            <MyButton style="button-white" label="Files and Task Room" asset={assets.angle_right_grey}/>
           </Link>
         </div>
       </div>
