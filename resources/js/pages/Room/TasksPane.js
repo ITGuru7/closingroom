@@ -149,7 +149,7 @@ class TasksPane extends Component {
           {this.renderTasks()}
         </div>
         <div className="view-files text-center mt-auto mb-5">
-          <button className="button-white px-2 py-1 rounded shadow mb-1"
+          <button className="button-white px-2 py-1 rounded shadow mb-3"
             onClick={this.onOpenUploadModal}
           >
             <span className="mr-2">Upload a File</span>
