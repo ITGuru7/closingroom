@@ -42,6 +42,12 @@ const Sidebar = (props) => {
         <SidebarNavItem to="" text="What is a ClosingRoom?"/>
       </div>
       <div className="signout-block mt-auto">
+        <button type="button" className="button-transparent"
+          onClick={functions.doLogout}
+        >
+          <img src={assets.logout_red} className="size-20 mr-2"/>
+          <span>Logout</span>
+        </button>
       </div>
     </div>
   )

@@ -148,15 +148,15 @@ class TasksPane extends Component {
         <div className="tasks-block flex-grow-1">
           {this.renderTasks()}
         </div>
-        <div className="view-files d-flex flex-column justify-content-center mt-auto mb-5">
-          <button className="button-white d-flex align-items-center px-2 py-1 rounded shadow mr-3"
+        <div className="view-files text-center mt-auto mb-5">
+          <button className="button-white px-2 py-1 rounded shadow mb-1"
             onClick={this.onOpenUploadModal}
           >
             <span className="mr-2">Upload a File</span>
             <img src={assets.upload_blue} className="size-20"/>
           </button>
           <Link to={`/room/${room.rid}/files`}>
-            <button className="button-white d-flex align-items-center px-2 py-1 rounded shadow">
+            <button className="button-white px-2 py-1 rounded shadow">
               <span className="mr-2">Files and Task Room</span>
               <img className="size-20" src={assets.angle_right_grey}/>
             </button>
