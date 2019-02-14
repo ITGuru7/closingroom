@@ -40,7 +40,7 @@ class UploadDocumentModal extends Component {
       storage.doUploadDocument(document_name, document_file)
       .then(snapshot => snapshot.ref.getDownloadURL())
       .then((url) => {
-        db.doDownloadDocument(room.rid, authUser.uid, doc_key, url)
+        db.doDownloadDocument(room.rid, doc_key, url)
         this.onReset()
         alert('Document has been uploaded successfully')
       })

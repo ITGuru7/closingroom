@@ -10359,10 +10359,6 @@ img.size-40 {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.roomfiles-page .page-content .filemanager-pane .button-block button {
-  width: 150px;
-}
-
 .accounts-page .page-content .header {
   height: 40px;
   background-color: #183863;

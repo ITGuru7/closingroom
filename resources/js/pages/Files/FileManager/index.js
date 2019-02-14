@@ -18,6 +18,7 @@ import GeneralDocuments from './GeneralDocuments';
 import LegalDocuments from './LegalDocuments';
 import UserUploadFiles from './UserUploadFiles';
 import UsersDocumentation from './UsersDocumentation';
+import CustomFolders from './CustomFolders';
 
 const INITIAL_STATE = {
   expanded: true,
@@ -62,6 +63,7 @@ class FileManager extends Component {
               <GeneralDocuments key="general"/>,
               <LegalDocuments key="legal"/>,
               <UserUploadFiles key="upload"/>,
+              <CustomFolders key="custom"/>,
             ]
           }
         </tbody>
@@ -74,21 +76,32 @@ class FileManager extends Component {
     $('.upload-modal').removeClass('d-none')
   }
 
+  onNewFolder = () => {
+    const { room } = this.props
+    db.doNewFolder(room.rid)
+  }
+
   render() {
     return (
       <div className="filemanager-pane h-100">
         <div className="documents-block">
           {this.renderDocuments()}
         </div>
-        <div className="button-block d-flex flex-column mt-auto mb-3 ml-4">
-          <button className="button-white mb-3"
-            onClick={(event) => this.onOpenUploadModal()}
+        <div className="button-block d-flex mt-auto mb-3 ml-4">
+          <button className="button-white border-0 d-flex align-items-center mr-3"
+            onClick={(event) => this.onNewFolder()}
           >
-            Upload a File
-            <img src={assets.upload_blue} className="size-20 ml-2"/>
+            <img src={assets.plus_black} className="size-20 mr-2"/>
+            <u>New Folder</u>
           </button>
-          <button className="button-white"
-            onClick={(event) => {}}
+          <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded mr-3"
+            onClick={this.onOpenUploadModal}
+          >
+            <span className="mr-2">Upload a File</span>
+            <img src={assets.upload_blue} className="size-20"/>
+          </button>
+          <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded"
+            onClick={(event) => {alert('Coming Soon')}}
           >
             Download All (.zip)
           </button>
@@ -99,8 +112,9 @@ class FileManager extends Component {
 }
 
 
-const mapStateToProps = ({  }) => {
+const mapStateToProps = ({ room }) => {
   return {
+    room,
   };
 };
 

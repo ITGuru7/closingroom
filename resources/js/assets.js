@@ -32,6 +32,7 @@ import search_transparent           from '../assets/images/svg/search-transparen
 
 import plus_white                   from '../assets/images/svg/plus-white.svg';
 import plus_blue                    from '../assets/images/svg/plus-blue.svg';
+import plus_black                   from '../assets/images/svg/plus-black.svg';
 
 import agree_white                  from '../assets/images/svg/agree-white.svg';
 import disagree_white               from '../assets/images/svg/disagree-white.svg';
@@ -117,6 +118,7 @@ export default {
 
     plus_white,
     plus_blue,
+    plus_black,
 
     agree_white,
     disagree_white,

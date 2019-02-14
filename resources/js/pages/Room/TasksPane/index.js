@@ -102,16 +102,20 @@ class TasksPane extends Component {
         { expanded3 &&
           <div className="group-contents px-3">
           { _.map(room.users, (user) => {
-            return _.map(user.documents, (document, key) => (
-              <div key={key} className="content d-flex justify-content-between">
-                <div className="title">{document.title}</div>
-                <div className="link">
-                  <a href={document.url} target='_blank'>
-                    View
-                  </a>
-                </div>
-              </div>
-            ))
+            return _.map(user.documents, (document, key) => {
+              if (!(document.active=="0")) {
+                return (
+                  <div key={key} className="content d-flex justify-content-between">
+                    <div className="title">{document.title||"Document"}</div>
+                    <div className="link">
+                      <a href={document.url} target='_blank'>
+                        View
+                      </a>
+                    </div>
+                  </div>
+                )
+              }
+            })
           })}
           </div>
         }
@@ -137,7 +141,10 @@ class TasksPane extends Component {
         </div>
         <div className="view-files d-flex justify-content-center mt-5">
           <Link to={`/room/${room.rid}/files`}>
-            <MyButton style="button-white" label="Files and Task Room" asset={assets.angle_right_grey}/>
+            <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded">
+              <span className="mr-2">Files and Task Room</span>
+              <img className="size-20" src={assets.angle_right_grey}/>
+            </button>
           </Link>
         </div>
       </div>

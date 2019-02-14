@@ -141,19 +141,20 @@ export const doDownloadAddress = (uid, url) => (
 export const doUploadDocument = (rid, uid, title, type, other, issued, certified, comment) => {
   let date = Date.now()
 
-  return db.ref(`rooms/${rid}/users/${uid}/documents`).push({
+  return db.ref(`rooms/${rid}/documents/upload`).push({
     title,
     type,
     other,
     issued,
     certified,
     comment,
+    uid,
     create_date: date,
   })
 };
 
-export const doDownloadDocument = (rid, uid, doc_key, url) => (
-  db.ref(`rooms/${rid}/users/${uid}/documents/${doc_key}`).update({
+export const doDownloadDocument = (rid, doc_key, url) => (
+  db.ref(`rooms/${rid}/documents/upload/${doc_key}`).update({
     url,
   })
 );
@@ -188,5 +189,11 @@ export const doTryAgainKYC = (uid) => {
 export const doUpgradeUser = (uid) => {
   db.ref(`users/${uid}`).update({
     level: 3,
+  })
+}
+
+export const doNewFolder = (rid) => {
+  db.ref(`rooms/${rid}/documents/folders`).push({
+    title: 'New Folder',
   })
 }
