@@ -112,7 +112,7 @@ class MyRoomsPage extends Component {
           </table>
           <div className="d-flex justify-content-center">
             <Link to={routes.CREATE_ROOM}>
-              <button className="button button-md button-white">
+              <button className="button button-md button-white d-flex align-items-center px-2 py-1 rounded shadow">
                 Create a ClosingRoom
                 <img src={assets.plus_blue} className="size-15 ml-2"/>
               </button>
@@ -198,10 +198,10 @@ class RoomRow extends Component {
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td>{functions.getFormattedDate(new Date(room.expire_date))}</td>
         <td>
-          <img src={assets.setting_black} className="size-20 mr-3"/>
           <Link to={`/rooms/${room.rid}`}>
-            <button className="button button-md button-blue">
-              Enter
+            <button className="button button-md button-white d-flex align-items-center px-2 rounded shadow">
+              <span className="mr-2">Enter</span>
+              <img src={assets.angle_right_blue} className="size-15"/>
             </button>
           </Link>
         </td>

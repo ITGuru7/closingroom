@@ -91,8 +91,11 @@ table.mytable {
     tr:nth-child(odd) {
         background-color: $lighter-grey ;
     }
-    td {
+
+    th, td {
         padding: .3rem 2rem ;
+    }
+    td {
         border: none ;
         vertical-align: middle ;
     }

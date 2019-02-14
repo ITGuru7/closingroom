@@ -94,13 +94,13 @@ class FileManager extends Component {
             <img src={assets.plus_black} className="size-20 mr-2"/>
             <u>New Folder</u>
           </button>
-          <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded mr-3"
+          <button className="button-white d-flex align-items-center px-2 py-1 rounded shadow mr-3"
             onClick={this.onOpenUploadModal}
           >
             <span className="mr-2">Upload a File</span>
             <img src={assets.upload_blue} className="size-20"/>
           </button>
-          <button className="button-white d-flex align-items-center shadow px-2 py-1 rounded"
+          <button className="button-white d-flex align-items-center px-2 py-1 rounded shadow"
             onClick={(event) => {alert('Coming Soon')}}
           >
             Download All (.zip)

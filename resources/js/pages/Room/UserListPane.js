@@ -161,12 +161,12 @@ class UserListPane extends Component {
       <div className="userlist-pane d-flex flex-column">
         <PaneHeader title="Participants"/>
         {this.renderParticipants()}
-        <div className="text-center mt-auto mb-3">
-          <button className="button-white button-md shadow rounded"
+        <div className="d-flex justify-content-center  mt-auto mb-3">
+          <button className="button-white button-md d-flex align-items-center px-2 py-1 rounded shadow"
             onClick={(event) => {this.openAddUserModal()}}
           >
             <span className="mr-2">Add Users</span>
-            <img src={assets.plus_blue} className="size-20"/>
+            <img src={assets.plus_blue} className="size-15"/>
           </button>
         </div>
       </div>

@@ -3,7 +3,8 @@ import screenshot                   from '../assets/images/png/screenshot@4x.png
 import logo_blue                    from '../assets/images/svg/logo-blue.svg';
 import logo_transparent             from '../assets/images/svg/logo-transparent.svg';
 
-import logout                       from '../assets/images/svg/logout.svg';
+import logout_red                   from '../assets/images/svg/logout-red.svg';
+import logout_white                 from '../assets/images/svg/logout-white.svg';
 import home_black                   from '../assets/images/svg/home-black.svg';
 import home_white                   from '../assets/images/svg/home-white.svg';
 import setting_blue                 from '../assets/images/svg/setting-blue.svg';
@@ -88,7 +89,8 @@ import smile                        from '../assets/images/svg/smile.svg';
 export default {
     logo_blue,
     logo_transparent,
-    logout,
+    logout_red,
+    logout_white,
     home_black,
     home_white,
     setting_blue,

@@ -4,7 +4,8 @@ import assets from '../../assets';
 import * as routes from '../../constants/routes';
 
 import NavItem from './NavItem';
-import SignOutButton from '../../pages/Sign/SignOut';
+
+import * as functions from '../../functions';
 
 const Navbar = (props) => {
   return (
@@ -27,7 +28,11 @@ const Navbar = (props) => {
         <NavItem to={routes.KYC_APPROVALS} asset={assets.search_transparent} size={25} text="KYC Approvals"/>
       </div>
       <div className="help-block d-flex">
-        <SignOutButton />
+        <button type="button" className="button-transparent"
+          onClick={functions.doLogout}
+        >
+          <img src={assets.logout_white} className="size-20"/>
+        </button>
         <NavItem to="" asset={assets.help_white} size={25} text=""/>
       </div>
     </div>

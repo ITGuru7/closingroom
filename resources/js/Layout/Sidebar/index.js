@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-import SignOutButton from '../Sign/SignOut';
 import * as routes from '../../constants/routes';
 import assets from '../../assets';
 
@@ -43,7 +42,6 @@ const Sidebar = (props) => {
         <SidebarNavItem to="" text="What is a ClosingRoom?"/>
       </div>
       <div className="signout-block mt-auto">
-        <SignOutButton />
       </div>
     </div>
   )

@@ -1,7 +1,11 @@
 import axios from 'axios';
 
 import { db as firebaseDB } from './firebase/firebase'
+import { auth as firebaseAuth } from './firebase';
+
 import { SERVER_URL } from './constants/urls';
+
+import * as routes from './constants/routes';
 
 import ROLES from './constants/roles';
 import RANKS from './constants/ranks';
@@ -38,6 +42,11 @@ export const getFormattedID = (id, length) => {
 
 export const isAdmin = (level) => {
     return parseInt(level) >= 3
+}
+
+export const doLogout = () => {
+    firebaseAuth.doSignOut();
+    window.location.href = routes.HOME;
 }
 
 export const doSendInviteEmail = (room, authUser, invite, users) => {
