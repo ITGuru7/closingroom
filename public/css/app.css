@@ -10308,7 +10308,6 @@ img.size-40 {
 .roomfiles-page .page-content .filemanager-pane .documents-block table.filestable th {
   padding: 0;
   line-height: 2rem;
-  text-transform: uppercase;
 }
 
 .roomfiles-page .page-content .filemanager-pane .documents-block table.filestable th,
@@ -10323,6 +10322,10 @@ img.size-40 {
 
 .roomfiles-page .page-content .filemanager-pane .documents-block table.filestable input {
   width: 20px !important;
+}
+
+.roomfiles-page .page-content .filemanager-pane .documents-block table.filestable input[type=text] {
+  width: 200px !important;
 }
 
 .roomfiles-page .page-content .filemanager-pane .documents-block table.filestable tr.level-0 th:first-child,

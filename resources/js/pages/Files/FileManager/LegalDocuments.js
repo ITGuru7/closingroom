@@ -23,45 +23,54 @@ const INITIAL_STATE = {
 class LegalDocuments extends Component {
   state = { ...INITIAL_STATE };
 
-  renderLegalDocument = (document) => (
-    <tr key={document.title} className="level-2">
-      <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title}</td>
-      <td><img src={assets.status_incomplete} className="size-20"/> Incomplete</td>
-      <td className="text-uppercase">Legal Document</td>
-      <td><input type="checkbox" defaultChecked={true}/></td>
-      <td>{functions.getFormattedDate(new Date(document.create_date))}</td>
-      <td></td>
-      <td>
-        <a href={document.url} download>
-          <img src={assets.download_blue} className="size-20"/>
-        </a>
-      </td>
-      <td><img src={assets.status_complete} className="size-20"/> Signed</td>
-      <td>N/A</td>
-      <td>
-        <select
-          name="juridiction"
-          id="juridiction"
-        >
-          <option value="" hidden>Jurisdiction</option>
-          {_.map(JURISDICTIONS, (jurisdiction, key) => (
-            <option key={key} value={key}>{jurisdiction}</option>
-          ))}
-        </select>
-      </td>
-      <td>
-        <a href={document.url} target='_blank'>
-          <img src={assets.search_black} className="size-20 mr-3"/>
-          Preview
-        </a>
-      </td>
-    </tr>
-  )
+  renderLegalDocument = (document, key) => {
+    const { room } = this.props
+
+    return (
+      <tr key={document.title} className="level-2">
+        <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title}</td>
+        <td><img src={assets.status_incomplete} className="size-20"/> Incomplete</td>
+        <td className="text-uppercase">Legal Document</td>
+        <td>
+          <input type="checkbox" defaultChecked={document.active}
+            onChange={(event) => {functions.doSetTaskStatus(`rooms/${room.rid}/documents/legal/${key}`, event.target.checked)}}
+          />
+        </td>
+        <td>{functions.getFormattedDate(new Date(document.create_date))}</td>
+        <td></td>
+        <td>
+          <a href={document.url} download>
+            <img src={assets.download_blue} className="size-20"/>
+          </a>
+        </td>
+        <td><img src={assets.status_complete} className="size-20"/> Signed</td>
+        <td>N/A</td>
+        <td>
+          <select
+            name="juridiction"
+            id="juridiction"
+          >
+            <option value="" hidden>Jurisdiction</option>
+            {_.map(JURISDICTIONS, (jurisdiction, key) => (
+              <option key={key} value={key}>{jurisdiction}</option>
+            ))}
+          </select>
+        </td>
+        <td>
+          <a href={document.url} target='_blank'>
+            <img src={assets.search_black} className="size-20 mr-3"/>
+            Preview
+          </a>
+        </td>
+      </tr>
+    )
+  }
 
   renderDocuments = () => {
-    const { documents } = this.props
-    return _.map(documents, (document) => (
-      this.renderLegalDocument(document)
+    const { room } = this.props
+    const { legal } = room.documents
+    return _.map(legal, (document, key) => (
+      this.renderLegalDocument(document, key)
     ))
   }
 
@@ -85,9 +94,9 @@ class LegalDocuments extends Component {
     return rows
   }
 }
-const mapStateToProps = ({ documents }) => {
+const mapStateToProps = ({ room }) => {
   return {
-    documents,
+    room,
   };
 };
 

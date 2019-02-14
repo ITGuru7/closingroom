@@ -6,7 +6,6 @@
             th {
                 padding: 0 ;
                 line-height: 2rem ;
-                text-transform: uppercase ;
             }
             th, td {
                 border: 1px solid $light-grey ;
@@ -17,6 +16,9 @@
             }
             input {
                 width: 20px !important ;
+            }
+            input[type=text] {
+                width: 200px !important ;
             }
             @for $i from 0 through 4 {
                 tr.level-#{$i} {

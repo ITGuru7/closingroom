@@ -23,12 +23,17 @@ class UserUploadFiles extends Component {
   state = { ...INITIAL_STATE };
 
   renderUploadDocument = (document) => {
+    const { room } = this.props
     return (
       <tr key={document.did} className="level-2">
         <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title || 'Document'}</td>
         <td><img src={assets.upload_blue} className="size-20"/> Uploaded</td>
         <td className="text-uppercase">{document.type}</td>
-        <td><input type="checkbox" defaultChecked={true}/></td>
+        <td>
+          <input type="checkbox" defaultChecked={document.active}
+            onChange={(event) => {functions.doSetTaskStatus(`rooms/${room.rid}/documents/upload/${document.did}`, event.target.checked)}}
+          />
+        </td>
         <td>{functions.getFormattedDate(new Date(document.create_date || "01/01/2019"))}</td>
         <td>N/A</td>
         <td>
@@ -51,12 +56,10 @@ class UserUploadFiles extends Component {
 
   renderDocuments = () => {
     const { room, users } = this.props
-    return _.map(room.users, (room_user, uid) => {
-      return _.map(room_user.documents, (document, did) => {
-        document.username = users[uid].displayname
-        document.did = did
-        return this.renderUploadDocument(document)
-      })
+    return _.map(room.documents.upload, (document, did) => {
+      document.username = users[document.uid].displayname
+      document.did = did
+      return this.renderUploadDocument(document)
     })
   }
 

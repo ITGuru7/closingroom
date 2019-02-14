@@ -10,6 +10,7 @@ import Folder from './Folder';
 const CustomFolders = (props) => {
   const { room } = props
   return _.map(room.documents.folders, (folder, key) => {
+    folder.fid = key
     return <Folder key={key} folder={folder}/>
   })
 }

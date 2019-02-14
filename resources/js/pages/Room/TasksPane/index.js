@@ -18,7 +18,10 @@ class TasksPane extends Component {
   state = { ...INITIAL_STATE };
 
   renderGeneralDocuments = () => {
+    const { room } = this.props
     const { expanded1 } = this.state
+    const { general } = room.documents
+
     return (
       <div key="general" className="tasks-group  mt-2">
         <div className="group-header px-2 d-flex justify-content-between">
@@ -33,7 +36,7 @@ class TasksPane extends Component {
           }
           </button>
         </div>
-        { expanded1 &&
+        { expanded1 && general.dealdetails.active &&
           <div className="group-contents px-3">
             <div className="content d-flex justify-content-between">
               <div className="title">General Deal Details</div>
@@ -51,7 +54,10 @@ class TasksPane extends Component {
   }
 
   renderLegalDocuments = () => {
+    const { room } = this.props
     const { expanded2 } = this.state
+    const { legal } = room.documents
+
     return (
       <div key="legal" className="tasks-group  mt-2">
         <div className="group-header px-2 d-flex justify-content-between">
@@ -66,7 +72,7 @@ class TasksPane extends Component {
           }
           </button>
         </div>
-        { expanded2 &&
+        { expanded2 && legal.ncnda.active &&
           <div className="group-contents px-3">
             <div className="content d-flex justify-content-between">
               <div className="title">NCNDA</div>
@@ -101,21 +107,19 @@ class TasksPane extends Component {
         </div>
         { expanded3 &&
           <div className="group-contents px-3">
-          { _.map(room.users, (user) => {
-            return _.map(user.documents, (document, key) => {
-              if (!(document.active=="0")) {
-                return (
-                  <div key={key} className="content d-flex justify-content-between">
-                    <div className="title">{document.title||"Document"}</div>
-                    <div className="link">
-                      <a href={document.url} target='_blank'>
-                        View
-                      </a>
-                    </div>
+          { _.map(room.documents.upload, (document, key) => {
+            if (document.active) {
+              return (
+                <div key={key} className="content d-flex justify-content-between">
+                  <div className="title">{document.title||"Document"}</div>
+                  <div className="link">
+                    <a href={document.url} target='_blank'>
+                      View
+                    </a>
                   </div>
-                )
-              }
-            })
+                </div>
+              )
+            }
           })}
           </div>
         }
@@ -133,6 +137,7 @@ class TasksPane extends Component {
 
   render() {
     const { room } = this.props
+
     return (
       <div className="tasks-pane">
         <PaneHeader title="Active Files"/>

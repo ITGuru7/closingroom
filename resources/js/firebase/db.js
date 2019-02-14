@@ -168,7 +168,7 @@ export const doApproveKYC = (uid) => {
     kyc_status: 'verified',
     level: 1,
   })
-}
+};
 
 export const doDenyKYC = (uid, reason) => {
   db.ref(`users/${uid}`).update({
@@ -176,7 +176,7 @@ export const doDenyKYC = (uid, reason) => {
     kyc_deny_reason: reason,
     level: 0,
   })
-}
+};
 
 export const doTryAgainKYC = (uid) => {
   db.ref(`users/${uid}`).update({
@@ -184,16 +184,22 @@ export const doTryAgainKYC = (uid) => {
     kyc_deny_reason: '',
     level: 0,
   })
-}
+};
 
 export const doUpgradeUser = (uid) => {
   db.ref(`users/${uid}`).update({
     level: 3,
   })
-}
+};
 
 export const doNewFolder = (rid) => {
   db.ref(`rooms/${rid}/documents/folders`).push({
     title: 'New Folder',
   })
-}
+};
+
+export const doChangeFoldername = (rid, folder_key, foldername) => {
+  db.ref(`rooms/${rid}/documents/folders/${folder_key}`).update({
+    title: foldername,
+  })
+};

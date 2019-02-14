@@ -116,3 +116,9 @@ export const doEnterInvitedRooms = (uid, email) => {
         })
     })
 }
+
+export const doSetTaskStatus = (task_path, status) => {
+    firebaseDB.ref(task_path).update({
+        active: status,
+    })
+}

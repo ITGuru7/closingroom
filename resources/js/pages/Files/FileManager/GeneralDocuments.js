@@ -24,12 +24,18 @@ class GeneralDocuments extends Component {
 
   renderDealDetail = () => {
     const { room } = this.props
+    const dealdetails = room.documents.general.dealdetails
+
     return (
       <tr key="dealdetail" className="level-2">
         <td className="text-left"><img src={assets.file_blue} className="size-20"/> Deal Details</td>
         <td><img src={assets.status_working} className="size-20"/> Working</td>
         <td className="text-uppercase">General Terms</td>
-        <td><input type="checkbox" defaultChecked={true}/></td>
+        <td>
+          <input type="checkbox" defaultChecked={dealdetails.active}
+            onChange={(event) => {functions.doSetTaskStatus(`rooms/${room.rid}/documents/general/dealdetails`, event.target.checked)}}
+          />
+        </td>
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td></td>
         <td>
