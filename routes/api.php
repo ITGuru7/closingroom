@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('send_email', 'APIController@sendEmail');
+Route::post('send_invite_email', 'APIController@sendInviteEmail');
+Route::post('send_verify_email', 'APIController@sendVerifyEmail');

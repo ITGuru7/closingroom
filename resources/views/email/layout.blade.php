@@ -15,7 +15,7 @@
     }
     .email-container {
       margin: auto ;
-      max-width: 800px ;
+      width: 800px ;
       text-align: center ;
     }
 
@@ -100,7 +100,7 @@
         <tr class="email-footer">
           <td>
             © 2018 mnmcs.com All Rights Reserved<br/>
-            URL：<a href="www.mnmcs.com">www.mnmcs.com</a>  E-mail：<a href="mailto:support@mnmcs.com.com">support@mnmcs.com.com</a>
+            URL:<a href="www.mnmcs.com">www.mnmcs.com</a>  E-mail:<a href="mailto:support@mnmcs.com.com">support@mnmcs.com.com</a>
           </td>
         </tr>
       </tfoot>

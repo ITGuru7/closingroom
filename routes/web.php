@@ -13,13 +13,21 @@
 
 Route::get('invite', function () {
 	$data = [
-		'displayname' => 'Bob',
-		'role' => 'BUYER MANDATE',
-		'room_id' => '065331',
-		'participants' => '5',
-		'link' => 'http://www.closingroom.com/nf89423mm#23'
+		'displayname'		=> 'Bob',
+		'role'					=> 'BUYER MANDATE',
+		'room_id'				=> '065331',
+		'participants'	=> '5',
+		'link'					=> 'http://www.closingroom.com/nf89423mm#23'
 	];
 	return view('email.invite', $data);
+});
+
+Route::get('verify', function () {
+	$data = [
+		'displayname' 	=> 'Michael',
+		'link' 					=> 'http://www.closingroom.com/nf89423mm#23'
+	];
+	return view('email.verify', $data);
 });
 
 Route::get('dealdetails','PDFController@dealdetails');

@@ -89,7 +89,7 @@ export const doSendInviteEmail = (room, authUser, invite, users) => {
         link = `${SERVER_URL}/signup`
     }
 
-    const url = `${SERVER_URL}/api/send_email?
+    const url = `${SERVER_URL}/api/send_invite_email?
       sender_email=${authUser.email}&
       receiver_email=${invite.email}&
       displayname=${authUser.displayname}&
