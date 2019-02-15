@@ -66,6 +66,7 @@ class SignUpForm extends Component {
             setTimeout(function(){
               functions.doSendVerifyEmail(authUser, displayname)
               functions.doEnterInvitedRooms(authUser.user.uid, email)
+              alert("We sent verification email.\nPlease check your mail")
               history.push(routes.DASHBOARD);
             }, 1000);
           } )
