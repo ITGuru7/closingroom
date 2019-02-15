@@ -135,7 +135,7 @@ export const doSetTaskStatus = (task_path, status) => {
 export const doSendVerifyEmail = (authUser, displayname) => {
     let link = `${SERVER_URL}/verify/${authUser.user.uid}`
     const url = `${SERVER_URL}/api/send_verify_email?
-        email=${authUser.email}&
+        email=${authUser.user.email}&
         displayname=${displayname}&
         link=${link}
     `;

@@ -64,7 +64,6 @@ class SignUpForm extends Component {
             // this.setState({ ...INITIAL_STATE });
 
             setTimeout(function(){
-              console.log(authUser)
               functions.doSendVerifyEmail(authUser, displayname)
               functions.doEnterInvitedRooms(authUser.user.uid, email)
               history.push(routes.DASHBOARD);

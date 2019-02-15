@@ -32,16 +32,15 @@ class APIController extends Controller
 
 	public function sendVerifyEmail(Request $request)
 	{
-		$sender_email = $request->sender_email;
-		$receiver_email = $request->receiver_email;
+		$email = $request->email;
 
 		$data = [
 			'displayname' 		=> $request->displayname,
 			'link'						=> $request->link
 		];
 
-		Mail::send('email.verify', $data, function($message) use ($receiver_email) {
-			$message->to($receiver_email, '')->subject('Email Verification');
+		Mail::send('email.verify', $data, function($message) use ($email) {
+			$message->to($email, '')->subject('Email Verification');
 			$message->from("no-reply@mnmcs.com", 'ClosingRoom');
 		});
 
