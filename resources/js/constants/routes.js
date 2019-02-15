@@ -14,3 +14,4 @@ export const ROOMS = '/rooms';
 export const MANAGE_ACCOUNTS = '/accounts';
 export const KYC_APPROVALS = '/KYC-approvals';
 export const KYC_APPROVAL = '/KYC-approvals/:uid';
+export const VERIFY_EMAIL = '/verify/:uid';

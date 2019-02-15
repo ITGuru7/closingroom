@@ -63,9 +63,12 @@ class SignUpForm extends Component {
           .then(() => {
             // this.setState({ ...INITIAL_STATE });
 
-            functions.doEnterInvitedRooms(authUser.user.uid, email)
-
-            history.push(routes.DASHBOARD);
+            setTimeout(function(){
+              console.log(authUser)
+              functions.doSendVerifyEmail(authUser, displayname)
+              functions.doEnterInvitedRooms(authUser.user.uid, email)
+              history.push(routes.DASHBOARD);
+            }, 1000);
           } )
           .catch(error => {
             this.setState({ error });

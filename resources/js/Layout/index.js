@@ -95,6 +95,8 @@ class Layout extends Component {
           <SignLayout exact path={routes.SIGN_IN} component={SignInPage} />
           <SignLayout exact path={routes.SIGN_UP} component={SignUpPage} />
 
+          <DefaultLayout exact path={routes.VERIFY} component={UserAuth(VerifyPage)} />
+
           <DefaultLayout exact path={routes.DASHBOARD} component={UserAuth(DashboardPage)} />
           <DefaultLayout exact path={routes.ACCOUNT_SETTINGS} component={UserAuth(AccountPage)} />
           <DefaultLayout exact path={routes.KYC} component={UserAuth(KYCPage)} />

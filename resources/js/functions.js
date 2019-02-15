@@ -80,7 +80,7 @@ export const doSendInviteEmail = (room, authUser, invite, users) => {
             rank,
         })
         link = `${SERVER_URL}/rooms/${room.rid}`
-     } else {
+    } else {
         firebaseDB.ref(`rooms/${room.rid}/invites`).push({
             email: invite.email,
             role: invite.role,
@@ -90,13 +90,13 @@ export const doSendInviteEmail = (room, authUser, invite, users) => {
     }
 
     const url = `${SERVER_URL}/api/send_invite_email?
-      sender_email=${authUser.email}&
-      receiver_email=${invite.email}&
-      displayname=${authUser.displayname}&
-      role=${_.find(ROLES, _.matchesProperty('index', invite.role)).label}&
-      room_id=${getFormattedID(room.id, 6)}&
-      participants=${_.size(room.users)}&
-      link=${link}
+        sender_email=${authUser.email}&
+        receiver_email=${invite.email}&
+        displayname=${authUser.displayname}&
+        role=${_.find(ROLES, _.matchesProperty('index', invite.role)).label}&
+        room_id=${getFormattedID(room.id, 6)}&
+        participants=${_.size(room.users)}&
+        link=${link}
     `;
     return axios.post(url)
 }
@@ -130,4 +130,14 @@ export const doSetTaskStatus = (task_path, status) => {
     firebaseDB.ref(task_path).update({
         active: status,
     })
+}
+
+export const doSendVerifyEmail = (authUser, displayname) => {
+    let link = `${SERVER_URL}/verify/${authUser.user.uid}`
+    const url = `${SERVER_URL}/api/send_verify_email?
+        email=${authUser.email}&
+        displayname=${displayname}&
+        link=${link}
+    `;
+    return axios.post(url)
 }
