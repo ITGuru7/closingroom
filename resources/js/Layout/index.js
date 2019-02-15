@@ -17,6 +17,7 @@ import HomeFooter from './Footer/HomeFooter';
 import HomePage from '../pages/Home';
 // user
 import DashboardPage from '../pages/Dashboard';
+import VerifyPage from '../pages/Verify';
 import SignInPage from '../pages/Sign/SignIn';
 import SignUpPage from '../pages/Sign/SignUp';
 import AccountPage from '../pages/Account';
@@ -95,8 +96,7 @@ class Layout extends Component {
           <SignLayout exact path={routes.SIGN_IN} component={SignInPage} />
           <SignLayout exact path={routes.SIGN_UP} component={SignUpPage} />
 
-          {/* <DefaultLayout exact path={routes.VERIFY_EMAIL} component={UserAuth(VerifyPage)} /> */}
-
+          <DefaultLayout exact path={routes.VERIFY_EMAIL} component={UserAuth(VerifyPage)} />
           <DefaultLayout exact path={routes.DASHBOARD} component={UserAuth(DashboardPage)} />
           <DefaultLayout exact path={routes.ACCOUNT_SETTINGS} component={UserAuth(AccountPage)} />
           <DefaultLayout exact path={routes.KYC} component={UserAuth(KYCPage)} />

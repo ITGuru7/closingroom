@@ -5,11 +5,11 @@ import ROLES from '../constants/roles';
 
 // User API
 
-export const doCreateUser = (id, type, firstname, lastname, displayname, email, timezone) => {
+export const doCreateUser = (uid, type, firstname, lastname, displayname, email, timezone) => {
   let join_date = Date.now()
   return db.ref('users').once('value')
   .then(function(snapshot) {
-    db.ref(`users/${id}`).set({
+    db.ref(`users/${uid}`).set({
       id: snapshot.numChildren()+1,
       type,
       firstname,
@@ -19,9 +19,16 @@ export const doCreateUser = (id, type, firstname, lastname, displayname, email, 
       timezone,
       level: 0,
       join_date,
+      verify: false,
     });
   })
 }
+
+export const doEmailVerifyUser = (uid) => (
+  db.ref(`users/${uid}`).update({
+    verify: true,
+  })
+);
 
 export const onceGetUsers = () => (
   db.ref('users').once('value')
