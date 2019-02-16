@@ -124,8 +124,7 @@ class AddUsersModal extends Component {
           <div className="header d-flex justify-content-between align-items-center">
             <img src={assets.logo_transparent} className="size-40"/>
             <div className="d-flex align-items-center">
-              <span className="title mr-3">Add Users to ClosingRoom</span>
-              <img src={assets.upload_white} className="size-30"/>
+              <span className="title text-white mr-3">Add Users to ClosingRoom</span>
             </div>
             <div
               className="close"
@@ -134,7 +133,7 @@ class AddUsersModal extends Component {
               <img src={assets.close} className="size-30"/>
             </div>
           </div>
-          <div className="content p-4">
+          <div className="body p-4">
             <div className="font-weight-bold mb-1">Invite new users by email</div>
             <div className="mb-5">
               {this.renderInviteUsers()}

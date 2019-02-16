@@ -14,6 +14,8 @@ import * as functions from '../../../functions';
 
 import moment from 'moment-timezone';
 
+import ACCOUNT_TYPES from '../../../constants/account_types';
+
 
 const SignUpPage = ({ history }) => (
   <div className="signup-page">
@@ -31,9 +33,11 @@ const INITIAL_STATE = {
   firstname: '',
   lastname: '',
   displayname: '',
-  email: '',
+  emailOne: '',
+  emailTwo: '',
   passwordOne: '',
   passwordTwo: '',
+  country: '',
   timezones: null,
   timezone: '',
   error: null,
@@ -45,8 +49,13 @@ class SignUpForm extends Component {
   onSubmit = event => {
     event.preventDefault()
 
-    const { type, firstname, lastname, displayname, email, passwordOne, passwordTwo, timezone } = this.state;
+    const { type, firstname, lastname, displayname, emailOne, emailTwo, passwordOne, passwordTwo, country, timezone } = this.state;
 
+    if (emailOne !== emailTwo) {
+      alert('Email not match')
+      $('#emailTwo').focus()
+      return
+    }
     if (passwordOne !== passwordTwo) {
       alert('Password not match')
       $('#passwordTwo').focus()
@@ -56,16 +65,16 @@ class SignUpForm extends Component {
     const { history } = this.props;
 
     auth
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
+      .doCreateUserWithEmailAndPassword(emailOne, passwordOne)
       .then(authUser => {
         // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.user.uid, type, firstname, lastname, displayname, email, timezone)
+        db.doCreateUser(authUser.user.uid, type, firstname, lastname, displayname, emailOne, country, timezone)
           .then(() => {
             // this.setState({ ...INITIAL_STATE });
 
             setTimeout(function(){
               functions.doSendVerifyEmail(authUser, displayname)
-              functions.doEnterInvitedRooms(authUser.user.uid, email)
+              functions.doEnterInvitedRooms(authUser.user.uid, emailOne)
               alert("We sent verification email.\nPlease check your mail")
               history.push(routes.DASHBOARD);
             }, 1000);
@@ -79,17 +88,19 @@ class SignUpForm extends Component {
       });
 
     event.preventDefault();
-  };
+  }
+
+  onRegister = event => {
+    event.preventDefault()
+
+    $('.modal-background').removeClass('d-none')
+    $('.tc-modal').removeClass('d-none')
+
+    $('.tc-modal #button-register').on('click', this.onSignUp);
+  }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  };
-  onClickType = (event, type) => {
-
-    if (type == 1) {
-      event.preventDefault()
-      alert('Corporate/Institutional users coming soon')
-    }
   }
 
   componentWillMount() {
@@ -107,7 +118,7 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { type, firstname, lastname, displayname, email, passwordOne, passwordTwo, timezones, timezone, error } = this.state;
+    const { type, firstname, lastname, displayname, emailOne, emailTwo, passwordOne, passwordTwo, country, timezones, timezone, error } = this.state;
 
     // const isInvalid =
     //   passwordOne !== passwordTwo ||
@@ -119,28 +130,21 @@ class SignUpForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit} className="signup-form">
-        <div className="row mb-4 d-flex justify-content-between">
-          <label className="radio-group text-left text-white">
-            Individual
-            <input
-              name="type"
-              value='0'
-              type="radio"
-              defaultChecked
-              onClick={(event) => this.onClickType(event, 0)}
-            />
-          </label>
-          <label className="radio-group text-left text-white">
-            Corporate/Institution
-            <span className="text-white font-italic">(Comming soon)</span>
-            <input
-              name="type"
-              value='1'
-              onClick={(event) => this.onClickType(event, 1)}
-              type="radio"
-            />
-          </label>
+        <div className="form-group account-type d-flex justify-content-around align-items-center text-white">
+          <label htmlFor="type">Account Type:</label>
+          <select
+            name="type"
+            id="type"
+            value={type}
+            onChange={this.onChange}
+            className="form-control"
+          >
+            {_.map(ACCOUNT_TYPES, (atype, key) => (
+              <option key={key} value={atype.index}>{atype.label}</option>
+            ))}
+          </select>
         </div>
+        <div className="row my-4 border-bottom border-white"></div>
         <div className="row">
           <div className="col-6 form-group text-left text-white">
             <label htmlFor="firstname">First Name</label>
@@ -170,7 +174,7 @@ class SignUpForm extends Component {
           </div>
         </div>
         <div className="form-group text-left text-white">
-          <label htmlFor="displayname">Display Name</label>
+          <label htmlFor="displayname">Username / Display Name</label>
           <input
             name="displayname"
             id="displayname"
@@ -182,63 +186,97 @@ class SignUpForm extends Component {
             required
           />
         </div>
-        <div className="form-group text-left text-white">
-          <label htmlFor="">Email</label>
-          <input
-            name="email"
-            id="email"
-            value={email}
-            onChange={this.onChange}
-            type="email"
-            placeholder=""
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="form-group text-left text-white">
-          <label htmlFor="passwordOne">Password</label>
-          <input
-            name="passwordOne"
-            id="passwordOne"
-            value={passwordOne}
-            onChange={this.onChange}
-            type="password"
-            placeholder=""
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="form-group text-left text-white">
-          <label htmlFor="passwordTwo">Confirm</label>
-          <input
-            name="passwordTwo"
-            id="passwordTwo"
-            value={passwordTwo}
-            onChange={this.onChange}
-            type="password"
-            placeholder=""
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="form-group text-left text-white">
-          <label htmlFor="timezone">Country/TimeZone</label>
-          { timezones &&
-            <select
-              name="timezone"
-              id="timezone"
-              value={timezone}
+        <div className="row">
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="">Email</label>
+            <input
+              name="emailOne"
+              id="emailOne"
+              value={emailOne}
               onChange={this.onChange}
+              type="email"
+              placeholder=""
               className="form-control"
-            >
-              {timezones.map(function(tz, index){
-                return <option key={ index } value={tz.location}>{tz.location} {tz.offset}</option>
-              })}
-            </select>
-          }
+              required
+            />
+          </div>
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="">Confirm Email</label>
+            <input
+              name="emailTwo"
+              id="emailTwo"
+              value={emailTwo}
+              onChange={this.onChange}
+              type="email"
+              placeholder=""
+              className="form-control"
+              required
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="passwordOne">Password</label>
+            <input
+              name="passwordOne"
+              id="passwordOne"
+              value={passwordOne}
+              onChange={this.onChange}
+              type="password"
+              placeholder=""
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="passwordTwo">Repeat Password</label>
+            <input
+              name="passwordTwo"
+              id="passwordTwo"
+              value={passwordTwo}
+              onChange={this.onChange}
+              type="password"
+              placeholder=""
+              className="form-control"
+              required
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="country">Country</label>
+            <input
+              name="country"
+              id="country"
+              value={country}
+              onChange={this.onChange}
+              type="text"
+              placeholder=""
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="col-6 form-group text-left text-white">
+            <label htmlFor="timezone">Country/TimeZone</label>
+            { timezones &&
+              <select
+                name="timezone"
+                id="timezone"
+                value={timezone}
+                onChange={this.onChange}
+                className="form-control"
+              >
+                {timezones.map(function(tz, index){
+                  return <option key={ index } value={tz.location}>{tz.location} {tz.offset}</option>
+                })}
+              </select>
+            }
+          </div>
         </div>
         <div className="mt-3">
-          <button type="submit" className="button-md button-red">
+          <button className="button-md button-red"
+            onClick={this.onRegister}
+          >
             Register
           </button>
         </div>

@@ -5,7 +5,7 @@ import ROLES from '../constants/roles';
 
 // User API
 
-export const doCreateUser = (uid, type, firstname, lastname, displayname, email, timezone) => {
+export const doCreateUser = (uid, type, firstname, lastname, displayname, email, country, timezone) => {
   let join_date = Date.now()
   return db.ref('users').once('value')
   .then(function(snapshot) {
@@ -16,6 +16,7 @@ export const doCreateUser = (uid, type, firstname, lastname, displayname, email,
       lastname,
       displayname,
       email,
+      country,
       timezone,
       level: 0,
       join_date,

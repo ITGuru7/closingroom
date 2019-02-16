@@ -80,7 +80,7 @@ class UploadDocumentModal extends Component {
           <div className="header d-flex justify-content-between align-items-center">
             <img src={assets.logo_transparent} className="size-40"/>
             <div className="d-flex align-items-center">
-              <span className="title mr-3">Upload Document</span>
+              <span className="title text-white mr-3">Upload Document</span>
               <img src={assets.upload_white} className="size-30"/>
             </div>
             <div
@@ -90,7 +90,7 @@ class UploadDocumentModal extends Component {
               <img src={assets.close} className="size-30"/>
             </div>
           </div>
-          <div className="content p-4">
+          <div className="body p-4">
             <div className="mb-5">
               The upload document function is intended for forms/documents NOT included in the automated
               ClosingRoom series, eg. Bank statements, LOA’s, LOI’s.
@@ -137,8 +137,8 @@ class UploadDocumentModal extends Component {
                   value={type}
                   onChange={this.onChange}
                 >
-                  { DOCUMENT_TYPES.map((type, index) => (
-                    <option key={index} value={index}>{type}</option>
+                  { DOCUMENT_TYPES.map((dtype, index) => (
+                    <option key={index} value={index}>{dtype}</option>
                   ))}
                 </select>
               </div>

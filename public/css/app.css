@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=SegoeUI);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Segoe UI);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
@@ -9621,7 +9621,7 @@ button span {
   color: inherit;
 }
 
-input {
+input:not(input[type=checkbox]) {
   width: 100%;
 }
 
@@ -9825,6 +9825,53 @@ img.size-40 {
   background-color: #be1e2d;
 }
 
+.adduser-modal .header {
+  padding: 3px;
+  height: 35px;
+  background-color: #183863;
+}
+
+.adduser-modal .header .title {
+  font-size: 1.5rem;
+}
+
+.adduser-modal .header .close {
+  opacity: 1;
+}
+
+.adduser-modal .body {
+  background-color: #f1f2f2;
+}
+
+.upload-modal .header {
+  padding: 3px;
+  height: 35px;
+  background-color: #183863;
+}
+
+.upload-modal .header .title {
+  font-size: 1.5rem;
+}
+
+.upload-modal .header .close {
+  opacity: 1;
+}
+
+.upload-modal .body {
+  background-color: #f1f2f2;
+}
+
+.tc-modal .header .title {
+  font-size: 1.5rem;
+}
+
+.tc-modal .body .content {
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #231f20;
+}
+
 .modal-background {
   position: fixed;
   /* Stay in place */
@@ -9852,25 +9899,6 @@ img.size-40 {
   margin: 100px auto;
   width: 50%;
   border: 2px solid #231f20;
-}
-
-.mymodal .header {
-  padding: 3px;
-  height: 35px;
-  background-color: #183863;
-}
-
-.mymodal .header .title {
-  color: white;
-  font-size: 2rem;
-}
-
-.mymodal .header .close {
-  opacity: 1;
-}
-
-.mymodal .content {
-  background-color: #f1f2f2;
 }
 
 .mymodal form {
@@ -10024,25 +10052,6 @@ img.size-40 {
   font-size: 1rem;
 }
 
-.signup-page .signup-container .signup-block .signup-form .radio-group {
-  position: relative;
-  font-size: 1.5rem;
-}
-
-.signup-page .signup-container .signup-block .signup-form .radio-group input[type=radio] {
-  position: absolute;
-  top: 0.8rem;
-  margin-left: 0.5rem;
-  width: auto;
-}
-
-.signup-page .signup-container .signup-block .signup-form .radio-group span {
-  position: absolute;
-  top: 2rem;
-  left: 5rem;
-  font-size: 0.8rem;
-}
-
 .signup-page .signup-container .signup-block .signup-form label {
   margin-bottom: 0;
 }
@@ -10051,8 +10060,8 @@ img.size-40 {
   margin-bottom: 0.5rem;
 }
 
-.signup-page .signup-container .signup-block .signup-form .form-group input {
-  border-radius: 0;
+.signup-page .signup-container .signup-block .signup-form .account-type select {
+  width: auto;
 }
 
 .signup-page .signup-container .signup-block .pw-forgot {

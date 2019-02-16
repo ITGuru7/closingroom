@@ -65,6 +65,9 @@ class MessagesPane extends Component {
 
     var sender_uid = null
     return _.map(messages, (message, key) => {
+      if (!users[message.sender_uid]) {
+        return
+      }
       if (message.receiver_uid == receiver_uid) {
         const isFirst = (sender_uid == null)
         if (message.sender_uid != sender_uid) {
