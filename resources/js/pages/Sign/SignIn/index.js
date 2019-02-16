@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import SigninHeader from '../../../Layout/Header/SigninHeader';
-import { SignUpLink } from '../SignUp';
+import SignHeader from '../../../Layout/Header/SignHeader';
 import { PasswordForgetLink } from '../PasswordForget';
 import { auth } from '../../../firebase';
 import * as routes from '../../../constants/routes';
@@ -11,16 +10,11 @@ import * as routes from '../../../constants/routes';
 import * as actions from '../../../actions';
 
 const SignInPage = (props) => (
-  <div className="signin-page text-center">
-    <SigninHeader/>
-    <div className="signin-block pb-3">
-      <div className="title d-flex justify-content-center p-4">
-        ClosingRoom User Login
-      </div>
+  <div className="sign-page">
+    <div className="sign-container text-center">
+      <SignHeader/>
       <SignInForm {...props} />
-      {/* <PasswordForgetLink /> */}
     </div>
-    <SignUpLink />
   </div>
 );
 
@@ -70,8 +64,12 @@ class SignInForm extends Component {
     // const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit} className="signin-form">
-        <div className="row">
+      <form onSubmit={this.onSubmit} className="sign-form">
+        <div className="form-group login-title text-center text-white">
+          ClosingRoom Login
+        </div>
+        <div className="row mt-4 mb-5 border-bottom border-white"></div>
+        <div className="row form-group">
           <div className="col-3 text-right">
             <label htmlFor="email">Email:</label>
           </div>
@@ -82,12 +80,12 @@ class SignInForm extends Component {
               value={email}
               onChange={this.onChange}
               type="text"
-              placeholder="Email Address"
+              className="form-control"
               required
             />
           </div>
         </div>
-        <div className="row">
+        <div className="row form-group">
           <div className="col-3 text-right">
             <label htmlFor="password">Password:</label>
           </div>
@@ -98,23 +96,34 @@ class SignInForm extends Component {
               value={password}
               onChange={this.onChange}
               type="password"
-              placeholder="Password"
+              className="form-control"
               required
             />
           </div>
         </div>
-        <div className="my-2">
-          <button type="submit" className="button-md button-grey">
-            Login
+
+        {error && <p className="alert alert-light">{error.message}</p>}
+
+        <div className="my-4">
+          <button type="submit" className="button-md button-red px-3">
+            Sign In
           </button>
         </div>
 
-        {error && <p className="alert alert-light">{error.message}</p>}
+        <div className="row form-group">
+          <div className="col-6 text-right">
+            <span className="text-white">Not a member?</span>
+          </div>
+          <div className="col-6 text-left">
+            <Link to={routes.SIGN_UP} className="">
+              <button type="button" className="button-outline px-3">Register</button>
+            </Link>
+          </div>
+        </div>
+
       </form>
     );
   }
 }
-
-export { SignInForm };
 
 export default withRouter(connect(null, actions)(SignInPage));

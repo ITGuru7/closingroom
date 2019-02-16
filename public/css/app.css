@@ -9599,14 +9599,14 @@ button.button-white {
   border: 1px solid #183863;
 }
 
-button.button-header {
+button.button-outline {
   border: 1px solid white;
   border-radius: 3px;
   color: white;
   background-color: transparent;
 }
 
-button.button-header:hover {
+button.button-outline:hover {
   color: #183863;
   background-color: white;
   opacity: 1;
@@ -9970,101 +9970,53 @@ img.size-40 {
   font-size: 1rem;
 }
 
-.signin-page {
-  margin: 0 auto;
-  max-width: 509px;
-}
-
-.signin-page .signin-header {
-  padding: 100px 0;
-}
-
-.signin-page .signin-header .logo-image img {
-  width: 80px;
-}
-
-.signin-page .signin-header .logo-text {
-  color: #183863;
-}
-
-.signin-page .signin-header .logo-text .title {
-  font-weight: bold;
-  color: inherit;
-  font-size: 3rem;
-  line-height: 2rem;
-}
-
-.signin-page .signin-header .logo-text .subtitle {
-  color: inherit;
-  font-size: 1rem;
-}
-
-.signin-page .signin-block {
-  background-color: #d1d3d4;
-  border: 1px solid #231f20;
-}
-
-.signin-page .signin-block .title {
-  font-size: 1.5rem;
-}
-
-.signin-page .signin-block .signin-form {
-  font-size: 1.2rem;
-}
-
-.signin-page .signin-block .signin-form input {
-  border: none;
-  width: 100%;
-  padding-left: 5px;
-}
-
-.signin-page .signin-block .pw-forgot {
-  font-size: 0.6rem;
-}
-
-.signup-page {
+.sign-page {
   height: 100vh;
   background-color: #183863;
 }
 
-.signup-page .signup-container {
+.sign-page .sign-container {
   margin: 0 auto;
   max-width: 400px;
 }
 
-.signup-page .signup-container .signup-header {
-  padding: 80px 0 40px;
-}
-
-.signup-page .signup-container .signup-header .logo-image img {
+.sign-page .sign-container .sign-header .logo-image img {
   width: 60px;
 }
 
-.signup-page .signup-container .signup-header .logo-text .title {
+.sign-page .sign-container .sign-header .logo-text .title {
   font-weight: bold;
   color: inherit;
-  font-size: 3rem;
-  line-height: 2rem;
+  font-size: 2rem;
+  line-height: 1.5rem;
 }
 
-.signup-page .signup-container .signup-header .logo-text .subtitle {
+.sign-page .sign-container .sign-header .logo-text .subtitle {
   color: inherit;
-  font-size: 1rem;
+  font-size: 2rem;
+  line-height: 1.5rem;
 }
 
-.signup-page .signup-container .signup-block .signup-form label {
+.sign-page .sign-container .sign-form label {
   margin-bottom: 0;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-.signup-page .signup-container .signup-block .signup-form .form-group {
+.sign-page .sign-container .sign-form .form-group {
   margin-bottom: 0.5rem;
 }
 
-.signup-page .signup-container .signup-block .signup-form .account-type select {
+.sign-page .sign-container .sign-form .login-title {
+  font-size: 1.5rem;
+}
+
+.sign-page .sign-container .sign-form .account-type select {
   width: auto;
 }
 
-.signup-page .signup-container .signup-block .pw-forgot {
+.sign-page .sign-container .pw-forgot {
   font-size: 0.6rem;
 }
 

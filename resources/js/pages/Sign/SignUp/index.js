@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
-import SignupHeader from '../../../Layout/Header/SignupHeader';
+import SignHeader from '../../../Layout/Header/SignHeader';
 
 import { auth, db } from '../../../firebase';
 import * as routes from '../../../constants/routes';
@@ -17,13 +17,11 @@ import moment from 'moment-timezone';
 import ACCOUNT_TYPES from '../../../constants/account_types';
 
 
-const SignUpPage = ({ history }) => (
-  <div className="signup-page">
-    <div className="signup-container text-center">
-      <SignupHeader/>
-      <div className="signup-block py-3">
-        <SignUpForm history={history} />
-      </div>
+const SignUpPage = (props) => (
+  <div className="sign-page">
+    <div className="sign-container text-center">
+      <SignHeader/>
+      <SignUpForm {...props} />
     </div>
   </div>
 );
@@ -129,8 +127,8 @@ class SignUpForm extends Component {
     //   email === '';
 
     return (
-      <form onSubmit={this.onSubmit} className="signup-form">
-        <div className="form-group account-type d-flex justify-content-around align-items-center text-white">
+      <form onSubmit={this.onSubmit} className="sign-form">
+        <div className="form-group account-type d-flex justify-content-around align-items-center">
           <label htmlFor="type">Account Type:</label>
           <select
             name="type"
@@ -145,8 +143,8 @@ class SignUpForm extends Component {
           </select>
         </div>
         <div className="row my-4 border-bottom border-white"></div>
-        <div className="row">
-          <div className="col-6 form-group text-left text-white">
+        <div className="row form-group">
+          <div className="col-6 text-left">
             <label htmlFor="firstname">First Name</label>
             <input
               name="firstname"
@@ -159,7 +157,7 @@ class SignUpForm extends Component {
               required
             />
           </div>
-          <div className="col-6 form-group text-left text-white">
+          <div className="col-6 text-left">
             <label htmlFor="lastname">Last Name</label>
             <input
               name="lastname"
@@ -173,7 +171,7 @@ class SignUpForm extends Component {
             />
           </div>
         </div>
-        <div className="form-group text-left text-white">
+        <div className="form-group text-left">
           <label htmlFor="displayname">Username / Display Name</label>
           <input
             name="displayname"
@@ -186,8 +184,8 @@ class SignUpForm extends Component {
             required
           />
         </div>
-        <div className="row">
-          <div className="col-6 form-group text-left text-white">
+        <div className="row form-group">
+          <div className="col-6 text-left">
             <label htmlFor="">Email</label>
             <input
               name="emailOne"
@@ -200,7 +198,7 @@ class SignUpForm extends Component {
               required
             />
           </div>
-          <div className="col-6 form-group text-left text-white">
+          <div className="col-6 text-left">
             <label htmlFor="">Confirm Email</label>
             <input
               name="emailTwo"
@@ -214,8 +212,8 @@ class SignUpForm extends Component {
             />
           </div>
         </div>
-        <div className="row">
-          <div className="col-6 form-group text-left text-white">
+        <div className="row form-group">
+          <div className="col-6 text-left">
             <label htmlFor="passwordOne">Password</label>
             <input
               name="passwordOne"
@@ -228,7 +226,7 @@ class SignUpForm extends Component {
               required
             />
           </div>
-          <div className="col-6 form-group text-left text-white">
+          <div className="col-6 text-left">
             <label htmlFor="passwordTwo">Repeat Password</label>
             <input
               name="passwordTwo"
@@ -242,8 +240,8 @@ class SignUpForm extends Component {
             />
           </div>
         </div>
-        <div className="row">
-          <div className="col-6 form-group text-left text-white">
+        <div className="row mb-3">
+          <div className="col-6 text-left">
             <label htmlFor="country">Country</label>
             <input
               name="country"
@@ -256,7 +254,7 @@ class SignUpForm extends Component {
               required
             />
           </div>
-          <div className="col-6 form-group text-left text-white">
+          <div className="col-6 text-left">
             <label htmlFor="timezone">Country/TimeZone</label>
             { timezones &&
               <select
@@ -273,31 +271,31 @@ class SignUpForm extends Component {
             }
           </div>
         </div>
-        <div className="mt-3">
-          <button className="button-md button-red"
+
+        {error && <p className="alert alert-light">{error.message}</p>}
+
+        <div className="mb-3">
+          <button className="button-md button-red px-2"
             onClick={this.onRegister}
           >
             Register
           </button>
         </div>
 
-        {error && <p className="alert alert-light">{error.message}</p>}
+        <div className="row form-group">
+          <div className="col-6 text-right">
+            <span className="text-white">Already registered?</span>
+          </div>
+          <div className="col-6 text-left">
+            <Link to={routes.SIGN_IN} className="">
+              <button type="button" className="button-outline px-3">Sign In</button>
+            </Link>
+          </div>
+        </div>
+
       </form>
     );
   }
 }
-
-const SignUpLink = () => (
-  <div className="mt-3">
-    <span className="mr-3">Not a member?</span>
-    <Link to={routes.SIGN_UP}>
-      <button className="button-md button-blue">
-        Register
-      </button>
-    </Link>
-  </div>
-);
-
-export { SignUpForm, SignUpLink };
 
 export default withRouter(connect(null, actions)(SignUpPage));

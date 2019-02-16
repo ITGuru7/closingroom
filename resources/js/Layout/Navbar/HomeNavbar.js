@@ -20,10 +20,10 @@ const HomeNavbar = (props) => {
       </div>
       <div className="help-block d-flex">
         <Link to={routes.SIGN_IN} className="mr-2">
-          <button className="button-header">Login</button>
+          <button className="button-outline">Login</button>
         </Link>
         <Link to={routes.SIGN_UP} className="mr-5">
-          <button className="button-header">Register</button>
+          <button className="button-outline">Register</button>
         </Link>
         <NavItem to="" asset={assets.help_white} text=""/>
       </div>
