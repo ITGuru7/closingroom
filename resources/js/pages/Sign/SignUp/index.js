@@ -27,7 +27,7 @@ const SignUpPage = (props) => (
 );
 
 const INITIAL_STATE = {
-  type: 0,
+  acctype: 0,
   firstname: '',
   lastname: '',
   displayname: '',
@@ -47,7 +47,7 @@ class SignUpForm extends Component {
   onSubmit = event => {
     event.preventDefault()
 
-    const { type, firstname, lastname, displayname, emailOne, emailTwo, passwordOne, passwordTwo, country, timezone } = this.state;
+    const { acctype, firstname, lastname, displayname, emailOne, emailTwo, passwordOne, passwordTwo, country, timezone } = this.state;
 
     if (emailOne !== emailTwo) {
       alert('Email not match')
@@ -66,7 +66,7 @@ class SignUpForm extends Component {
       .doCreateUserWithEmailAndPassword(emailOne, passwordOne)
       .then(authUser => {
         // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.user.uid, type, firstname, lastname, displayname, emailOne, country, timezone)
+        db.doCreateUser(authUser.user.uid, acctype, firstname, lastname, displayname, emailOne, country, timezone)
           .then(() => {
             // this.setState({ ...INITIAL_STATE });
 
@@ -116,7 +116,7 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const { type, firstname, lastname, displayname, emailOne, emailTwo, passwordOne, passwordTwo, country, timezones, timezone, error } = this.state;
+    const { acctype, firstname, lastname, displayname, emailOne, emailTwo, passwordOne, passwordTwo, country, timezones, timezone, error } = this.state;
 
     // const isInvalid =
     //   passwordOne !== passwordTwo ||
@@ -129,11 +129,11 @@ class SignUpForm extends Component {
     return (
       <form onSubmit={this.onSubmit} className="sign-container signup-form">
         <div className="form-group account-type d-flex justify-content-around align-items-center">
-          <label htmlFor="type">Account Type:</label>
+          <label htmlFor="acctype">Account Type:</label>
           <select
-            name="type"
-            id="type"
-            value={type}
+            name="acctype"
+            id="acctype"
+            value={acctype}
             onChange={this.onChange}
             className="form-control"
           >

@@ -13,7 +13,7 @@ import DOCUMENT_TYPES from '../../constants/document_types';
 const INITIAL_STATE = {
   document_title: '',
   document_file: null,
-  type: 0,
+  doctype: 0,
   other: '',
   issued: '',
   certified: 0,
@@ -29,13 +29,13 @@ class UploadDocumentModal extends Component {
 
   onUpload = () => {
     const { authUser, room, user } = this.props
-    const {document_title, document_file, type, other, issued, certified, comment} = this.state ;
+    const {document_title, document_file, doctype, other, issued, certified, comment} = this.state ;
 
-    db.doUploadDocument(room.rid, authUser.uid, document_title, DOCUMENT_TYPES[type], other, issued, certified, comment)
+    db.doUploadDocument(room.rid, authUser.uid, document_title, DOCUMENT_TYPES[doctype], other, issued, certified, comment)
     .then((snapshot) => {
       const doc_key = snapshot.key
 
-      let document_name = getFormattedID(room.id, 4) + '_' + getFormattedID(user.id, 4) + '_' + String(DOCUMENT_TYPES[type]).replace(" ", "").toUpperCase() + '_' + getFormattedDate(new Date(), '.')
+      let document_name = getFormattedID(room.id, 4) + '_' + getFormattedID(user.id, 4) + '_' + String(DOCUMENT_TYPES[doctype]).replace(" ", "").toUpperCase() + '_' + getFormattedDate(new Date(), '.')
 
       storage.doUploadDocument(document_name, document_file)
       .then(snapshot => snapshot.ref.getDownloadURL())
@@ -50,7 +50,7 @@ class UploadDocumentModal extends Component {
   onDone = event => {
     event.preventDefault()
 
-    const {document_title, document_file, type, other, issued, certified, comment} = this.state ;
+    const {document_title, document_file, doctype, other, issued, certified, comment} = this.state ;
     if (document_file === null) {
       alert('Choose document to upload')
       return
@@ -72,7 +72,7 @@ class UploadDocumentModal extends Component {
 
   render() {
     const { authUser, room } = this.props
-    const {document_title, document_file, type, other, issued, certified, comment} = this.state ;
+    const {document_title, document_file, doctype, other, issued, certified, comment} = this.state ;
 
     return (
       <div className="upload-modal mymodal d-none" onSubmit={this.onDone}>
@@ -128,13 +128,13 @@ class UploadDocumentModal extends Component {
             </div>
             <div className="row">
               <div className="col-3">
-                <label htmlFor="type">Document Type:</label>
+                <label htmlFor="doctype">Document Type:</label>
               </div>
               <div className="col-3">
                 <select
-                  name="type"
-                  id="type"
-                  value={type}
+                  name="doctype"
+                  id="doctype"
+                  value={doctype}
                   onChange={this.onChange}
                 >
                   { DOCUMENT_TYPES.map((dtype, index) => (
@@ -142,7 +142,7 @@ class UploadDocumentModal extends Component {
                   ))}
                 </select>
               </div>
-              { type == '3' &&
+              { doctype == '3' &&
                 <div className="col-4">
                   <label htmlFor="other">If other:</label>
                   <input

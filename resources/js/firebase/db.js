@@ -5,13 +5,13 @@ import ROLES from '../constants/roles';
 
 // User API
 
-export const doCreateUser = (uid, type, firstname, lastname, displayname, email, country, timezone) => {
+export const doCreateUser = (uid, acctype, firstname, lastname, displayname, email, country, timezone) => {
   let join_date = Date.now()
   return db.ref('users').once('value')
   .then(function(snapshot) {
     db.ref(`users/${uid}`).set({
       id: snapshot.numChildren()+1,
-      type,
+      type: acctype,
       firstname,
       lastname,
       displayname,
@@ -146,12 +146,12 @@ export const doDownloadAddress = (uid, url) => (
   })
 );
 
-export const doUploadDocument = (rid, uid, title, type, other, issued, certified, comment) => {
+export const doUploadDocument = (rid, uid, title, doctype, other, issued, certified, comment) => {
   let date = Date.now()
 
   return db.ref(`rooms/${rid}/documents/upload`).push({
     title,
-    type,
+    type: doctype,
     other,
     issued,
     certified,
