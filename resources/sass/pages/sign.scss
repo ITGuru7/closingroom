@@ -3,7 +3,7 @@
     height: 100vh ;
     background-color: $dark-blue ;
 
-    .sign-container {
+    .sign-wrapper {
         margin: 0 auto ;
         max-width: 400px ;
 
@@ -28,7 +28,7 @@
             }
         }
 
-        .sign-form {
+        .sign-container {
             label {
                 margin-bottom: 0 ;
                 color: white ;

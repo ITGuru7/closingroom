@@ -9975,48 +9975,48 @@ img.size-40 {
   background-color: #183863;
 }
 
-.sign-page .sign-container {
+.sign-page .sign-wrapper {
   margin: 0 auto;
   max-width: 400px;
 }
 
-.sign-page .sign-container .sign-header .logo-image img {
+.sign-page .sign-wrapper .sign-header .logo-image img {
   width: 60px;
 }
 
-.sign-page .sign-container .sign-header .logo-text .title {
+.sign-page .sign-wrapper .sign-header .logo-text .title {
   font-weight: bold;
   color: inherit;
   font-size: 2rem;
   line-height: 1.5rem;
 }
 
-.sign-page .sign-container .sign-header .logo-text .subtitle {
+.sign-page .sign-wrapper .sign-header .logo-text .subtitle {
   color: inherit;
   font-size: 2rem;
   line-height: 1.5rem;
 }
 
-.sign-page .sign-container .sign-form label {
+.sign-page .sign-wrapper .sign-container label {
   margin-bottom: 0;
   color: white;
   font-size: 1rem;
   font-weight: bold;
 }
 
-.sign-page .sign-container .sign-form .form-group {
+.sign-page .sign-wrapper .sign-container .form-group {
   margin-bottom: 0.5rem;
 }
 
-.sign-page .sign-container .sign-form .login-title {
+.sign-page .sign-wrapper .sign-container .login-title {
   font-size: 1.5rem;
 }
 
-.sign-page .sign-container .sign-form .account-type select {
+.sign-page .sign-wrapper .sign-container .account-type select {
   width: auto;
 }
 
-.sign-page .sign-container .pw-forgot {
+.sign-page .sign-wrapper .pw-forgot {
   font-size: 0.6rem;
 }
 

@@ -11,7 +11,7 @@ import * as actions from '../../../actions';
 
 const SignInPage = (props) => (
   <div className="sign-page">
-    <div className="sign-container text-center">
+    <div className="sign-wrapper text-center">
       <SignHeader/>
       <SignInForm {...props} />
     </div>
@@ -64,7 +64,7 @@ class SignInForm extends Component {
     // const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit} className="sign-form">
+      <form onSubmit={this.onSubmit} className="sign-container signin-form">
         <div className="form-group login-title text-center text-white">
           ClosingRoom Login
         </div>

@@ -19,7 +19,7 @@ import ACCOUNT_TYPES from '../../../constants/account_types';
 
 const SignUpPage = (props) => (
   <div className="sign-page">
-    <div className="sign-container text-center">
+    <div className="sign-wrapper text-center">
       <SignHeader/>
       <SignUpForm {...props} />
     </div>
@@ -127,7 +127,7 @@ class SignUpForm extends Component {
     //   email === '';
 
     return (
-      <form onSubmit={this.onSubmit} className="sign-form">
+      <form onSubmit={this.onSubmit} className="sign-container signup-form">
         <div className="form-group account-type d-flex justify-content-around align-items-center">
           <label htmlFor="type">Account Type:</label>
           <select
