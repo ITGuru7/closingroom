@@ -42,7 +42,7 @@ class UserUploadFiles extends Component {
           </a>
         </td>
         <td>N/A</td>
-        <td>{document.username || ''}</td>
+        <td>{document.username}</td>
         <td>N/A</td>
         <td>
           <a href={document.url} target='_blank'>
