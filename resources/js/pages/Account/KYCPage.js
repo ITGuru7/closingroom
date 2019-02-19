@@ -52,12 +52,12 @@ class KYCForm extends Component {
 
     db.doUserKYC(authUser.uid, firstname, lastname, occupation, passport, address)
 
-    storage.doUploadForm(passport, passport_file)
+    storage.doUploadPassport(passport, passport_file)
     .then(snapshot => snapshot.ref.getDownloadURL())
     .then((url) => {
       db.doDownloadPassport(authUser.uid, url)
 
-      storage.doUploadForm(address, address_file)
+      storage.doUploadAddress(address, address_file)
       .then(snapshot => snapshot.ref.getDownloadURL())
       .then((url) => {
         db.doDownloadAddress(authUser.uid, url)

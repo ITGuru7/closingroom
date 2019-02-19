@@ -91,7 +91,7 @@ class ProfileChangeForm extends Component {
     let kyc_string = ''
     let start_kyc = false
     let warning = false
-    if (level === 0) {
+    if (level == 0) {
       if (kyc_status === 'pending') {
         kyc_style = 'pending'
         kyc_string = 'Level0 (KYC Pending Approval)'

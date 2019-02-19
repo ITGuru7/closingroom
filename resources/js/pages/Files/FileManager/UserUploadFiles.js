@@ -26,7 +26,7 @@ class UserUploadFiles extends Component {
     const { room } = this.props
     return (
       <tr key={document.did} className="level-2">
-        <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title || 'Document'}</td>
+        <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title || 'Document'} {document.did}</td>
         <td><img src={assets.upload_blue} className="size-20"/> Uploaded</td>
         <td className="text-uppercase">{document.type}</td>
         <td>
@@ -42,7 +42,7 @@ class UserUploadFiles extends Component {
           </a>
         </td>
         <td>N/A</td>
-        <td>{document.username}</td>
+        <td>{document.username || ''}</td>
         <td>N/A</td>
         <td>
           <a href={document.url} target='_blank'>
@@ -57,7 +57,8 @@ class UserUploadFiles extends Component {
   renderDocuments = () => {
     const { room, users } = this.props
     return _.map(room.documents.upload, (document, did) => {
-      document.username = users[document.uid].displayname
+      let user = users[document.uid]
+      document.username = user ? user.displayname : ''
       document.did = did
       return this.renderUploadDocument(document)
     })
