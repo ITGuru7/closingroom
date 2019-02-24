@@ -96,7 +96,7 @@ class MessagesPane extends Component {
             <input
               name="message"
               type="text"
-              className="new-message-input border-0"
+              className="new-message-input w-100 border-0"
               placeholder="Type a message.."
               value={message}
               onChange={this.onChange}
