@@ -22,7 +22,7 @@ const RoomHeader = (props) => {
 const mapStateToProps = ({ room }) => {
   return {
     room,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(RoomHeader);

@@ -16,8 +16,7 @@ import * as routes from '../../constants/routes';
 import { getFormattedID } from '../../functions';
 
 const AccountPage = () => (
-  <div className="account-page d-flex flex-column">
-    <DefaultHeader title="Account Settings" className="header-blue" />
+  <div className="account-page mt-5 pt-5 container d-flex flex-column">
     <div className="page-content flex-grow-1 m-3 p-3">
       <Connected_ProfileChangeForm/>
     </div>
@@ -62,11 +61,6 @@ class ProfileChangeForm extends Component {
 
     const { authUser } = this.props;
     const { firstname, lastname, displayname, email } = this.state;
-
-    // if (firstname === '' || lastname === '' || displayname === '' || email === '') {
-    //   alert('Input all fields correctly')
-    //   return
-    // }
 
     auth
       .doEmailUpdate(email)
@@ -211,9 +205,10 @@ class ProfileChangeForm extends Component {
               <input
                 name="firstname"
                 id="firstname"
+                type="text"
+                className="w-100"
                 value={firstname}
                 onChange={this.onChange}
-                type="text"
                 required
               />
             </div>
@@ -222,9 +217,10 @@ class ProfileChangeForm extends Component {
               <input
                 name="lastname"
                 id="lastname"
+                type="text"
+                className="w-100"
                 value={lastname}
                 onChange={this.onChange}
-                type="text"
                 required
               />
             </div>
@@ -233,9 +229,10 @@ class ProfileChangeForm extends Component {
               <input
                 name="displayname"
                 id="displayname"
+                type="text"
+                className="w-100"
                 value={displayname}
                 onChange={this.onChange}
-                type="text"
                 required
               />
             </div>
@@ -244,21 +241,17 @@ class ProfileChangeForm extends Component {
               <input
                 name="email"
                 id="email"
+                type="email"
+                className="w-100"
                 value={email}
                 onChange={this.onChange}
-                type="email"
                 required
               />
             </div>
           </div>
           {error && <p className="alert alert-light">{error.message}</p>}
         </div>
-        <div className="password-block">
-          <div className="subtitle">
-            Password
-          </div>
-          <PasswordChangeForm />
-        </div>
+        <PasswordChangeForm />
         <div className="mt-5 d-flex justify-content-center">
           <button type="submit" className="button-md button-red">
             Save Changes
@@ -273,8 +266,8 @@ const mapStateToProps = ({ authUser, user }) => {
   return {
     authUser,
     user,
-  };
-};
+  }
+}
 
 const Connected_ProfileChangeForm = withRouter(connect(mapStateToProps, actions)(ProfileChangeForm))
 

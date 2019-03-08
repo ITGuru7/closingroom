@@ -52,12 +52,9 @@
 .pane-header {
     background-color: $dark-blue ;
 
-    .back {
+    .goback-link {
         &:hover {
             cursor: pointer ;
-        }
-        img {
-            width: 30px ;
         }
         span {
             color: white ;

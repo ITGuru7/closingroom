@@ -60,6 +60,12 @@ class SignUpForm extends Component {
       return
     }
 
+    if ($('.signup-form #tc_agree').val() === '0') {
+      $('.modal-background').removeClass('d-none')
+      $('.tc-modal').removeClass('d-none')
+      return
+    }
+
     const { history } = this.props;
 
     auth
@@ -84,17 +90,6 @@ class SignUpForm extends Component {
       .catch(error => {
         this.setState({ error });
       });
-
-    event.preventDefault();
-  }
-
-  onRegister = event => {
-    event.preventDefault()
-
-    $('.modal-background').removeClass('d-none')
-    $('.tc-modal').removeClass('d-none')
-
-    $('.tc-modal #button-register').on('click', this.onSignUp);
   }
 
   onChange = event => {
@@ -128,6 +123,8 @@ class SignUpForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit} className="sign-container signup-form">
+        <input type="hidden" name="tc_agree" id="tc_agree" value='0'/>
+
         <div className="form-group account-type d-flex justify-content-around align-items-center">
           <label htmlFor="acctype">Account Type:</label>
           <select

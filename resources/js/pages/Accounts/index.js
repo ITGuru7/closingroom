@@ -117,8 +117,8 @@ const UserRow = ({user, rooms}) => {
     return activeRooms
   }
 
-  const onUpgrade = () => {
-    db.doUpgradeUser(user.uid)
+  const onUpgradeToAdmin = () => {
+    db.doUpgradeUserToAdmin(user.uid)
   }
 
   return (
@@ -138,7 +138,7 @@ const UserRow = ({user, rooms}) => {
       </td>
       <td>
         <button className="button button-md button-blue"
-          onClick={(event) => onUpgrade()}
+          onClick={(event) => onUpgradeToAdmin()}
         >
           Upgrade to Admin
         </button>
@@ -151,7 +151,7 @@ const mapStateToProps = ({ users, rooms }) => {
   return {
     users,
     rooms,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(AccountsPage));

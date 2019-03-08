@@ -9,7 +9,10 @@ import ROLES from '../../constants/roles';
 
 import * as actions from '../../actions';
 
+import * as functions from '../../functions';
+
 import PaneHeader from '../../Layout/Header/PaneHeader';
+import RANKS from '../../constants/ranks';
 
 const INITIAL_STATE = {
   expanded1: true,
@@ -40,7 +43,7 @@ class UserListPane extends Component {
           Object.keys(users).map(key => {
             if (room.users[key]) {
               let user = {...users[key], ...room.users[key]}
-              if (1 <= user.rank && user.role <= 4 && user.level <= 1) {
+              if ((ROLES.BUYER.index <= user.role && user.role <= ROLES.SELLER_MANDATE.index) && functions.isNormalUser(user.level)) {
                 return <UserRow key={key} user={user}/>
               }
             }
@@ -69,7 +72,7 @@ class UserListPane extends Component {
           Object.keys(users).map(key => {
             if (room.users[key]) {
               let user = {...users[key], ...room.users[key]}
-              if (5 <= user.role && user.role <= 6) {
+              if ((ROLES.BUYER_INTERMEDIARY.index <= user.role && user.role <= ROLES.SELLER_INTERMEDIARY.index) && functions.isNormalUser(user.level)) {
                 return <UserRow key={key} user={user}/>
               }
             }
@@ -98,7 +101,7 @@ class UserListPane extends Component {
           Object.keys(users).map(key => {
             if (room.users[key]) {
               let user = {...users[key], ...room.users[key]}
-              if (7 <= user.role && user.role <= 8) {
+              if ((ROLES.ESCROW_AGENT.index <= user.role && user.role <= ROLES.LAWYER.index) && functions.isNormalUser(user.level)) {
                 return <UserRow key={key} user={user}/>
               }
             }
@@ -127,7 +130,7 @@ class UserListPane extends Component {
           Object.keys(users).map(key => {
             if (room.users[key]) {
               let user = {...users[key], ...room.users[key]}
-              if (user.level >= 2) {
+              if (functions.isAdmin(user.level) || functions.isModerator(user.level)) {
                 return <UserRow key={key} user={user}/>
               }
             }
@@ -176,9 +179,9 @@ class UserListPane extends Component {
 
 const UserRow = ({user}) => {
   let border = ''
-  if (user.level >= 2) {
+  if (functions.isAdmin(user.level) || functions.isModerator(user.level)) {
     border = 'user-global-admin-border'
-  } else if (user.rank === 1) {
+  } else if (user.rank === RANKS.ADMIN.index) {
     border = 'user-room-admin-border'
   }
   return (
@@ -190,7 +193,7 @@ const UserRow = ({user}) => {
             <img src={assets.star} className="size-15 mr-1"/>
           }
           <span className="mr-1">KYC</span>
-          {user.level >= 1 ?
+          {functions.isVerified(user.level) ?
             <img src={assets.kyc_approved} className="size-15"/>
           :
             <img src={assets.kyc_disapproved} className="size-15"/>
@@ -203,7 +206,7 @@ const UserRow = ({user}) => {
       </div>
       <div className="d-flex justify-content-between">
         <div className="">
-        {user.level >= 2 ?
+        {functions.isAdmin(user.level) || functions.isModerator(user.level) ?
           [
             <span key="label" className="mr-1">Moderator</span>,
             <img key="image" src={assets.moderator_black} className="size-15"/>
@@ -211,7 +214,7 @@ const UserRow = ({user}) => {
         :
           [
             <span key="label">{_.find(ROLES, _.matchesProperty('index', user.role)).label}</span>,
-            (user.rank === 3 &&
+            (user.rank === RANKS.PROFESSIONAL.index &&
               <img key="image" src={assets.secure_transparent} className="size-15"/>
             )
           ]
@@ -235,7 +238,7 @@ const mapStateToProps = ({ authUser, room, users }) => {
     authUser,
     room,
     users,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, actions)(UserListPane);

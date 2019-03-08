@@ -50,7 +50,7 @@ class CreateRoomForm extends Component {
   onSubmit = event => {
     event.preventDefault();
 
-    const { authUser, users, rooms, history } = this.props;
+    const { user, history } = this.props;
     const { roomname, timelimit, general_details } = this.state;
 
     if (roomname === '') {
@@ -64,13 +64,16 @@ class CreateRoomForm extends Component {
       return
     }
 
-    let user = users[authUser.uid]
-    user.uid = authUser.uid
-    db.doCreateRoom(history, user, roomname, 1, timelimit, general_details, users)
+    db.doCreateRoom(history, user, roomname, 1, timelimit, general_details)
   };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+  onChangeGeneralDetails = event => {
+    let general_details = {...this.state.general_details}
+    general_details[event.target.name] = event.target.value
+    this.setState({ general_details });
   };
 
   renderGeneralDetailField = (label, type, value) => (
@@ -83,11 +86,7 @@ class CreateRoomForm extends Component {
           id={value}
           name={value}
           value={this.state.general_details[value]}
-          onChange={(event) => {
-            let general_details = this.state.general_details
-            general_details[event.target.name] = event.target.value
-            this.setState({ general_details });
-          }}
+          onChange={this.onChangeGeneralDetails}
           type={type}
         />
       </div>
@@ -120,7 +119,7 @@ class CreateRoomForm extends Component {
                 <input
                   id="roomname"
                   name="roomname"
-                  value={this.state['roomname']}
+                  value={roomname}
                   onChange={this.onChange}
                   type="text"
                   placeholder="eg. 4/2 JP Morgan.."
@@ -172,7 +171,7 @@ class CreateRoomForm extends Component {
                 id='comments'
                 name='comments'
                 rows='3'
-                value={this.state['comments']}
+                value={this.state.general_details['comments']}
                 onChange={this.onChangeGeneralDetails}
                 className="w-100"
               />
@@ -192,12 +191,10 @@ class CreateRoomForm extends Component {
   }
 }
 
-const mapStateToProps = ({ authUser, users, rooms }) => {
+const mapStateToProps = ({ user }) => {
   return {
-    authUser,
-    users,
-    rooms,
-  };
-};
+    user,
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(CreateRoomPage));

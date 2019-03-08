@@ -85,8 +85,14 @@
                     }
                 }
             }
+            .information-block {
+                width: 80% ;
+            }
         }
-        .password-block {
+        .password-change-form {
+            .passwords-block {
+                width: 80% ;
+            }
         }
     }
 }

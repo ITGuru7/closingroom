@@ -89,7 +89,7 @@ class AdminSidebar extends Component {
   render() {
     const { user } = this.props
 
-    return (user && functions.isAdmin(user.level) &&
+    return (user && (functions.isAdmin(user.level) || functions.isModerator(user.level)) &&
       <div className="align-self-start">
         <SidebarNavItem to={routes.ROOMS} asset={assets.manage_rooms} text="ManageRooms"/>
         <SidebarNavItem to={routes.MANAGE_ACCOUNTS} asset={assets.accounts_black} text="Manage Accounts"/>
@@ -103,7 +103,7 @@ const mapStateToProps = ({ authUser, user }) => {
   return {
     authUser,
     user,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, actions)(Sidebar);

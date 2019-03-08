@@ -24,6 +24,7 @@ import AccountPage from '../pages/Account';
 import KYCPage from '../pages/Account/KYCPage';
 import MyRoomsPage from '../pages/MyRooms';
 import CreateRoomPage from '../pages/CreateRoom';
+import UpdateRoomPage from '../pages/UpdateRoom';
 import RoomPage from '../pages/Room';
 import RoomFilesPage from '../pages/Files';
 // admin
@@ -104,6 +105,7 @@ class Layout extends Component {
           <DefaultLayout exact path={routes.ROOM} component={UserAuth(RoomPage)} />
           <DefaultLayout exact path={routes.CREATE_ROOM} component={UserAuth(CreateRoomPage)} />
           <DefaultLayout exact path={routes.ROOM_FILES} component={UserAuth(RoomFilesPage)} />
+          <DefaultLayout exact path={routes.UPDATE_ROOM} component={UserAuth(UpdateRoomPage)} />
 
           <DefaultLayout exact path={routes.ROOMS} component={AdminAuth(RoomsPage)} />
           <DefaultLayout exact path={routes.MANAGE_ACCOUNTS} component={AdminAuth(AccountsPage)} />

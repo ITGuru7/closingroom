@@ -12,8 +12,6 @@ import * as functions from '../../functions';
 
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 
-import * as actions from '../../actions';
-
 import _ from 'lodash';
 
 const INITIAL_STATE = {
@@ -51,25 +49,16 @@ class RoomsPage extends Component {
 
     return (
       <div className="rooms-page d-flex flex-column">
-        <DefaultHeader title="Rooms" />
         <div className="page-content flex-grow-1">
-          <div className="header row mx-0 align-items-center">
-            <div className="search-area col-4 d-flex align-items-center">
-              <div className="col-2 text-white">Search</div>
-              <div className="col-10">
-                <input type="text" className="px-3"
-                  value={search}
-                  autoFocus
-                  onChange = { (event) => { this.setState({search: event.target.value}) }}
-                />
-              </div>
-            </div>
-            <div className="title col-4 text-white text-center">
-              ClosingRooms
-            </div>
-            <div className="col-4 text-white text-center">
-              View Rooms that need attention
-            </div>
+          <div className="header d-flex justify-content-center align-items-center">
+            <span className="title mr-5">ClosingRooms</span>
+            <input type="text" className="px-1 mr-5"
+              value={search}
+              autoFocus
+              onChange = { (event) => { this.setState({search: event.target.value}) }}
+              placeholder="Search.."
+            />
+            <span>View Rooms that need attention</span>
           </div>
           <table className="table mytable rooms text-center">
             <thead>
@@ -175,10 +164,11 @@ class RoomRow extends Component {
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td>{functions.getFormattedDate(new Date(room.expire_date))}</td>
         <td>
-          <img src={assets.bell} className="size-20 mr-3"/>
+          {/* <img src={assets.bell} className="size-20 mr-3"/> */}
           <Link to={`/rooms/${room.rid}`}>
-            <button className="button button-md button-blue">
-              Enter
+            <button className="button button-md button-white d-flex align-items-center px-2 rounded shadow">
+              <span className="mr-2">Enter</span>
+              <img src={assets.angle_right_blue} className="size-15"/>
             </button>
           </Link>
         </td>
@@ -191,7 +181,7 @@ const mapStateToProps = ({ authUser, rooms }) => {
   return {
     authUser,
     rooms,
-  };
-};
+  }
+}
 
-export default withRouter(connect(mapStateToProps, actions)(RoomsPage));
+export default withRouter(connect(mapStateToProps)(RoomsPage));

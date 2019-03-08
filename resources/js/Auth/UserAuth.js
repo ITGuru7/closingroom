@@ -10,10 +10,10 @@ export default function(ComposedComponent) {
       const {authUser, user, history} = this.props
       const { fetchUser } = this.props
       if (!authUser) {
-        history.push(routes.SIGN_IN);
+        history.push(routes.HOME);
         return
       }
-      if (authUser.uid && !user) {
+      if (authUser.uid && (!user || authUser.uid != user.uid)) {
         fetchUser(authUser.uid);
         return
       }
@@ -24,10 +24,10 @@ export default function(ComposedComponent) {
       const { authUser, user } = nextProps
 
       if (!authUser || !authUser.uid) {
-        history.push(routes.SIGN_IN);
+        history.push(routes.HOME);
         return
       }
-      if (!user) {
+      if (!user || authUser.uid != user.uid) {
         fetchUser(authUser.uid);
         return
       }
@@ -43,7 +43,7 @@ export default function(ComposedComponent) {
     return {
       authUser,
       user,
-    };
+    }
   }
 
   return withRouter(connect(mapStateToProps, actions)(UserAuth));

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import DocumentLinkForm from './FileLinkForms/DocumentLinkForm';
 import { db } from '../../../firebase';
 
 import * as routes from '../../../constants/routes';
@@ -26,7 +27,7 @@ class UserUploadFiles extends Component {
     const { room } = this.props
     return (
       <tr key={document.did} className="level-2">
-        <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title || 'Document'} {document.did}</td>
+        <td className="text-left"><img src={assets.file_blue} className="size-20"/> {document.title || 'Document'}</td>
         <td><img src={assets.upload_blue} className="size-20"/> Uploaded</td>
         <td className="text-uppercase">{document.type}</td>
         <td>
@@ -37,18 +38,18 @@ class UserUploadFiles extends Component {
         <td>{functions.getFormattedDate(new Date(document.create_date || "01/01/2019"))}</td>
         <td>N/A</td>
         <td>
-          <a href={document.url} download>
+          <DocumentLinkForm type="document" url={document.url} download={true}>
             <img src={assets.download_blue} className="size-20"/>
-          </a>
+          </DocumentLinkForm>
         </td>
         <td>N/A</td>
         <td>{document.username}</td>
         <td>N/A</td>
         <td>
-          <a href={document.url} target='_blank'>
+          <DocumentLinkForm type="document" url={document.url} download={false}>
             <img src={assets.search_black} className="size-20 mr-3"/>
             Preview
-          </a>
+          </DocumentLinkForm>
         </td>
       </tr>
     )
@@ -84,11 +85,12 @@ class UserUploadFiles extends Component {
     return rows
   }
 }
+
 const mapStateToProps = ({ room, users }) => {
   return {
     room,
     users,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(UserUploadFiles));

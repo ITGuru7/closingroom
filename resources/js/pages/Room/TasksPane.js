@@ -7,6 +7,11 @@ import _ from 'lodash';
 
 import PaneHeader from '../../Layout/Header/PaneHeader';
 
+import DealDetailsForm from '../Files/FileManager/FileLinkForms/DealDetailsForm';
+import DocumentLinkForm from '../Files/FileManager/FileLinkForms/DocumentLinkForm';
+
+import * as functions from '../../functions';
+
 const INITIAL_STATE = {
   expanded1: true,
   expanded2: true,
@@ -39,11 +44,14 @@ class TasksPane extends Component {
           <div className="group-contents px-3">
             <div className="content d-flex justify-content-between">
               <div className="title">General Deal Details</div>
-              <div className="link">
-                <Link to="" className="mr-2">Edit</Link>
-                <a href="" target='_blank'>
+              <div className="link d-flex align-items-center">
+                <Link to={`/room/${room.rid}/update`} className="mr-2">
+                  Edit
+                </Link>
+                <DealDetailsForm room={room} download={false}>
                   View
-                </a>
+                </DealDetailsForm>
+
               </div>
             </div>
           </div>
@@ -56,6 +64,10 @@ class TasksPane extends Component {
     const { room } = this.props
     const { expanded2 } = this.state
     const { legal } = room.documents
+
+    if (!legal) {
+      return
+    }
 
     return (
       <div key="legal" className="tasks-group mt-2">
@@ -112,9 +124,9 @@ class TasksPane extends Component {
                 <div key={key} className="content d-flex justify-content-between">
                   <div className="title">{document.title||"Document"}</div>
                   <div className="link">
-                    <a href={document.url} target='_blank'>
+                    <DocumentLinkForm type="document" url={document.url} download={false}>
                       View
-                    </a>
+                    </DocumentLinkForm>
                   </div>
                 </div>
               )
@@ -140,7 +152,7 @@ class TasksPane extends Component {
   }
 
   render() {
-    const { room } = this.props
+    const { room, user } = this.props
 
     return (
       <div className="tasks-pane d-flex flex-column">
@@ -155,23 +167,26 @@ class TasksPane extends Component {
             <span className="mr-2">Upload a File</span>
             <img src={assets.upload_blue} className="size-20"/>
           </button>
-          <Link to={`/room/${room.rid}/files`}>
-            <button className="button-white px-2 py-1 rounded shadow">
-              <span className="mr-2">Files and Task Room</span>
-              <img className="size-20" src={assets.angle_right_grey}/>
-            </button>
-          </Link>
+          { ((functions.isAdmin(user.level) || functions.isModerator(user.level)) || (room.users[user.uid] && functions.isRoomAdmin(room.users[user.uid].rank))) &&
+            <Link to={`/room/${room.rid}/files`}>
+              <button className="button-white px-2 py-1 rounded shadow">
+                <span className="mr-2">Files and Task Room</span>
+                <img className="size-20" src={assets.angle_right_grey}/>
+              </button>
+            </Link>
+          }
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ room, documents }) => {
+const mapStateToProps = ({ room, user, documents }) => {
   return {
     room,
+    user,
     documents,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(TasksPane);

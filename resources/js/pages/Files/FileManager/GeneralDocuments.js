@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import DealDetailsForm from './FileLinkForms/DealDetailsForm';
 import { db } from '../../../firebase';
 
 import * as routes from '../../../constants/routes';
@@ -39,9 +40,9 @@ class GeneralDocuments extends Component {
         <td>{functions.getFormattedDate(new Date(room.create_date))}</td>
         <td></td>
         <td>
-          <a href="https://firebasestorage.googleapis.com/v0/b/dataroom-cd23c.appspot.com/o/General%20Terms.pdf?alt=media&token=5260c22d-0342-4bd0-80c7-b1172991a467" download>
+          <DealDetailsForm room={room} download={true}>
             <img src={assets.download_blue} className="size-20"/>
-          </a>
+          </DealDetailsForm>
         </td>
         <td>
           <button className="button button-md button-lightgreen">
@@ -52,10 +53,10 @@ class GeneralDocuments extends Component {
         <td>N/A</td>
         <td>N/A</td>
         <td>
-          <a href="https://firebasestorage.googleapis.com/v0/b/dataroom-cd23c.appspot.com/o/General%20Terms.pdf?alt=media&token=5260c22d-0342-4bd0-80c7-b1172991a467" target='_blank'>
+          <DealDetailsForm room={room} download={false}>
             <img src={assets.search_black} className="size-20 mr-3"/>
             Preview
-          </a>
+          </DealDetailsForm>
         </td>
       </tr>
     )
@@ -87,10 +88,11 @@ class GeneralDocuments extends Component {
     return rows
   }
 }
+
 const mapStateToProps = ({ room, }) => {
   return {
     room,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(GeneralDocuments));

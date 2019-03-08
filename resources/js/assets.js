@@ -30,6 +30,8 @@ import accounts_white               from '../assets/images/svg/accounts-white.sv
 import search_black                 from '../assets/images/svg/search-black.svg';
 import search_white                 from '../assets/images/svg/search-white.svg';
 import search_transparent           from '../assets/images/svg/search-transparent.svg';
+import search_blue                  from '../assets/images/svg/search-blue.svg';
+import search_blue_long             from '../assets/images/svg/search-blue-long.svg';
 
 import plus_white                   from '../assets/images/svg/plus-white.svg';
 import plus_blue                    from '../assets/images/svg/plus-blue.svg';
@@ -63,6 +65,7 @@ import verify                       from '../assets/images/svg/verify.svg';
 
 import arrow_right_white            from '../assets/images/svg/arrow-right-white.svg';
 import arrow_left_white_circle      from '../assets/images/svg/arrow-left-white-circle.svg';
+import arrow_left_black_circle      from '../assets/images/svg/arrow-left-black-circle.svg';
 import angle_right_grey             from '../assets/images/svg/angle-right-grey.svg';
 import angle_right_blue             from '../assets/images/svg/angle-right-blue.svg';
 import angle_down_grey              from '../assets/images/svg/angle-down-grey.svg';
@@ -117,6 +120,8 @@ export default {
     search_black,
     search_white,
     search_transparent,
+    search_blue,
+    search_blue_long,
 
     plus_white,
     plus_blue,
@@ -149,6 +154,7 @@ export default {
 
     arrow_right_white,
     arrow_left_white_circle,
+    arrow_left_black_circle,
     angle_right_grey,
     angle_down_grey,
     angle_right_blue,

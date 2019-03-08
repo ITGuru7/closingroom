@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import UserAuth from './UserAuth';
+
 import * as routes from '../constants/routes';
 import * as functions from '../functions';
 
 export default function(ComposedComponent) {
   class AdminAuth extends Component {
     componentWillMount() {
-      const {authUser, users, history} = this.props
-      if (!authUser) {
-        history.push(routes.SIGN_IN);
-        return
-      }
-      if (users && !functions.isAdmin(users[authUser.uid].level)) {
+      const {user, history} = this.props
+      if (user && functions.isNormalUser(user.level)) {
         history.push(routes.DASHBOARD);
         return
       }
@@ -20,29 +19,23 @@ export default function(ComposedComponent) {
 
     componentWillUpdate(nextProps) {
       const {history} = this.props
-      const {authUser, users} = nextProps
-      if (!authUser) {
-        history.push(routes.SIGN_IN);
-        return
-      }
-      if (users && !functions.isAdmin(users[authUser.uid].level)) {
+      const {user} = nextProps
+      if (user && functions.isNormalUser(user.level)) {
         history.push(routes.DASHBOARD);
         return
       }
     }
 
     render() {
-      const {authUser} = this.props
-      return authUser && <ComposedComponent {...this.props} />
+      return <ComposedComponent {...this.props} />
     }
   }
 
-  const mapStateToProps = ({ authUser, users }) => {
+  const mapStateToProps = ({ user }) => {
     return {
-      authUser,
-      users,
-    };
+      user,
+    }
   }
 
-  return withRouter(connect(mapStateToProps)(AdminAuth));
+  return withRouter(connect(mapStateToProps)(UserAuth(AdminAuth)));
 }

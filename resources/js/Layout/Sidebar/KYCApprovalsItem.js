@@ -53,7 +53,7 @@ class KYCApprovalsItem extends Component {
 const mapStateToProps = ({ users }) => {
   return {
     users,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, actions)(KYCApprovalsItem);

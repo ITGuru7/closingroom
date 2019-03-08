@@ -155,7 +155,7 @@ const mapStateToProps = ({ room, user, users }) => {
     room,
     user,
     users,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps, actions)(AddUsersModal);

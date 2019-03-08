@@ -35,10 +35,10 @@ class RoomPage extends Component {
   }
 
   render() {
-    const { room } = this.props
+    const { room, user } = this.props
     const { receiver_uid } = this.state
 
-    if (!room) {
+    if (!room || !user) {
       return <div></div>
     }
     return (
@@ -54,12 +54,13 @@ class RoomPage extends Component {
   }
 }
 
-const mapStateToProps = ({ authUser, users, room }) => {
+const mapStateToProps = ({ authUser, user, users, room }) => {
   return {
     authUser,
+    user,
     users,
     room,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(RoomPage));

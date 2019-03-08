@@ -2,6 +2,7 @@ import { db } from './firebase';
 
 import * as actions from '../actions';
 import ROLES from '../constants/roles';
+import RANKS from '../constants/ranks';
 
 // User API
 
@@ -49,7 +50,7 @@ export const onceGetRoom = (rid) => (
   db.ref(`rooms/${rid}`).once('value')
 )
 
-export const doCreateRoom = (history, user, roomname, level, timelimit, general_details, users) => {
+export const doCreateRoom = (history, user, roomname, level, timelimit, general_details) => {
   db.ref('rooms').once('value')
   .then(function(snapshot) {
     let create_date = Date.now()
@@ -67,6 +68,13 @@ export const doCreateRoom = (history, user, roomname, level, timelimit, general_
     });
     room.child(`users/${user.uid}`).set({
       roomname,
+      rank: RANKS.ADMIN.index,
+    })
+    room.child(`documents/general`).set({
+      dealdetails: general_details,
+    })
+    room.child(`documents/general/dealdetails`).update({
+      active: true,
     })
 
     doCreateMessage(room.key, user.uid, null, 'Welcome')
@@ -74,6 +82,16 @@ export const doCreateRoom = (history, user, roomname, level, timelimit, general_
     setTimeout(function(){
       history.push(`/rooms/${room.key}`)
     }, 1000);
+  })
+}
+
+export const doUpdateRoom = (rid, uid, level, timelimit, general_details) => {
+  db.ref(`rooms/${rid}`).update({
+    level,
+    timelimit,
+  })
+  return db.ref(`rooms/${rid}/documents/general`).update({
+    dealdetails: general_details,
   })
 }
 
@@ -108,12 +126,6 @@ export const doCreateMessage = (rid, sender_uid, receiver_uid, content) => {
   })
 }
 
-export const doInviteUserToRoom = (rid, uid) => (
-  db.ref(`rooms/${rid}/users/${uid}`).set({
-    level: 0,
-  })
-);
-
 export const doUserProfileUpdate = (uid, email, firstname, lastname, displayname) => (
   db.ref(`users/${uid}`).update({
     email,
@@ -123,33 +135,22 @@ export const doUserProfileUpdate = (uid, email, firstname, lastname, displayname
   })
 );
 
-export const doUserKYC = (uid, firstname, lastname, occupation, passport, address) => (
+export const doUserKYC = (uid, firstname, lastname, occupation, passport, passport_url, address, address_url) => (
   db.ref(`users/${uid}`).update({
     firstname,
     lastname,
     occupation,
     passport,
+    passport_url,
     address,
+    address_url,
     kyc_status: 'pending',
   })
 );
 
-export const doDownloadPassport = (uid, url) => (
-  db.ref(`users/${uid}`).update({
-    passport_url: url,
-  })
-);
-
-export const doDownloadAddress = (uid, url) => (
-  db.ref(`users/${uid}`).update({
-    address_url: url,
-  })
-);
-
-export const doUploadDocument = (rid, uid, title, doctype, other, issued, certified, comment) => {
+export const doUploadDocument = (rid, uid, title, doctype, other, issued, certified, comment, folder, newfolder, url) => {
   let date = Date.now()
-
-  return db.ref(`rooms/${rid}/documents/upload`).push({
+  let doc_data = {
     title,
     type: doctype,
     other,
@@ -158,14 +159,22 @@ export const doUploadDocument = (rid, uid, title, doctype, other, issued, certif
     comment,
     uid,
     create_date: date,
-  })
-};
-
-export const doDownloadDocument = (rid, doc_key, url) => (
-  db.ref(`rooms/${rid}/documents/upload/${doc_key}`).update({
     url,
-  })
-);
+    active: true,
+  }
+
+  let doc_url
+  if (folder === 'legal') {
+    doc_url = 'legal'
+  } else if (folder === 'upload') {
+    doc_url = 'upload'
+  } else if (folder === 'create') {
+    return doNewFolder(rid, newfolder).child('documents').push(doc_data)
+  } else {
+    doc_url = `folders/${folder}/documents`
+  }
+  return db.ref(`rooms/${rid}/documents/${doc_url}`).push(doc_data)
+};
 
 export const onceGetDocuments = () => (
   db.ref('documents').once('value')
@@ -194,17 +203,17 @@ export const doTryAgainKYC = (uid) => {
   })
 };
 
-export const doUpgradeUser = (uid) => {
+export const doUpgradeUserToAdmin = (uid) => {
   db.ref(`users/${uid}`).update({
     level: 3,
   })
 };
 
-export const doNewFolder = (rid) => {
+export const doNewFolder = (rid, title='New Folder') => (
   db.ref(`rooms/${rid}/documents/folders`).push({
-    title: 'New Folder',
+    title,
   })
-};
+);
 
 export const doChangeFoldername = (rid, folder_key, foldername) => {
   db.ref(`rooms/${rid}/documents/folders/${folder_key}`).update({

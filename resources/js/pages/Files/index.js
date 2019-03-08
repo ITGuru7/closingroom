@@ -10,7 +10,7 @@ import assets from '../../assets';
 
 import * as functions from '../../functions';
 
-import RoomHeader from '../../Layout/Header/RoomHeader';
+import FileRoomHeader from '../../Layout/Header/FileRoomHeader';
 
 import FileManager from './FileManager';
 import TaskManager from './TaskManager';
@@ -35,8 +35,8 @@ class RoomFilesPage extends Component {
     }
 
     return (
-      <div className="roomfiles-page h-100">
-        <RoomHeader/>
+      <div className="roomfiles-page d-flex flex-column h-100">
+        <FileRoomHeader/>
         <div className="page-content flex-grow-1">
           <FileManager {...this.props}/>
           {/* <TaskManager {...this.props}/> */}
@@ -52,7 +52,7 @@ const mapStateToProps = ({ authUser, room, documents, users }) => {
     room,
     documents,
     users,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(RoomFilesPage));

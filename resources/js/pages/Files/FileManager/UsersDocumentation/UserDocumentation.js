@@ -14,6 +14,9 @@ import * as actions from '../../../../actions';
 
 import { SERVER_URL } from '../../../../constants/urls';
 
+import KYCPDFForm from '../FileLinkForms/KYCPDFForm';
+import DocumentLinkForm from '../FileLinkForms/DocumentLinkForm';
+
 import _ from 'lodash';
 
 const INITIAL_STATE = {
@@ -28,7 +31,7 @@ class UserDocumentation extends Component {
     return (
       <tr key={type} className="level-3">
         <td className="text-left"><img src={assets.file_blue} className="size-20"/> {functions.getFormattedID(user.id, 4)}.{title}.pdf</td>
-        { user.level > 0 ?
+        { functions.isVerified(user.level) ?
           <td><img src={assets.secure_transparent} className="size-20"/> Verified</td>
         :
           <td>Unverified</td>
@@ -39,11 +42,13 @@ class UserDocumentation extends Component {
         <td>N/A</td>
         <td>
           {type == 'kyc' ?
-            <KYCPDFForm {...this.props} download={true}/>
-          :
-            <a href={type === 'passport' ? user.passport_url : user.address_url} download>
+            <KYCPDFForm {...this.props} download={true}>
               <img src={assets.download_blue} className="size-20"/>
-            </a>
+            </KYCPDFForm>
+          :
+            <DocumentLinkForm type={type} url={type === 'passport' ? user.passport_url : user.address_url} download={true}>
+              <img src={assets.download_blue} className="size-20"/>
+            </DocumentLinkForm>
           }
         </td>
         <td>N/A</td>
@@ -51,12 +56,15 @@ class UserDocumentation extends Component {
         <td>N/A</td>
         <td>
           {type == 'kyc' ?
-            <KYCPDFForm {...this.props} download={false}/>
-          :
-            <a href={type === 'passport' ? user.passport_url : user.address_url} target='_blank'>
+            <KYCPDFForm {...this.props} download={false}>
               <img src={assets.search_black} className="size-20 mr-3"/>
               Preview
-            </a>
+            </KYCPDFForm>
+          :
+            <DocumentLinkForm type={type} url={type === 'passport' ? user.passport_url : user.address_url} download={false}>
+              <img src={assets.search_black} className="size-20 mr-3"/>
+              Preview
+            </DocumentLinkForm>
           }
         </td>
       </tr>
@@ -93,36 +101,10 @@ class UserDocumentation extends Component {
   }
 }
 
-const KYCPDFForm = (props) => {
-  const { room, user, download } = props
-  return (
-    <form action={`${SERVER_URL}/kyc`} method="get" target={download===false?'_blank':''}>
-      <input type="hidden" name="rid" value={functions.getFormattedID(room.id, 6)}/>
-      <input type="hidden" name="create_date" value={functions.getFormattedDate(new Date(room.create_date))}/>
-      <input type="hidden" name="firstname" value={user.firstname}/>
-      <input type="hidden" name="lastname" value={user.lastname}/>
-      <input type="hidden" name="address" value={user.address}/>
-      <input type="hidden" name="country" value={user.timezone}/>
-      <input type="hidden" name="passport" value={user.passport}/>
-      <input type="hidden" name="download" value={download}/>
-      { download ?
-        <button type="submit" className="button-transparent">
-          <img src={assets.download_blue} className="size-20"/>
-        </button>
-      :
-        <button type="submit" className="button-transparent">
-          <img src={assets.search_black} className="size-20 mr-3"/>
-          Preview
-        </button>
-      }
-    </form>
-  )
-}
-
 const mapStateToProps = ({ room }) => {
   return {
     room,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(UserDocumentation));

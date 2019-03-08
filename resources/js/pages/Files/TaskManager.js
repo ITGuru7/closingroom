@@ -217,7 +217,7 @@ const mapStateToProps = ({ authUser, room, documents, users }) => {
     room,
     documents,
     users,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(TaskManager));

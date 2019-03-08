@@ -13,6 +13,8 @@ import * as functions from '../../functions';
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 import PaneHeader from '../../Layout/Header/PaneHeader';
 
+import DocumentLinkForm from '../Files/FileManager/FileLinkForms/DocumentLinkForm';
+
 import * as actions from '../../actions';
 
 import _ from 'lodash';
@@ -67,16 +69,20 @@ class KYC_ApprovalViewPage extends Component {
         </div>
         <div className="d-flex flex-row my-3">
           <div className="font-weight-bold w-25">Passport Number:</div>
-          <div>
+          <div className="d-flex justify-content-start">
             <span className="mr-5">{user.passport}</span>
-            <a href={user.passport_url} target='_blank' className="font-weight-bold"><u>View passport scan</u></a>
+            <DocumentLinkForm type="passport" url={user.passport_url} download={false}>
+              <b><u>View passport scan</u></b>
+            </DocumentLinkForm>
           </div>
         </div>
         <div className="d-flex flex-row my-3">
           <div className="font-weight-bold w-25">Address:</div>
-          <div>
+          <div className="d-flex justify-content-start">
             <span className="mr-5">{user.address}</span>
-            <a href={user.address_url} target='_blank' className="font-weight-bold"><u>View proof of address scan</u></a>
+            <DocumentLinkForm type="passport" url={user.address_url} download={false}>
+              <b><u>View proof of address scan</u></b>
+            </DocumentLinkForm>
           </div>
         </div>
         <div className="d-flex flex-row my-3">
@@ -167,7 +173,7 @@ class KYC_ApprovalViewPage extends Component {
 const mapStateToProps = ({ users }) => {
   return {
     users,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(KYC_ApprovalViewPage));

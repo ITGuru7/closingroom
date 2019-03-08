@@ -30,9 +30,19 @@ button {
         color: white ;
         background-color: $dark-red ;
     }
+    &.button-red-outline {
+        color: $dark-red ;
+        border: 1px solid $dark-red ;
+        background-color: white;
+    }
     &.button-green {
         color: white ;
         background-color: $green ;
+    }
+    &.button-green-outline {
+        color: $green ;
+        border: 1px solid $green ;
+        background-color: white ;
     }
     &.button-lightgreen {
         color: white ;
@@ -113,4 +123,15 @@ img {
             height: $img_size + px ;
         }
     }
+}
+
+.goback-link {
+    &:hover {
+        cursor: pointer ;
+    }
+}
+
+select {
+    height: 30px ;
+    background-color: white;
 }

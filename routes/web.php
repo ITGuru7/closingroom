@@ -30,8 +30,9 @@ Route::get('verify', function () {
 	return view('email.verify', $data);
 });
 
-Route::get('dealdetails','PDFController@dealdetails');
-Route::get('kyc','PDFController@kyc');
+Route::post('dealdetails','PDFController@dealdetails');
+Route::post('kyc','PDFController@kyc');
+Route::post('file','API\FirebaseController@viewFile');
 
 Route::any('{all}', function () {
 	return view('welcome');

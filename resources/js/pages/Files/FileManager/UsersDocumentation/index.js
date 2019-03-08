@@ -48,11 +48,12 @@ class UsersDocumentation extends Component {
     return rows
   }
 }
+
 const mapStateToProps = ({ room, users }) => {
   return {
     room,
     users,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps)(UsersDocumentation));

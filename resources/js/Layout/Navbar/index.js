@@ -23,9 +23,9 @@ const Navbar = (props) => {
         <NavItem to={routes.DASHBOARD} asset={assets.home_white} size={25} text="Home"/>
         <NavItem to={routes.ACCOUNT_SETTINGS} asset={assets.setting_white} size={25} text="Account Settings"/>
         <NavItem to={routes.MY_ROOMS} asset={assets.hands_bluewhite} size={30} text="My ClosingRooms"/>
-        <NavItem to={routes.ROOMS} asset={assets.listview_white} size={25} text="Global Room Manager"/>
-        <NavItem to={routes.MANAGE_ACCOUNTS} asset={assets.accounts_white} size={25} text="Accounts Manager"/>
-        <NavItem to={routes.KYC_APPROVALS} asset={assets.search_transparent} size={25} text="KYC Approvals"/>
+        <NavItem to={routes.ROOMS} asset={assets.listview_white} size={25} text="Global Room Manager" nav_admin={true}/>
+        <NavItem to={routes.MANAGE_ACCOUNTS} asset={assets.accounts_white} size={25} text="Accounts Manager" nav_admin={true}/>
+        <NavItem to={routes.KYC_APPROVALS} asset={assets.search_transparent} size={25} text="KYC Approvals" nav_admin={true}/>
       </div>
       <div className="help-block d-flex">
         <button type="button" className="button-transparent"

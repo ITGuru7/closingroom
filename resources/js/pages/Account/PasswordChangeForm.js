@@ -60,8 +60,11 @@ class PasswordChangeForm extends Component {
     //   passwordOne !== passwordTwo;
 
     return (
-      <div>
-        <div className="row mb-2">
+      <div className="password-change-form">
+        <div className="subtitle">
+          Password
+        </div>
+        <div className="passwords-block row mb-2">
           <div className="col-3">
             <label htmlFor="passwordOld">Current Password</label>
             <input
@@ -94,7 +97,7 @@ class PasswordChangeForm extends Component {
           </div>
         </div>
         {error && <p className="alert alert-light">{error.message}</p>}
-        <div className="mt-2">
+        <div>
           <button type="button" className="button-blue"
             onClick={this.onUpdatePassword}
           >

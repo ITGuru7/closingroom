@@ -7,10 +7,10 @@ const PaneHeader = (props) => (
   {props.back ?
     <div className="row">
       <div className="col-4">
-        <div className="back d-flex align-items-center"
+        <div className="goback-link d-flex align-items-center"
           onClick={(event) => {props.history.goBack()}}
         >
-          <img src={assets.arrow_left_white_circle} className="mr-2"/>
+          <img src={assets.arrow_left_white_circle} className="size-20 mr-2"/>
           <span>Back</span>
         </div>
       </div>

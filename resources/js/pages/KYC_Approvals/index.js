@@ -133,7 +133,7 @@ const mapStateToProps = ({ users, rooms }) => {
   return {
     users,
     rooms,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(KYC_ApprovalsPage));

@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import * as routes from '../../constants/routes';
 import { auth, db, storage } from '../../firebase';
 
+import * as functions from '../../functions';
+
 import DefaultHeader from '../../Layout/Header/DefaultHeader';
 
 const KYCPage = () => (
@@ -37,10 +39,6 @@ class KYCForm extends Component {
     const { authUser, history } = this.props;
     const { firstname, lastname, occupation, passport, address, passport_file, address_file } = this.state
 
-    // if (firstname === '' || lastname === '' || occupation === '' || passport === '' || address === '') {
-    //   alert('Input all fields correctly')
-    //   return
-    // }
     if (passport_file === null) {
       alert('Passport file not uploaded yet')
       return
@@ -50,23 +48,24 @@ class KYCForm extends Component {
       return
     }
 
-    db.doUserKYC(authUser.uid, firstname, lastname, occupation, passport, address)
+    functions.doFileUpload(passport_file, `passport-${authUser.uid}`, 'passport')
+    .then(function (response) {
+      const passport_url = response.data
+      functions.doFileUpload(address_file, `address-${authUser.uid}`, 'address')
+      .then(function (response) {
+        const address_url = response.data
+        db.doUserKYC(authUser.uid, firstname, lastname, occupation, passport, passport_url, address, address_url)
 
-    storage.doUploadPassport(passport, passport_file)
-    .then(snapshot => snapshot.ref.getDownloadURL())
-    .then((url) => {
-      db.doDownloadPassport(authUser.uid, url)
-
-      storage.doUploadAddress(address, address_file)
-      .then(snapshot => snapshot.ref.getDownloadURL())
-      .then((url) => {
-        db.doDownloadAddress(authUser.uid, url)
+        alert('Your documents have been submitted and will be reviewed shortly.')
+        history.push(routes.DASHBOARD)
+      })
+      .catch(function (error) {
+        alert(error)
       })
     })
-
-    alert('Your documents have been submitted and will be reviewed shortly.')
-
-    history.push(routes.DASHBOARD)
+    .catch(function (error) {
+      alert(error)
+    })
   };
 
   onChange = event => {
@@ -75,6 +74,7 @@ class KYCForm extends Component {
 
   onChangeFile = (name, files) => {
     this.setState({ [name]: files[0] });
+    alert("Thank you, your document has been uploaded")
   };
 
   render() {
@@ -227,8 +227,8 @@ class KYCForm extends Component {
 const mapStateToProps = ({ authUser }) => {
   return {
     authUser,
-  };
-};
+  }
+}
 
 const Connected_KYCForm = withRouter(connect(mapStateToProps)(KYCForm))
 

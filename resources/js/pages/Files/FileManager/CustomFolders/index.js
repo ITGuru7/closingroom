@@ -18,7 +18,7 @@ const CustomFolders = (props) => {
 const mapStateToProps = ({ room }) => {
   return {
     room,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(CustomFolders);

@@ -6,7 +6,7 @@ import { db, storage } from '../../firebase';
 
 import assets from '../../assets';
 
-import { getFormattedDate, getFormattedID } from '../../functions';
+import * as functions from '../../functions';
 
 import DOCUMENT_TYPES from '../../constants/document_types';
 
@@ -18,6 +18,8 @@ const INITIAL_STATE = {
   issued: '',
   certified: 0,
   comment: '',
+  folder: 'legal',
+  newfolder: '',
 }
 
 class UploadDocumentModal extends Component {
@@ -29,32 +31,33 @@ class UploadDocumentModal extends Component {
 
   onUpload = () => {
     const { authUser, room, user } = this.props
-    const {document_title, document_file, doctype, other, issued, certified, comment} = this.state ;
+    const { document_title, document_file, doctype, other, issued, certified, comment, folder, newfolder } = this.state ;
 
-    db.doUploadDocument(room.rid, authUser.uid, document_title, DOCUMENT_TYPES[doctype], other, issued, certified, comment)
-    .then((snapshot) => {
-      const doc_key = snapshot.key
+    if (document_file === null) {
+      alert('Choose document to upload')
+      return
+    }
+    if (folder === 'create') {
+      if (newfolder === '') {
+        alert('Input folder name to create')
+        return
+      }
+    }
 
-      let document_name = getFormattedID(room.id, 4) + '_' + getFormattedID(user.id, 4) + '_' + String(DOCUMENT_TYPES[doctype]).replace(" ", "").toUpperCase() + '_' + getFormattedDate(new Date(), '.')
+    let url = functions.getFormattedID(room.id, 4) + '_' + functions.getFormattedID(user.id, 4) + '_' + String(DOCUMENT_TYPES[doctype]).replace(" ", "").toUpperCase() + '_' + functions.getFormattedDate(new Date(), '.')
 
-      storage.doUploadDocument(document_name, document_file)
-      .then(snapshot => snapshot.ref.getDownloadURL())
-      .then((url) => {
-        db.doDownloadDocument(room.rid, doc_key, url)
-        this.onReset()
-        alert('Document has been uploaded successfully')
-      })
+    functions.doFileUpload(document_file, url, 'document')
+    .then(function (response) {
+      const document_url = response.data
+      db.doUploadDocument(room.rid, authUser.uid, document_title, DOCUMENT_TYPES[doctype], other, issued, certified, comment, folder, newfolder, document_url)
+    })
+    .catch(function (error) {
+      alert(error)
     })
   };
 
   onDone = event => {
     event.preventDefault()
-
-    const {document_title, document_file, doctype, other, issued, certified, comment} = this.state ;
-    if (document_file === null) {
-      alert('Choose document to upload')
-      return
-    }
 
     this.onUpload()
     this.closeDialog()
@@ -72,7 +75,11 @@ class UploadDocumentModal extends Component {
 
   render() {
     const { authUser, room } = this.props
-    const {document_title, document_file, doctype, other, issued, certified, comment} = this.state ;
+    const { document_title, document_file, doctype, other, issued, certified, comment, folder, newfolder } = this.state ;
+
+    if (!authUser || !room) {
+      return <div></div>
+    }
 
     return (
       <div className="upload-modal mymodal d-none" onSubmit={this.onDone}>
@@ -97,12 +104,15 @@ class UploadDocumentModal extends Component {
             </div>
             <div className="row mb-4">
               <div className="col-3">
-                <button className="button button-md button-blue"
+                <button className="button-white px-2 py-1"
                   onClick={(event)=>{
                     event.preventDefault();
                     $('input[type=file][name=document_file]').click()}
                   }
-                >Upload Document</button>
+                >
+                  <span className="mr-2">Browse for Document</span>
+                  <img src={assets.search_blue} className="size-15"/>
+                </button>
                 <input
                   name="document_file"
                   onChange={(e) => {
@@ -186,7 +196,7 @@ class UploadDocumentModal extends Component {
                 </select>
               </div>
             </div>
-            <div className="row mb-5">
+            <div className="row">
               <div className="col-3">
                 <label htmlFor="comment">Comment:</label>
               </div>
@@ -201,11 +211,43 @@ class UploadDocumentModal extends Component {
                 />
               </div>
             </div>
+            <div className="row mb-5">
+              <div className="col-3">
+                <label htmlFor="folder">Folder:</label>
+              </div>
+              <div className="col-3">
+                <select
+                  name="folder"
+                  id="folder"
+                  value={folder}
+                  onChange={this.onChange}
+                >
+                  <option value="legal">Legal</option>
+                  <option value="upload">Other</option>
+                  {_.map(room.documents.folders, (folder, key) => (
+                    <option key={key} value={key}>{folder.title}</option>
+                  ))}
+                  <option value="create" className="text-uppercase">Create New Folder</option>
+                </select>
+              </div>
+              { folder == 'create' &&
+                <div className="col-4">
+                  <label htmlFor="newfolder">New Folder:</label>
+                  <input
+                    name="newfolder"
+                    id="newfolder"
+                    type="text"
+                    value={newfolder}
+                    onChange={this.onChange}
+                  />
+                </div>
+              }
+            </div>
             <div className="text-center">
-              <button type="submit" className="button button-md button-green border-0 mx-3">
+              <button type="submit" className="button-green-outline mx-3">
                 Upload
               </button>
-              <button type="button" className="button button-md button-red border-0 mx-3"
+              <button type="button" className="button-red-outline mx-3"
                 onClick={this.closeDialog}
               >
                 Cancel
@@ -223,7 +265,7 @@ const mapStateToProps = ({ authUser, room, user }) => {
     authUser,
     room,
     user,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(UploadDocumentModal);

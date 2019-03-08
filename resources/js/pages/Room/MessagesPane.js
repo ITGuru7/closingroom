@@ -120,7 +120,7 @@ const mapStateToProps = ({ authUser, room, users }) => {
     authUser,
     room,
     users,
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(MessagesPane);

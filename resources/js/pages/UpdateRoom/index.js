@@ -14,9 +14,9 @@ import ROLES from '../../constants/roles';
 
 const UpdateRoomPage = (props) => (
   <div className="createroom-page d-flex flex-column">
-    <DefaultHeader title="Create New Room" />
+    <DefaultHeader title="Update Room" />
     <div className="page-content flex-grow-1 m-4">
-      <CreateRoomForm {...props} />
+      <UpdateRoomForm {...props} />
     </div>
   </div>
 );
@@ -24,6 +24,7 @@ const UpdateRoomPage = (props) => (
 
 const INITIAL_STATE = {
   roomname: '',
+  level: 0,
   timelimit: 0,
 
   general_details: {
@@ -44,9 +45,8 @@ const INITIAL_STATE = {
   },
 };
 
-class CreateRoomForm extends Component {
+class UpdateRoomForm extends Component {
   state = { ...INITIAL_STATE };
-
 
   componentWillMount() {
     const { rid } = this.props.match.params
@@ -61,32 +61,37 @@ class CreateRoomForm extends Component {
   }
 
   init = (props) => {
-    const {room} = props
-    let users = props.users;
-    if (!room || !users) {
+    const { room, user } = props
+
+    if (!room || !user) {
       return
     }
 
-    Object.keys(users).map(key => {
-      users[key].registered = false
-    })
-    Object.keys(room.users).map(key => {
-      users[key].registered = true
-      users[key] = {...users[key], ...room.users[key]}
-    })
+    const roomname = room.users[user.uid].roomname
+    const general_details = room.documents.general.dealdetails
 
-    this.setState({users})
+    this.setState({
+      roomname,
+      level: room.level,
+      timelimit: room.timelimit,
+      general_details
+    })
   }
 
   onSubmit = event => {
     event.preventDefault();
 
-    const { authUser, users, history } = this.props;
-    const { roomname, timelimit, general_details } = this.state;
+    const { room, user, history } = this.props;
+    const { roomname, timelimit, level, general_details } = this.state;
 
     if (roomname === '') {
       alert('Input roomname')
       $('#roomname').focus()
+      return
+    }
+    if (!(level > 0)) {
+      alert('Input valid level (>0)')
+      $('#level').focus()
       return
     }
     if (!(timelimit > 0)) {
@@ -95,15 +100,20 @@ class CreateRoomForm extends Component {
       return
     }
 
-    let user = users[authUser.uid]
-    user.uid = authUser.uid
-    db.doCreateRoom(user, roomname, 1, timelimit, general_details, users)
-
-    history.push(routes.MY_ROOMS);
+    db.doChangeRoomname(room.rid, user.uid, roomname)
+    db.doUpdateRoom(room.rid, user.uid, level, timelimit, general_details)
+    .then(() => {
+      history.push(`/rooms/${room.rid}`)
+    })
   };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+  onChangeGeneralDetails = event => {
+    let general_details = {...this.state.general_details}
+    general_details[event.target.name] = event.target.value
+    this.setState({ general_details });
   };
 
   renderGeneralDetailField = (label, type, value) => (
@@ -116,11 +126,7 @@ class CreateRoomForm extends Component {
           id={value}
           name={value}
           value={this.state.general_details[value]}
-          onChange={(event) => {
-            let general_details = this.state.general_details
-            general_details[event.target.name] = event.target.value
-            this.setState({ general_details });
-          }}
+          onChange={this.onChangeGeneralDetails}
           type={type}
         />
       </div>
@@ -128,7 +134,14 @@ class CreateRoomForm extends Component {
   )
 
   render() {
-    const { roomname, timelimit, error } = this.state;
+    const { room } = this.props
+    const { roomname, level, timelimit, error } = this.state;
+
+    if (!room) {
+      return <div></div>
+    }
+
+    console.log(this.state)
 
     // const isInvalid =
     //   roomname === '' ||
@@ -153,10 +166,25 @@ class CreateRoomForm extends Component {
                 <input
                   id="roomname"
                   name="roomname"
-                  value={this.state['roomname']}
+                  value={roomname}
                   onChange={this.onChange}
                   type="text"
                   placeholder="eg. 4/2 JP Morgan.."
+                  required
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-6">
+                <label htmlFor="level" className="label mandatory">Level:</label>
+              </div>
+              <div className="col-6">
+                <input
+                  id="level"
+                  name="level"
+                  value={level}
+                  onChange={this.onChange}
+                  type="number"
                   required
                 />
               </div>
@@ -205,7 +233,7 @@ class CreateRoomForm extends Component {
                 id='comments'
                 name='comments'
                 rows='3'
-                value={this.state['comments']}
+                value={this.state.general_details['comments']}
                 onChange={this.onChangeGeneralDetails}
                 className="w-100"
               />
@@ -215,7 +243,7 @@ class CreateRoomForm extends Component {
 
         <div className="text-center">
           <button type="submit" className="button button-md button-red">
-            Create
+            Save
           </button>
         </div>
 
@@ -225,11 +253,12 @@ class CreateRoomForm extends Component {
   }
 }
 
-const mapStateToProps = ({ authUser, users }) => {
+const mapStateToProps = ({ authUser, room, user }) => {
   return {
     authUser,
-    users,
-  };
-};
+    room,
+    user,
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(UpdateRoomPage));

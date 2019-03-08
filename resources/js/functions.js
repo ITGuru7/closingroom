@@ -9,6 +9,7 @@ import * as routes from './constants/routes';
 
 import ROLES from './constants/roles';
 import RANKS from './constants/ranks';
+import LEVELS from './constants/levels';
 
 export const getFormattedDate = (date, separator='/') => {
     var year = date.getFullYear();
@@ -40,13 +41,28 @@ export const getFormattedID = (id, length) => {
     return (id?String(id).padStart(length, '0'):'')
 }
 
+export const isVerified = (level) => {
+    return parseInt(level) >= LEVELS.VERIFIED.index
+}
+
 export const isAdmin = (level) => {
-    return parseInt(level) >= 3
+    return parseInt(level) == LEVELS.ADMIN.index
+}
+
+export const isModerator = (level) => {
+    return parseInt(level) == LEVELS.MODERATOR.index
+}
+
+export const isNormalUser = (level) => {
+    return parseInt(level) == LEVELS.UNVERIFIED.index || parseInt(level) == LEVELS.VERIFIED.index
+}
+
+export const isRoomAdmin = (rank) => {
+    return parseInt(rank) == RANKS.ADMIN.index
 }
 
 export const doLogout = () => {
-    firebaseAuth.doSignOut();
-    window.location.href = routes.HOME;
+    firebaseAuth.doSignOut()
 }
 
 export const doSendInviteEmail = (room, authUser, invite, users) => {
@@ -140,4 +156,19 @@ export const doSendVerifyEmail = (authUser, displayname) => {
         link=${link}
     `;
     return axios.post(url)
+}
+
+export const doFileUpload = (file, file_url, type) => {
+    const url = `${SERVER_URL}/api/file_upload?
+        url=${type}/${file_url}
+    `;
+    let formData = new FormData();
+    formData.append('file', file);
+    return axios.post(url,
+        formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+    )
 }

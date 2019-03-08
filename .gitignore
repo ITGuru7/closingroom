@@ -16,3 +16,4 @@ yarn-error.log
 .editorconfig
 composer.lock
 package-lock.json
+/app/Http/Controllers/API/dataroom-cd23c-aefc710bc8c6.json

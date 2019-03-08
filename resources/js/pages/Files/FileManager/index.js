@@ -83,7 +83,7 @@ class FileManager extends Component {
 
   render() {
     return (
-      <div className="filemanager-pane h-100">
+      <div className="filemanager-pane">
         <div className="documents-block">
           {this.renderDocuments()}
         </div>
@@ -115,7 +115,7 @@ class FileManager extends Component {
 const mapStateToProps = ({ room }) => {
   return {
     room,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(FileManager));

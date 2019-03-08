@@ -2,16 +2,10 @@
 .rooms-page {
     .page-content {
         .header {
-            height: 40px ;
-            background-color: $dark-blue ;
-            .search-area {
-                input {
-                    border-radius: 20px ;
-                    outline: none;
-                }
-            }
+            height: 35px ;
             .title {
                 font-size: 1.2rem ;
+                font-weight: bold ;
             }
         }
 

@@ -17,5 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('send_invite_email', 'APIController@sendInviteEmail');
-Route::post('send_verify_email', 'APIController@sendVerifyEmail');
+Route::post('send_invite_email', 'EmailController@sendInviteEmail');
+Route::post('send_verify_email', 'EmailController@sendVerifyEmail');
+Route::post('file_upload', 'FirebaseController@fileUpload');

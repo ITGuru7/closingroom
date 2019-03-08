@@ -9573,9 +9573,21 @@ button.button-red {
   background-color: #be1e2d;
 }
 
+button.button-red-outline {
+  color: #be1e2d;
+  border: 1px solid #be1e2d;
+  background-color: white;
+}
+
 button.button-green {
   color: white;
   background-color: #009444;
+}
+
+button.button-green-outline {
+  color: #009444;
+  border: 1px solid #009444;
+  background-color: white;
 }
 
 button.button-lightgreen {
@@ -9693,6 +9705,15 @@ img.size-40 {
   height: 40px;
 }
 
+.goback-link:hover {
+  cursor: pointer;
+}
+
+select {
+  height: 30px;
+  background-color: white;
+}
+
 .page-header {
   flex: 0 0 30px;
   border-bottom: 1px solid #231f20;
@@ -9747,15 +9768,11 @@ img.size-40 {
   background-color: #183863;
 }
 
-.pane-header .back:hover {
+.pane-header .goback-link:hover {
   cursor: pointer;
 }
 
-.pane-header .back img {
-  width: 30px;
-}
-
-.pane-header .back span {
+.pane-header .goback-link span {
   color: white;
   font-size: 1.5rem;
 }
@@ -9782,6 +9799,39 @@ img.size-40 {
 
 .navbar .navitems-block .navitem {
   text-decoration: none;
+}
+
+@media (min-width: 1366px) {
+  .navbar .navitems-block .navitem-text {
+    color: white;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 1365px) {
+  .navbar .navitems-block .navitem {
+    position: relative;
+  }
+
+  .navbar .navitems-block .navitem .navitem-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    top: 2rem;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 200px;
+    background-color: pink;
+    color: #183863;
+    text-align: center;
+    border-radius: 6px;
+    /* Position the tooltip */
+  }
+
+  .navbar .navitems-block .navitem:hover .navitem-text {
+    visibility: visible;
+  }
 }
 
 .sidebar {
@@ -10106,6 +10156,14 @@ img.size-40 {
   font-size: 0.7rem;
 }
 
+.account-page .page-content .profile-block .information-block {
+  width: 80%;
+}
+
+.account-page .page-content .password-change-form .passwords-block {
+  width: 80%;
+}
+
 .kyc-page .page-content .label {
   color: #231f20;
   font-size: 1rem;
@@ -10118,17 +10176,12 @@ img.size-40 {
 }
 
 .rooms-page .page-content .header {
-  height: 40px;
-  background-color: #183863;
-}
-
-.rooms-page .page-content .header .search-area input {
-  border-radius: 20px;
-  outline: none;
+  height: 35px;
 }
 
 .rooms-page .page-content .header .title {
   font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .rooms-page .page-content table.rooms input {
@@ -10264,10 +10317,6 @@ img.size-40 {
 
 .room-page .page-content .tasks-pane .view-files button span {
   font-size: 1rem;
-}
-
-.roomfiles-page .page-content .filemanager-pane {
-  overflow-y: scroll;
 }
 
 .roomfiles-page .page-content .filemanager-pane .documents-block table.filestable th {

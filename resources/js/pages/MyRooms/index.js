@@ -72,20 +72,15 @@ class MyRoomsPage extends Component {
 
     return (
       <div className="rooms-page d-flex flex-column">
-        <DefaultHeader title="MyRooms" />
         <div className="page-content flex-grow-1">
-          <div className="header row mx-0 align-items-center">
-            <div className="search-area col-4 d-flex align-items-center">
-              <div className="col-2 text-white">Search</div>
-              <input type="text" className="px-3"
-                value={search}
-                autoFocus
-                onChange = { (event) => { this.setState({search: event.target.value}) }}
-              />
-            </div>
-            <div className="title col-4 text-white text-center">
-              ClosingRooms
-            </div>
+          <div className="header d-flex justify-content-center align-items-center">
+            <span className="title mr-5">My ClosingRooms</span>
+            <input type="text" className="px-1"
+              value={search}
+              autoFocus
+              onChange = { (event) => { this.setState({search: event.target.value}) }}
+              placeholder="Search.."
+            />
           </div>
           <table className="table mytable rooms text-center">
             <thead>
@@ -214,7 +209,7 @@ const mapStateToProps = ({ authUser, rooms }) => {
   return {
     authUser,
     rooms,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(MyRoomsPage));

@@ -11,15 +11,17 @@
   <!-- Styles -->
 
   <style>
+    html {
+      font-size: .8rem ;
+    }
+
     .pdf-header {
       position: fixed ;
-      top: 0 ;
-      left: 0;
-      right: 0;
       padding: 0 2rem ;
     }
     .pdf-content {
-      margin-top: 100px ;
+      margin-top: 150px ;
+      padding: 0 3rem ;
     }
     .pdf-footer {
       position: fixed ;
@@ -27,13 +29,35 @@
       left: -100px;
       right: -100px;
 
-      padding: 1rem ;
       height: 40px ;
       box-sizing: border-box ;
 
-      text-align: center ;
-      color: white ;
       background-color: rgb(24, 56, 99) ;
+    }
+
+    .text-uppercase {
+      text-transform: uppercase ;
+    }
+    .text-center {
+      text-align: center ;
+    }
+    .text-white {
+      color: white ;
+    }
+    .w-100 {
+      width: 100% ;
+    }
+    .w-50 {
+      width: 50% ;
+    }
+    .mr-3 {
+      margin-right: 1rem ;
+    }
+    .p-3 {
+      padding: 1rem ;
+    }
+    .mb-2 {
+      margin-bottom: .5rem ;
     }
   </style>
 
@@ -47,7 +71,7 @@
     <div class="pdf-content">
       @yield('content')
     </div>
-    <div class="pdf-footer">
+    <div class="pdf-footer p-3 text-center text-white">
       Created Using MNM ClosingRoom - www.mnmcs.com/closingroom<br/>
       © 2019 MNMCS
     </div>

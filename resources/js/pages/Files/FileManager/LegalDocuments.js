@@ -94,10 +94,11 @@ class LegalDocuments extends Component {
     return rows
   }
 }
+
 const mapStateToProps = ({ room }) => {
   return {
     room,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, actions)(LegalDocuments));

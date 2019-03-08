@@ -14,8 +14,6 @@ class VerifyPage extends Component {
     const { authUser } = nextProps
     const { history } = this.props
 
-    console.log(authUser)
-    console.log(uid)
     if ( uid == authUser.uid ) {
       db.doEmailVerifyUser(uid)
       history.push(routes.DASHBOARD);
@@ -29,7 +27,7 @@ class VerifyPage extends Component {
 const mapStateToProps = ({ authUser }) => {
   return {
     authUser,
-  };
-};
+  }
+}
 
 export default withRouter(connect(mapStateToProps, null)(VerifyPage));
