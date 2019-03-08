@@ -30,6 +30,7 @@ class PDFController extends Controller
 		$users = $database->getReference('/users')->getSnapshot()->getValue();
 
 		$room['rid'] = $rid;
+		$room['id'] = str_pad($room['id'], 6, '0', STR_PAD_LEFT);
 		$room['dealdetails'] = $room['documents']['general']['dealdetails'];
 		$room['create_date'] = date( "d M Y", $room['create_date']);
 		$room['expire_date'] = date( "d M Y", $room['expire_date']);
@@ -68,6 +69,7 @@ class PDFController extends Controller
 		$user = $database->getReference('/users/'.$uid)->getSnapshot()->getValue();
 
 		$room['rid'] = $rid;
+		$room['id'] = str_pad($room['id'], 6, '0', STR_PAD_LEFT);
 		$room['create_date'] = date( "d M Y", $room['create_date']);
 		$user['uid'] = $uid;
 
